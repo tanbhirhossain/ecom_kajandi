@@ -27,7 +27,7 @@ class AdminController extends Controller
         return view('BackEnd.admin_master');
     }
 
+   
 
-
-
+    
 }

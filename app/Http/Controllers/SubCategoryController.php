@@ -6,12 +6,6 @@ use Illuminate\Http\Request;
 use App\SubCategory;
 class SubCategoryController extends Controller
 {
-
-  public function __construct()
-  {
-      $this->middleware('auth:admin');
-      $this->middleware('admin');
-  }
     public function add_category(){
         return view('backend.subcategory.add_category');
     }
