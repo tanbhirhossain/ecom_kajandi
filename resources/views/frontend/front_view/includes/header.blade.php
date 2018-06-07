@@ -53,39 +53,29 @@
         </div>
     </div>
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-login-dialog">
-      <form method="POST" action="{{ route('login') }}">
-          @csrf
-
         <h3 class="widget-title">Member Login</h3>
         <p>Welcome back, friend. Login to get started</p>
         <hr />
-            <p class="alert alert-danger loginformerror" style="display: none;">Email or Password incorrect</p>
-            <div class="form-group">
-                <label>Email or Username</label>
-                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-                @if ($errors->has('email'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                @if ($errors->has('password'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}</label>
-            </div>
-            <input class="btn btn-primary" type="submit" value="Sign In" />
-          </form>
+        <p class="alert alert-danger loginformerror" style="display: none;">Email or Password incorrect</p>
+        <div class="form-group">
+            <label>Email or Username</label>
+            <input class="form-control loginemail" type="text" />
+            <p class="alert alert-danger emailerror" style="display: none;">
+                Email field is empty
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control loginpassword" type="password" />
+            <p class="alert alert-danger passworderror" style="display: none;">
+                Password field is empty
+            </p>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input class="i-check" type="checkbox" />Remeber Me</label>
+        </div>
+        <input class="btn btn-primary login" type="submit" value="Sign In" />
 
         <div class="gap gap-small"></div>
         <ul class="list-inline">
@@ -153,6 +143,7 @@
       </form>
 
 
+
         <div class="gap gap-small"></div>
         <ul class="list-inline">
             <li><a href="#nav-login-dialog" class="popup-text">Already Memeber</a>
@@ -163,19 +154,10 @@
         <h3 class="widget-title">Password Recovery</h3>
         <p>Enter Your Email and We Will Send the Instructions</p>
         <hr />
-        <form method="POST" action="{{ route('password.email') }}">
-
-            @csrf
-
+        <form>
             <div class="form-group">
                 <label>Your Email</label>
-                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                @if ($errors->has('email'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
+                <input class="form-control" type="text" />
             </div>
             <input class="btn btn-primary" type="submit" value="Recover Password" />
         </form>

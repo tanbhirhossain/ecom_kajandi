@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Accessories;
+use App\ProductImage;
 use Illuminate\Http\Request;
 use App\Product;
+use DB;
 class productController extends Controller {
 
     public function add_product(){
-        return view('backend.product.add_product');
+        return view('backend.product.add_product_copy');
     }
     public function save_product(Request $request){
+
          $request->validate([
             'name' => 'required|max:255|min:2',
             'description' => 'required',
@@ -48,16 +52,60 @@ class productController extends Controller {
         $product->hot = $request->hot;
         $product->stuff_pick = $request->stuff_pick;
         $product->discount_price = $request->discount_price;
+        $product->keyword = $request->keyword;
+        $product->special_feature = $request->special_feature;
+        $product->more_description = $request->more_description;
+        $product->more_specification = $request->more_specification;
         $product->image = $product_image;
         $product->save();
+
+        $acceories = $request->accessories_id;
+        if($acceories!=NULL) {
+            for ($idx = 0; $idx < count($acceories); $idx++) {
+                $acc = new Accessories();
+                $acc->accessories_id = $request['accessories_id'][$idx];
+                $acc->product_id = $request->product_id;
+                $acc->save();
+            }
+        }
+
+        if($request->hasFile('product_image')) {
+            foreach($request->file('product_image') as $image) {
+                $destinationPath = 'public/ProductAdditionalImage/';
+                $filename = $image->getClientOriginalName();
+                $image->move($destinationPath, $filename);
+                $img_url = $destinationPath.$filename;
+                $pro_image = new ProductImage();
+                $pro_image->product_image = $img_url;
+                $pro_image->product_id = $request->product_id;
+                $pro_image->save();
+            }
+        }
+
         return redirect('/add-product')->with('message_success','product Added Successfully');
     }
     public function product_list(){
         $product_list = Product::all()->sortByDesc('id');
         return view('backend.product.product_list')->with(compact('product_list'));
     }
-    public function product_delete($id){
-        $product = product::where('id',$id)->first();
+    public function product_delete($id)
+    {
+
+        $p_image = ProductImage::where('product_id', $id)->get();
+        if ($p_image != NULL){
+            foreach ($p_image as $pro_image) {
+                if ($pro_image->product_image != null) {
+                    unlink($pro_image->product_image);
+                }
+                $pro_image->delete();
+            }
+         }
+        $acc = Accessories::where('product_id',$id)->first();
+        if($acc!=NULL) {
+            $acc->delete();
+        }
+
+        $product = Product::where('id',$id)->first();
         if ( $product->image != null ) {
             unlink( $product->image );
         }
