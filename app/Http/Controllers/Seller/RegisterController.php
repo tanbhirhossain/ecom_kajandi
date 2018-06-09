@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Seller;
+use App\RoleSeller;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/seller/home';
 
     /**
      * Create a new controller instance.
@@ -72,6 +73,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
         return Seller::create([
 	        'email' => $data['email'],
 	        'vendorname' => $data['vendorname'],
@@ -82,10 +85,6 @@ class RegisterController extends Controller
 
         ]);
 
-        $seller_id = Seller::all()->lateast()->first();
-        return RoleSeller::create([
-          'role_id' => '2',
-          'seller_id' => $seller_id->id
-        ]);
+
     }
 }
