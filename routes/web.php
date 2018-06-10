@@ -134,3 +134,8 @@ Route::post('update-product','ProductController@product_update')->name('update-p
 
 
 //==========================BackEnd End ==========================//
+
+//==========================Vendor Start ==========================//
+Route::get('/seller/add-product', 'SellerProductController@index')->name('add-product');
+Route::post('/seller/post-product', 'SellerProductController@postSellerProduct')->name('postSellerProduct');
+Route::get('/seller/product-list', 'SellerProductController@productList')->name('productList');
