@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SellerProduct;
+use DB;
+use App\Manufacter;
 use Auth;
 
 class SellerProductController extends Controller
@@ -81,5 +83,23 @@ class SellerProductController extends Controller
     {
       $sellerProduct = SellerProduct::All()->where('seller_id', Auth::id());
       return view('seller.product.product_list')->with(compact('sellerProduct'));
+    }
+
+    public function editProduct($id)
+    {
+      $editpro = SellerProduct::find($id);
+      $menuFact = DB::table('manufacters')->where('id', $editpro->manufacturer_id)->first();
+      $proModel = DB::table('product_models')->where('id', $editpro->model_id)->first();
+      $procat = DB::table('categories')->where('id', $editpro->category)->first();
+      $prosubcat = DB::table('subcategories')->where('id', $editpro->category)->first();
+      return view('seller.product.edit_product', compact('editpro','menuFact','proModel','procat','prosubcat'));
+    }
+
+    public function deleteProduct($id)
+    {
+      $sellerPro = SellerProduct::find($id);
+      $sellerPro->delete();
+
+      return back();
     }
 }

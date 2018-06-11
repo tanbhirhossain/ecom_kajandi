@@ -31,10 +31,10 @@
                     <td>{{$product->name}}</td>
                     <td>{{$product->price}}</td>
                     <td>{{$product->quantity}}</td>
-                    <td><img src="../{{$product->image}}" alt="" width="50" height="40"></td>
+                    <td><img src="{{$product->image}}" alt="" width="50" height="40"></td>
                     <td>
-                        <a class="btn btn-primary" href="#"><i class="fa fa-edit"></i></a>
-                        <a class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
+                        <a class="btn btn-primary" href="{{route('editProduct', $product->id)}}"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger" href="{{route('deleteProduct', $product->id)}}"><i class="fa fa-trash-o"></i></a>
                         <a class="btn btn-info" href="#"><i class="fa fa-info"></i></a>
                     </td>
                 </tr>
