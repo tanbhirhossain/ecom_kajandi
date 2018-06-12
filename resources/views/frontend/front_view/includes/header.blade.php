@@ -113,7 +113,12 @@
         </div>
         <div class="form-group">
             <label>Phone Number</label>
-            <input class="form-control" name="phone" type="text" />
+            <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" type="text" />
+            @if ($errors->has('phone'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('phone') }}</strong>
+                </span>
+            @endif
 
         </div>
         <div class="form-group">

@@ -43,6 +43,9 @@ Route::get('/checkout', function () {
     return "Checkout page";
 })->name('checkout');
 
+Route::get('/compare','CartController@compare')->name('compare');
+Route::get('/checkout','CartController@checkout')->name('checkout');
+
 //Cart Route End
 
 
@@ -131,7 +134,15 @@ Route::get('edit-product/{id}','ProductController@product_edit')->name('edit-pro
 Route::post('update-product','ProductController@product_update')->name('update-product');
 //Product  Route End
 
-
+//Vendor Route Start
+Route::get('/add-seller', function(){
+  return view('backend.seller.add_seller');
+});
+Route::get('/add-vendor', 'AdminAddSellerController@addVendor')->name('addVendor');
+Route::post('/store-vendor', 'AdminAddSellerController@storeVendor')->name('storeVendor');
+Route::get('/vendor-list', 'AdminAddSellerController@vendorList')->name('vendorList');
+Route::get('/vendor-blocked-list', 'AdminAddSellerController@vendorBlockedList')->name('vendorBlockedList');
+//Vendor Route End
 
 //==========================BackEnd End ==========================//
 

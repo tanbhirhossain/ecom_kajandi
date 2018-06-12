@@ -64,6 +64,7 @@
                         <li><i class="fa fa-id-badge"></i><a href="{{route('productList')}}">Product List</a></li>
                     </ul>
                 </li>
+                
                 <li>
                     <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
                 </li>

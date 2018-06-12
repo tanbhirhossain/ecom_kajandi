@@ -91,6 +91,18 @@
                         <li><i class="fa fa-id-badge"></i><a href="{{url('/product-list')}}">Product List</a></li>
                     </ul>
                 </li>
+
+                <h3 class="menu-title">Vendor Part</h3><!-- /.menu-title -->
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Vendors</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('addVendor')}}">Add Vendor </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('vendorList')}}">Vendor List</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('vendorBlockedList')}}">Pending/Block List</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
                 </li>

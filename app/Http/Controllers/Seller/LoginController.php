@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'seller/home';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -40,19 +40,30 @@ class LoginController extends Controller
         $this->middleware('guest:seller', ['except' => 'logout']);
     }
 
+    protected function credentials(Request $request)
+    {
+      $credentials = $request->only($this->username(), 'password');
+      return array_add($credentials, 'acStatus', 0);
+    }
+
     protected function sendLoginResponse(Request $request)
     {
+
+
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         foreach ($this->guard()->user()->role as $role) {
+
             if ($role->name == 'seller') {
                 return redirect('seller/home');
             }elseif ($role->name == 'editor') {
                 return redirect('seller/editor');
             }
-        }
+          }
+
+
     }
 
 
