@@ -133,7 +133,6 @@
 
                             </label>
                         </div>
-
                     </div>
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Pricing</h3>
@@ -204,6 +203,14 @@
                 </div>
                 @endforeach
             </div>
+            <style>
+                .pagination > .active > span{
+                    background-color:#CE3F51;
+                    border-color: #CE3F51;
+                }
+            </style>
+           {{--{{ $all_products->count()}}--}}
+            <span class="text-center"> {{ $all_products->links() }}</span>
 
         </div>
     </div>

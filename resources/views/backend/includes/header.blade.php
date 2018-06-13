@@ -104,7 +104,7 @@
                 </li>
 
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                    <a href="{{route('manage-order')}}"> <i class="menu-icon ti-email"></i>Manage Order </a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>

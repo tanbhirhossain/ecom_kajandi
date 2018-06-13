@@ -18,20 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/product-details/{id}','ProductController@product_details')->name('product-single');
 //Product sortBy Route start
-Route::get('/shop','FsortByController@shop_content')->name('shop');
-Route::get('/product-category/{id}','FsortByController@product_by_category')->name('product-category');
-Route::get('/product-sub-category/{id}','FsortByController@product_by_sub_category')->name('product-sub-category');
-Route::get('/product-manufacturer/{id}','FsortByController@product_by_manufacturer')->name('product-manufacturer');
-Route::get('/product-model/{id}','FsortByController@product_by_model')->name('product-model');
-Route::get('/search','FsortByController@search')->name('search');
-Route::get('/search-by-category','FsortByController@advance_search')->name('advance-search');
-Route::get('/product-sorting','FsortByController@product_sorting')->name('product-sorting');
-Route::get('/product-sorting-item','FsortByController@product_sorting_item')->name('product-sorting-item');
-Route::get('/product-by-category','FsortByController@product_by_cat')->name('product-by-category');
-
+Route::get('/shop','FSortByController@shop_content')->name('shop');
+Route::get('/product-category/{id}','FSortByController@product_by_category')->name('product-category');
+Route::get('/product-sub-category/{id}','FSortByController@product_by_sub_category')->name('product-sub-category');
+Route::get('/product-manufacturer/{id}','FSortByController@product_by_manufacturer')->name('product-manufacturer');
+Route::get('/product-model/{id}','FSortByController@product_by_model')->name('product-model');
+Route::get('/search','FSortByController@search')->name('search');
+Route::get('/search-by-category','FSortByController@advance_search')->name('advance-search');
+Route::get('/product-sorting','FSortByController@product_sorting')->name('product-sorting');
+Route::get('/product-sorting-item','FSortByController@product_sorting_item')->name('product-sorting-item');
+Route::get('/product-by-category','FSortByController@product_by_cat')->name('product-by-category');
+Route::get('/product-details/{id}','FSortByController@product_details')->name('product-single');
 //Product sortBy Route End
 
 //Cart Route Start
@@ -39,17 +37,35 @@ Route::POST('add-to-cart','CartController@add_to_cart')->name('add-to-cart');
 Route::get('/cart','CartController@view_cart')->name('cart');
 Route::get('/remove-cart-item/{id}','CartController@remove_cart_item')->name('remove-cart-item');
 Route::POST('/update-cart','CartController@update_cart')->name('update-cart');
-Route::get('/checkout', function () {
-    return "Checkout page";
-})->name('checkout');
-
-Route::get('/compare','CartController@compare')->name('compare');
-Route::get('/checkout','CartController@checkout')->name('checkout');
 
 //Cart Route End
 
-//Custom Authenticatation
+//Compare Route Start
+Route::get('/compare','CompareController@compare')->name('compare');
+Route::POST('add-to-compare','CompareController@add_to_compare')->name('add-to-compare');
+Route::get('/remove-compare-item/{id}','CompareController@remove_compare_item')->name('remove-compare-item');
+Route::get('/login-register','CartController@login_register')->name('login-register');
 
+//Compare Route End
+//Wishlist Route Start
+Route::get('/wishlist','WishlistController@my_wishlish')->name('wishlist');
+Route::GET('add-to-wishlist/{id}','WishlistController@add_to_wishlist')->name('add-to-wishlist');
+Route::GET('remove-wishlist-item/{id}','WishlistController@remove_wishlist_item')->name('remove-wishlist-item');
+
+//Wishlist Route End
+
+//Checkout Controller Start
+Route::get('/checkout','CheckoutController@checkout')->name('checkout');
+Route::get('/shipping','CheckoutController@shipping')->name('shipping');
+Route::get('/billing','CheckoutController@billing')->name('billing');
+Route::post('/save-billing','CheckoutController@save_billing')->name('save-billing');
+Route::post('/save-shipping','CheckoutController@save_shipping')->name('save-shipping');
+Route::POST('/place-order','CheckoutController@place_order')->name('place-order');
+Route::get('/order-complete','CheckoutController@order_complete')->name('order-complete');
+
+//Checkout Controller End
+
+//Custom Authenticatation
 Route::post('/store-user', 'CustomUserController@storeUser')->name('storeUser');
 Route::get('customer-login', function(){
   return view('frontend.Auth.login');
@@ -139,6 +155,14 @@ Route::get('delete-product/{id}','ProductController@product_delete')->name('dele
 Route::get('edit-product/{id}','ProductController@product_edit')->name('edit-product');
 Route::post('update-product','ProductController@product_update')->name('update-product');
 //Product  Route End
+
+//order Route Start
+Route::get('/manage-order','OrderController@manage_order')->name('manage-order');
+Route::get('/order-status/{id}','OrderController@order_status');
+Route::get('/order-delete/{id}','OrderController@order_delete');
+Route::get('/view-order/{id}','OrderController@view_order');
+Route::get('/download-pdf/{id}','OrderController@download_pdf');
+//order Route Start
 
 //Vendor Route Start
 Route::get('/add-seller', function(){

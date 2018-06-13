@@ -163,8 +163,9 @@ return [
 		//Ckeditor
 		Unisharp\Ckeditor\ServiceProvider::class,
 //        shopping Cart
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
-
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+//PDF View
+    
 
 
 
@@ -221,6 +222,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 //        Shopping Cart
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+    //PDF
 
 
 

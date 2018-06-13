@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="pay-order">
-                <form method="post" action="#updatePost/">
+                {{--<form method="post" action="#updatePost/">--}}
 
                     <table class="">
                         <thead>
@@ -30,6 +30,9 @@
                             <td>Sub Total</td>
                             <td> </td>
                             <td>${{Cart::total()}}</td>
+                            <?php
+                                Session::put('grand_total',Cart::total());
+                            ?>
                         </tr>
                         <tr>
                             <td>Shipping</td>
@@ -43,7 +46,7 @@
                         </tr>
                         </tbody>
                     </table>
-                </form>
+                {{--</form>--}}
             </div>
 
 

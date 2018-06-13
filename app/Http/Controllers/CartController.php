@@ -21,7 +21,7 @@ class CartController extends Controller{
         $data['qty'] = $qty;
         $data['options']['image']= $pro_by_id->image;
 
-//		Cart::clear();
+//		Cart::destroy();
         Cart::add($data);
         return redirect('/shop');
     }
@@ -33,5 +33,8 @@ class CartController extends Controller{
         $id =$request->id;
         Cart::update($id, $request->qty);
         return redirect('/cart');
+    }
+    public function login_register(){
+        return view('frontend.loginregister.login_register');
     }
 }

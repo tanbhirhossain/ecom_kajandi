@@ -43,7 +43,7 @@
                         </li>
                         <li><a href="#">FAQ</a>
                         </li>
-                        <li><a href="#">Wishlist</a>
+                        <li><a href="{{route('wishlist')}}">Wishlist</a>
                         </li>
                         <li><a href="#">Help</a>
                         </li>

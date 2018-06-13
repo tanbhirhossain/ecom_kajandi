@@ -383,11 +383,11 @@
                     </li>
 
                     <li class="dropdown">
-                        <a class="fa fa-shopping-cart"  href="{{route('cart')}}">
-                            @if(Cart::count()!=NULL)
-                                ({{Cart::count()}})
-                                @endif
-                        </a>
+                      <a class="fa fa-shopping-cart"  href="{{route('cart')}}">
+                          @if(Cart::count('default')!=NULL)
+                              ({{Cart::count()}})
+                              @endif
+                      </a>
                         <ul class='dropdown-menu dropdown-menu-shipping-cart'>
                             @if(Cart::count()==NULL)
                             <div class='text-center'><i class='fa fa-cart-arrow-down fa-4x'></i>
