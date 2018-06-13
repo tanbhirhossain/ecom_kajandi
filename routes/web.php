@@ -48,6 +48,12 @@ Route::get('/checkout','CartController@checkout')->name('checkout');
 
 //Cart Route End
 
+//Custom Authenticatation
+
+Route::post('/store-user', 'CustomUserController@storeUser')->name('storeUser');
+Route::get('customer-login', function(){
+  return view('frontend.Auth.login');
+})->name('custLog');
 
 //==========================Front End ==========================//
 

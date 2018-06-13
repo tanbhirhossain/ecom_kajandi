@@ -89,11 +89,12 @@
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-account-dialog">
 
 
-      <form method="POST" action="{{ route('register') }}">
+      <form method="POST" action="{{ route('storeUser') }}">
           @csrf
 
         <h3 class="widget-title">Create TheBox Account</h3>
         <p>Ready to get best offers? Let's get started!</p>
+        <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
         <hr />
         <div class="form-group">
             <label>Name</label>
