@@ -7,6 +7,12 @@
                             <strong class="card-title">Data Table</strong>
                         </div>
                         <div class="card-body">
+                          <div class="card-header">
+                              <small>
+                                  <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
+                                  <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
+                              </small>
+                          </div>
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
                     <thead>
                       <tr>
@@ -48,14 +54,15 @@
                                ?>
                             </td>
                             <td>
-                              <a class="btn btn-primary" href=""><i class="fa fa-edit"></i></a>
-                              <a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i></a>
+                              <a class="btn btn-primary" href="{{route('editVendor', $av->id)}}"><i class="fa fa-edit"></i></a>
+                              <a class="btn btn-danger" href="{{route('deleteVendor', $av->id)}}"><i class="fa fa-trash-o"></i></a>
                               <a class="btn btn-info" href="#"><i class="fa fa-info"></i></a>
 
                             </td>
 
                             <td>
-                              <button type="button" class="btn btn-danger"><i class="fa fa-rss"></i>&nbsp; Block</button>
+                              
+                              <a class="btn btn-danger" href="{{route('blockVendor', $av->id)}}"><i class="fa fa-rss"></i>&nbsp; Block</a>
                             </td>
                           </tr>
                         @endforeach
