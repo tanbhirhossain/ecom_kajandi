@@ -7,11 +7,17 @@
 <div class="col-md-10 offset-1">
   <div class="card">
     <div class="card-header">
+        <small>
+            <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
+            <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
+        </small>
+    </div>
+    <div class="card-header">
       <strong>Home Featured Product</strong>
     </div>
     <div class="card-body">
         <div class="card-body card-block">
-          <form action="" method="post" enctype="multipart/form-data">
+          <form action="{{route('storeAdvert')}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="admin_id" value="{{Auth::id()}}">
           <div class="form-group">
@@ -24,6 +30,9 @@
               <option value="4">Advert Section 2</option>
 
             </select>
+            @if ($errors->has('ads_section'))
+                <div class="error">{{ $errors->first('ads_section') }}</div>
+            @endif
           </div>
           <div class="form-group">
               <label for="seller_id" class=" form-control-label">Select Vendor</label>
@@ -33,6 +42,9 @@
                     <option value="{{$av->id}}">{{$av->vendorname}}</option>
                   @endforeach
                 </select>
+                @if ($errors->has('seller_id'))
+                    <div class="error">{{ $errors->first('seller_id') }}</div>
+                @endif
           </div>
 
           <div class="form-group">
@@ -41,6 +53,9 @@
             <select class="form-control" name="product_id">
               <option>Select Vendor For Loading Product</option>
             </select>
+            @if ($errors->has('product_id'))
+                <div class="error">{{ $errors->first('product_id') }}</div>
+            @endif
           </div>
 
           <div class="row">
@@ -61,7 +76,10 @@
           <div class="form-group">
             <div class="photo">
               {!!Html::image('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP_6f292mLf2VVWb3H8evjUPUawbJehCn_JetCsajjZc-ah_T',null,['class'=>'student-photo col-md-4','id'=>'showPhoto'])!!}<br>
-              <input type="file" class="form-control" name="photo" id="photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+              <input type="file" class="form-control" name="ads_image" id="photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+              @if ($errors->has('ads_image'))
+                  <div class="error">{{ $errors->first('ads_image') }}</div>
+              @endif
             </div>
           </div>
           <div class="form-group">

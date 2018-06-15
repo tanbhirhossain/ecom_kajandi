@@ -1,12 +1,5 @@
 <?php
 
-
-
-Route::get('myform', 'AjaxDemoController@myform');
-Route::post('select-ajax', ['as'=>'select-ajax','uses'=>'AjaxDemoController@selectAjax']);
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -186,6 +179,7 @@ Route::get('/unblock-vendor/{id}', 'AdminAddSellerController@unblockVendor')->na
 //Today featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
 Route::post('/select-pro', ['as'=>'select-pro','uses'=>'AdvertController@selectPro']);
+Route::post('post-home-advert', 'AdvertController@storeAdvert')->name('storeAdvert');
 
 //==========================BackEnd End ==========================//
 

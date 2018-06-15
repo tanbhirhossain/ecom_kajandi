@@ -16,7 +16,7 @@ class CreateHomeAdvertsTable extends Migration
         Schema::create('home_adverts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ads_section');
-            $table->integer('vendor_id')->unsigned();
+            $table->integer('seller_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->string('ads_title')->nullable();
             $table->string('ads_description')->nullable();
@@ -25,7 +25,7 @@ class CreateHomeAdvertsTable extends Migration
             $table->integer('admin_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('vendor_id')->references('id')->on('sellers');
+            $table->foreign('seller_id')->references('id')->on('sellers');
             $table->foreign('product_id')->references('id')->on('seller_products');
             $table->foreign('admin_id')->references('id')->on('admins');
         });
