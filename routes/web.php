@@ -1,5 +1,12 @@
 <?php
 
+
+
+Route::get('myform', 'AjaxDemoController@myform');
+Route::post('select-ajax', ['as'=>'select-ajax','uses'=>'AjaxDemoController@selectAjax']);
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -165,7 +172,6 @@ Route::get('/download-pdf/{id}','OrderController@download_pdf');
 //order Route Start
 
 //Vendor Route Start
-
 Route::get('/add-vendor', 'AdminAddSellerController@addVendor')->name('addVendor');
 Route::post('/store-vendor', 'AdminAddSellerController@storeVendor')->name('storeVendor');
 Route::get('/vendor-list', 'AdminAddSellerController@vendorList')->name('vendorList');
@@ -176,6 +182,10 @@ Route::get('/delete-vendor/{id}', 'AdminAddSellerController@deleteVendor')->name
 Route::get('/block-vendor/{id}', 'AdminAddSellerController@blockVendor')->name('blockVendor');
 Route::get('/unblock-vendor/{id}', 'AdminAddSellerController@unblockVendor')->name('unblockVendor');
 //Vendor Route End
+
+//Today featured By Vendor
+Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
+Route::post('/select-pro', ['as'=>'select-pro','uses'=>'AdvertController@selectPro']);
 
 //==========================BackEnd End ==========================//
 
