@@ -11,24 +11,30 @@
 @section('main_slider')
   @include('frontend.front_view.includes.slider')
 @endsection
+<?php
 
+  $ads_s_1 = App\HomeAdvert::where('ads_section', 1)->get();
+
+ ?>
 
 @section('main_content')
 <div class="row" data-gutter="15">
+  @foreach($ads_s_1 as $ads)
     <div class="col-md-4">
-        <div class="banner" style="background-color:#83599A;">
-            <a class="banner-link" href="#"></a>
+        <div class="banner" style="background-color:{{$ads->banner_color}}">
+            <a class="banner-link" href="{{$ads->shop_now_link}}"></a>
             <div class="banner-caption-top-left">
-                <h5 class="banner-title">Safety Collection</h5>
-                <p class="banner-desc">Vest Safety t-shirts .</p>
+                <h5 class="banner-title">{{$ads->ads_title}}</h5>
+                <p class="banner-desc">{{$ads->ads_description}}</p>
                 <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
                 </p>
-  <p class="price">$33</p>
+  <p class="price">${{$ads->price}}</p>
             </div>
-            <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/vests-t-shirts.png" alt="Image Alternative text" title="Image Title" style="bottom: -8px; right: -32px;">
+            <img class="banner-img" src="{{asset($ads->ads_image)}}" alt="Image Alternative text" title="Image Title" style="bottom: -8px; right: -32px;">
         </div>
     </div>
-    <div class="col-md-4">
+    @endforeach
+  <!--  <div class="col-md-4">
         <div class="banner" style="background-color:#EF4D9C;">
             <a class="banner-link" href="#"></a>
             <div class="banner-caption-top-right">
@@ -53,7 +59,7 @@
             </div>
             <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/Tipo-Paquete-Condensado-por-Aire-Marca-Trane-de-5-TR-en-adelante.png" alt="Image Alternative text" title="Image Title" style="top: -4px; right: -15px; width: 220px;">
         </div>
-    </div>
+    </div>-->
 </div>
 
 <div class="gap"></div>

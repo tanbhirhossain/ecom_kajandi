@@ -10,6 +10,11 @@ use DB;
 
 class AdvertController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth:admin');
+      $this->middleware('admin');
+  }
     public function addHomeAdvert(Request $request)
     {
       //$all_vendor = DB::table('sellers')->pluck("vendorname","id")->where('acStatus', 0)->all();
@@ -54,6 +59,8 @@ class AdvertController extends Controller
       $sv->ads_title = $request->ads_title;
       $sv->ads_description = $request->ads_description;
       $sv->shop_now_link = $request->shop_now_link;
+      $sv->banner_color = $request->banner_color;
+      $sv->price = $request->price;
       $sv->ads_image = $advert_image;
 
       $sv->save();

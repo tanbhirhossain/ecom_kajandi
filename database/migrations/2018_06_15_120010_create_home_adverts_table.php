@@ -21,6 +21,8 @@ class CreateHomeAdvertsTable extends Migration
             $table->string('ads_title')->nullable();
             $table->string('ads_description')->nullable();
             $table->string('shop_now_link')->nullable();
+            $table->string('banner_color')->nullable();
+            $table->string('price')->nullable();
             $table->string('ads_image');
             $table->integer('admin_id')->unsigned()->nullable();
             $table->timestamps();

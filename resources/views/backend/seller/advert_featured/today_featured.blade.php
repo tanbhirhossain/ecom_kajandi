@@ -72,6 +72,16 @@
             <label for="product_id" class=" form-control-label">Ads Shop Now link(Only For Banner)</label>
             <input type="text" class="form-control" name="shop_now_link" placeholder="Enter Shop Now Link">
           </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="product_id" class=" form-control-label">Banner Color(Only For Banner)</label>
+              <input type="color" style="height:39px;" class="form-control" name="banner_color" placeholder="Select Banner Color">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="product_id" class=" form-control-label">Display Price(Only For Banner)</label>
+              <input type="number" class="form-control" name="price" placeholder="Enter Display Price">
+            </div>
+         </div>
 
           <div class="form-group">
             <div class="photo">
