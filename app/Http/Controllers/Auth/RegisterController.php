@@ -10,9 +10,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-
-
-
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -43,7 +40,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -55,8 +51,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|min:4|max:17',
+            'phone' => 'string|max:20',
             'password' => 'required|string|min:6|confirmed',
+            'user_type' => 'required',
         ]);
     }
 
@@ -71,10 +68,10 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => '0182727228',
+            'phone' => $data['phone'],
+            'user_type' => $data['user_type'],
             'password' => Hash::make($data['password']),
         ]);
+
     }
-
-
 }

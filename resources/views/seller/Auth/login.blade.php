@@ -46,16 +46,10 @@
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" class="form-control" name="email" placeholder="Email">
-                            @if ($errors->has('email'))
-                                <div class="error">{{ $errors->first('email') }}</div>
-                            @endif
                         </div>
                         <div class="form-group">
                             <label>Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Password">
-                            @if ($errors->has('password'))
-                                <div class="error">{{ $errors->first('password') }}</div>
-                            @endif
                         </div>
                         <div class="checkbox">
                             <label>

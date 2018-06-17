@@ -165,7 +165,7 @@ return [
 //        shopping Cart
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 //PDF View
-    
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
 
@@ -223,7 +223,7 @@ return [
 //        Shopping Cart
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     //PDF
-
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
 
     ],

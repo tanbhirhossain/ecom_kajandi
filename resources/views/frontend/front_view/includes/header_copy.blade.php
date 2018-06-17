@@ -137,7 +137,7 @@
           <select class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="user_type">
             <option value="1">Buyer</option>
             <option value="2">Supplier</option>
-            <option value="3">Supplier</option>
+            <option value="3">Both</option>
           </select>
           @if ($errors->has('phone'))
               <span class="invalid-feedback">
@@ -198,7 +198,7 @@
             <div class="navbar-header">
                 <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-nav-collapse" area_expanded="false"><span class="sr-only">Main Menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{url('/')}}">
                     <img src="{{asset('public/frontend/img/')}}/logo.png">
                 </a>
             </div>
@@ -236,7 +236,7 @@
                         $all_category = DB::table('categories')->where('cat_major',1)->orderBy('id','desc')->get();
                     ?>
                    @foreach($all_category as $category)
-                    <li class="dropdown yamm-fw"><a href="#"><span >{{$category->cat_title}}</span> {{$category->cat_name}}<i class="drop-caret" data-toggle="dropdown"></i></a>
+                    <li class="dropdown yamm-fw"><a href="{{route('product-category',$category->id)}}"><span >{{$category->cat_title}}</span> {{$category->cat_name}}<i class="drop-caret" data-toggle="dropdown"></i></a>
                         <ul class="dropdown-menu">
                             <li class="yamm-content">
                                 <div class="row row-eq-height row-col-border">
@@ -245,8 +245,7 @@
                                         <ul class="dropdown-menu-items-list">
                                             @foreach($all_sub_category as $sub_category)
                                             @if($sub_category->cat_id==$category->id)
-                                                    <li><a href="#">{{$sub_category->sub_cat_name}}</a>
-                                                    <li><a href="#">{{$sub_category->sub_cat_name}}</a>
+                                                    <li><a href="{{route('product-sub-category',$sub_category->id)}}">{{$sub_category->sub_cat_name}}</a>
                                                     </li>
                                                 @endif
                                             @endforeach
@@ -263,8 +262,21 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right navbar-right-no-mar navbar-nav-lg">
-                    <li><a href="#nav-login-dialog" data-effect="mfp-move-from-top" class="popup-text"><span >Hello, Sign in</span>Your Account</a>
+                    @if(Auth::check())
+                    <li><a href="{{route('my-account',Auth::user()->id)}}"> <span>
+                                Hello,
+                                          {{ Auth::user()->name}}
+
+                            </span>Your Account</a>
                     </li>
+                   @else
+                        <li><a href="#nav-login-dialog" data-effect="mfp-move-from-top" class="popup-text"><span >
+                                Hello, Sign in
+
+
+                            </span>Your Account</a>
+                        </li>
+                    @endif
 
                     <li class="dropdown"><a href="mycart.html"><span ></span><i class="fa fa-shopping-cart"></i></a>
                         <ul class='dropdown-menu dropdown-menu-shipping-cart'>

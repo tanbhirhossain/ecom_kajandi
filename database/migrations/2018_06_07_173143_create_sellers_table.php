@@ -15,31 +15,29 @@ class CreateSellersTable extends Migration
     {
         Schema::create('Sellers', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('admin_id')->unsigned()->nullable();
+          $table->integer('admin_id')->nullable();
+          $table->string('email')->unique();
           $table->string('vendorname');
-          $table->string('vendor_type');
-          $table->string('producttype');
-          $table->string('location');
-          $table->string('country');
-          $table->string('email');
           $table->text('address');
-          $table->string('url');
-          $table->string('cac');
-          $table->string('workforce');
-          $table->string('yearsofexp');
-          $table->string('ratings');
+          $table->string('country');
+          $table->string('url')->nullable();
+          $table->string('cac')->nullable();
+          $table->string('workforce')->nullable();
+          $table->string('yearsofexp')->nullable();
+          $table->string('ratings')->nullable();
           $table->string('contactname');
-          $table->string('contactphone');
-          $table->string('contactemail');
-          $table->string('chairmanname');
-          $table->string('chairmanphone');
-          $table->string('chairmanemail');
+          $table->string('contactphone')->nullable();
+          $table->string('contactemail')->nullable();
+          $table->string('chairmanname')->nullable();
+          $table->string('chairmanphone')->nullable();
+          $table->string('chairmanemail')->nullable();
+          $table->string('producttype')->nullable();
+          $table->string('location')->nullable();
+          $table->string('vendor_type')->nullable();
           $table->string('password');
-          $table->boolean('acStatus');
+          $table->boolean('acStatus')->nullable();
           $table->rememberToken();
           $table->timestamps();
-
-          $table->foreign('admin_id')->references('id')->on('Admins');
         });
     }
 
