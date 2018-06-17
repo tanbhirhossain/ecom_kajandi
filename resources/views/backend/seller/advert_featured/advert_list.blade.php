@@ -40,7 +40,7 @@
                             <td>${{$av->price}}</td>
                             <td>
                               <a class="btn btn-primary" href="{{route('editAdvert', $av->hid)}}"><i class="fa fa-edit"></i></a>
-                              <a class="btn btn-danger" href="{{route('deleteVendor', $av->hid)}}"><i class="fa fa-trash-o"></i></a>
+                              <a class="btn btn-danger" href="{{route('deleteAdvert', $av->hid)}}"><i class="fa fa-trash-o"></i></a>
                               <a class="btn btn-info" href="#"><i class="fa fa-info"></i></a>
                             </td>
                           </tr>

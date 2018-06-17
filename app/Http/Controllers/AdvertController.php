@@ -75,9 +75,50 @@ class AdvertController extends Controller
 
     public function editAdvert($id)
     {
-      $all_vendor = Seller::where('id', $id)->get();
-      $editAds = HomeAdvert::find($id);
+      $editAds = HomeAdvert::find($id)
+                ->join('sellers','sellers.id','=','seller_id')
+                ->join('seller_products','seller_products.id','product_id')
+                ->first();
+      return view('backend.seller.advert_featured.edit_advert',compact('editAds'));
+    }
 
-      return view('backend.seller.advert_featured.edit_advert',compact('editAds','all_vendor'));
+    public function updateAdvert(Request $request, $id)
+    {
+      $request->validate([
+         'ads_section' => 'required',
+         'seller_id' => 'required',
+         'product_id' => 'required',
+
+     ]);
+     $file = $request->file( 'ads_image' );
+     if($file!=NULL) {
+         $name        = time() . '_' . $file->getClientOriginalName();
+         $upload_path = 'public/backend/AdvertImg/';
+         $file->move( $upload_path, $name );
+         $advert_image = $upload_path . $name;
+     }else{
+         $advert_image = '';
+     }
+      $sv = HomeAdvert::find($id);
+      $sv->admin_id = $request->input('admin_id');
+      $sv->ads_section = $request->ads_section;
+      $sv->seller_id = $request->seller_id;
+      $sv->product_id = $request->product_id;
+      $sv->ads_title = $request->ads_title;
+      $sv->ads_description = $request->ads_description;
+      $sv->shop_now_link = $request->shop_now_link;
+      $sv->banner_color = $request->banner_color;
+      $sv->price = $request->price;
+      $sv->ads_image = $advert_image;
+      $sv->save();
+      return back()->with('message_success', 'Home Advert Updated Succesfully');
+    }
+
+    public function deleteAdvert($id)
+    {
+      $delete = HomeAdvert::find($id);
+      $delete->delete();
+
+      return back()->with('message_success', 'Advert Deleted Succesfully');
     }
 }

@@ -13,17 +13,17 @@
         </small>
     </div>
     <div class="card-header">
-      <strong>Home Featured Product</strong>
+      <strong>Update Featured Product</strong>
     </div>
     <div class="card-body">
         <div class="card-body card-block">
-          <form action="" method="post" enctype="multipart/form-data">
+          <form action="{{url('/update-advert', $editAds->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="admin_id" value="{{Auth::id()}}">
           <div class="form-group">
             <label for="ads_section" class=" form-control-label">Select Ads Section</label>
             <select class="form-control" name="ads_section">
-              <option value="@if($editAds != Null) {{$editAds->ads_section}} @endif">
+              <option value="@if($editAds->id != Null) {{$editAds->ads_section}} @endif">
               @if($editAds != null)  <?php
                   if ($editAds->ads_section == 1) {
                       echo "Advert Section 1";
@@ -52,10 +52,8 @@
           <div class="form-group">
               <label for="seller_id" class=" form-control-label">Select Vendor</label>
                 <select class="form-control" name="seller_id">
-                  <option value="">{{$editAds->vendorname}}</option>
-                  @foreach($all_vendor as $av)
-                    <option value="{{$av->id}}">{{$av->vendorname}}</option>
-                  @endforeach
+                  <option value="{{$editAds->seller_id}}">{{$editAds->vendorname}}</option>
+
                 </select>
                 @if ($errors->has('seller_id'))
                     <div class="error">{{ $errors->first('seller_id') }}</div>
@@ -66,7 +64,7 @@
             <label for="product_id" class=" form-control-label">Select Product</label>
 
             <select class="form-control" name="product_id">
-              <option>Select Vendor For Loading Product</option>
+              <option option="selected" value="{{$editAds->product_id}}">{{$editAds->name}}</option>
             </select>
             @if ($errors->has('product_id'))
                 <div class="error">{{ $errors->first('product_id') }}</div>
@@ -76,31 +74,32 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="product_id" class=" form-control-label">Ads Title(Only For Banner)</label>
-              <input type="text" class="form-control" name="ads_title" placeholder="Enter banner ads title">
+              <input type="text" class="form-control" name="ads_title" value="{{$editAds->ads_title}}" placeholder="Enter banner ads title">
             </div>
             <div class="form-group col-md-6">
               <label for="product_id" class=" form-control-label">Ads Description(Only For Banner)</label>
-              <input type="text" class="form-control" name="ads_description" placeholder="Enter banner ads description">
+              <input type="text" class="form-control" name="ads_description" value="{{$editAds->ads_description}}" placeholder="Enter banner ads description">
             </div>
           </div>
           <div class="form-group">
             <label for="product_id" class=" form-control-label">Ads Shop Now link(Only For Banner)</label>
-            <input type="text" class="form-control" name="shop_now_link" placeholder="Enter Shop Now Link">
+            <input type="text" class="form-control" name="shop_now_link" value="{{$editAds->shop_now_link}}" placeholder="Enter Shop Now Link">
           </div>
           <div class="row">
             <div class="form-group col-md-6">
               <label for="product_id" class=" form-control-label">Banner Color(Only For Banner)</label>
-              <input type="color" style="height:39px;" class="form-control" name="banner_color" placeholder="Select Banner Color">
+              <input type="color" style="height:39px;" class="form-control" name="banner_color" value="{{$editAds->banner_color}}" placeholder="Select Banner Color">
             </div>
             <div class="form-group col-md-6">
               <label for="product_id" class=" form-control-label">Display Price(Only For Banner)</label>
-              <input type="number" class="form-control" name="price" placeholder="Enter Display Price">
+              <input type="number" class="form-control" name="price" value="{{$editAds->price}}" placeholder="Enter Display Price">
             </div>
          </div>
 
           <div class="form-group">
             <div class="photo">
-              {!!Html::image('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP_6f292mLf2VVWb3H8evjUPUawbJehCn_JetCsajjZc-ah_T',null,['class'=>'student-photo col-md-4','id'=>'showPhoto'])!!}<br>
+              <img src="{{asset($editAds->ads_image)}}" class="col-md-4 student-photo" id="showPhoto"  alt=""><br>
+
               <input type="file" class="form-control" name="ads_image" id="photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
               @if ($errors->has('ads_image'))
                   <div class="error">{{ $errors->first('ads_image') }}</div>
