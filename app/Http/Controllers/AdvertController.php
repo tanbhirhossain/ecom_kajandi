@@ -38,16 +38,13 @@ class AdvertController extends Controller
          'seller_id' => 'required',
          'product_id' => 'required',
          'ads_image' => 'required'
-
      ]);
-
      $file = $request->file( 'ads_image' );
      if($file!=NULL) {
          $name        = time() . '_' . $file->getClientOriginalName();
          $upload_path = 'public/backend/AdvertImg/';
          $file->move( $upload_path, $name );
          $advert_image = $upload_path . $name;
-
      }else{
          $advert_image = '';
      }
@@ -62,11 +59,25 @@ class AdvertController extends Controller
       $sv->banner_color = $request->banner_color;
       $sv->price = $request->price;
       $sv->ads_image = $advert_image;
-
       $sv->save();
-
       return back()->with('message_success', 'Home Advert Added Succesfully');
+    }
 
+    public function adrvertList()
+    {
+      $all_advert = HomeAdvert::
+                    join('sellers','sellers.id','=','seller_id')
+                  ->join('seller_products','seller_products.id','product_id')
+                  ->select('home_adverts.id as hid','home_adverts.ads_image','home_adverts.price','sellers.vendorname','seller_products.name','seller_products.image')
+                  ->get();
+      return view('backend.seller.advert_featured.advert_list',compact('all_advert'));
+    }
 
+    public function editAdvert($id)
+    {
+      $all_vendor = Seller::where('id', $id)->get();
+      $editAds = HomeAdvert::find($id);
+
+      return view('backend.seller.advert_featured.edit_advert',compact('editAds','all_vendor'));
     }
 }

@@ -191,6 +191,9 @@ Route::get('/unblock-vendor/{id}', 'AdminAddSellerController@unblockVendor')->na
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
 Route::post('/select-pro', ['as'=>'select-pro','uses'=>'AdvertController@selectPro']);
 Route::post('post-home-advert', 'AdvertController@storeAdvert')->name('storeAdvert');
+Route::get('home-advert-list', 'AdvertController@adrvertList')->name('adrvertList');
+Route::get('edit-advert/{id}', 'AdvertController@editAdvert')->name('editAdvert');
+
 //End Home featured By Vendor
 
 
