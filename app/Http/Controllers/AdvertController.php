@@ -78,6 +78,13 @@ class AdvertController extends Controller
       $editAds = HomeAdvert::find($id)
                 ->join('sellers','sellers.id','=','seller_id')
                 ->join('seller_products','seller_products.id','product_id')
+                ->select('home_adverts.id as hid','home_adverts.ads_image',
+                         'home_adverts.price','sellers.vendorname',
+                         'seller_products.name','home_adverts.ads_section',
+                         'home_adverts.seller_id','home_adverts.product_id',
+                         'home_adverts.ads_title','home_adverts.ads_description',
+                         'home_adverts.banner_color',
+                         'home_adverts.shop_now_link')
                 ->first();
       return view('backend.seller.advert_featured.edit_advert',compact('editAds'));
     }
@@ -99,18 +106,18 @@ class AdvertController extends Controller
      }else{
          $advert_image = '';
      }
-      $sv = HomeAdvert::find($id);
-      $sv->admin_id = $request->input('admin_id');
-      $sv->ads_section = $request->ads_section;
-      $sv->seller_id = $request->seller_id;
-      $sv->product_id = $request->product_id;
-      $sv->ads_title = $request->ads_title;
-      $sv->ads_description = $request->ads_description;
-      $sv->shop_now_link = $request->shop_now_link;
-      $sv->banner_color = $request->banner_color;
-      $sv->price = $request->price;
-      $sv->ads_image = $advert_image;
-      $sv->save();
+      $svs = HomeAdvert::find($id);
+      $svs->admin_id = $request->input('admin_id');
+      $svs->ads_section = $request->ads_section;
+      $svs->seller_id = $request->seller_id;
+      $svs->product_id = $request->product_id;
+      $svs->ads_title = $request->ads_title;
+      $svs->ads_description = $request->ads_description;
+      $svs->shop_now_link = $request->shop_now_link;
+      $svs->banner_color = $request->banner_color;
+      $svs->price = $request->price;
+      $svs->ads_image = $advert_image;
+      $svs->save();
       return back()->with('message_success', 'Home Advert Updated Succesfully');
     }
 

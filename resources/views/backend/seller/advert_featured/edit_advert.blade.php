@@ -17,13 +17,13 @@
     </div>
     <div class="card-body">
         <div class="card-body card-block">
-          <form action="{{url('/update-advert', $editAds->id)}}" method="post" enctype="multipart/form-data">
+          <form action="{{url('/update-advert', $editAds->hid)}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="admin_id" value="{{Auth::id()}}">
           <div class="form-group">
             <label for="ads_section" class=" form-control-label">Select Ads Section</label>
             <select class="form-control" name="ads_section">
-              <option value="@if($editAds->id != Null) {{$editAds->ads_section}} @endif">
+              <option value="@if($editAds != Null) {{$editAds->ads_section}} @endif">
               @if($editAds != null)  <?php
                   if ($editAds->ads_section == 1) {
                       echo "Advert Section 1";
@@ -100,7 +100,7 @@
             <div class="photo">
               <img src="{{asset($editAds->ads_image)}}" class="col-md-4 student-photo" id="showPhoto"  alt=""><br>
 
-              <input type="file" class="form-control" name="ads_image" id="photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+              <input type="file" value="{{asset($editAds->ads_image)}}" class="form-control" name="ads_image" id="photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
               @if ($errors->has('ads_image'))
                   <div class="error">{{ $errors->first('ads_image') }}</div>
               @endif

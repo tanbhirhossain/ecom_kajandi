@@ -23,7 +23,7 @@ class CreateHomeAdvertsTable extends Migration
             $table->string('shop_now_link')->nullable();
             $table->string('banner_color')->nullable();
             $table->string('price')->nullable();
-            $table->string('ads_image');
+            $table->string('ads_image')->nullable();
             $table->integer('admin_id')->unsigned()->nullable();
             $table->timestamps();
 
