@@ -200,3 +200,12 @@ Route::get('/delete-advert/{id}', 'AdvertController@deleteAdvert')->name('delete
 
 
 //==========================BackEnd End ==========================//
+//==========================Vendor Start ==========================//
+Route::get('/vendors', function(){
+  return view('seller.seller_master');
+});
+Route::get('/seller/add-product', 'SellerProductController@index')->name('add-product');
+Route::post('/seller/post-product', 'SellerProductController@postSellerProduct')->name('postSellerProduct');
+Route::get('/seller/product-list', 'SellerProductController@productList')->name('productList');
+Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
+Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteProduct');
