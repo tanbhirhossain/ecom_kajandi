@@ -40,6 +40,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!--<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
+
 </head>
 
 <body class="sales-stats-page">

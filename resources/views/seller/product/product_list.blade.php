@@ -1,47 +1,285 @@
 @extends('seller.seller_master')
 @section('page_title','Product List')
 @section('seller_content')
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Seller Product List Table</strong>
-            <small>
-                <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
-                <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
-            </small>
-        </div>
-        <div class="card-body">
-            <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th width="5%">SL</th>
-                    <th width="45%">Title</th>
-                    <th width="10%">Price</th>
-                    <th width="10%">Quantity</th>
-                    <th width="10%">Image</th>
-                    <th width="20%">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php $i=0;?>
-                @foreach($sellerProduct as $product)
-                    <?php $i++;?>
-                <tr>
-                    <td>{{$i}}</td>
-                    <td>{{$product->name}}</td>
-                    <td>{{$product->price}}</td>
-                    <td>{{$product->quantity}}</td>
-                    <td><img src="{{$product->image}}" alt="" width="50" height="40"></td>
-                    <td>
-                        <a class="btn btn-primary" href="{{route('editProduct', $product->id)}}"><i class="fa fa-edit"></i></a>
-                        <a class="btn btn-danger" href="{{route('deleteProduct', $product->id)}}"><i class="fa fa-trash-o"></i></a>
-                        <a class="btn btn-info" href="#"><i class="fa fa-info"></i></a>
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
-            </table>
+<?php
+  $menufacturer = App\Manufacter::All();
+  $category = App\Category::All();
+  $subcategory = App\Category::All();
+
+ ?>
+<section id="content_wrapper">
+
+    <!-- -------------- Topbar Menu Wrapper -------------- -->
+    <div id="topbar-dropmenu-wrapper">
+        <div class="topbar-menu row">
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="service-box bg-danger">
+                    <span class="fa fa-music"></span>
+                    <span class="service-title">Audio</span>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="service-box bg-success">
+                    <span class="fa fa-picture-o"></span>
+                    <span class="service-title">Images</span>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="service-box bg-primary">
+                    <span class="fa fa-video-camera"></span>
+                    <span class="service-title">Videos</span>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="service-box bg-alert">
+                    <span class="fa fa-envelope"></span>
+                    <span class="service-title">Messages</span>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="service-box bg-system">
+                    <span class="fa fa-cog"></span>
+                    <span class="service-title">Settings</span>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="service-box bg-dark">
+                    <span class="fa fa-user"></span>
+                    <span class="service-title">Users</span>
+                </a>
+            </div>
         </div>
     </div>
-</div>
+    <!-- -------------- /Topbar Menu Wrapper -------------- -->
+
+    <!-- -------------- Topbar -------------- -->
+    <header id="topbar" class="alt">
+        <div class="topbar-left">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-icon">
+                    <a href="dashboard1.html">
+                        <span class="fa fa-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-active">
+                    <a href="dashboard1.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-link">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-current-item">Products</li>
+            </ol>
+        </div>
+    </header>
+    <!-- -------------- /Topbar -------------- -->
+
+    <!-- -------------- Content -------------- -->
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- -------------- Column Center -------------- -->
+        <div class="chute chute-center">
+
+            <!-- -------------- Products Status Table -------------- -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <span class="panel-title hidden-xs"> Products</span><br><br>
+                            <a href="{{route('addSellerPro')}}" class="btn btn-primary btn-lg text-uppercase">Add Products</a>
+                        </div>
+                        <div class="panel-body pn">
+                            <div class="panel-menu p12 allcp-form theme-primary mtn">
+                                <div class="row">
+                                    <div class="col-md-2 pb5">
+                                        <label class="field select">
+                                            <select id="bulk-action" name="bulk-action" class="empty">
+                                                <option value="">Actions</option>
+                                                <option value="1">Edit</option>
+                                                <option value="2">Delete</option>
+                                                <option value="3">Active</option>
+                                                <option value="4">Inactive</option>
+                                            </select>
+                                            <i class="arrow double"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-5 pb5">
+                                        <label class="field select">
+                                            <select id="filter-category" name="filter-category" class="empty">
+                                                <option value="">Filter by Category</option>
+                                                @foreach($category as $cat)
+                                                  <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <i class="arrow"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-5 pb5">
+                                        <label class="field select">
+                                            <select id="filter-status" name="filter-status" class="empty">
+
+                                                <option value="">Filter by Status</option>
+
+                                                <option value="1">Active</option>
+                                                <option value="0">Inactive</option>
+                                                <option value="2">Low Stock</option>
+                                                <option value="3">Out of Stock</option>
+                                            </select>
+                                            <i class="arrow"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <br>
+                            <div class="table-responsive">
+                                <table id="dtListUsers" class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                    <thead>
+                                    <tr class="bg-light">
+                                        <th class="text-center"></th>
+                                        <th class="">Id</th>
+                                        <th class="">Image</th>
+                                        <th class="">Product Title</th>
+                                        <th class="">Model</th>
+                                        <th class="">Price</th>
+                                        <th class="">Stock</th>
+                                        <th class="text-right">Status</th>
+                                        <th class="text-right">View</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($sellerProduct as $sp)
+                                    <tr>
+
+                                        <td class="text-center">
+                                            <label class="option block mn">
+                                                <input value="{{$sp->id}}" type="checkbox" name="checked[]" >
+                                                <span class="checkbox mn"></span>
+                                            </label>
+                                        </td>
+                                          <td class="">{{$sp->id}}</td>
+                                        <td class="w100">
+                                            <img class="img-responsive mw40 ib mr10" title="user"
+                                                 src="assets/img/pages/products/1.jpg">
+                                        </td>
+
+                                        <td class="">{{$sp->pro_name}}</td>
+                                        <td class="">{{$sp->model_number}}</td>
+                                        <td class="">{{$sp->pro_price}}</td>
+                                        <td class="">{{$sp->unit_of_measure}}</td>
+                                        <td class="text-right">
+                                            <div class="btn-group text-right">
+                                                <button type="button"
+                                                        class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                        <?php
+                                                          if ($sp->pro_status == 0) {
+                                                              echo "<b style='color:red'>Inactive</b>";
+                                                          }elseif ($sp->pro_status == 1) {
+                                                              echo "Active";
+                                                          }elseif ($sp->pro_status == 2) {
+                                                              echo "Low Stock";
+                                                          }else {
+                                                            echo "Out of Stock";
+                                                          }
+
+                                                         ?>
+                                                      </a>
+                                                    <span class="caret ml5"></span>
+                                                </button>
+                                                <ul class="dropdown-menu"  role="menu">
+                                                    <li>
+                                                        <a href="#">Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Delete</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Archive</a>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li class="active">
+                                                        <a href="{{$sp->pro_status}}">
+                                                          <?php
+                                                            if ($sp->pro_status == 0) {
+                                                                echo "Inactive";
+                                                            }elseif ($sp->pro_status == 1) {
+                                                                echo "Active";
+                                                            }elseif ($sp->pro_status == 2) {
+                                                                echo "Low Stock";
+                                                            }else {
+                                                              echo "Out of Stock";
+                                                            }
+
+                                                           ?>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="1">Active</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="0">Inactive</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="2">Low Stock</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="3">Out of Stock</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td><a href="#" class="btn btn-primary pull-right">View</a></td>
+                                    </tr>
+                                    @endforeach
+                                    {{ $sellerProduct->links() }}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- -------------- /Column Center -------------- -->
+
+    </section>
+    <!-- -------------- /Content -------------- -->
+
+</section>
+<script type="text/javascript">
+$('#filter-status').on('change', function(){
+var filter_value = $(this).val();
+var new_url = Laravel.appURL+'/user/json/'+filter_value;
+dtListUsers.ajax.url('+new_url+').load();
+})
+</script>
+
+<script type="text/javascript">
+var dtListUsers = $("#dtListUsers").DataTable({
+  "processing": true,
+  "serverSide": true,
+  "ajax": Laravel.appURL+'/seller/json',
+  "columns": [
+    {
+      data: 'id'
+    },
+    {
+      data: 'pro_name'
+    },
+    {
+      data: 'model_number'
+    },
+    {
+      data: 'pro_price'
+    },
+    {
+      data: 'unit_of_measure'
+    },
+    {
+      data: 'pro_status'
+    },
+
+  ]
+  ...
+});
+</script>
 @endsection

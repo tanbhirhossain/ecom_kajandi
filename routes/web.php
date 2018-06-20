@@ -204,8 +204,16 @@ Route::get('/delete-advert/{id}', 'AdvertController@deleteAdvert')->name('delete
 Route::get('/vendors', function(){
   return view('seller.seller_master');
 });
-Route::get('/seller/add-product', 'SellerProductController@index')->name('add-product');
+Route::get('/add-vpro',function(){
+  return view('seller.product.add_product');
+});
+Route::get('/seller/add-product', 'SellerProductController@index')->name('addSellerPro');
 Route::post('/seller/post-product', 'SellerProductController@postSellerProduct')->name('postSellerProduct');
 Route::get('/seller/product-list', 'SellerProductController@productList')->name('productList');
 Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
 Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteProduct');
+
+//test
+Route::get('/seller/json', 'SellerProductController@json')->middleware('ajax');
+// Route for list of users with specific status in json format
+Route::get('/seller/json/{pro_status}', 'SellerProductController@json')->middleware('ajax');

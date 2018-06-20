@@ -29,6 +29,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style media="screen">
+      .invalid-feedback{
+        color:red;
+      }
+    </style>
 </head>
 
 <body class="utility-page sb-l-c sb-r-c">
@@ -63,6 +69,11 @@
                                         <i class="fa fa-user"></i>
                                     </label>
                                 </label>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <!-- -------------- /section -------------- -->
 
@@ -74,6 +85,11 @@
                                         <i class="fa fa-lock"></i>
                                     </label>
                                 </label>
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <!-- -------------- /section -------------- -->
 

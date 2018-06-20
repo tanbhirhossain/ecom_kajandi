@@ -1,5 +1,5 @@
 @include('seller.includes.header')
 
-@yield('seller-content')
+@yield('seller_content')
 
 @include('seller.includes.footer')
