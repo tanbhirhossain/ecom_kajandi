@@ -25,7 +25,7 @@ class CreateSellerProductsTable extends Migration
             $table->integer('supply_type')->nullable()->comment('1=>OEM / Manufacturer, 2=>Distributor, 3=>Wholesaler, 4=>Retailer');
             $table->integer('pro_cat_id')->unsigned();
             $table->integer('pro_subcat_id')->unsigned();
-            $table->string('pro_image');
+            $table->string('pro_image')->nullble();
             $table->string('pro_color')->nullable();
             $table->string('a_img_1')->nullable();
             $table->string('a_img_2')->nullable();
@@ -33,7 +33,7 @@ class CreateSellerProductsTable extends Migration
             $table->string('a_img_4')->nullable();
             $table->string('speacial_feature')->nullable();
             //Payment Dalivery information
-            $table->integer('small_order_accpeted')->nullable()->comment('1=>Yes, 0=>No');
+            $table->integer('small_order_accpeted')->nullable()->comment('1=>Yes, 2=>No');
             $table->integer('minumum_order_qty')->nullable();
             $table->integer('unit_of_measure');// unsigned needed type Integer
             $table->float('pro_price');// unsigned needed type Integer
@@ -56,7 +56,7 @@ class CreateSellerProductsTable extends Migration
             $table->string('export_carton_dimension')->nullable();
             $table->integer('export_carton_weight')->nullable();
             //Delivery details
-            $table->integer('delivery_w_state')->nullable()->comment('0=>No, 1=>Yes');
+            $table->integer('delivery_w_state')->nullable()->comment('2=>No, 1=>Yes');
             $table->float('delivery_rate_w_range')->nullable();
             $table->float('delivery_rate_o_range')->nullable();
 

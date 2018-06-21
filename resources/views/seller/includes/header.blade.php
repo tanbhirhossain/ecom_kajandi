@@ -930,28 +930,28 @@
                 <li>
                     <a class="accordion-toggle" href="#">
                         <span class="fa fa-share-square-o"></span>
-                        <span class="sidebar-title">Sales stats</span>
+                        <span class="sidebar-title">Products</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="dashboard2.html">
-                                <span class="glyphicon glyphicon-tags"></span> Overview </a>
+                            <a href="{{route('addSellerPro')}}">
+                                <span class="glyphicon glyphicon-tags"></span> Add Product </a>
                         </li>
                         <li>
-                            <a href="sales-stats-products.html">
-                                <span class="glyphicon glyphicon-tags"></span> Products </a>
+                            <a href="{{route('productList')}}">
+                                <span class="glyphicon glyphicon-tags"></span> Product List </a>
                         </li>
                         <li>
-                            <a href="sales-stats-purchases.html">
+                            <a href="">
                                 <span class="fa fa-money"></span> Purchases </a>
                         </li>
                         <li>
-                            <a href="sales-stats-clients.html">
+                            <a href="">
                                 <span class="fa fa-users"></span> Clients </a>
                         </li>
                         <li>
-                            <a href="sales-stats-general-settings.html">
+                            <a href="">
                                 <span class="fa fa-gears"></span> General Settings </a>
                         </li>
                     </ul>

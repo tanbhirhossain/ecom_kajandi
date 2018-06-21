@@ -15,6 +15,10 @@
 <script src="{{asset('public/seller')}}/assets/js/jquery/jquery-1.11.3.min.js"></script>
 <script src="{{asset('public/seller')}}/assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
 
+<script src="{{asset('public/seller')}}/assets/js/plugins/fileupload/fileupload.js"></script>
+<script src="{{asset('public/seller')}}/assets/js/plugins/holder/holder.min.js"></script>
+
+
 <!--  HighCharts Plugin  -->
 <script src="{{asset('public/seller')}}/assets/js/plugins/highcharts/highcharts.js"></script>
 <script src="{{asset('public/seller')}}/assets/js/plugins/c3charts/d3.min.js"></script>

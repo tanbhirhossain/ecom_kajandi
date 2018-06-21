@@ -1,5 +1,5 @@
 @extends('seller.seller_master')
-@section('page_title','Add Vendor Product')
+@section('page_title','Edit Vendor Product')
 @section('seller_content')
 <style media="screen">
   .invalid-feedback{
@@ -83,10 +83,10 @@
    <section id="content" class="table-layout animated fadeIn">
 
        <!-- -------------- Column Left -------------- -->
-       <aside class="chute chute-left chute290" data-chute-height="match">
+      <!-- <aside class="chute chute-left chute290" data-chute-height="match">
 
            <!-- -------------- Menu Block -------------- -->
-           <div class="allcp-form theme-primary">
+        <!--   <div class="allcp-form theme-primary">
 
                <h5 class="pln"> Filter Products</h5>
 
@@ -168,7 +168,7 @@
                    <button class="btn btn-primary pull-right ph30" type="button">Search</button>
                </div>
 
-           </div>
+           </div>-->
 
        </aside>
        <!-- -------------- /Column Left -------------- -->
@@ -180,11 +180,12 @@
              <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
          </small>
            <!-- -------------- New Product -------------- -->
-           <form class="" action="{{route('postSellerProduct')}}" method="post" enctype="multipart/form-data" >
+           <form class="" action="{{route('updateSellerPro', $editpro->id)}}" method="post" enctype="multipart/form-data" >
              @csrf
+             <input type="hidden" name="seller_id" value="{{Auth::id()}}">
            <div class="panel mb25 mt5">
                <div class="panel-heading">
-                   <span class="panel-title hidden-xs"> Add New Product</span>
+                   <span class="panel-title hidden-xs"> Edit Product</span>
                    <ul class="nav panel-tabs-border panel-tabs">
                        <li class="active">
                            <a href="#tab1_1" data-toggle="tab">General</a>
@@ -208,15 +209,10 @@
                                <div class="col-md-4 ph10">
                                    <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
                                        <div class="fileupload-preview thumbnail mb20">
-                                           <img src="{{asset('public/seller/assets')}}/img\277x140.svg">
+                                           <img src="{{asset($editpro->pro_image)}}">
                                       </div>
                                        <div class="row">
-                                          <!-- <div class="col-xs-7 pr5 ph10">
-                                               <input type="text" name="pro_name" id="pro_name"
-                                                      class="text-center event-name gui-input br-light bg-light"
-                                                      placeholder="Image tags">
-                                               <label for="pro_name" class="field-icon"></label>
-                                           </div> -->
+
                                            <div class="col-xs-5 ph10">
                                                <span class="button btn-primary btn-file btn-block">
                                                  <span class="fileupload-new">Select</span>
@@ -236,7 +232,7 @@
                                <div class="col-md-8 ph10">
                                    <div class="section mb10">
                                        <label for="pro_name" class="field prepend-icon">
-                                           <input type="text" name="pro_name" id="pro_name"
+                                           <input type="text" value="{{$editpro->pro_name}}" name="pro_name" id="pro_name"
                                                   class="event-name gui-input br-light light"
                                                   placeholder="Product Name">
                                            <label for="pro_name" class="field-icon">
@@ -251,7 +247,7 @@
                                    </div>
                                    <div class="section mb10">
                                        <label for="pro_generic_name" class="field prepend-icon">
-                                           <input type="text" name="pro_generic_name" id="pro_generic_name"
+                                           <input type="text" value="{{$editpro->pro_generic_name}}" name="pro_generic_name" id="pro_generic_name"
                                                   class="event-name gui-input br-light light"
                                                   placeholder="Product Generic Name">
                                            <label for="pro_generic_name" class="field-icon">
@@ -266,8 +262,8 @@
                                    </div>
                                    <div class="section mb10">
                                        <label class="field prepend-icon">
-                                           <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="comment"
-                               name="pro_description" placeholder="Product Description"></textarea>
+                                           <textarea style="height: 160px;" value="{{$editpro->pro_description}}" class="gui-textarea br-light bg-light" id="comment"
+                               name="pro_description" placeholder="Product Description">{{$editpro->pro_description}}</textarea>
                                            <label for="pro_description" class="field-icon">
                                                <i class="fa fa-file"></i>
                                            </label>
@@ -280,7 +276,7 @@
                                    </div>
                                    <div class="section mb10">
                                        <label for="name21" class="field prepend-icon">
-                                           <input type="text" name="pro_keyword" id="pro_keyword"
+                                           <input type="text"  name="pro_keyword" value="{{$editpro->pro_keyword}}" id="pro_keyword"
                                                   class="event-name gui-input br-light light"
                                                   placeholder="Product Keyword">
                                            <label for="pro_name" class="field-icon">
@@ -295,7 +291,7 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="part_number" class="field prepend-icon">
-                                       <input type="text" name="part_number" id="part_number"
+                                       <input type="text" name="part_number" value="{{$editpro->part_number}}" id="part_number"
                                               class="gui-input"
                                               placeholder="Part Number">
                                        <label for="part_number" class="field-icon">
@@ -306,10 +302,11 @@
                                <div class="col-md-4 ph10">
                                    <label for="manufacture_id" class="field select">
                                        <select id="manufacture_id" name="manufacture_id">
-                                           <option value="" selected="selected">Manufacterer...</option>
-                                           @foreach($menufacturer as $m)
-                                           <option value="{{$m->id}}" >{{$m->name}}</option>
-                                           @endforeach
+
+                                         <option value="@if($menuFact != null){{$menuFact->id}}@endif" selected="selected">@if($menuFact != null){{$menuFact->name}}@endif</option>
+                                         @foreach($menufacturer as $m)
+                                         <option value="{{$m->id}}" >{{$m->name}}</option>
+                                         @endforeach
                                        </select>
                                        <i class="arrow double"></i>
                                    </label>
@@ -317,7 +314,7 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="model_number" class="field prepend-icon">
-                                       <input type="text" name="model_number" id="model_number"
+                                       <input type="text" name="model_number" value="{{$editpro->model_number}}" id="model_number"
                                               class="gui-input"
                                               placeholder="Model Number">
                                        <label for="model_number" class="field-icon">
@@ -336,11 +333,28 @@
                                <div class="col-md-4 ph10">
                                    <label for="supply_type" class="field select">
                                        <select id="supply_type" name="supply_type">
-                                           <option value="" selected="selected">Supply Type...</option>
+                                           <option value="{{$editpro->supply_type}}" selected="selected">
+                                             <?php
+
+                                                if($editpro->supply_type == 1) {
+                                                  echo "OEM / Manufacturer";
+                                                }elseif ($editpro->supply_type == 2) {
+                                                  echo "Distributor";
+                                                }elseif ($editpro->supply_type == 3) {
+                                                  echo "Wholesaler";
+                                                }elseif($editpro->supply_type == 4) {
+                                                  echo "Retailer";
+                                                }elseif ($editpro->supply_type == null) {
+                                                  echo "Select Supply type";
+                                                }else {
+                                                  echo "None";
+                                                }
+                                              ?>
+                                           </option>
                                            <option value="1">OEM / Manufacturer</option>
                                            <option value="2">Distributor</option>
                                            <option value="3">Wholesaler</option>
-                                           <option value="3">Retailer</option>
+                                           <option value="4">Retailer</option>
                                        </select>
                                        <i class="arrow double"></i>
                                    </label>
@@ -348,7 +362,7 @@
                                <div class="col-md-4 ph10">
                                    <label for="pro_cat_id" class="field select">
                                        <select id="pro_cat_id" name="pro_cat_id">
-                                         <option value="" selected="selected">Category...</option>
+                                         <option value="{{$procat->id}}" selected="selected">{{$procat->cat_name}}</option>
                                          @foreach($category as $m)
                                          <option value="{{$m->id}}" >{{$m->cat_name}}</option>
                                          @endforeach
@@ -364,9 +378,9 @@
                                <div class="col-md-4 ph10">
                                    <label for="pro_subcat_id" class="field select">
                                        <select id="pro_subcat_id" name="pro_subcat_id">
-                                         <option value="">Sub Category...</option>
+                                         <option value="{{$prosubcat->id}}" selected="selected">{{$prosubcat->sub_cat_name}}</option>
                                          @foreach($subcategory as $m)
-                                         <option value="{{$m->id}}" >{{$m->cat_name}}</option>
+                                         <option value="{{$m->id}}" >{{$m->sub_cat_name}}</option>
                                          @endforeach
                                        </select>
                                        <i class="arrow double"></i>
@@ -390,14 +404,14 @@
                                <div class="col-md-3 ph10">
                                    <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
                                        <div class="fileupload-preview thumbnail mb20">
-                                           <img src="{{asset('public/seller/assets')}}/img\277x140.svg">
+                                           <img src="{{asset('/')}}{{$editpro->a_img_1}}">
                                       </div>
                                        <div class="row">
                                            <div class="col-xs-12 ph10">
                                                <span class="button btn-primary btn-file btn-block">
                                                  <span class="fileupload-new">Select</span>
                                                  <span class="fileupload-exists">Change</span>
-                                                 <input type="file" name="a_img_1">
+                                                 <input value="{{$editpro->a_img_1}}" type="file" name="a_img_1">
                                                </span>
                                            </div>
 
@@ -407,14 +421,14 @@
                                <div class="col-md-3 ph10">
                                    <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
                                        <div class="fileupload-preview thumbnail mb20">
-                                           <img src="{{asset('public/seller/assets')}}/img\277x140.svg">
+                                           <img src="{{asset('/')}}{{$editpro->a_img_2}}">
                                       </div>
                                        <div class="row">
                                            <div class="col-xs-12 ph10">
                                                <span class="button btn-primary btn-file btn-block">
                                                  <span class="fileupload-new">Select</span>
                                                  <span class="fileupload-exists">Change</span>
-                                                 <input type="file" name="a_img_2">
+                                                 <input value="{{$editpro->a_img_2}}" type="file" name="a_img_2">
                                                </span>
                                            </div>
 
@@ -424,37 +438,34 @@
                                <div class="col-md-3 ph10">
                                    <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
                                        <div class="fileupload-preview thumbnail mb20">
-                                           <img src="{{asset('public/seller/assets')}}/img\277x140.svg">
+                                           <img src="{{asset('/')}}{{$editpro->a_img_3}}">
                                       </div>
                                        <div class="row">
                                            <div class="col-xs-12 ph10">
                                                <span class="button btn-primary btn-file btn-block">
                                                  <span class="fileupload-new">Select</span>
                                                  <span class="fileupload-exists">Change</span>
-                                                 <input type="file" name="a_img_3">
+                                                 <input value="{{$editpro->a_img_3}}" type="file" name="a_img_3">
                                                </span>
                                            </div>
 
                                        </div>
                                    </div>
                                </div>
-
-
-                           <!-- -------------- /Section -------------- -->
 
 
 
                              <div class="col-md-3 ph10">
                                  <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
                                      <div class="fileupload-preview thumbnail mb20">
-                                         <img src="{{asset('public/seller/assets')}}/img\277x140.svg">
+                                         <img src="{{asset('/')}}{{$editpro->a_img_4}}">
                                     </div>
                                      <div class="row">
                                          <div class="col-xs-12 ph10">
                                              <span class="button btn-primary btn-file btn-block">
                                                <span class="fileupload-new">Select</span>
                                                <span class="fileupload-exists">Change</span>
-                                               <input type="file" name="a_img_4">
+                                               <input value="{{$editpro->a_img_4}}" type="file" name="a_img_4">
                                              </span>
                                          </div>
 
@@ -468,7 +479,7 @@
                              <div class="col-md-4 ph10">
                                 <label style="text-align:center;margin-top:19%" for="pro_color"><strong style="text-align:center">Select Color</strong></label>
                                  <label style="margin-top:10px;" for="pro_color" class="field prepend-icon">
-                                     <input type="color" name="pro_color" id="pro_color"
+                                     <input type="color" name="pro_color" value="{{$editpro->pro_color}}" id="pro_color"
                                             class="gui-input"
                                             placeholder="Color">
                                      <label for="pro_color" class="field-icon">
@@ -479,8 +490,8 @@
                              <div class="col-md-8 ph10">
                                <div class="section mb10">
                                    <label class="field prepend-icon">
-                                       <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="comment"
-                           name="speacial_feature" placeholder="Special Features"></textarea>
+                                       <textarea style="height: 160px;" value="{{$editpro->speacial_feature}}" class="gui-textarea br-light bg-light" id="comment"
+                           name="speacial_feature" placeholder="Special Features">{{$editpro->speacial_feature}}</textarea>
                                        <label for="speacial_feature" class="field-icon">
                                            <i class="fa fa-file"></i>
                                        </label>
@@ -499,8 +510,19 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="small_order_accpeted" class="field select">
-                                       <select id="small_order_accpeted" name="small_order_accpeted">
-                                           <option value="" selected="selected">Small Order Accepted...</option>
+                                       <select id="small_order_accpeted"  name="small_order_accpeted">
+                                           <option value="{{$editpro->small_order_accpeted}}" selected="selected">
+                                             <?php
+                                                if ($editpro->small_order_accpeted == 1) {
+                                                    echo "Yes";
+                                                }elseif ($editpro->small_order_accpeted == 2) {
+                                                    echo "No";
+                                                }elseif ($editpro->small_order_accpeted == null) {
+                                                  echo ";Small Order Accepted...";
+                                                }
+                                              ?>
+
+                                             </option>
                                            <option value="1">Yes</option>
                                            <option value="0">No</option>
 
@@ -511,7 +533,7 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="minumum_order_qty" class="field prepend-icon">
-                                       <input type="number" name="minumum_order_qty" id="minumum_order_qty"
+                                       <input type="number" name="minumum_order_qty" value="{{$editpro->minumum_order_qty}}" id="minumum_order_qty"
                                               class="gui-input"
                                               placeholder="Minimum Quantity">
                                        <label for="minumum_order_qty" class="field-icon">
@@ -521,7 +543,7 @@
                                </div>
                                <div class="col-md-4 ph10">
                                    <label for="unit_of_measure" class="field prepend-icon">
-                                       <input type="number" name="unit_of_measure" id="unit_of_measure"
+                                       <input type="number" value="{{$editpro->unit_of_measure}}" name="unit_of_measure" id="unit_of_measure"
                                               class="gui-input"
                                               placeholder="Unit of measure">
                                        <label for="unit_of_measure" class="field-icon">
@@ -545,7 +567,7 @@
                            <div class="section row">
                              <div class="col-md-6 ph10">
                                  <label for="pro_price" class="field prepend-icon">
-                                     <input type="text" name="pro_price" id="pro_price"
+                                     <input type="text" name="pro_price" value="{{$editpro->pro_price}}" id="pro_price"
                                             class="gui-input"
                                             placeholder="Price...">
                                      <label for="pro_price" class="field-icon">
@@ -560,7 +582,7 @@
                              </div>
                              <div class="col-md-6 ph10">
                                  <label for="price_for_optional_units" class="field prepend-icon">
-                                     <input type="text" name="price_for_optional_units" id="price_for_optional_units"
+                                     <input type="text" name="price_for_optional_units" value="{{$editpro->price_for_optional_units}}" id="price_for_optional_units"
                                             class="gui-input"
                                             placeholder="Price for optional units...">
                                      <label for="price_for_optional_units" class="field-icon">
@@ -572,7 +594,7 @@
                            <div class="section row">
                              <div class="col-md-6 ph10">
                                  <label for="price_15_days" class="field prepend-icon">
-                                     <input type="text" name="15_days_price" id="price_for_optional_units"
+                                     <input type="text" name="price_15_days" value="{{$editpro->price_15_days}}" id="price_15_days"
                                             class="gui-input"
                                             placeholder="Price for 15 days...">
                                      <label for="15_days_price" class="field-icon">
@@ -582,7 +604,7 @@
                              </div>
                              <div class="col-md-6 ph10">
                                  <label for="30_days_price" class="field prepend-icon">
-                                     <input type="text" name="30_days_price" id="price_for_optional_units"
+                                     <input type="text" name="price_30_days" value="{{$editpro->price_30_days}}" id="price_30_days"
                                             class="gui-input"
                                             placeholder="Price for 30 days...">
                                      <label for="price_30_days" class="field-icon">
@@ -594,7 +616,7 @@
                            <div class="section row">
                              <div class="col-md-6 ph10">
                                  <label for="sample_fee" class="field prepend-icon">
-                                     <input type="text" name="sample_fee" id="price_for_optional_units"
+                                     <input type="text" name="sample_fee" value="{{$editpro->sample_fee}}" id="sample_fee"
                                             class="gui-input"
                                             placeholder="Sample Fee...">
                                      <label for="sample_fee" class="field-icon">
@@ -604,7 +626,7 @@
                              </div>
                              <div class="col-md-6 ph10">
                                  <label for="currency_in_naira" class="field prepend-icon">
-                                     <input type="text" name="currency_in_naira" id="price_for_optional_units"
+                                     <input type="text" name="currency_in_naira" value="{{$editpro->currency_in_naira}}" id="currency_in_naira"
                                             class="gui-input"
                                             placeholder="Currency in Naira...">
                                      <label for="currency_in_naira" class="field-icon">
@@ -618,8 +640,8 @@
                                <div class="col-md-12 ph10">
                                  <div class="section mb10">
                                      <label class="field prepend-icon">
-                                         <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="comment"
-                             name="credit_payment_details" placeholder="Credit Payment Details"></textarea>
+                                         <textarea style="height: 160px;" class="gui-textarea br-light bg-light" value="{{$editpro->credit_payment_details}}"  id="credit_payment_details"
+                             name="credit_payment_details" placeholder="Credit Payment Details">{{$editpro->credit_payment_details}}</textarea>
                                          <label for="credit_payment_details" class="field-icon">
                                              <i class="fa fa-file"></i>
                                          </label>
@@ -631,8 +653,8 @@
                                <div class="col-md-12 ph10">
                                  <div class="section mb10">
                                      <label class="field prepend-icon">
-                                         <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="comment"
-                             name="optional_description" placeholder="Optional Description"></textarea>
+                                         <textarea style="height: 160px;" value="{{$editpro->optional_description}}" class="gui-textarea br-light bg-light" id="optional_description"
+                             name="optional_description" placeholder="Optional Description">{{$editpro->optional_description}}</textarea>
                                          <label for="optional_description" class="field-icon">
                                              <i class="fa fa-file"></i>
                                          </label>
@@ -653,7 +675,7 @@
                            <div class="section row">
                              <div class="col-md-4 ph10">
                                  <label for="length" class="field prepend-icon">
-                                     <input type="number" name="length" id="length"
+                                     <input type="number" value="{{$editpro->length}}" name="length" id="length"
                                             class="gui-input"
                                             placeholder="Length">
                                      <label for="length" class="field-icon">
@@ -665,7 +687,7 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="width" class="field prepend-icon">
-                                       <input type="number" name="width" id="width"
+                                       <input type="number" name="width" value="{{$editpro->width}}" id="width"
                                               class="gui-input"
                                               placeholder="Width">
                                        <label for="width" class="field-icon">
@@ -677,7 +699,7 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="height" class="field prepend-icon">
-                                       <input type="number" name="height" id="height"
+                                       <input type="number" name="height" value="{{$editpro->height}}" id="height"
                                               class="gui-input"
                                               placeholder="Length">
                                        <label for="height" class="field-icon">
@@ -693,7 +715,7 @@
                            <div class="section row">
                              <div class="col-md-4 ph10">
                                  <label for="weight_per_pack" class="field prepend-icon">
-                                     <input type="number" name="weight_per_pack" id="weight_per_pack"
+                                     <input type="number" name="weight_per_pack" value="{{$editpro->weight_per_pack}}" id="weight_per_pack"
                                             class="gui-input"
                                             placeholder="Weight Per pack">
                                      <label for="weight_per_pack" class="field-icon">
@@ -705,7 +727,7 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="export_carton_dimension" class="field prepend-icon">
-                                       <input type="number" name="export_carton_dimension" id="export_carton_dimension"
+                                       <input type="number" name="export_carton_dimension" value="{{$editpro->export_carton_dimension}}" id="export_carton_dimension"
                                               class="gui-input"
                                               placeholder="Export carton dimension">
                                        <label for="export_carton_dimension" class="field-icon">
@@ -716,7 +738,7 @@
 
                                <div class="col-md-4 ph10">
                                    <label for="export_carton_weight" class="field prepend-icon">
-                                       <input type="number" name="export_carton_weight" id="export_carton_weight"
+                                       <input type="number" name="export_carton_weight" value="{{$editpro->export_carton_weight}}" id="export_carton_weight"
                                               class="gui-input"
                                               placeholder="Export carton weight">
                                        <label for="export_carton_weight" class="field-icon">
@@ -728,8 +750,22 @@
                              <div class="section row">
                                <div class="col-md-4 ph10">
                                    <label for="supply_type" class="field select">
-                                       <select id="supply_type" name="supply_type">
-                                           <option value="" selected="selected">Delivery within state...</option>
+                                       <select id="delivery_w_state" name="delivery_w_state">
+
+                                             <option value="{{$editpro->delivery_w_state}}" selected="selected">
+                                               <?php
+
+                                                  if($editpro->delivery_w_state == 1) {
+                                                    echo "Yes";
+                                                  }elseif ($editpro->delivery_w_state == 2) {
+                                                    echo "No";
+
+                                                  }elseif ($editpro->delivery_w_state == null) {
+                                                    echo "Delivery Within State.........";
+                                                  }
+                                                ?>
+                                             </option>
+                                           </option>
                                            <option value="1">Yes</option>
                                            <option value="0">No</option>
 
@@ -739,7 +775,7 @@
                                </div>
                                <div class="col-md-4 ph10">
                                    <label for="delivery_rate_w_range" class="field prepend-icon">
-                                       <input type="text" name="delivery_rate_w_range" id="delivery_rate_w_range"
+                                       <input type="text" name="delivery_rate_w_range" value="{{$editpro->delivery_rate_w_range}}" id="delivery_rate_w_range"
                                               class="gui-input"
                                               placeholder="Delivery rate within range...">
                                        <label for="delivery_rate_w_range" class="field-icon">
@@ -749,7 +785,7 @@
                                </div>
                                <div class="col-md-4 ph10">
                                    <label for="delivery_rate_o_range" class="field prepend-icon">
-                                       <input type="text" name="delivery_rate_o_range" id="delivery_rate_o_range"
+                                       <input type="text" name="delivery_rate_o_range" value="{{$editpro->delivery_rate_o_range}}" id="delivery_rate_o_range"
                                               class="gui-input"
                                               placeholder="Delivery rate out of range...">
                                        <label for="delivery_rate_o_range" class="field-icon">
@@ -762,7 +798,15 @@
                                <div class="col-md-12 ph10">
                                    <label for="payment_method" class="field select">
                                        <select id="payment_method" name="payment_method">
-                                           <option value="" selected="selected">Select Payment Method...</option>
+                                           <option value="{{$editpro->payment_method}}" selected="selected">
+                                             <?php
+                                                if ($editpro->payment_method == 1) {
+                                                    echo "Cash in advance";
+                                                }else {
+                                                  echo "Cash in delivery";
+                                                }
+                                              ?>
+                                           </option>
                                            <option value="1">Cash in advance</option>
                                            <option value="2">Cash in delivery</option>
 
@@ -782,7 +826,7 @@
 
                            <div class="section mbn text-right">
                                <p class="text-right">
-                                   <button class="btn btn-primary" type="submit">Add product</button>
+                                   <button class="btn btn-primary" type="submit">Update product</button>
                                </p>
                            </div>
                            <!-- -------------- /section -------------- -->

@@ -187,6 +187,13 @@ Route::get('/block-vendor/{id}', 'AdminAddSellerController@blockVendor')->name('
 Route::get('/unblock-vendor/{id}', 'AdminAddSellerController@unblockVendor')->name('unblockVendor');
 //Vendor Route End
 
+//Vendor Product Approval
+Route::get('/approved-seller-pro', 'AdminVendorProductController@approvedSellerPro')->name('approvedSellerPro');
+Route::get('/pending-vendor-pro', 'AdminVendorProductController@pendingVendorPro')->name('pendingVendorPro');
+Route::get('/approve-vendor-pro/{id}', 'AdminVendorProductController@approveVendorPro')->name('approveVendorPro');
+
+//Vendor Product Approval End
+
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
 Route::post('/select-pro', ['as'=>'select-pro','uses'=>'AdvertController@selectPro']);
@@ -201,19 +208,17 @@ Route::get('/delete-advert/{id}', 'AdvertController@deleteAdvert')->name('delete
 
 //==========================BackEnd End ==========================//
 //==========================Vendor Start ==========================//
-Route::get('/vendors', function(){
-  return view('seller.seller_master');
-});
-Route::get('/add-vpro',function(){
-  return view('seller.product.add_product');
-});
+
+
 Route::get('/seller/add-product', 'SellerProductController@index')->name('addSellerPro');
 Route::post('/seller/post-product', 'SellerProductController@postSellerProduct')->name('postSellerProduct');
 Route::get('/seller/product-list', 'SellerProductController@productList')->name('productList');
 Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
-Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteProduct');
+Route::post('/seller/update-product/{id}', 'SellerProductController@updateSellerPro')->name('updateSellerPro');
+Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteSellerPro');
 
 //test
+Route::get('/seller/destroy/', 'SellerProductController@deleteMultiPro')->name('deleteMultiPro');
 Route::get('/seller/json', 'SellerProductController@json')->middleware('ajax');
 // Route for list of users with specific status in json format
 Route::get('/seller/json/{pro_status}', 'SellerProductController@json')->middleware('ajax');

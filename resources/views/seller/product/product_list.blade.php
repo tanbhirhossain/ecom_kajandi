@@ -85,10 +85,15 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <span class="panel-title hidden-xs"> Products</span><br><br>
+
                             <a href="{{route('addSellerPro')}}" class="btn btn-primary btn-lg text-uppercase">Add Products</a>
                         </div>
                         <div class="panel-body pn">
                             <div class="panel-menu p12 allcp-form theme-primary mtn">
+                              <small>
+                                  <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
+                                  <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
+                              </small>
                                 <div class="row">
                                     <div class="col-md-2 pb5">
                                         <label class="field select">
@@ -130,6 +135,7 @@
                                 </div>
                             </div> <br>
                             <div class="table-responsive">
+
                                 <table id="dtListUsers" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
@@ -146,6 +152,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($sellerProduct as $sp)
+                                    <form  action="{{route('deleteMultiPro')}}" method="get">@csrf
                                     <tr>
 
                                         <td class="text-center">
@@ -156,8 +163,8 @@
                                         </td>
                                           <td class="">{{$sp->id}}</td>
                                         <td class="w100">
-                                            <img class="img-responsive mw40 ib mr10" title="user"
-                                                 src="assets/img/pages/products/1.jpg">
+                                            <img class="img-responsive mw40 ib mr10" title="Image"
+                                                 src="{{asset($sp->pro_image)}}">
                                         </td>
 
                                         <td class="">{{$sp->pro_name}}</td>
@@ -186,37 +193,15 @@
                                                 </button>
                                                 <ul class="dropdown-menu"  role="menu">
                                                     <li>
-                                                        <a href="#">Edit</a>
+                                                        <a href="{{route('editProduct', $sp->id)}}">Edit</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">Delete</a>
+                                                        <a href="{{route('deleteSellerPro', $sp->id)}}">Delete</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#">Archive</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li class="active">
-                                                        <a href="{{$sp->pro_status}}">
-                                                          <?php
-                                                            if ($sp->pro_status == 0) {
-                                                                echo "Inactive";
-                                                            }elseif ($sp->pro_status == 1) {
-                                                                echo "Active";
-                                                            }elseif ($sp->pro_status == 2) {
-                                                                echo "Low Stock";
-                                                            }else {
-                                                              echo "Out of Stock";
-                                                            }
 
-                                                           ?>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="1">Active</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="0">Inactive</a>
-                                                    </li>
+                                                    <li class="divider"></li>
+
+
                                                     <li>
                                                         <a href="2">Low Stock</a>
                                                     </li>
@@ -228,10 +213,19 @@
                                         </td>
                                         <td><a href="#" class="btn btn-primary pull-right">View</a></td>
                                     </tr>
+
+
                                     @endforeach
+                                    <button type="submit" class="btn btn-danger">Del</button>
+                                    </form>
+
                                     {{ $sellerProduct->links() }}
+
                                     </tbody>
+
                                 </table>
+
+
                             </div>
                         </div>
                     </div>
@@ -245,41 +239,5 @@
     <!-- -------------- /Content -------------- -->
 
 </section>
-<script type="text/javascript">
-$('#filter-status').on('change', function(){
-var filter_value = $(this).val();
-var new_url = Laravel.appURL+'/user/json/'+filter_value;
-dtListUsers.ajax.url('+new_url+').load();
-})
-</script>
 
-<script type="text/javascript">
-var dtListUsers = $("#dtListUsers").DataTable({
-  "processing": true,
-  "serverSide": true,
-  "ajax": Laravel.appURL+'/seller/json',
-  "columns": [
-    {
-      data: 'id'
-    },
-    {
-      data: 'pro_name'
-    },
-    {
-      data: 'model_number'
-    },
-    {
-      data: 'pro_price'
-    },
-    {
-      data: 'unit_of_measure'
-    },
-    {
-      data: 'pro_status'
-    },
-
-  ]
-  ...
-});
-</script>
 @endsection
