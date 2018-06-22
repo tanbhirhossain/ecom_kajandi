@@ -10,7 +10,7 @@
 <?php
   $menufacturer = App\Manufacter::All();
   $category = App\Category::All();
-  $subcategory = App\Category::All();
+  $subcategory = App\Subcategory::All();
 
  ?>
 
@@ -310,6 +310,11 @@
                                        </select>
                                        <i class="arrow double"></i>
                                    </label>
+                                   @if ($errors->has('manufacture_id'))
+                                       <span class="invalid-feedback">
+                                           <strong>{{ $errors->first('manufacture_id') }}</strong>
+                                       </span>
+                                   @endif
                                </div>
 
                                <div class="col-md-4 ph10">
@@ -363,7 +368,7 @@
                                        <select id="pro_subcat_id" name="pro_subcat_id">
                                          <option value="">Sub Category...</option>
                                          @foreach($subcategory as $m)
-                                         <option value="{{$m->id}}" >{{$m->cat_name}}</option>
+                                         <option value="{{$m->id}}" >{{$m->sub_cat_name}}</option>
                                          @endforeach
                                        </select>
                                        <i class="arrow double"></i>

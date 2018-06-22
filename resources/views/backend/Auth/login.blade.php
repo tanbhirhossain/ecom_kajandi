@@ -14,15 +14,15 @@
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="stylesheet" href="{{asset('public/BackEnd/assets/css/normalize.css')}}">
-    <link rel="stylesheet" href="{{asset('public/BackEnd/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/BackEnd/assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/BackEnd/assets/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('public/BackEnd/assets/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/BackEnd/assets/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('public/backend/assets/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('public/backend/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/backend/assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/backend/assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('public/backend/assets/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/backend/assets/css/cs-skin-elastic.css')}}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="{{asset('public/BackEnd/assets/scss/style.css')}}">
-    <link href="{{asset('public/BackEnd/assets/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/backend/assets/scss/style.css')}}">
+    <link href="{{asset('public/backend/assets/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -77,10 +77,10 @@
     </div>
 
 
-    <script src="{{asset('public/BackEnd/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{asset('public/backend/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="{{asset('public/BackEnd/assets/js/plugins.js')}}"></script>
-    <script src="{{asset('public/BackEnd/assets/js/main.js')}}"></script>
+    <script src="{{asset('public/backend/assets/js/plugins.js')}}"></script>
+    <script src="{{asset('public/backend/assets/js/main.js')}}"></script>
 
 
 

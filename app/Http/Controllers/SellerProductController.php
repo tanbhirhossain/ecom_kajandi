@@ -29,6 +29,7 @@ class SellerProductController extends Controller
       $request->validate([
          'pro_name' => 'required|max:255|min:2',
          'pro_generic_name' => 'required',
+         'manufacture_id' => 'required',
          'pro_description' => 'required|min:2|',
          'pro_cat_id' => 'required',
          'pro_subcat_id' => 'required',
@@ -180,117 +181,148 @@ class SellerProductController extends Controller
          'payment_method' => 'required',
 
      ]);
+     $pv = SellerProduct::find($id);
+     if ($pv->pro_image == null) {
+       $file = $request->file( 'pro_image' );
+       if($file!=NULL) {
+           $name        = time() . '_' . $file->getClientOriginalName();
+           $upload_path = 'public/seller/product_img/';
+           $file->move( $upload_path, $name );
+           $pro_image = $upload_path . $name;
 
-     $file = $request->file( 'pro_image' );
-     if($file!=NULL) {
-         $name        = time() . '_' . $file->getClientOriginalName();
-         $upload_path = 'public/seller/product_img/';
-         $file->move( $upload_path, $name );
-         $pro_image = $upload_path . $name;
+       }else{
+           $pro_image = '';
+       }
 
-     }else{
-         $pro_image = '';
+     }else {
+
+       $pro_image = $pv->pro_image;
      }
 
-     $file = $request->file( 'a_img_1' );
-     if($file!=NULL) {
-         $name_a_1        = time() . '_' . $file->getClientOriginalName();
-         $upload_path_a_1 = 'public/seller/product_img/';
-         $file->move( $upload_path_a_1, $name_a_1 );
-         $a_img_1 = $upload_path_a_1 . $name_a_1;
+     if ($pv->a_img_1 == null) {
+       $file = $request->file( 'a_img_1' );
+       if($file!=NULL) {
+           $name        = time() . '_' . $file->getClientOriginalName();
+           $upload_path = 'public/seller/product_img/';
+           $file->move( $upload_path, $name );
+           $a_img_1 = $upload_path . $name;
 
-     }else{
-         $a_img_1 = '';
+       }else{
+           $a_img_1 = '';
+       }
+
+     }else {
+
+       $a_img_1 = $pv->a_img_1;
      }
 
-     $file = $request->file( 'a_img_2' );
-     if($file!=NULL) {
-         $name_a_2        = time() . '_' . $file->getClientOriginalName();
-         $upload_path_a_2 = 'public/seller/product_img/';
-         $file->move( $upload_path_a_2, $name_a_2 );
-         $a_img_2 = $upload_path_a_2 . $name_a_2;
+     if ($pv->a_img_2 == null) {
+       $file = $request->file( 'a_img_2' );
+       if($file!=NULL) {
+           $name        = time() . '_' . $file->getClientOriginalName();
+           $upload_path = 'public/seller/product_img/';
+           $file->move( $upload_path, $name );
+           $a_img_2 = $upload_path . $name;
 
-     }else{
-         $a_img_2 = '';
+       }else{
+           $a_img_2 = '';
+       }
+
+     }else {
+
+       $a_img_2 = $pv->a_img_2;
      }
 
-     $file = $request->file( 'a_img_3' );
-     if($file!=NULL) {
-         $name_a_3        = time() . '_' . $file->getClientOriginalName();
-         $upload_path_a_3 = 'public/seller/product_img/';
-         $file->move( $upload_path_a_3, $name_a_3 );
-         $a_img_3 = $upload_path_a_2 . $name_a_3;
+     if ($pv->a_img_3 == null) {
+       $file = $request->file( 'a_img_3' );
+       if($file!=NULL) {
+           $name        = time() . '_' . $file->getClientOriginalName();
+           $upload_path = 'public/seller/product_img/';
+           $file->move( $upload_path, $name );
+           $a_img_3 = $upload_path . $name;
 
-     }else{
-         $a_img_3 = '';
+       }else{
+           $a_img_3 = '';
+       }
+
+     }else {
+
+       $a_img_3 = $pv->a_img_3;
      }
 
-     $file = $request->file( 'a_img_4' );
-     if($file!=NULL) {
-         $name_a_4        = time() . '_' . $file->getClientOriginalName();
-         $upload_path_a_4 = 'public/seller/product_img/';
-         $file->move( $upload_path_a_4, $name_a_4 );
-         $a_img_4 = $upload_path_a_4 . $name_a_4;
+     if ($pv->a_img_4 == null) {
+       $file = $request->file( 'a_img_4' );
+       if($file!=NULL) {
+           $name        = time() . '_' . $file->getClientOriginalName();
+           $upload_path = 'public/seller/product_img/';
+           $file->move( $upload_path, $name );
+           $a_img_4 = $upload_path . $name;
 
-     }else{
-         $a_img_4 = '';
+       }else{
+           $a_img_4 = '';
+       }
+
+     }else {
+
+       $a_img_4 = $pv->a_img_4;
      }
 
 
-      $product = SellerProduct::find($id);
-      $product->seller_id = $request->seller_id;
-      $product->pro_status = 0;
+      //$product = SellerProduct::find($id);
+      $pv->seller_id = $request->seller_id;
+    //  $pv->pro_status = 0;
 
-      $product->pro_name = $request->pro_name;
-      $product->pro_generic_name = $request->pro_generic_name;
-      $product->pro_description = $request->pro_description;
-      $product->pro_keyword = $request->pro_keyword;
-      $product->part_number = $request->part_number;
-      $product->manufacture_id = $request->manufacture_id;
-      $product->model_number = $request->model_number;
-      $product->supply_type = $request->supply_type;
-      $product->pro_cat_id = $request->pro_cat_id;
-      $product->pro_subcat_id = $request->pro_subcat_id;
+      $pv->pro_name = $request->pro_name;
+      $pv->pro_generic_name = $request->pro_generic_name;
+      $pv->pro_description = $request->pro_description;
+      $pv->pro_keyword = $request->pro_keyword;
+      $pv->part_number = $request->part_number;
+      $pv->manufacture_id = $request->manufacture_id;
+      $pv->model_number = $request->model_number;
+      $pv->supply_type = $request->supply_type;
+      $pv->pro_cat_id = $request->pro_cat_id;
+      $pv->pro_subcat_id = $request->pro_subcat_id;
 
-      $product->pro_image = $pro_image;
+      $pv->pro_image = $pro_image;
 
-      $product->pro_color = $request->pro_color;
+      $pv->pro_color = $request->pro_color;
 
-      $product->a_img_1 = $a_img_1;
-      $product->a_img_2 = $a_img_2;
-      $product->a_img_3 = $a_img_3;
-      $product->a_img_4 = $a_img_4;
+      $pv->a_img_1 = $a_img_1;
+      $pv->a_img_2 = $a_img_2;
+      $pv->a_img_3 = $a_img_3;
+      $pv->a_img_4 = $a_img_4;
 
-      $product->speacial_feature = $request->speacial_feature;
+      $pv->speacial_feature = $request->speacial_feature;
 
-      $product->small_order_accpeted = $request->small_order_accpeted;
-      $product->minumum_order_qty = $request->minumum_order_qty;
-      $product->unit_of_measure = $request->unit_of_measure;
-      $product->pro_price = $request->pro_price;
-      $product->price_for_optional_units = $request->price_for_optional_units;
-      $product->price_15_days = $request->price_15_days;
-      $product->price_30_days = $request->price_30_days;
-      $product->optional_description = $request->optional_description;
+      $pv->small_order_accpeted = $request->small_order_accpeted;
+      $pv->minumum_order_qty = $request->minumum_order_qty;
+      $pv->unit_of_measure = $request->unit_of_measure;
+      $pv->pro_price = $request->pro_price;
+      $pv->price_for_optional_units = $request->price_for_optional_units;
+      $pv->price_15_days = $request->price_15_days;
+      $pv->price_30_days = $request->price_30_days;
+      $pv->optional_description = $request->optional_description;
 
-      $product->sample_fee = $request->sample_fee;
-      $product->currency_in_naira = $request->currency_in_naira;
-      $product->credit_payment_details = $request->credit_payment_details;
-      $product->length = $request->length;
-      $product->width = $request->width;
-      $product->height = $request->height;
-      $product->weight_per_pack = $request->weight_per_pack;
-      $product->export_carton_dimension = $request->export_carton_dimension;
-      $product->export_carton_weight = $request->export_carton_weight;
+      $pv->sample_fee = $request->sample_fee;
+      $pv->currency_in_naira = $request->currency_in_naira;
+      $pv->credit_payment_details = $request->credit_payment_details;
+      $pv->length = $request->length;
+      $pv->width = $request->width;
+      $pv->height = $request->height;
+      $pv->weight_per_pack = $request->weight_per_pack;
+      $pv->export_carton_dimension = $request->export_carton_dimension;
+      $pv->export_carton_weight = $request->export_carton_weight;
 
-      $product->delivery_w_state = $request->delivery_w_state;
-      $product->delivery_rate_w_range = $request->delivery_rate_w_range;
-      $product->delivery_rate_o_range = $request->delivery_rate_o_range;
-      $product->payment_method = $request->payment_method;
+      $pv->delivery_w_state = $request->delivery_w_state;
+      $pv->delivery_rate_w_range = $request->delivery_rate_w_range;
+      $pv->delivery_rate_o_range = $request->delivery_rate_o_range;
+      $pv->payment_method = $request->payment_method;
 
 
-      $product->save();
+      $pv->save();
 
       return back()->with('message_success', 'Seller Product Updated Succesfully');
+    //  return dd($pv);
     }
 
     public function deleteProduct($id)

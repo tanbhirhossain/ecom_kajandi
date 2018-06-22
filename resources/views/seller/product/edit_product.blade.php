@@ -217,7 +217,7 @@
                                                <span class="button btn-primary btn-file btn-block">
                                                  <span class="fileupload-new">Select</span>
                                                  <span class="fileupload-exists">Change</span>
-                                                 <input type="file" name="pro_image">
+                                                 <input  type="file" name="pro_image">
                                                </span>
                                                @if ($errors->has('pro_image'))
                                                    <span class="invalid-feedback">

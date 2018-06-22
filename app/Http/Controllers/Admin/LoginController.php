@@ -63,7 +63,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('BackEnd.Auth.login');
+        return view('backend.Auth.login');
     }
     /**
      * Get the guard to be used during authentication.
