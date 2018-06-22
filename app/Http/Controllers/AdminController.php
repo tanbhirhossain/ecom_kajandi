@@ -24,10 +24,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('backend.admin_master');
+        return view('BackEnd.admin_master');
     }
 
+   
 
-
-
+    
 }
