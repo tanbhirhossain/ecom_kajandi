@@ -28,11 +28,11 @@
                     <tbody>
                         @foreach($approved_pro as $av)
                           <tr>
-                            <td>{{$av->seller_id}}</td>
+                            <td>{{$av->vendorname}}</td>
                             <td>{{$av->pro_name}}</td>
                             <td>{{$av->pro_price}}</td>
                             <td>{{$av->unit_of_measure}}</td>
-                            <td><img src="{{$av->pro_image}} height="60" width="60" "></td>
+                            <td><img src="{{asset($av->pro_image)}} height="60" width="60" "></td>
                             <td>
                               <a class="btn btn-primary" href=""><i class="fa fa-edit"></i></a>
                               <a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i></a>

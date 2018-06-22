@@ -8,7 +8,12 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
+//Subscriber route
+Route::post('/subscribe-email', 'EmailSubscriberController@saveEmail')->name('saveEmail');
+Route::get('/subscribed-list', 'AdminSubscriberController@subsList')->name('subsList');
+Route::get('/delete-subscriber/{id}', 'AdminSubscriberController@deleteSubs')->name('deleteSubs');
+Route::get('/send-newsletter', 'AdminSubscriberController@sendNewsletter')->name('sendNewsletter');
+//End Subscriber route
 
 //Product sortBy Route start
 Route::get('/shop','FSortByController@shop_content')->name('shop');
