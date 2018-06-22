@@ -212,7 +212,11 @@ Route::get('/delete-vendor/{id}', 'AdminAddSellerController@deleteVendor')->name
 Route::get('/block-vendor/{id}', 'AdminAddSellerController@blockVendor')->name('blockVendor');
 Route::get('/unblock-vendor/{id}', 'AdminAddSellerController@unblockVendor')->name('unblockVendor');
 //Vendor Route End
-
+//Vendor Product Approval
+Route::get('/approved-seller-pro', 'AdminVendorProductController@approvedSellerPro')->name('approvedSellerPro');
+Route::get('/pending-vendor-pro', 'AdminVendorProductController@pendingVendorPro')->name('pendingVendorPro');
+Route::get('/approve-vendor-pro/{id}', 'AdminVendorProductController@approveVendorPro')->name('approveVendorPro');
+//Vendor Product Approval End
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
 Route::post('/select-pro', ['as'=>'select-pro','uses'=>'AdvertController@selectPro']);
