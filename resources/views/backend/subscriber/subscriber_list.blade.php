@@ -1,6 +1,10 @@
 @extends('backend.admin_master')
 @section('page_title','Subscriber List')
 @section('admin_content')
+<?php
+$subs_lists = App\EmailSubscriber::All()->where('isDelete', Null);
+
+ ?>
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
@@ -33,7 +37,7 @@
                     </td>
                     <td>
 
-                        <a class="btn btn-danger" href="{{route('showSingleMail', $sl->id)}}"><i class="fa fa-rss"></i>Email </a>
+                        <a class="btn btn-success" href="{{route('showSingleMail', $sl->id)}}"><i class="fa fa-rss"></i>Send email </a>
                     </td>
                 </tr>
                 @endforeach

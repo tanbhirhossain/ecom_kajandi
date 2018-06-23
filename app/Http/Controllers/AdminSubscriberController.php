@@ -11,10 +11,15 @@ use Mail;
 
 class AdminSubscriberController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth:admin');
+      $this->middleware('admin');
+  }
   public function subsList()
   {
-    $subs_lists = EmailSubscriber::All()->where('isDelete', Null);
-    return view('backend.subscriber.subscriber_list',compact('subs_lists'));
+    //$subs_lists = EmailSubscriber::All()->where('isDelete', Null);
+    return view('backend.subscriber.subscriber_list');
   }
 
   public function deleteSubs($id)
@@ -36,7 +41,7 @@ class AdminSubscriberController extends Controller
   {
     $subject = $request->input('subject');
     $messages = $request->input('messages');
-    $mail_to = $request->input('');
+    //$mail_to = $request->input('mail_to');
     $subscribers = EmailSubscriber::All();
 
       if (!empty($subscribers)) {
@@ -45,6 +50,8 @@ class AdminSubscriberController extends Controller
         function ($message) use ($user, $subject){
             $message->subject($subject);
             $message->to($user['email']);
+            $message->from('office@ecomkajandi.com');
+
         });
     }
     }
@@ -62,14 +69,21 @@ class AdminSubscriberController extends Controller
     $subject = $request->input('subject');
     $messages = $request->input('messages');
     $mail_to = $request->input('mail_to');
+    //$subscribers = EmailSubscriber::All();
 
-    Mail::send('backend.subscriber.mail_templates.newsletter', $mail_to, function($message) use ($mail_to, $subject) {
-        $message->to($mail_to);
-        $message->subject($subject);
 
-    });
+        Mail::send('backend.subscriber.mail_templates.newsletter', ['messages' => $messages, 'subject' => $subject],
+        function ($message) use ($mail_to, $subject){
+            $message->subject($subject);
+            $message->to($mail_to);
+            $message->from('office@ecomkajandi.com');
 
-    return view('backend.subscriber.send_single_email')->with('message_success', 'Email sent Succesfully');
+
+        });
+        return back()->with('message_success', 'Email sent Succesfully');
+
+
+
   }
 
 }

@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     <label for="company" class=" form-control-label">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Message Subject" class="form-control">
+                    <input type="text" id="subject" name="subject" placeholder="Message Subject" class="form-control" required>
 
                 </div>
                 <div class="form-group">
