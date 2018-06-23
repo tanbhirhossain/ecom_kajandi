@@ -13,6 +13,9 @@ Route::post('/subscribe-email', 'EmailSubscriberController@saveEmail')->name('sa
 Route::get('/subscribed-list', 'AdminSubscriberController@subsList')->name('subsList');
 Route::get('/delete-subscriber/{id}', 'AdminSubscriberController@deleteSubs')->name('deleteSubs');
 Route::get('/send-newsletter', 'AdminSubscriberController@sendNewsletter')->name('sendNewsletter');
+Route::post('/send-mail', 'AdminSubscriberController@sendMail')->name('sendMail');
+Route::get('/show-single-mail/{id}', 'AdminSubscriberController@showSingleMail')->name('showSingleMail');
+Route::post('/send-single-mail', 'AdminSubscriberController@sendSingleMail')->name('sendSingleMail');
 //End Subscriber route
 
 //Product sortBy Route start

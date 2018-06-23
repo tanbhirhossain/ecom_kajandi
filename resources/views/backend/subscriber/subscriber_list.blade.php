@@ -16,8 +16,8 @@
                 <tr>
                     <th width="">SL</th>
                     <th width="">Email</th>
-
                     <th width="">Action</th>
+                    <th width="">Email</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,10 +27,13 @@
                 <tr>
                     <td>{{$i}}</td>
                     <td>{{$sl->email}}</td>
-
                     <td>
 
                         <a class="btn btn-danger" href="{{route('deleteSubs', $sl->id)}}"><i class="fa fa-trash-o"></i>Delete </a>
+                    </td>
+                    <td>
+
+                        <a class="btn btn-danger" href="{{route('showSingleMail', $sl->id)}}"><i class="fa fa-rss"></i>Email </a>
                     </td>
                 </tr>
                 @endforeach
