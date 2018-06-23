@@ -8,7 +8,7 @@ $subs_lists = App\EmailSubscriber::All()->where('isDelete', Null);
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">Sub Category List Table</strong>
+            <strong class="card-title">Subscriber List</strong>
             <small>
                 <p class="text-center alert-success">{{Session::get('message_success')}}</p>
                 <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>

@@ -18,6 +18,11 @@ Route::get('/show-single-mail/{id}', 'AdminSubscriberController@showSingleMail')
 Route::post('/send-single-mail', 'AdminSubscriberController@sendSingleMail')->name('sendSingleMail');
 //End Subscriber route
 
+//Faq route
+Route::get('/faq', 'GuestController@askQuestion')->name('askQuestion');
+Route::post('/faq-question', 'FAQController@postQuestion')->name('postQuestion');
+//End Faw route
+
 //Product sortBy Route start
 Route::get('/shop','FSortByController@shop_content')->name('shop');
 Route::get('/product-category/{id}','FSortByController@product_by_category')->name('product-category');

@@ -29,7 +29,7 @@ class AdminSubscriberController extends Controller
             ->update([
               'isDelete' => 1,
             ]);
-    return back()->with('message_success', 'Vendor Product Approved Succesfully');
+    return back()->with('message_success', 'Email sent Succesfully');
   }
 
   public function sendNewsletter()
@@ -55,7 +55,7 @@ class AdminSubscriberController extends Controller
         });
     }
     }
-          return view('backend.subscriber.send_newsletter')->with('message_success', 'Email sent Succesfully');
+          return back()->with('message_success', 'Email sent Succesfully');
   }
 
   public function showSingleMail($id)
