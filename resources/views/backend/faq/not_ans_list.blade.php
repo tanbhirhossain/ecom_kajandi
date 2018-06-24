@@ -1,5 +1,5 @@
 @extends('backend.admin_master')
-@section('page_title','Customer Q & A LIST')
+@section('page_title','Pending Question')
 @section('admin_content')
     <div class="col-md-12">
         <div class="card">
@@ -28,8 +28,8 @@
 
                             <td>{{$qa->question}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{url('/view-qa/'.$qa->id)}}"><i class="fa fa-info"></i>Viw All ANS</a>
-                                <a class="btn btn-danger" href="{{url('/delete-qa/'.$qa->id)}}"><i class="fa fa-trash-o"></i>Delete </a>
+                                <a class="btn btn-primary" href="{{route('answerFaq', $qa->id)}}"><i class="fa fa-info"></i>Answer</a>
+                                <a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i>Delete </a>
                             </td>
                         </tr>
                     @endforeach

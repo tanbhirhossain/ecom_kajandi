@@ -139,10 +139,11 @@ Route::get('/ask-a-question','CustomerQAController@ask_a_question')->name('ask-a
 Route::get('/answer-a-question','CustomerQAController@answer_a_question')->name('answer-a-question');
 //Customer Q&A Route End
 
-
-
-
-
+//FAQ route
+Route::get('/pending-faq-list', 'AdminFAQController@pendingFaqList')->name('pendingFaqList');
+Route::get('/answer-faq/{id}', 'AdminFAQController@answerFaq')->name('answerFaq');
+Route::post('/answer-faq-post', 'AdminFAQController@postFaqAnswer')->name('postFaqAnswer');
+//END FAQ route
 
 //==========================BackEnd Start ==========================//
 // Admin Panel Route

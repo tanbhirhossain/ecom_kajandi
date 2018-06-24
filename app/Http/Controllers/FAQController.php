@@ -8,7 +8,7 @@ use App\faqanswers;
 
 class FAQController extends Controller
 {
-    
+
 
     public function __construct()
     {
@@ -18,7 +18,7 @@ class FAQController extends Controller
     public function postQuestion(Request $request)
     {
         $request->validate([
-          'question' => 'required|min:3|max:255',
+          'question' => 'required|min:3|max:400',
         ]);
 
         $pq = new Faquestion();

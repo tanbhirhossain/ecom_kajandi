@@ -1,5 +1,5 @@
 @extends('frontend.front_view.front_master')
-@section('page-title','Single Product')
+@section('page-title','FAQ')
 @section('main_content')
 <div class="container">
 
@@ -37,76 +37,20 @@
                         </div>
                     </form>
 					<div id="myUL">
+
+                @foreach($show_faq as $faq)
                     <article class="product-page-qa">
                         <div class="product-page-qa-question">
-                            <p class="product-page-qa-text">Is this the 6.6 inch screen?</p>
-                            <p class="product-page-qa-meta">asked by Richard Jones on 08/14/2015</p>
+                            <p class="product-page-qa-text">{{$faq->question}}</p>
+                            <p class="product-page-qa-meta">asked by {{$faq->name}} on {{$faq->qs_time}}</p>
                         </div>
                         <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">No, this is the 6.4 inch screen</p>
-                            <p class="product-page-qa-meta">answered on 08/14/2015</p>
+                            <p class="product-page-qa-text">{{$faq->answer}}</p>
+                            <p class="product-page-qa-meta">answered on {{$faq->ans_time}}</p>
                         </div>
                     </article>
-                    <article class="product-page-qa">
-                        <div class="product-page-qa-question">
-                            <p class="product-page-qa-text">for those who owns this model phone in USA, may I know if this phone has the 4G LTE in Tmobile's network? Thank you in advance.</p>
-                            <p class="product-page-qa-meta">asked by Joseph Hudson on 08/14/2015</p>
-                        </div>
-                        <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">Yes. can use TMobile LTE 1700MHZ.</p>
-                            <p class="product-page-qa-meta">answered on 08/14/2015</p>
-                        </div>
-                    </article>
-                    <article class="product-page-qa">
-                        <div class="product-page-qa-question">
-                            <p class="product-page-qa-text">I'm from Puerto Rico! this phone work for me???</p>
-                            <p class="product-page-qa-meta">asked by Neil Davidson on 08/14/2015</p>
-                        </div>
-                        <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">Yes... It will work with any gsm radio system in the world... It does not work, however on any cdma radio system...</p>
-                            <p class="product-page-qa-meta">answered on 08/14/2015</p>
-                        </div>
-                    </article>
-                    <article class="product-page-qa">
-                        <div class="product-page-qa-question">
-                            <p class="product-page-qa-text">so this phone works on tmobile current network ll i have to do is switch the sim card?</p>
-                            <p class="product-page-qa-meta">asked by Blake Hardacre on 08/14/2015</p>
-                        </div>
-                        <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">the phone works fine with T-mobile's 4G LTE network, all you have to do is get a micro-sim card and insert it to start using your phone, if you already have a micro-sim sized card then just plug in.</p>
-                            <p class="product-page-qa-meta">answered on 08/14/2015</p>
-                        </div>
-                    </article>
-                    <article class="product-page-qa">
-                        <div class="product-page-qa-question">
-                            <p class="product-page-qa-text">does it work on the boost mobile network?</p>
-                            <p class="product-page-qa-meta">asked by John Mathis on 08/14/2015</p>
-                        </div>
-                        <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">It only works on gms networks so you have to check I think boost mobile is cmd network like verizon towers not sure</p>
-                            <p class="product-page-qa-meta">answered on 08/14/2015</p>
-                        </div>
-                    </article>
-                    <article class="product-page-qa">
-                        <div class="product-page-qa-question">
-                            <p class="product-page-qa-text">Is this version waterproof?</p>
-                            <p class="product-page-qa-meta">asked by Brandon Burgess on 08/14/2015</p>
-                        </div>
-                        <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">All Sony Xperia z lines are water proof the Sony Xperia z1,z2,z3,z ultra all of those</p>
-                            <p class="product-page-qa-meta">answered on 08/14/2015</p>
-                        </div>
-                    </article>
-                    <article class="product-page-qa">
-                        <div class="product-page-qa-question">
-                            <p class="product-page-qa-text">how strong is the phone..does the screen crack easily ?</p>
-                            <p class="product-page-qa-meta">asked by Blake Abraham on 08/14/2015</p>
-                        </div>
-                        <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">Is strong enough to keep running even if it drops a few times, but I reckon if you kick it it Will smash, as any smartphone in the World. I had it for 3 months and it hasn't got a scratch.</p>
-                            <p class="product-page-qa-meta">answered on 08/14/2015</p>
-                        </div>
-                    </article>
+                @endforeach
+
 					</div>
                 </div>
             </div>
@@ -115,23 +59,12 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <p class="category-pagination-sign">Customer Q&amp;A. Showing 1 - 12</p>
+                    <p class="category-pagination-sign"></p>
                 </div>
                 <div class="col-md-6">
                     <nav>
                         <ul class="pagination category-pagination pull-right">
-                            <li class="active"><a href="#">1</a>
-                            </li>
-                            <li><a href="#">2</a>
-                            </li>
-                            <li><a href="#">3</a>
-                            </li>
-                            <li><a href="#">4</a>
-                            </li>
-                            <li><a href="#">5</a>
-                            </li>
-                            <li class="last"><a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                            </li>
+                            {{ $show_faq->links() }}
                         </ul>
                     </nav>
                 </div>
