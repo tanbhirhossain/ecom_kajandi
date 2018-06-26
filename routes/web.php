@@ -143,6 +143,10 @@ Route::get('/answer-a-question','CustomerQAController@answer_a_question')->name(
 Route::get('/pending-faq-list', 'AdminFAQController@pendingFaqList')->name('pendingFaqList');
 Route::get('/answer-faq/{id}', 'AdminFAQController@answerFaq')->name('answerFaq');
 Route::post('/answer-faq-post', 'AdminFAQController@postFaqAnswer')->name('postFaqAnswer');
+Route::get('/faq-delete/{id}', 'AdminFAQController@faqPendingDelete')->name('faqPendingDelete');
+Route::get('/faq-answered-list', 'AdminFAQController@faqAnsweredList')->name('faqAnsweredList');
+Route::get('/faq-answer-edit/{id}', 'AdminFAQController@faqAnsEdit')->name('faqAnsEdit');
+Route::post('/faq-answer-update/{id}','AdminFAQController@faqAnsUpdate')->name('faqAnsUpdate');
 //END FAQ route
 
 //==========================BackEnd Start ==========================//

@@ -1,10 +1,10 @@
 @extends('backend.admin_master')
-@section('page_title','Pending Question')
+@section('page_title','Ansered Faq Question')
 @section('admin_content')
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Question not Answered</strong>
+                <strong class="card-title">FAQ Answered List</strong>
                 <small>
                     <p class="text-center alert-success">{{Session::get('message_success')}}</p>
                     <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
@@ -15,21 +15,22 @@
                     <thead>
                     <tr>
                         <th width="5%">SL</th>
-                        <th width="70%">Question</th>
-                        <th width="25%">Action</th>
+                        <th width="40%">Question</th>
+                        <th width="35%">Answer</th>
+                        <th width="10%">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php $i=0;?>
-                    @foreach($not_ans as $qa)
+                    @foreach($answered_list as $qa)
                         <?php $i++;?>
                         <tr>
                             <td>{{$i}}</td>
-
                             <td>{{$qa->question}}</td>
+                            <td>{{$qa->answer}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('answerFaq', $qa->id)}}"><i class="fa fa-info"></i>Answer</a>
-                                <a class="btn btn-danger" href="{{route('faqPendingDelete', $qa->id)}}"><i class="fa fa-trash-o"></i>Delete </a>
+                                <a class="btn btn-primary" href="{{route('faqAnsEdit', $qa->fid)}}"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger" href="{{route('faqPendingDelete', $qa->fid)}}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
