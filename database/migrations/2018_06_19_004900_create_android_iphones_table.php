@@ -17,6 +17,7 @@ class CreateAndroidIphonesTable extends Migration
             $table->increments('id');
             $table->string('android')->nullable();
             $table->string('iphone')->nullable();
+            $table->string('trade_manager')->nullable();
             $table->timestamps();
         });
     }

@@ -50,7 +50,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="{{route('admin-home')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
                 <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
@@ -91,74 +91,81 @@
                         <li><i class="fa fa-id-badge"></i><a href="{{url('/product-list')}}">Product List</a></li>
                     </ul>
                 </li>
-                <h3 class="menu-title">Vendor Part</h3><!-- /.menu-title -->
+                {{--<h3 class="menu-title">Vendor Part</h3><!-- /.menu-title -->--}}
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Vendors</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('addVendor')}}">Add Vendor </a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="{{route('vendorList')}}">Vendor List</a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="{{route('vendorBlockedList')}}">Pending/Block List</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Vendor Product</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('pendingVendorPro')}}">Pending List </a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="{{route('approvedSellerPro')}}">Approved List</a></li>
+                {{--<li class="menu-item-has-children dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Vendors</a>--}}
+                    {{--<ul class="sub-menu children dropdown-menu">--}}
+                        {{--<li><i class="fa fa-puzzle-piece"></i><a href="{{route('addVendor')}}">Add Vendor </a></li>--}}
+                        {{--<li><i class="fa fa-id-badge"></i><a href="{{route('vendorList')}}">Vendor List</a></li>--}}
+                        {{--<li><i class="fa fa-id-badge"></i><a href="{{route('vendorBlockedList')}}">Pending/Block List</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+                {{--<li class="menu-item-has-children dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Vendor Product</a>--}}
+                    {{--<ul class="sub-menu children dropdown-menu">--}}
+                        {{--<li><i class="fa fa-puzzle-piece"></i><a href="{{route('pendingVendorPro')}}">Pending List </a></li>--}}
+                        {{--<li><i class="fa fa-id-badge"></i><a href="{{route('approvedSellerPro')}}">Approved List</a></li>--}}
 
-                    </ul>
-                </li>
+                    {{--</ul>--}}
+                {{--</li>--}}
                 <h3 class="menu-title">Customer Q & A</h3><!-- /.menu-title -->
 
                 <li>
                     <a href="{{route('manage-q-a')}}"> <i class="menu-icon ti-email"></i>Manage Q & A </a>
                 </li>
-                <h3 class="menu-title">Advert Section</h3><!-- /.menu-title -->
+                <h3 class="menu-title">User Section</h3><!-- /.menu-title -->
 
-              <li class="menu-item-has-children dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home Advertise</a>
-                  <ul class="sub-menu children dropdown-menu">
-                      <li><i class="fa fa-puzzle-piece"></i><a href="{{route('addHomeAdvert')}}">Add Advertise </a></li>
-                      <li><i class="fa fa-id-badge"></i><a href="{{route('adrvertList')}}">Ads List</a></li>
+              {{--<li class="menu-item-has-children dropdown">--}}
+                  {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home Advertise</a>--}}
+                  {{--<ul class="sub-menu children dropdown-menu">--}}
+                      {{--<li><i class="fa fa-puzzle-piece"></i><a href="{{route('addHomeAdvert')}}">Add Advertise </a></li>--}}
+                      {{--<li><i class="fa fa-id-badge"></i><a href="{{route('adrvertList')}}">Ads List</a></li>--}}
 
-                  </ul>
-              </li>
+                  {{--</ul>--}}
+              {{--</li>--}}
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Manage User</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('add-user')}}">Add user </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('user-list')}}">User List</a></li>
 
-              <li class="menu-item-has-children dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Subscirber</a>
-                  <ul class="sub-menu children dropdown-menu">
-                      <li><i class="fa fa-puzzle-piece"></i><a href="{{route('subsList')}}">Subscriber list </a></li>
-                      <li><i class="fa fa-id-badge"></i><a href="{{route('sendNewsletter')}}">Send Newsletter</a></li>
-
-                  </ul>
-              </li>
-              <li class="menu-item-has-children dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>FAQ</a>
-                  <ul class="sub-menu children dropdown-menu">
-                      <li><i class="fa fa-puzzle-piece"></i><a href="{{route('pendingFaqList')}}">Pending Ask list </a></li>
-                      <li><i class="fa fa-id-badge"></i><a href="{{route('faqAnsweredList')}}">Answered FAQ list</a></li>
-
-                  </ul>
-              </li>
-
+                    </ul>
+                </li>
+                <h3 class="menu-title">Order Section</h3><!-- /.menu-title -->
                 <li>
                     <a href="{{route('manage-order')}}"> <i class="menu-icon ti-email"></i>Manage Order </a>
                 </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
-                        <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
-                        <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
-                    </ul>
-                </li>
+                <h3 class="menu-title">Blog Post</h3><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Blog Category</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                        <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('add-blog-category')}}">Add Category </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('blog-category-list')}}">Category List</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Blog Post</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('add-blog')}}">Add Blog Post </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('blog-list')}}">Blog Post List</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Subscirber</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('subsList')}}">Subscriber list </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('sendNewsletter')}}">Send Newsletter</a></li>
+
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>FAQ</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('pendingFaqList')}}">Pending Ask list </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('faqAnsweredList')}}">Answered FAQ list</a></li>
+
                     </ul>
                 </li>
                 <h3 class="menu-title">Footer Part</h3><!-- /.menu-title -->
@@ -169,6 +176,13 @@
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{route('social-option')}}">Social Option </a></li>
                         <li><i class="fa fa-id-badge"></i><a href="{{route('contact-option')}}">Contatc Option</a></li>
                         <li><i class="fa fa-id-badge"></i><a href="{{route('apps-download-option')}}">Apps Download LInk</a></li>
+                    </ul>
+                </li>
+				<li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Manage Page</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('add-new-page')}}">Add New Page</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('page-list')}}">Page List</a></li>
                     </ul>
                 </li>
             </ul>

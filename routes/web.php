@@ -2,12 +2,21 @@
 
 
 //==========================Front Start ==========================//
+
+
 Route::get('/', function () {
     return view('frontend.front_view.main_page.index');
 });
-
+Route::get('/error-page', function () {
+    return view('frontend.page.404');
+});
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Faq route
+Route::get('/faq', 'GuestController@askQuestion')->name('faq');
+Route::post('/faq-question', 'FAQController@postQuestion')->name('postQuestion');
+//End Faw route
 //Subscriber route
 Route::post('/subscribe-email', 'EmailSubscriberController@saveEmail')->name('saveEmail');
 Route::get('/subscribed-list', 'AdminSubscriberController@subsList')->name('subsList');
@@ -18,13 +27,9 @@ Route::get('/show-single-mail/{id}', 'AdminSubscriberController@showSingleMail')
 Route::post('/send-single-mail', 'AdminSubscriberController@sendSingleMail')->name('sendSingleMail');
 //End Subscriber route
 
-//Faq route
-Route::get('/faq', 'GuestController@askQuestion')->name('askQuestion');
-Route::post('/faq-question', 'FAQController@postQuestion')->name('postQuestion');
-//End Faw route
-
 //Product sortBy Route start
 Route::get('/shop','FSortByController@shop_content')->name('shop');
+Route::get('/error-page','FSortByController@error_page')->name('error-page');
 Route::get('/product-category/{id}','FSortByController@product_by_category')->name('product-category');
 Route::get('/product-sub-category/{id}','FSortByController@product_by_sub_category')->name('product-sub-category');
 Route::get('/product-manufacturer/{id}','FSortByController@product_by_manufacturer')->name('product-manufacturer');
@@ -86,6 +91,12 @@ Route::get('customer-login', function(){
 })->name('custLog');
 Route::get('show-contact-form','CustomUserController@show_contact_form')->name('show-contact-form');
 Route::post('save-contact-form','CustomUserController@save_contact_form')->name('save-contact-form');
+Route::get('/page-view/{id}','CustomUserController@page_view')->name('page-view');
+Route::get('/about-us','CustomUserController@about_us')->name('about-us');
+Route::get('/blog','CustomUserController@blog')->name('blog');
+Route::get('/blog-single/{id}','CustomUserController@blog_single')->name('blog-single');
+Route::get('/post-by-cat/{id}','CustomUserController@post_by_cat')->name('post-by-cat');
+Route::get('/blog-search','CustomUserController@blog_search')->name('blog-search');
 
 
 //CustomUserController route end
@@ -132,6 +143,7 @@ Route::get('/view-contact-message/{id}','FooterController@view_contact_messsage'
 Route::get('/replay-contact-message/{id}','FooterController@replay_contact_messsage')->name('replay-contact-message');
 Route::get('/delete-contact-message/{id}','FooterController@delete_contact_message')->name('delete-contact-message');
 Route::post('/replay-contact-message','FooterController@replay_contact_message')->name('replay-contact-message');
+
 //Footer Route End
 
 //Customer Q&A Route Start
@@ -149,9 +161,12 @@ Route::get('/faq-answer-edit/{id}', 'AdminFAQController@faqAnsEdit')->name('faqA
 Route::post('/faq-answer-update/{id}','AdminFAQController@faqAnsUpdate')->name('faqAnsUpdate');
 //END FAQ route
 
+
+
+
 //==========================BackEnd Start ==========================//
 // Admin Panel Route
-Route::GET('admin/home','AdminController@index');
+Route::GET('admin/home','AdminController@index')->name('admin-home');
 Route::GET('admin/editor','EditorController@index');
 Route::GET('admin/test','EditorController@test');
 Route::GET('admin','Admin\LoginController@showLoginForm')->name('admin.login');
@@ -252,7 +267,38 @@ Route::get('/delete-qa/{id}','AdminQAController@delete_qa')->name('delete-qa');
 Route::get('/view-qa/{id}','AdminQAController@view_qa')->name('view-qa');
 Route::get('/delete-answer/{id}/{question_id}','AdminQAController@delete_answer')->name('delete-answer');
 //Amin Qa Route End
+//Page Builder Route start
+Route::get('/add-new-page','PageBuilderController@add_new_page')->name('add-new-page');
+Route::get('/page-list','PageBuilderController@page_list')->name('page-list');
+Route::post('/save-page','PageBuilderController@save_page')->name('save-page');
+Route::get('/delete-page/{id}','PageBuilderController@delete_page')->name('delete-page');
+Route::post('/update-page','PageBuilderController@update_page')->name('update-page');
+Route::get('/edit-page/{id}','PageBuilderController@edit_page')->name('edit-page');
+//Page Builder Route End
 
+//Blog Route Start
+Route::get('add-blog-category','BlogCategoryController@add_category')->name('add-blog-category');
+Route::post('save-blog-category','BlogCategoryController@save_category')->name('save-blog-category');
+Route::get('blog-category-list','BlogCategoryController@category_list')->name('blog-category-list');
+Route::get('delete-blog-category/{id}','BlogCategoryController@category_delete')->name('delete-blog-category');
+Route::get('edit-blog-category/{id}','BlogCategoryController@category_edit')->name('edit-blog-category');
+Route::post('update-blog-category','BlogCategoryController@category_update')->name('update-blog-category');
+
+Route::get('add-blog','BlogCategoryController@add_blog')->name('add-blog');
+Route::post('save-blog','BlogCategoryController@save_blog')->name('save-blog');
+Route::get('blog-list','BlogCategoryController@blog_list')->name('blog-list');
+Route::get('delete-blog/{id}','BlogCategoryController@blog_delete')->name('delete-blog');
+Route::get('edit-blog/{id}','BlogCategoryController@blog_edit')->name('edit-blog');
+Route::post('update-blog','BlogCategoryController@blog_update')->name('update-blog');
+
+//Blog Route End
+
+//Admin User Manage Start
+Route::get('add-user','AdminController@add_user')->name('add-user');
+Route::get('user-list','AdminController@user_list')->name('user-list');
+Route::post('save-user','AdminController@save_user')->name('save-user');
+
+//Admin User Manage End
 
 //==========================BackEnd End ==========================//
 //==========================Vendor Start ==========================//

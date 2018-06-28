@@ -21,7 +21,7 @@
                 <select onchange="this.form.submit()" class="category-selections-select" name="product_sort">
                     <option selected disabled>--Default--</option>
                     <option value="new_est">Newest First</option>
-                    <option value="best_rated">Best Raited</option>
+                    {{--<option value="best_rated">Best Raited</option>--}}
                     <option value="low_price">Price : Lowest First</option>
                     <option value="high_price">Price : Highest First</option>
                     <option value="a_to_z">Title : A - Z</option>
@@ -111,7 +111,7 @@
 
                 </div>
 
-                <form>
+                {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Payment type</h3>
                         <div class='checkbox'>
@@ -134,6 +134,8 @@
                             </label>
                         </div>
                     </div>
+                {{--{!! Form::close() !!}--}}
+                {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Pricing</h3>
                         <div class='checkbox'>
@@ -152,9 +154,106 @@
                             </label>
                         </div>
                     </div>
+                {{--{!! Form::close() !!}--}}
+                {!! Form::open(['url'=>'product-sorting','method'=>'GET','id'=>'brand_form']) !!}
+                    <div class="category-filters-section">
+                        <h3 class="widget-title-sm">Manufacturer</h3>
+                       @foreach($all_manufacturer as $brand)
+                           <?php
+                                $brand_count = DB::table('products')->where('manufacturer_id',$brand->id)->count();
+                            ?>
+                        <div class='checkbox' >
+                            <label>
+
+                                <input class='i-check form'  type='checkbox'  />{{$brand->name}} ({{$brand_count}})
+                                {{--<a class="i-check form" href=""></a><a href="">Brand (20)</a>--}}
+                            </label>
+                        </div>
+                       @endforeach
+                    </div>
+                {!! Form::close() !!}
+                {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+                    <div class="category-filters-section">
+                        <h3 class="widget-title-sm">Model</h3>
+                        <div class='checkbox'>
+                            <label>
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Samsung s6 (02)
+                            </label>
+                        </div>
+                        <div class='checkbox'>
+                            <label>
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Samsung j5 (03)
+                            </label>
+                        </div>
+                        <div class='checkbox'>
+                            <label>
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />apple x (03)
+                            </label>
+                        </div>
+                    </div>
+                {{--{!! Form::close() !!}--}}
+                    {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+                    <div class="category-filters-section">
+                        <h3 class="widget-title-sm">Condition</h3>
+                        <div class='checkbox'>
+                            <label>
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Faily Used (02)
+                            </label>
+                        </div>
+                        <div class='checkbox'>
+                            <label>
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />New (03)
+                            </label>
+                        </div>
+                        <div class='checkbox'>
+                            <label>
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Refurbished (03)
+                            </label>
+                        </div>
+                    </div>
+                    {{--{!! Form::close() !!}--}}
+                {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+                <div class="category-filters-section">
+                    <h3 class="widget-title-sm">Source</h3>
+                    <div class='checkbox'>
+                        <label>
+                            <input class='i-check form' name='model[]' type='checkbox' value=1 />Retailer (02)
+                        </label>
+                    </div>
+                    <div class='checkbox'>
+                        <label>
+                            <input class='i-check form' name='model[]' type='checkbox' value=1 />Distributor (03)
+                        </label>
+                    </div>
+                    <div class='checkbox'>
+                        <label>
+                            <input class='i-check form' name='model[]' type='checkbox' value=1 />OEM (03)
+                        </label>
+                    </div>
+                </div>
+                {{--{!! Form::close() !!}--}}
+                {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+                <div class="category-filters-section">
+                    <h3 class="widget-title-sm">Add On</h3>
+                    <div class='checkbox'>
+                        <label>
+                            <input class='i-check form' name='model[]' type='checkbox' value=1 />Less Than 1yr (02)
+                        </label>
+                    </div>
+                    <div class='checkbox'>
+                        <label>
+                            <input class='i-check form' name='model[]' type='checkbox' value=1 />1 Year (03)
+                        </label>
+                    </div>
+                    <div class='checkbox'>
+                        <label>
+                            <input class='i-check form' name='model[]' type='checkbox' value=1 />More Than 1yr (03)
+                        </label>
+                    </div>
+                </div>
+                {{--{!! Form::close() !!}--}}
 
 
-                </form>
             </aside>
         </div>
         <div class="col-md-9">

@@ -6,6 +6,7 @@ use App\AndroidIphone;
 use App\ContactForm;
 use App\Social;
 use Illuminate\Http\Request;
+use Mail;
 
 class FooterController extends Controller{
     public function __construct()
@@ -58,11 +59,13 @@ class FooterController extends Controller{
         if ($social!=NULL) {
             $social->android = $request->android;
             $social->iphone = $request->iphone;
+            $social->trade_manager = $request->trade_manager;
             $social->save();
         }else{
             $social = new AndroidIphone();
             $social->android = $request->android;
             $social->iphone = $request->iphone;
+            $social->trade_manager = $request->trade_manager;
             $social->save();
         }
         return redirect('apps-download-option')->with('message_success','Apps Download Link Added Successfully.....');
@@ -88,6 +91,17 @@ class FooterController extends Controller{
         return view('backend.footer.contact.replay_contact_message',compact('message_by_id'));
     }
     public function replay_contact_message(Request $request){
-        return $request->all();
+      $data =[
+          'email'=>$request->email,
+          'content'=>$request->message,
+          'subject'=>$request->subject
+      ];
+
+      Mail::send('backend.footer.contact.contact_email_message',$data,function ($variable) use ($data){
+            $variable->to($data['email']);
+            $variable->subject($data['subject']);
+            $variable->from('r25n.office@gmail.com');
+      });
+        return back()->with('message_success', 'Email Sent Succesfully........');
     }
 }

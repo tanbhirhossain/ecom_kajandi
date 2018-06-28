@@ -11,7 +11,7 @@
         </div>
     </div>
 
-
+    {{Auth::guard('admin')->user()->name}}
     <div class="col-sm-6 col-lg-3">
         <div class="card text-white bg-flat-color-1">
             <div class="card-body pb-0">

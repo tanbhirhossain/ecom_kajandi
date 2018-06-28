@@ -14,8 +14,8 @@ class SellerProductController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:seller');
-        $this->middleware('seller');
+        $this->middleware('auth');
+//        $this->middleware('seller');
     }
 
     public function index()

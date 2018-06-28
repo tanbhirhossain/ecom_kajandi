@@ -6,7 +6,7 @@
         <h1 class="page-title">
             @foreach($all_category as $category)
                 @if($category->id == $product_by_id->cat_id)
-                {{$category->cat_name}}
+                {{$product_by_id->name}}
                 @endif
             @endforeach
         </h1>

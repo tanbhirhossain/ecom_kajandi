@@ -41,6 +41,19 @@
                         <div class="error">{{ $errors->first('android') }}</div>
                     @endif
                 </div>
+                <div class="form-group">
+                    <label for="company" class=" form-control-label"> TradeManager LINk</label>
+                    <input type="text" id="company" name="trade_manager" class="form-control"
+                           @if($apps_link!=NULL)
+                           value="{{$apps_link->trade_manager}}"
+                           @else
+                           placeholder="Enter Iphone Apps Download URL"
+                            @endif
+                    >
+                    @if ($errors->has('trade_manager'))
+                        <div class="error">{{ $errors->first('trade_manager') }}</div>
+                    @endif
+                </div>
 
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add/Update</button>
             </div>

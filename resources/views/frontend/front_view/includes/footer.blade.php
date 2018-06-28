@@ -3,18 +3,20 @@
 
 
         <div class="row" id="app">
-
+            <?php
+            $download_link = DB::table('android_iphones')->where('id',1)->first();
+            ?>
             <div class="col-md-6 col-sm-6">
                 <div class="app-txt">
                     <span class="donload-text">Download:</span>
-                    <span class="app-image"><a href="#" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/app-store.png" alt="apple store"></a></span>
-                    <span class="app-image"><a href="#" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/play-store.png" alt="apple store"></a></span>
+                    <span class="app-image"><a href="@if($download_link !=Null){{$download_link->iphone}} @endif" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/app-store.png" alt="apple store"></a></span>
+                    <span class="app-image"><a href="@if($download_link !=Null){{$download_link->android}} @endif" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/play-store.png" alt="apple store"></a></span>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="app-txt">
                     <span class="donload-text">Download TradeManager:</span>
-                    <span class="app-image"><a href="#" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/trend.png" alt="apple store"></a></span>
+                    <span class="app-image"><a href="@if($download_link !=Null){{$download_link->trade_manager}} @endif" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/trend.png" alt="apple store"></a></span>
 
                 </div>
             </div>
@@ -23,27 +25,30 @@
 
         <div class="row" >
             <div class="col-md-4 col-sm-4">
-                <h4 class="widget-title-sm">TheBox Shop</h4>
-                <p>Nullam magnis magnis maecenas neque ut purus condimentum semper senectus feugiat et</p>
+                <h4 class="widget-title-sm">Kajandi Shop</h4>
+                <p>Our Social Platform, Join our social network team........</p>
                 <ul class="main-footer-social-list">
+                    <?php
+                        $social_link = DB::table('socials')->where('id',1)->first();
+                    ?>
                     <li>
-                        <a class="fa fa-facebook" href="#"></a>
+                        <a class="fa fa-facebook" href="@if($download_link !=Null){{$social_link->facebook}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-twitter" href="#"></a>
+                        <a class="fa fa-twitter" href="@if($download_link !=Null){{$social_link->twitter}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-pinterest" href="#"></a>
+                        <a class="fa fa-pinterest" href="@if($download_link !=Null){{$social_link->pinterest}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-instagram" href="#"></a>
+                        <a class="fa fa-instagram" href="@if($download_link !=Null){{$social_link->instagram}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-google-plus" href="#"></a>
+                        <a class="fa fa-google-plus" href="@if($download_link !=Null){{$social_link->google_plus}} @endif"></a>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-4 col-sm-4">
+         <!--   <div class="col-md-4 col-sm-4">
                 <h4 class="widget-title-sm">Popular Tags</h4>
                 <ul class="main-footer-tag-list">
                     <li><a href="#">New Season</a>
@@ -69,7 +74,8 @@
                     <li><a href="#">laptops</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
+            <div class="col-md-4"></div>
             <div class="col-md-4 col-sm-4">
                 <h4 class="widget-title-sm">Contact us</h4>
                 <div class="footer-contact">
@@ -83,24 +89,16 @@
         <ul class="main-footer-links-list">
             <li><a href="#">About Us</a>
             </li>
-            <li><a href="#">Jobs</a>
-            </li>
-            <li><a href="#">Legal</a>
-            </li>
-            <li><a href="#">Support & Customer Service</a>
-            </li>
             <li><a href="#">Blog</a>
             </li>
-            <li><a href="#">Privacy</a>
+            <?php
+                $pages = DB::table('page_models')->get();
+            ?>
+            @foreach($pages as $page)
+
+            <li><a href="{{route('page-view',$page->id)}}">{{$page->name}}</a>
             </li>
-            <li><a href="#">Terms</a>
-            </li>
-            <li><a href="#">Press</a>
-            </li>
-            <li><a href="#">Shipping</a>
-            </li>
-            <li><a href="#">Payments & Refunds</a>
-            </li>
+            @endforeach
         </ul>
     </div>
 </footer>
@@ -108,7 +106,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p class="copyright-text">Copyright &copy; <a href="#">TheBox</a> 2014. Designed my remtsoy. All rights reseved</p>
+                <p class="copyright-text">Copyright &copy; <a href="http://r25n.com">R25N Technology</a> 2018.  All rights reserved</p>
             </div>
 
 
@@ -181,8 +179,8 @@
 <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>
-    $('textarea').ckeditor();
-    // $('.textarea').ckeditor(); // if class is prefered.
+    // $('textarea').ckeditor();
+    $('.textarea').ckeditor(); // if class is prefered.
 </script>
 
 

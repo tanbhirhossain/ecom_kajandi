@@ -45,7 +45,7 @@
                             <p class="product-page-qa-meta">asked by {{$faq->name}} on {{$faq->qs_time}}</p>
                         </div>
                         <div class="product-page-qa-answer">
-                            <p class="product-page-qa-text">{{$faq->answer}}</p>
+                            <p class="product-page-qa-text">{!! $faq->answer !!}</p>
                             <p class="product-page-qa-meta">answered on {{$faq->ans_time}}</p>
                         </div>
                     </article>

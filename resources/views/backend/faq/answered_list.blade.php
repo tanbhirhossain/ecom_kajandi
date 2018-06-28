@@ -14,10 +14,10 @@
                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th width="5%">SL</th>
+                        <th width="10%">SL</th>
                         <th width="40%">Question</th>
                         <th width="35%">Answer</th>
-                        <th width="10%">Action</th>
+                        <th width="15%">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,8 +26,8 @@
                         <?php $i++;?>
                         <tr>
                             <td>{{$i}}</td>
-                            <td>{{$qa->question}}</td>
-                            <td>{{$qa->answer}}</td>
+                            <td>{!! $qa->question !!}</td>
+                            <td>{!! $qa->answer !!}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{route('faqAnsEdit', $qa->fid)}}"><i class="fa fa-edit"></i></a>
                                 <a class="btn btn-danger" href="{{route('faqPendingDelete', $qa->fid)}}"><i class="fa fa-trash"></i></a>

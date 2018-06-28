@@ -26,8 +26,6 @@
     <link rel="stylesheet" href="{{asset('public/backend/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
 
 
-
-
 </head>
 
 <body>
@@ -36,22 +34,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="navbar-before-sign">Everything You Need is theBox</p>
+                    <p class="navbar-before-sign">Everything You Need is Kajandi</p>
                 </div>
                 <div class="col-md-6">
                     <ul class="nav navbar-nav navbar-right navbar-right-no-mar">
-                        <li><a href="#">About Us</a>
+                        <li><a href="{{route('about-us')}}">About Us</a>
                         </li>
-                        <li><a href="#">Blog</a>
+                        <li><a href="{{route('blog')}}">Blog</a>
                         </li>
-                        <li><a href="#">Contact Us</a>
+                        <li><a href="{{route('show-contact-form')}}">Contact Us</a>
                         </li>
-                        <li><a href="#">FAQ</a>
+                        <li><a href="{{route('faq')}}">FAQ</a>
                         </li>
-                        <li><a href="#">Wishlist</a>
+                        <li><a href="{{route('wishlist')}}">Wishlist</a>
                         </li>
-                        <li><a href="#">Help</a>
-                        </li>
+                        {{--<li><a href="#">Help</a>--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
             </div>
@@ -143,7 +141,7 @@
                 <select class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="user_type">
                     <option value="1">Buyer</option>
                     <option value="2">Supplier</option>
-                    <option value="3">Both</option>
+                    {{--<option value="3">Both</option>--}}
                 </select>
                 @if ($errors->has('phone'))
                     <span class="invalid-feedback">
@@ -173,7 +171,7 @@
             </p>
             <div class="checkbox">
                 <label>
-                    <input class="i-check" type="checkbox" />Subscribe to the Newsletter</label>
+                    <input class="i-check" name="newsletter" type="checkbox" />Subscribe to the Newsletter</label>
             </div>
             <input class="btn btn-primary" type="submit" value="Create Account" />
 
@@ -398,7 +396,7 @@
 
                 {{Form::open(['url'=>'search','method'=>'GET','class'=>'navbar-form navbar-left navbar-main-search'])}}
                     <div class="form-group">
-                         <input class="form-control" name="search"  type="text" placeholder="Search the Entire Store..." >
+                         <input class="form-control header_searchbox" name="search"  type="text" placeholder="Search the Entire Store..." >
                     </div>
                         <button type="submit" id="searchbtn" class="fa fa-search navbar-main-search-submit"> </button>
                 {!! Form::close() !!}

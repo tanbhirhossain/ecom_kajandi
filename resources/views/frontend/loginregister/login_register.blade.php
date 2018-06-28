@@ -87,7 +87,7 @@
                             <select class="form-control" name="user_type">
                                 <option value="1">Buyer</option>
                                 <option value="2">Supplier</option>
-                                <option value="3">Both</option>
+                                {{--<option value="3">Both</option>--}}
                             </select>
                         </div>
                         <div class="form-group">
@@ -110,7 +110,7 @@
                         </p>
                         <div class="checkbox">
                             <label>
-                                <input class="i-check" type="checkbox" />Subscribe to the Newsletter</label>
+                                <input class="i-check" name="newsletter" type="checkbox" />Subscribe to the Newsletter</label>
                         </div>
                         <input class="btn btn-primary" type="submit" value="Create Account" />
 

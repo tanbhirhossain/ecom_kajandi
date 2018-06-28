@@ -149,10 +149,10 @@ function isValidEmailAddress(emailAddress) {
       {val: val,
       	ordernumber: ordernumber},
       function(data) {
-      	
+
       });
  	}
- 	
+
  })
 
  $('.ordersdetailsworkspcae').change(function() {
@@ -165,10 +165,10 @@ function isValidEmailAddress(emailAddress) {
       {val: val,
       	order_id: order_id},
       function(data) {
-      	
+
       });
  	}
- 	
+
  })
 
  $('.searchsite').bind('keyup', function() {
@@ -186,52 +186,51 @@ function isValidEmailAddress(emailAddress) {
  	}
  })
 
-
 $('html body').click(function() {
  	$('.tt-dropdown-menu').hide();
 })
 
-$(document).ready(function(){
-    $('#searchbox').selectize({
-        valueField: 'url',
-        labelField: 'name',
-        searchField: ['name'],
-        maxOptions: 10,
-        options: [],
-        create: false,
-        render: {
-            option: function(item, escape) {
-                return '<div style=padding: 0; margin: 0><img style=width:30px src="/'+ item.image +'">' +escape(item.name)+'</div>';
-            }
-        },
-        optgroups: [
-            {value: 'product', label: 'Products'},
-            {value: 'category', label: 'Categories'}
-        ],
-        optgroupField: 'class',
-        optgroupOrder: ['product','category'],
-        load: function(query, callback) {
-            if (!query.length) return callback();
-            $.ajax({
-                url: '/searchautocomplete',
-                type: 'GET',
-                dataType: 'json',
-                data: {
-                    q: query
-                },
-                error: function() {
-                    callback();
-                },
-                success: function(res) {
-                    callback(res.data);
-                }
-            });
-        },
-        onChange: function(){
-            window.location = this.items[0];
-        }
-    });
-});
+// $(document).ready(function(){
+//     $('.searchbox').selectize({
+//         valueField: 'url',
+//         labelField: 'name',
+//         searchField: ['name'],
+//         maxOptions: 10,
+//         options: [],
+//         create: false,
+//         render: {
+//             option: function(item, escape) {
+//                 return '<div style=padding: 0; margin: 0><img style=width:30px src="/'+ item.image +'">' +escape(item.name)+'</div>';
+//             }
+//         },
+//         optgroups: [
+//             {value: 'product', label: 'Products'},
+//             {value: 'category', label: 'Categories'}
+//         ],
+//         optgroupField: 'class',
+//         optgroupOrder: ['product','category'],
+//         load: function(query, callback) {
+//             if (!query.length) return callback();
+//             $.ajax({
+//                 url: '/searchautocomplete',
+//                 type: 'GET',
+//                 dataType: 'json',
+//                 data: {
+//                     q: query
+//                 },
+//                 error: function() {
+//                     callback();
+//                 },
+//                 success: function(res) {
+//                     callback(res.data);
+//                 }
+//             });
+//         },
+//         onChange: function(){
+//             window.location = this.items[0];
+//         }
+//     });
+// });
 
 $(document).ready(function(){
 $('.iCheck-helper').click(function() {

@@ -18,6 +18,7 @@ class CreateAdminTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('user_role')->nullable()->comment('1 admin, 2 moderator, 3 editor');
             $table->rememberToken();
             $table->timestamps();
         });

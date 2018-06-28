@@ -145,5 +145,8 @@ class FSortByController extends Controller{
         }
         return view('frontend.product.shop')->with(compact('all_products'));
     }
+    public function error_page(){
+        return view('frontend.page.error_page');
+    }
 
 }

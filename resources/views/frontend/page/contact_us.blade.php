@@ -6,58 +6,58 @@
             <h1 class="page-title">Contact Us</h1>
         </header>
         <div class="row">
-            <div class="col-md-9">
-                <p class="lead">Lacus dolor placerat rutrum facilisi tempus mauris aenean sociis neque platea metus eros cum diam tellus facilisi ultricies lectus curae curabitur quam libero viverra nam vitae phasellus lectus primis lectus</p>
-            </div>
+            {{--<div class="col-md-9">--}}
+            {{--<p class="lead">Contacu Us Our Shop Please Send a Message</p>--}}
+            {{--</div>--}}
         </div>
         <div class="gap gap-small"></div>
         <div class="row" data-gutter="60">
             <div class="col-md-5">
                 <h3 class="widget-title">Leave a Message</h3>
-                <p class="text-muted">Class conubia id magna cursus conubia proin venenatis suscipit aliquet massa dui odio velit ultrices augue luctus lorem placerat tortor</p>
+                <p class="text-muted">Contacu Us Our Shop Please Send a Message</p>
                 <p class="text-center alert-success">{{Session::get('message_success')}}</p>
                 <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
                 {!! Form::open(['method'=>'POST','url'=>'save-contact-form']) !!}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input class="form-control" type="text" name="name"/>
-                                @if ($errors->has('name'))
-                                    <div class="error">{{ $errors->first('name') }}</div>
-                                @endif
-                            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" type="text" name="name"/>
+                            @if ($errors->has('name'))
+                                <div class="error">{{ $errors->first('name') }}</div>
+                            @endif
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>E-mail</label>
-                                <input class="form-control" type="text" name="email" />
-                                @if ($errors->has('email'))
-                                    <div class="error">{{ $errors->first('email') }}</div>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Subject</label>
-                                <input class="form-control" type="text" name="subject"/>
-                                @if ($errors->has('subject'))
-                                    <div class="error">{{ $errors->first('subject') }}</div>
-                                @endif
-
-                            </div>
-                        </div>
-
                     </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea class="form-control" name="message"></textarea>
-                        @if ($errors->has('message'))
-                            <div class="error">{{ $errors->first('message') }}</div>
-                        @endif
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" name="email" />
+                            @if ($errors->has('email'))
+                                <div class="error">{{ $errors->first('email') }}</div>
+                            @endif
+                        </div>
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Send a Message" />
-               {!! Form::close() !!}
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input class="form-control" type="text" name="subject"/>
+                            @if ($errors->has('subject'))
+                                <div class="error">{{ $errors->first('subject') }}</div>
+                            @endif
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" name="message" name="" id="" cols="30" rows="10"></textarea>
+                    @if ($errors->has('message'))
+                        <div class="error">{{ $errors->first('message') }}</div>
+                    @endif
+                </div>
+                <input class="btn btn-primary" type="submit" value="Send a Message" />
+                {!! Form::close() !!}
             </div>
             <div class="col-md-7">
                 <div class="row">
@@ -123,4 +123,4 @@
         </div>
     </div>
     <div class="gap gap-small"></div>
-    @endsection
+@endsection

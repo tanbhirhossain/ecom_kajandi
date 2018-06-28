@@ -10,11 +10,7 @@ class AdminVendorProductController extends Controller
 {
     public function pendingVendorPro()
     {
-      $pending_pro = SellerProduct::where('pro_status', 0)
-                    ->join('sellers', 'sellers.id', '=', 'seller_id')
-                    
-                    ->get();
-
+      $pending_pro = SellerProduct::All()->where('pro_status', 0);
       return view('backend.seller.products.pending_list',compact('pending_pro'));
     }
 

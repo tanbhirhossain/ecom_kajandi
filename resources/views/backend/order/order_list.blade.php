@@ -36,14 +36,14 @@
                     <td>{{$order->payment_type}}</td>
 
                     <td>
-                        <a class="btn btn-info" href="{{url('/view-order/'.$order->id)}}"><i class="fa fa-eye"></i> </a>
-                        <a class="btn btn-success" href="{{url('/download-pdf/'.$order->id)}}"><i class="fa fa-download"></i> </a>
+                        <a class="btn btn-info" href="{{url('/view-order/'.$order->id)}}"><i class="fa fa-eye"></i></a>
+                        <a class="btn btn-success" href="{{url('/download-pdf/'.$order->id)}}"><i class="fa fa-download"></i></a>
                         @if($order->order_status=='pending')
-                        <a class="btn btn-primary" href="{{url('/order-status/'.$order->id)}}"><i class="fa fa-star-o"></i> </a>
+                        <a class="btn btn-primary" href="{{url('/order-status/'.$order->id)}}"><i class="fa fa-star-o"></i></a>
                         @elseif($order->order_status=='confirm')
-                            <a class="btn btn-primary" href="{{url('/order-status/'.$order->id)}}"><i class="fa fa-star"></i> </a>
+                            <a class="btn btn-primary" href="{{url('/order-status/'.$order->id)}}"><i class="fa fa-star"></i></a>
                         @endif
-                        <a class="btn btn-warning" href="{{url('/edit-order/'.$order->id)}}"><i class="fa fa-edit"></i></a>
+                        {{--<a class="btn btn-warning" href="{{url('/edit-order/'.$order->id)}}"><i class="fa fa-edit"></i></a>--}}
                         <a class="btn btn-danger" href="{{url('/order-delete/'.$order->id)}}"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
