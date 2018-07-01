@@ -42,7 +42,7 @@ class CreateSellerProductsTable extends Migration
 
             $table->integer('small_order_accpeted')->nullable()->comment('1=>Yes, 2=>No');
             $table->integer('minumum_order_qty')->nullable();
-            $table->integer('unit');// unsigned needed type Integer
+            $table->integer('unit')->unsigned()->nullable();// unsigned needed type Integer
             $table->float('unit_price');// unsigned needed type Integer
             $table->float('price_for_optional_units')->nullable();
             $table->float('price_15_days')->nullable();

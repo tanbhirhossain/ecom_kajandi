@@ -12,7 +12,7 @@ $('.i-check, .i-radio').iCheck({
 
 // price slider
 $("#price-slider").ionRangeSlider({
-    min: 100,
+    min: 5,
     max: 10000000,
     type: 'double',
     prefix: "₦",

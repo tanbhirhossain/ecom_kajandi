@@ -11,6 +11,7 @@
   $menufacturer = App\Manufacter::All();
   $category = App\Category::All();
   $subcategory = App\Subcategory::All();
+  $unit = App\Unit::All();
 
  ?>
 
@@ -553,20 +554,17 @@
                                    </label>
                                </div>
                                <div class="col-md-4 ph10">
-                                   <label for="unit" class="field prepend-icon">
-                                       <input type="number" name="unit" id="unit"
-                                              class="gui-input"
-                                              placeholder="Unit">
-                                       <label for="unit" class="field-icon">
-                                           <i class="fa fa-sort-amount-desc"></i>
-                                       </label>
-                                   </label>
-                                   @if ($errors->has('unit'))
-                                       <span class="invalid-feedback">
-                                           <strong>{{ $errors->first('unit') }}</strong>
-                                       </span>
-                                   @endif
+                                 <label for="payment_type" class="field select">
+                                     <select id="unit" name="unit">
+                                         <option value="" selected="selected">Select Unit ...</option>
+                                         @foreach($unit as $uni)
+                                         <option value="{{$uni->id}}">{{$uni->name}}</option>
+                                         @endforeach
 
+
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
                                </div>
                            </div>
                            <div class="section row">
@@ -648,7 +646,13 @@
                                      <label for="stock_qty" class="field-icon">
                                          <i class="fa fa-usd"></i>
                                      </label>
+
                                  </label>
+                                 @if ($errors->has('stock_qty'))
+                                     <span class="invalid-feedback">
+                                         <strong>{{ $errors->first('stock_qty') }}</strong>
+                                     </span>
+                                 @endif
                              </div>
                            </div>
                            <div class="section row">
@@ -891,7 +895,7 @@
                                          <i class="fa fa-file"></i>
                                      </label>
                                  </label>
-                                
+
                              </div>
                            </div>
                            <hr class="short alt">

@@ -34,7 +34,7 @@ class SellerProductController extends Controller
          'pro_cat_id' => 'required',
          'pro_subcat_id' => 'required',
          'pro_image' => 'required',
-         'unit' => 'required',
+         'stock_qty' => 'required',
          'unit_price' => 'required',
          'payment_type' => 'required',
          'condition' => 'required'

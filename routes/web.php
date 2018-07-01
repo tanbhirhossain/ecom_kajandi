@@ -40,6 +40,7 @@ Route::get('/product-sorting','FSortByController@product_sorting')->name('produc
 Route::get('/product-sorting-item','FSortByController@product_sorting_item')->name('product-sorting-item');
 Route::get('/product-by-category','FSortByController@product_by_cat')->name('product-by-category');
 Route::get('/product-details/{id}','FSortByController@product_details')->name('product-single');
+Route::get('/filter-by-price','FSortByController@filter_by_price')->name('filter-by-price');
 //Product sortBy Route End
 
 //Cart Route Start
@@ -214,7 +215,14 @@ Route::get('delete-model/{id}','ProductModelController@model_delete')->name('del
 Route::get('edit-model/{id}','ProductModelController@model_edit')->name('edit-model');
 Route::post('update-model','ProductModelController@model_update')->name('update-model');
 //Product Model Route End
-
+//Product Unit Route Start
+Route::get('add-unit','UnitController@add_unit')->name('add-unit');
+Route::post('save-unit','UnitController@save_unit')->name('save-unit');
+Route::get('unit-list','UnitController@unit_list')->name('unit-list');
+Route::get('delete-unit/{id}','UnitController@unit_delete')->name('delete-unit');
+Route::get('edit-unit/{id}','UnitController@unit_edit')->name('edit-unit');
+Route::post('update-unit','UnitController@unit_update')->name('update-unit');
+//Product Unit Route End
 //Product  Route Start
 Route::get('add-product','ProductController@add_product')->name('add-product');
 Route::post('save-product','ProductController@save_product')->name('save-product');

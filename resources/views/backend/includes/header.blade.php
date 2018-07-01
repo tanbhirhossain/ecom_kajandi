@@ -1,4 +1,3 @@
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -79,6 +78,13 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{url('/add-model')}}">Add Product Model</a></li>
                         <li><i class="fa fa-id-badge"></i><a href="{{url('/model-list')}}">Product Model List</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Product Unit</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{url('/add-unit')}}">Add Product Unit</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{url('/unit-list')}}">Product Unit List</a></li>
                     </ul>
                 </li>
 
@@ -251,7 +257,6 @@
                                 @endif
                         <?php
                                 $all_message = DB::table('contact_forms')->orderBy('id','desc')->where('status','unread')->get()->take(5);
-
                             ?>
                            @foreach($all_message as $contact)
                                 <?php
@@ -305,7 +310,6 @@
                                         $time_message = $interval->s." seconds ago";
                                     }
                                 }
-
                                 ?>
                             <a class="dropdown-item media bg-flat-color-5" href="{{route('view-contact-message',$contact->id)}}">
                                 <span class="photo media-left"><img alt="avatar" src="{{asset('/public/backend/images/')}}/avatar/3.png"></span>

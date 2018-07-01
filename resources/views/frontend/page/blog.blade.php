@@ -72,6 +72,10 @@
                             $recent_post = DB::table('blogs')->orderBy('id','desc')->get()->take(5);
                         ?>
                         @foreach($recent_post as $post)
+                                <?php
+                                $dt = new DateTime($post->created_at);
+                                $post_date =  $dt->format('l d, Y');
+                                ?>
                         <li>
                             <h5><a href="{{route('blog-single',$post->id)}}">{{$post->name}}</a></h5>
                             <p>{{$post_date}}</p>
