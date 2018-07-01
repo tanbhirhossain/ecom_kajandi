@@ -169,8 +169,8 @@
 
                                         <td class="">{{$sp->pro_name}}</td>
                                         <td class="">{{$sp->model_number}}</td>
-                                        <td class="">{{$sp->pro_price}}</td>
-                                        <td class="">{{$sp->unit_of_measure}}</td>
+                                        <td class="">{{$sp->unit_price}}</td>
+                                        <td class="">{{$sp->unit}}</td>
                                         <td class="text-right">
                                             <div class="btn-group text-right">
                                                 <button type="button"

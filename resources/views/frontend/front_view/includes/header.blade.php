@@ -189,10 +189,14 @@
         <h3 class="widget-title">Password Recovery</h3>
         <p>Enter Your Email and We Will Send the Instructions</p>
         <hr />
-        <form>
+        <form action="{{ route('password.email') }}" method="post">@csrf
             <div class="form-group">
                 <label>Your Email</label>
-                <input class="form-control" type="text" />
+                <input class="form-control" name="email" type="text" />
+                @if ($errors->has('email'))
+                    <span class="invalid-feedback">
+      <strong>{{ $errors->first('email') }}</strong>
+        @endif
             </div>
             <input class="btn btn-primary" type="submit" value="Recover Password" />
         </form>

@@ -28,15 +28,16 @@ class SellerProductController extends Controller
     {
       $request->validate([
          'pro_name' => 'required|max:255|min:2',
-         'pro_generic_name' => 'required',
+         //'pro_generic_name' => 'required',
          'manufacture_id' => 'required',
          'pro_description' => 'required|min:2|',
          'pro_cat_id' => 'required',
          'pro_subcat_id' => 'required',
          'pro_image' => 'required',
-         'unit_of_measure' => 'required',
-         'pro_price' => 'required',
-         'payment_method' => 'required',
+         'unit' => 'required',
+         'unit_price' => 'required',
+         'payment_type' => 'required',
+         'condition' => 'required'
 
      ]);
 
@@ -101,7 +102,7 @@ class SellerProductController extends Controller
       $product->pro_status = 0;
 
       $product->pro_name = $request->pro_name;
-      $product->pro_generic_name = $request->pro_generic_name;
+      //$product->pro_generic_name = $request->pro_generic_name;
       $product->pro_description = $request->pro_description;
       $product->pro_keyword = $request->pro_keyword;
       $product->part_number = $request->part_number;
@@ -110,6 +111,9 @@ class SellerProductController extends Controller
       $product->supply_type = $request->supply_type;
       $product->pro_cat_id = $request->pro_cat_id;
       $product->pro_subcat_id = $request->pro_subcat_id;
+      $product->condition = $request->condition;
+      $product->pro_warranty = $request->pro_warranty;
+      $product->pro_gurrantee = $request->pro_gurrantee;
 
       $product->pro_image = $pro_image;
 
@@ -124,27 +128,39 @@ class SellerProductController extends Controller
 
       $product->small_order_accpeted = $request->small_order_accpeted;
       $product->minumum_order_qty = $request->minumum_order_qty;
-      $product->unit_of_measure = $request->unit_of_measure;
-      $product->pro_price = $request->pro_price;
+      $product->unit = $request->unit;
+      $product->unit_price = $request->unit_price;
       $product->price_for_optional_units = $request->price_for_optional_units;
       $product->price_15_days = $request->price_15_days;
       $product->price_30_days = $request->price_30_days;
       $product->optional_description = $request->optional_description;
 
+      $product->stock_qty = $request->stock_qty;
       $product->sample_fee = $request->sample_fee;
       $product->currency_in_naira = $request->currency_in_naira;
       $product->credit_payment_details = $request->credit_payment_details;
       $product->length = $request->length;
       $product->width = $request->width;
       $product->height = $request->height;
+
       $product->weight_per_pack = $request->weight_per_pack;
-      $product->export_carton_dimension = $request->export_carton_dimension;
+      $product->export_carton_width = $request->export_carton_width;
+      $product->export_carton_length = $request->export_carton_length;
       $product->export_carton_weight = $request->export_carton_weight;
+
 
       $product->delivery_w_state = $request->delivery_w_state;
       $product->delivery_rate_w_range = $request->delivery_rate_w_range;
       $product->delivery_rate_o_range = $request->delivery_rate_o_range;
-      $product->payment_method = $request->payment_method;
+
+      $product->strength_of_meterial = $request->strength_of_meterial;
+      $product->seller_remark = $request->seller_remark;
+      $product->payment_type = $request->payment_type;
+
+      $product->duration_delivery_state = $request->duration_delivery_state;
+      $product->duration_within_state = $request->duration_within_state;
+      $product->duration_out_state = $request->duration_out_state;
+
 
 
       $product->save();
@@ -317,6 +333,8 @@ class SellerProductController extends Controller
       $pv->delivery_rate_w_range = $request->delivery_rate_w_range;
       $pv->delivery_rate_o_range = $request->delivery_rate_o_range;
       $pv->payment_method = $request->payment_method;
+
+
 
 
       $pv->save();

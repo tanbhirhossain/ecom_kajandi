@@ -246,7 +246,7 @@
                                            </span>
                                        @endif
                                    </div>
-                                   <div class="section mb10">
+                                   <!--<div class="section mb10">
                                        <label for="pro_generic_name" class="field prepend-icon">
                                            <input type="text" name="pro_generic_name" id="pro_generic_name"
                                                   class="event-name gui-input br-light light"
@@ -260,7 +260,7 @@
                                                <strong>{{ $errors->first('pro_generic_name') }}</strong>
                                            </span>
                                        @endif
-                                   </div>
+                                   </div>-->
                                    <div class="section mb10">
                                        <label class="field prepend-icon">
                                            <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="comment"
@@ -332,8 +332,6 @@
 
 
                            </div>
-                           <!-- -------------- /Section -------------- -->
-
                            <div class="section row">
                                <div class="col-md-4 ph10">
                                    <label for="supply_type" class="field select">
@@ -380,10 +378,46 @@
                                    @endif
                                </div>
                            </div>
-                           <!-- -------------- /Section -------------- -->
+                           <div class="section row">
+                             <div class="col-md-4 ph10">
+                                 <label for="supply_type" class="field select">
+                                     <select id="condition" name="condition">
+                                         <option value="" selected="selected">Condition...</option>
+                                         <option value="1">New</option>
+                                         <option value="2">Refurbished</option>
+                                         <option value="3">Fairly Used</option>
 
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
+                             </div>
+                             <div class="col-md-4 ph10">
+                                 <label for="supply_type" class="field select">
+                                     <select id="pro_warranty" name="pro_warranty">
+                                         <option value="" selected="selected">Warranty...</option>
+                                         <option value="1">Less Then 0</option>
+                                         <option value="2">One Year</option>
+                                         <option value="3">Above One Year</option>
 
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
+                             </div>
+                             <div class="col-md-4 ph10">
+                                 <label for="supply_type" class="field select">
+                                     <select id="pro_gurrantee" name="pro_gurrantee">
+                                         <option value="" selected="selected">Gurrantee...</option>
+                                         <option value="1">Less Then 0</option>
+                                         <option value="2">One Year</option>
+                                         <option value="3">Above One Year</option>
+
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
+                             </div>
+                           </div>
                        </div>
+
                        <div id="tab1_2" class="tab-pane">
 
                            <div class="section row">
@@ -496,9 +530,7 @@
 
                        </div>
                        <div id="tab1_3" class="tab-pane">
-
                            <div class="section row">
-
                                <div class="col-md-4 ph10">
                                    <label for="small_order_accpeted" class="field select">
                                        <select id="small_order_accpeted" name="small_order_accpeted">
@@ -510,7 +542,6 @@
                                        <i class="arrow double"></i>
                                    </label>
                                </div>
-
                                <div class="col-md-4 ph10">
                                    <label for="minumum_order_qty" class="field prepend-icon">
                                        <input type="number" name="minumum_order_qty" id="minumum_order_qty"
@@ -522,41 +553,35 @@
                                    </label>
                                </div>
                                <div class="col-md-4 ph10">
-                                   <label for="unit_of_measure" class="field prepend-icon">
-                                       <input type="number" name="unit_of_measure" id="unit_of_measure"
+                                   <label for="unit" class="field prepend-icon">
+                                       <input type="number" name="unit" id="unit"
                                               class="gui-input"
-                                              placeholder="Unit of measure">
-                                       <label for="unit_of_measure" class="field-icon">
+                                              placeholder="Unit">
+                                       <label for="unit" class="field-icon">
                                            <i class="fa fa-sort-amount-desc"></i>
                                        </label>
                                    </label>
-                                   @if ($errors->has('unit_of_measure'))
+                                   @if ($errors->has('unit'))
                                        <span class="invalid-feedback">
-                                           <strong>{{ $errors->first('unit_of_measure') }}</strong>
+                                           <strong>{{ $errors->first('unit') }}</strong>
                                        </span>
                                    @endif
 
                                </div>
-                               <!-- -------------- /section -------------- -->
-
-
-
                            </div>
-                           <!-- -------------- /Section -------------- -->
-
                            <div class="section row">
                              <div class="col-md-6 ph10">
-                                 <label for="pro_price" class="field prepend-icon">
-                                     <input type="text" name="pro_price" id="pro_price"
+                                 <label for="unit_price" class="field prepend-icon">
+                                     <input type="text" name="unit_price" id="unit_price"
                                             class="gui-input"
-                                            placeholder="Price...">
-                                     <label for="pro_price" class="field-icon">
+                                            placeholder="Unit Price...">
+                                     <label for="unit_price" class="field-icon">
                                          <i class="fa fa-usd"></i>
                                      </label>
                                  </label>
-                                 @if ($errors->has('pro_price'))
+                                 @if ($errors->has('unit_price'))
                                      <span class="invalid-feedback">
-                                         <strong>{{ $errors->first('pro_price') }}</strong>
+                                         <strong>{{ $errors->first('unit_price') }}</strong>
                                      </span>
                                  @endif
                              </div>
@@ -571,10 +596,11 @@
                                  </label>
                              </div>
                            </div>
+
                            <div class="section row">
                              <div class="col-md-6 ph10">
                                  <label for="price_15_days" class="field prepend-icon">
-                                     <input type="text" name="15_days_price" id="price_for_optional_units"
+                                     <input type="text" name="15_days_price" id="15_days_price"
                                             class="gui-input"
                                             placeholder="Price for 15 days...">
                                      <label for="15_days_price" class="field-icon">
@@ -584,7 +610,7 @@
                              </div>
                              <div class="col-md-6 ph10">
                                  <label for="30_days_price" class="field prepend-icon">
-                                     <input type="text" name="30_days_price" id="price_for_optional_units"
+                                     <input type="text" name="30_days_price" id="30_days_price"
                                             class="gui-input"
                                             placeholder="Price for 30 days...">
                                      <label for="price_30_days" class="field-icon">
@@ -594,9 +620,9 @@
                              </div>
                            </div>
                            <div class="section row">
-                             <div class="col-md-6 ph10">
+                             <div class="col-md-4 ph10">
                                  <label for="sample_fee" class="field prepend-icon">
-                                     <input type="text" name="sample_fee" id="price_for_optional_units"
+                                     <input type="text" name="sample_fee" id="sample_fee"
                                             class="gui-input"
                                             placeholder="Sample Fee...">
                                      <label for="sample_fee" class="field-icon">
@@ -604,9 +630,9 @@
                                      </label>
                                  </label>
                              </div>
-                             <div class="col-md-6 ph10">
+                             <div class="col-md-4 ph10">
                                  <label for="currency_in_naira" class="field prepend-icon">
-                                     <input type="text" name="currency_in_naira" id="price_for_optional_units"
+                                     <input type="text" name="currency_in_naira" id="currency_in_naira"
                                             class="gui-input"
                                             placeholder="Currency in Naira...">
                                      <label for="currency_in_naira" class="field-icon">
@@ -614,7 +640,16 @@
                                      </label>
                                  </label>
                              </div>
-
+                             <div class="col-md-4 ph10">
+                                 <label for="currency_in_naira" class="field prepend-icon">
+                                     <input type="text" name="stock_qty" id="stock_qty"
+                                            class="gui-input"
+                                            placeholder="Stock Quantity...">
+                                     <label for="stock_qty" class="field-icon">
+                                         <i class="fa fa-usd"></i>
+                                     </label>
+                                 </label>
+                             </div>
                            </div>
                            <div class="section row">
                                <div class="col-md-12 ph10">
@@ -651,7 +686,6 @@
                            <!-- -------------- /Section -------------- -->
                        </div>
                        <div id="tab1_4" class="tab-pane">
-
                            <div class="section row">
                              <div class="col-md-4 ph10">
                                  <label for="length" class="field prepend-icon">
@@ -681,7 +715,7 @@
                                    <label for="height" class="field prepend-icon">
                                        <input type="number" name="height" id="height"
                                               class="gui-input"
-                                              placeholder="Length">
+                                              placeholder="Height">
                                        <label for="height" class="field-icon">
                                            <i class="fa fa-sort-amount-desc"></i>
                                        </label>
@@ -690,10 +724,8 @@
                                <!-- -------------- /section -------------- -->
 
                            </div>
-                           <!-- -------------- /Section -------------- -->
-
                            <div class="section row">
-                             <div class="col-md-4 ph10">
+                               <div class="col-md-4 ph10">
                                  <label for="weight_per_pack" class="field prepend-icon">
                                      <input type="number" name="weight_per_pack" id="weight_per_pack"
                                             class="gui-input"
@@ -703,31 +735,118 @@
                                      </label>
                                  </label>
                              </div>
-                               <!-- -------------- /section -------------- -->
-
                                <div class="col-md-4 ph10">
-                                   <label for="export_carton_dimension" class="field prepend-icon">
-                                       <input type="number" name="export_carton_dimension" id="export_carton_dimension"
+                                   <label for="export_carton_width" class="field prepend-icon">
+                                       <input type="number" name="export_carton_width" id="export_carton_width"
                                               class="gui-input"
-                                              placeholder="Export carton dimension">
-                                       <label for="export_carton_dimension" class="field-icon">
+                                              placeholder="Export carton width">
+                                       <label for="export_carton_width" class="field-icon">
+                                           <i class="fa fa-sort-amount-desc"></i>
+                                       </label>
+                                   </label>
+                               </div>
+                               <div class="col-md-4 ph10">
+                                   <label for="export_carton_width" class="field prepend-icon">
+                                       <input type="number" name="export_carton_length" id="export_carton_length"
+                                              class="gui-input"
+                                              placeholder="Export carton length">
+                                       <label for="export_carton_length" class="field-icon">
                                            <i class="fa fa-sort-amount-desc"></i>
                                        </label>
                                    </label>
                                </div>
 
-                               <div class="col-md-4 ph10">
-                                   <label for="export_carton_weight" class="field prepend-icon">
-                                       <input type="number" name="export_carton_weight" id="export_carton_weight"
-                                              class="gui-input"
-                                              placeholder="Export carton weight">
-                                       <label for="export_carton_weight" class="field-icon">
-                                           <i class="fa fa-sort-amount-desc"></i>
-                                       </label>
-                                   </label>
-                               </div>
+                           </div>
+                           <div class="section row">
+
+                             <div class="col-md-4 ph10">
+                                 <label for="export_carton_weight" class="field prepend-icon">
+                                     <input type="number" name="export_carton_weight" id="export_carton_weight"
+                                            class="gui-input"
+                                            placeholder="Export carton weight">
+                                     <label for="export_carton_weight" class="field-icon">
+                                         <i class="fa fa-sort-amount-desc"></i>
+                                     </label>
+                                 </label>
                              </div>
-                             <div class="section row">
+                             <div class="col-md-4 ph10">
+                                 <label for="payment_type" class="field select">
+                                     <select id="payment_type" name="payment_type">
+                                         <option value="" selected="selected">Select Payment Type...</option>
+                                         <option value="1">Cash in advance</option>
+                                         <option value="2">Cash in delivery</option>
+
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
+                                 @if ($errors->has('payment_type'))
+                                     <span class="invalid-feedback">
+                                         <strong>{{ $errors->first('payment_type') }}</strong>
+                                     </span>
+                                 @endif
+                             </div>
+                             <div class="col-md-4 ph10">
+                                 <label for="export_carton_weight" class="field prepend-icon">
+                                     <input type="text" name="strength_of_meterial" id="strength_of_meterial"
+                                            class="gui-input"
+                                            placeholder="Strength of meterial">
+                                     <label for="strength_of_meterial" class="field-icon">
+                                         <i class="fa fa-sort-amount-desc"></i>
+                                     </label>
+                                 </label>
+                             </div>
+                           </div>
+                           <div class="section row">
+                             <div class="col-md-4 ph10">
+                                 <label for="small_order_accpeted" class="field select">
+                                     <select id="duration_delivery_state" name="duration_delivery_state">
+                                         <option value="" selected="selected">Duration Delivery State...</option>
+                                         <option value="1">24 Hours</option>
+                                         <option value="2">48 Hours</option>
+                                         <option value="3">3 Days</option>
+                                         <option value="4">5 Days</option>
+                                         <option value="5">7 Days</option>
+                                         <option value="6">9 Days</option>
+                                         <option value="7">20 Days</option>
+
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
+                             </div>
+                             <div class="col-md-4 ph10">
+                                 <label for="duration_within_state" class="field select">
+                                     <select id="duration_delivery_state" name="duration_within_state">
+                                         <option value="" selected="selected">Duration within State...</option>
+                                         <option value="1">24 Hours</option>
+                                         <option value="2">48 Hours</option>
+                                         <option value="3">3 Days</option>
+                                         <option value="4">5 Days</option>
+                                         <option value="5">7 Days</option>
+                                         <option value="6">9 Days</option>
+                                         <option value="7">20 Days</option>
+
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
+                             </div>
+                             <div class="col-md-4 ph10">
+                                 <label for="duration_out_state" class="field select">
+                                     <select id="duration_out_state" name="duration_out_state">
+                                         <option value="" selected="selected">Duration Out State...</option>
+                                         <option value="1">24 Hours</option>
+                                         <option value="2">48 Hours</option>
+                                         <option value="3">3 Days</option>
+                                         <option value="4">5 Days</option>
+                                         <option value="5">7 Days</option>
+                                         <option value="6">9 Days</option>
+                                         <option value="7">20 Days</option>
+
+                                     </select>
+                                     <i class="arrow double"></i>
+                                 </label>
+                             </div>
+                           </div>
+                           <div class="section row">
                                <div class="col-md-4 ph10">
                                    <label for="supply_type" class="field select">
                                        <select id="supply_type" name="supply_type">
@@ -761,25 +880,20 @@
                                </div>
                              </div>
                              <div class="section row">
-                               <div class="col-md-12 ph10">
-                                   <label for="payment_method" class="field select">
-                                       <select id="payment_method" name="payment_method">
-                                           <option value="" selected="selected">Select Payment Method...</option>
-                                           <option value="1">Cash in advance</option>
-                                           <option value="2">Cash in delivery</option>
 
-                                       </select>
-                                       <i class="arrow double"></i>
-                                   </label>
-                                   @if ($errors->has('payment_method'))
-                                       <span class="invalid-feedback">
-                                           <strong>{{ $errors->first('payment_method') }}</strong>
-                                       </span>
-                                   @endif
-                               </div>
                              </div>
-
-
+                           <div class="section row">
+                             <div class="section mb10">
+                                 <label class="field prepend-icon">
+                                     <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="seller_remark"
+                         name="seller_remark" placeholder="Seller Remark"></textarea>
+                                     <label for="pro_description" class="field-icon">
+                                         <i class="fa fa-file"></i>
+                                     </label>
+                                 </label>
+                                
+                             </div>
+                           </div>
                            <hr class="short alt">
 
                            <div class="section mbn text-right">
@@ -788,7 +902,6 @@
                                </p>
                            </div>
                            <!-- -------------- /section -------------- -->
-
                        </div>
 
                    </div>
