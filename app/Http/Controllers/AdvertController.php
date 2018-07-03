@@ -18,7 +18,7 @@ class AdvertController extends Controller
     public function addHomeAdvert(Request $request)
     {
       //$all_vendor = DB::table('sellers')->pluck("vendorname","id")->where('acStatus', 0)->all();
-      $all_vendor = Seller::where('acStatus', 0)->get();
+      $all_vendor = Seller::where('acStatus', null)->get();
     	return view('backend.seller.advert_featured.today_featured',compact('all_vendor'));
     }
 

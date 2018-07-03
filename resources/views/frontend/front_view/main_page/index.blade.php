@@ -11,24 +11,51 @@
 @section('main_slider')
     @include('frontend.front_view.includes.slider')
 @endsection
+<?php
 
+  $ads_s_1 = App\HomeAdvert::where('ads_section', 1)
+            ->join('seller_products', 'seller_products.id', '=', 'product_id')
+
+            ->orderBy('home_adverts.id', 'desc')
+            ->limit(3)
+            ->get();
+  $today_f = App\HomeAdvert::where('ads_section', 2)
+            ->join('seller_products','seller_products.id', '=', 'product_id')
+          //  ->select('seller_products.id as pid')
+            ->orderBy('home_adverts.id', 'desc')
+            ->limit(20)
+            ->get();
+ $best_f = App\HomeAdvert::where('ads_section', 3)
+            ->join('seller_products','seller_products.id', '=', 'product_id')
+            ->orderBy('home_adverts.id', 'desc')
+            ->limit(3)
+            ->get();
+ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)
+             ->orderBy('home_adverts.id', 'desc')
+             ->limit(2)
+            ->get();
+
+ ?>
 
 @section('main_content')
     <div class="row" data-gutter="15">
+      <div class="row" data-gutter="15">
+        @foreach($ads_s_1 as $ads)
         <div class="col-md-4">
-            <div class="banner" style="background-color:#83599A;">
-                <a class="banner-link" href="#"></a>
+            <div class="banner" style="background-color:{{$ads->banner_color}}">
+                <a class="banner-link" href="{{$ads->shop_now_link}}"></a>
                 <div class="banner-caption-top-left">
-                    <h5 class="banner-title">Safety Collection</h5>
-                    <p class="banner-desc">Vest Safety t-shirts .</p>
+                    <h5 class="banner-title">{{$ads->ads_title}}</h5>
+                    <p class="banner-desc">{{$ads->ads_description}}</p>
                     <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
                     </p>
-                    <p class="price">$33</p>
+                    <p class="price">${{$ads->price}}</p>
                 </div>
-                <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/vests-t-shirts.png" alt="Image Alternative text" title="Image Title" style="bottom: -8px; right: -32px;">
+                <img class="banner-img" src="{{asset($ads->ads_image)}}" alt="" title="Image Title" style="bottom: -8px; right: -32px;">
             </div>
         </div>
-        <div class="col-md-4">
+        @endforeach
+      <!--  <div class="col-md-4">
             <div class="banner" style="background-color:#EF4D9C;">
                 <a class="banner-link" href="#"></a>
                 <div class="banner-caption-top-right">
@@ -53,7 +80,7 @@
                 </div>
                 <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/Tipo-Paquete-Condensado-por-Aire-Marca-Trane-de-5-TR-en-adelante.png" alt="Image Alternative text" title="Image Title" style="top: -4px; right: -15px; width: 220px;">
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="gap"></div>
@@ -62,36 +89,36 @@
         <?php
         $feature_product = DB::table('products')->where('hot','HOT')->take('16')->orderBY('id','desc')->get();
         ?>
-        @foreach($feature_product as $product)
-            <div class="owl-item">
-                <div class="product  owl-item-slide">
-                    <div class="product-img-wrap">
-                        <a href="{{url('/product-details/'.$product->id)}}">
-                            <img width="250" height="150" class="product-img" src="{{asset($product->image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
-                        </a>
-                    </div>
-                    {{--<a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>--}}
-                    <div class="product-caption">
-                        <ul class="product-caption-rating">
-                            <li class="rated"><i class="fa fa-star"></i>
-                            </li>
-                            <li class="rated"><i class="fa fa-star"></i>
-                            </li>
-                            <li class="rated"><i class="fa fa-star"></i>
-                            </li>
-                            <li class="rated"><i class="fa fa-star"></i>
-                            </li>
-                            <li class="rated"><i class="fa fa-star"></i>
-                            </li>
-                        </ul>
-                        <h5 class="product-caption-title">{{$product->name}}</h5>
-                        <div class="product-caption-price"><span class="product-caption-price-new">${{$product->price}}</span>
-                            <a class="wishlist98" href="{{url('/add-to-wishlist/'.$product->id)}}"><i class="fa fa-heart"></i></a>
-                        </div>
-                    </div>
+        @foreach($today_f as $product)
+    <div class="owl-item">
+        <div class="product  owl-item-slide">
+            <div class="product-img-wrap">
+                <a href="{{url('/product-details/'.$product->id)}}">
+                <img width="250" height="150" class="product-img" src="{{asset($product->ads_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                </a>
+            </div>
+            <a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>
+            <div class="product-caption">
+                <ul class="product-caption-rating">
+                    <li class="rated"><i class="fa fa-star"></i>
+                    </li>
+                    <li class="rated"><i class="fa fa-star"></i>
+                    </li>
+                    <li class="rated"><i class="fa fa-star"></i>
+                    </li>
+                    <li class="rated"><i class="fa fa-star"></i>
+                    </li>
+                    <li class="rated"><i class="fa fa-star"></i>
+                    </li>
+                </ul>
+                <h5 class="product-caption-title">{{$product->name}}</h5>
+                <div class="product-caption-price"><span class="product-caption-price-new">${{$product->price}}</span>
+  <a class="wishlist98" href="{{url('/add-to-wishlist/'.$product->id)}}"><i class="fa fa-heart"></i></a>
                 </div>
             </div>
-        @endforeach
+        </div>
+    </div>
+    @endforeach
     </div>
 
     </div>
@@ -104,78 +131,78 @@
             <?php
             $home_page_product = DB::table('products')->take('8')->orderBY('id','desc')->get();
             ?>
-            @foreach($home_page_product as $product)
-                <div class="col-md-3">
-                    <div class="product ">
-                        <ul class="product-labels">
-                            @if($product->hot!=NULL && $product->stuff_pick!=NULL)
-                                <li>stuff pick</li>
-                                <li>hot</li>
-                            @elseif($product->hot!=NULL && $product->discount_price!=NULL)
-                                <li>hot</li>
-                                <li>
-                                    <?php
-                                    if($product->discount_price!=NULL && $product->discount_price<$product->price){
-                                        $discount = $product->price - $product->discount_price;
-                                        $main_price = $product->price;
-                                        $percentage = 100*($discount/$main_price);
-                                        echo $percentage."%";
-                                    }
-                                    ?>
-                                </li>
-                            @elseif($product->hot!=NULL)
-                                <li>hot</li>
-                            @elseif($product->stuff_pick!=NULL)
-                                <li>stuff pick</li>
-                            @elseif($product->discount_price!=NULL)
-                                <li>-30</li>
-                            @endif
-                        </ul>
-                        <div class="product-img-wrap">
-                            <img class="product-img-primary" width="253" height="253" src="{{asset($product->image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
-                            <img class="product-img-alt" width="253" height="253" src="{{asset($product->image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
-                        </div>
-                        <a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>
-                        <div class="product-caption">
-                            <ul class="product-caption-rating">
-                                <li class="rated"><i class="fa fa-star"></i>
-                                </li>
-                                <li class="rated"><i class="fa fa-star"></i>
-                                </li>
-                                <li class="rated"><i class="fa fa-star"></i>
-                                </li>
-                                <li class="rated"><i class="fa fa-star"></i>
-                                </li>
-                                <li class="rated"><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <h5 class="product-caption-title">{{$product->name}}</h5>
-                            <div class="product-caption-price">
+            @foreach($best_f as $product)
+          <div class="col-md-3">
+              <div class="product ">
+                  <ul class="product-labels">
+                      @if($product->hot!=NULL && $product->stuff_pick!=NULL)
+                      <li>stuff pick</li>
+                          <li>hot</li>
+                          @elseif($product->hot!=NULL && $product->discount_price!=NULL)
+                          <li>hot</li>
+                          <li>
+                              <?php
+                                  if($product->discount_price!=NULL && $product->discount_price<$product->price){
+                                  $discount = $product->price - $product->discount_price;
+                                  $main_price = $product->price;
+                                $percentage = 100*($discount/$main_price);
+                                echo $percentage."%";
+                                  }
+                              ?>
+                          </li>
+                      @elseif($product->hot!=NULL)
+                          <li>hot</li>
+                          @elseif($product->stuff_pick!=NULL)
+                          <li>stuff pick</li>
+                          @elseif($product->discount_price!=NULL)
+                          <li>-30</li>
+                      @endif
+                  </ul>
+                  <div class="product-img-wrap">
+                      <img class="product-img-primary" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                      <img class="product-img-alt" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                  </div>
+                  <a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>
+                  <div class="product-caption">
+                      <ul class="product-caption-rating">
+                          <li class="rated"><i class="fa fa-star"></i>
+                          </li>
+                          <li class="rated"><i class="fa fa-star"></i>
+                          </li>
+                          <li class="rated"><i class="fa fa-star"></i>
+                          </li>
+                          <li class="rated"><i class="fa fa-star"></i>
+                          </li>
+                          <li class="rated"><i class="fa fa-star"></i>
+                          </li>
+                      </ul>
+                      <h5 class="product-caption-title">{{$product->name}}</h5>
+                      <div class="product-caption-price">
 
 
-                       <span class="product-caption-price-new">
-                          @if($product->discount_price==NULL)
+                         <span class="product-caption-price-new">
+                            @if($product->discount_price==NULL)
                                $ {{$product->price}}
-                           @endif
-                        </span>
-                                @if($product->discount_price!=NULL)
-                                    <span class="product-caption-price-old">${{$product->price}}</span>
-                                    <span class="product-caption-price-new">${{$product->discount_price}}</span>
                                 @endif
-                            </div>
-                            <ul class="product-caption-feature-list">
-                                <li>{{$product->qty}} left</li>
-                                <li>Free Shipping</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+                          </span>
+                          @if($product->discount_price!=NULL)
+                              <span class="product-caption-price-old">${{$product->price}}</span>
+                              <span class="product-caption-price-new">${{$product->discount_price}}</span>
+                          @endif
+                      </div>
+                      <ul class="product-caption-feature-list">
+                          <li>{{$product->qty}} left</li>
+                          <li>Free Shipping</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+              @endforeach
         </div>
         {{--@endforeach--}}
         <div class="gap"></div>
         <div class="row" data-gutter="15">
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
                 <div class="banner" style="background-color:#9C7B60;">
                     <a class="banner-link" href="#"></a>
                     <div class="banner-caption-left">
@@ -187,20 +214,22 @@
                     </div>
                     <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/airqual2.png" alt="Image Alternative text" title="Image Title" style="bottom: -8px; right: 11px; width: 238px;">
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="banner" style="background-color:#DF643B;">
-                    <a class="banner-link" href="#"></a>
-                    <div class="banner-caption-left">
-                        <h5 class="banner-title">Navigation & Communication</h5>
-                        <p class="banner-desc">Integrated Safety Navigator.</p>
-                        <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
-                        </p>
-                        <p class="price">$200</p>
-                    </div>
-                    <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/p-KSN770-list-300x215.png" alt="Image Alternative text" title="Image Title" style="bottom: 0px; right: -20px; width: 326px;">
-                </div>
-            </div>
+            </div>-->
+            @foreach($ads_s_2 as $ads)
+      <div class="col-md-6">
+          <div class="banner" style="background-color:{{$ads->banner_color}};">
+              <a class="banner-link" href="{{$ads->shop_now_link}}"></a>
+              <div class="banner-caption-left">
+                  <h5 class="banner-title">{{$ads->ads_title}}</h5>
+                  <p class="banner-desc">{{$ads->ads_description}}</p>
+                  <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
+                  </p>
+    <p class="price">$100</p>
+              </div>
+              <img class="banner-img" src="{{asset($ads->ads_image)}}" alt="" title="Image Title" style="bottom: -8px; right: 11px; width: 238px;">
+          </div>
+      </div>
+      @endforeach
         </div>
 
         <div class="gap"></div>

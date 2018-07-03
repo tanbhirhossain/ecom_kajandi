@@ -122,14 +122,14 @@
                 </li>
                 <h3 class="menu-title">User Section</h3><!-- /.menu-title -->
 
-              {{--<li class="menu-item-has-children dropdown">--}}
-                  {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home Advertise</a>--}}
-                  {{--<ul class="sub-menu children dropdown-menu">--}}
-                      {{--<li><i class="fa fa-puzzle-piece"></i><a href="{{route('addHomeAdvert')}}">Add Advertise </a></li>--}}
-                      {{--<li><i class="fa fa-id-badge"></i><a href="{{route('adrvertList')}}">Ads List</a></li>--}}
+                <li class="menu-item-has-children dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home Advertise</a>
+                  <ul class="sub-menu children dropdown-menu">
+                      <li><i class="fa fa-puzzle-piece"></i><a href="{{route('addHomeAdvert')}}">Add Advertise </a></li>
+                      <li><i class="fa fa-id-badge"></i><a href="{{route('adrvertList')}}">Ads List</a></li>
 
-                  {{--</ul>--}}
-              {{--</li>--}}
+                  </ul>
+              </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Manage User</a>
                     <ul class="sub-menu children dropdown-menu">
