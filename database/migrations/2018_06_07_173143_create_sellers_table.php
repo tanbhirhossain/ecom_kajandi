@@ -16,16 +16,17 @@ class CreateSellersTable extends Migration
         Schema::create('Sellers', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('admin_id')->nullable();
+          $table->integer('user_id')->nullable();
           $table->string('email')->unique();
-          $table->string('vendorname');
-          $table->text('address');
-          $table->string('country');
+          $table->string('vendorname')->nullable();
+          $table->text('address')->nullable();
+          $table->string('country')->nullable();
           $table->string('url')->nullable();
           $table->string('cac')->nullable();
           $table->string('workforce')->nullable();
           $table->string('yearsofexp')->nullable();
           $table->string('ratings')->nullable();
-          $table->string('contactname');
+          $table->string('contactname')->nullable();
           $table->string('contactphone')->nullable();
           $table->string('contactemail')->nullable();
           $table->string('chairmanname')->nullable();
@@ -34,7 +35,7 @@ class CreateSellersTable extends Migration
           $table->string('producttype')->nullable();
           $table->string('location')->nullable();
           $table->string('vendor_type')->nullable();
-          $table->string('password');
+          $table->string('password')->nullable();
           $table->boolean('acStatus')->nullable();
           $table->rememberToken();
           $table->timestamps();

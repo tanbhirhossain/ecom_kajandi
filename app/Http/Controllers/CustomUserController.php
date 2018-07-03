@@ -7,6 +7,8 @@ use App\PageModel;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
+use Session;
+use App\Seller;
 
 class CustomUserController extends Controller{
 
@@ -17,6 +19,12 @@ class CustomUserController extends Controller{
             'user_type' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
+
+
+        $user_type =  $request->user_type;
+
+        if ($user_type == 2) {
+
         $su = new User();
         $su->name = $request->name;
         $su->email = $request->email;
@@ -24,8 +32,35 @@ class CustomUserController extends Controller{
         $su->user_type = $request->user_type;
         $su->password = bcrypt($request->password);
         $su->save();
+
+
+
+          $admin_id = $su->id;
+          Session::put('id',$admin_id);
+
+          $pa = new Seller();
+          $pa->user_id = $admin_id;
+          $pa->vendorname = $request->name;
+          $pa->email = $request->email;
+          $pa->contactphone = $request->phone;
+          $pa->password = bcrypt($request->password);
+          
+          $pa->save();
+        }else {
+          $su = new User();
+          $su->name = $request->name;
+          $su->email = $request->email;
+          $su->phone = $request->phone;
+          $su->user_type = $request->user_type;
+          $su->password = bcrypt($request->password);
+          $su->save();
+        }
+
+
         return redirect()->route('custLog')->with('message_success', 'Registration Successfully Complete Please Login');
     }
+
+
     public function show_contact_form(){
         return view('frontend.page.contact_us');
     }

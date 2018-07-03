@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Seller;
 use DB;
+use App\User;
+use Session;
 
 class AdminAddSellerController extends Controller
 {
@@ -44,7 +46,19 @@ class AdminAddSellerController extends Controller
        'password' => 'required|string|min:6|confirmed|max:19',
    ]);
 
+     $pu = new User();
+     $pu->name = $request->vendorname;
+     $pu->email = $request->email;
+     $pu->phone = $request->contactphone;
+     $pu->user_type = 2;
+     $pu->password = bcrypt($request->password);
+     $pu->save();
+
+     $user_id = $pu->id;
+     Session::put('id',$user_id);
+
     $sv = new Seller();
+    $sv->user_id = $user_id;
     $sv->admin_id = $request->admin_id;
     $sv->vendorname = $request->vendorname;
     $sv->vendor_type = $request->vendor_type;
@@ -67,12 +81,18 @@ class AdminAddSellerController extends Controller
     $sv->password = bcrypt($request->password);
     $sv->acStatus = 1;
     $sv->save();
+
+
+
+
+
     return back()->with('message_success', 'Vendor Added Succesfully');
+
   }
 
   public function vendorList()
   {
-    $all_vendor = Seller::where('acStatus', 0)->get();
+    $all_vendor = Seller::where('acStatus', Null)->get();
     return view('backend.seller.seller_list',compact('all_vendor'));
   }
 
