@@ -15,7 +15,7 @@
 
   $ads_s_1 = App\HomeAdvert::where('ads_section', 1)
             ->join('seller_products', 'seller_products.id', '=', 'product_id')
-
+            ->join('categories','categories.id', '=', 'pro_cat_id')
             ->orderBy('home_adverts.id', 'desc')
             ->limit(3)
             ->get();
@@ -31,6 +31,8 @@
             ->limit(3)
             ->get();
  $ads_s_2 = App\HomeAdvert::where('ads_section', 4)
+             ->join('seller_products', 'seller_products.id', '=', 'product_id')
+             ->join('categories','categories.id', '=', 'pro_cat_id')
              ->orderBy('home_adverts.id', 'desc')
              ->limit(2)
             ->get();
@@ -45,13 +47,17 @@
             <div class="banner" style="background-color:{{$ads->banner_color}}">
                 <a class="banner-link" href="{{$ads->shop_now_link}}"></a>
                 <div class="banner-caption-top-left">
-                    <h5 class="banner-title">{{$ads->ads_title}}</h5>
-                    <p class="banner-desc">{{$ads->ads_description}}</p>
+                    <h5 class="banner-title">{{$ads->cat_title}}</h5>
+                    <p class="banner-desc">{{$ads->pro_name}}</p>
                     <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
                     </p>
-                    <p class="price">${{$ads->price}}</p>
+                    <p class="price">${{$ads->unit_price}}</p>
                 </div>
+                @if($ads->ads_image)
                 <img class="banner-img" src="{{asset($ads->ads_image)}}" alt="" title="Image Title" style="bottom: -8px; right: -32px;">
+                @else
+                  <img class="banner-img" src="{{asset($ads->pro_image)}}" alt="" title="Image Title" style="bottom: -8px; right: -32px;">
+                @endif
             </div>
         </div>
         @endforeach
@@ -94,7 +100,11 @@
         <div class="product  owl-item-slide">
             <div class="product-img-wrap">
                 <a href="{{url('/product-details/'.$product->id)}}">
+                @if($product->ads_image)
                 <img width="250" height="150" class="product-img" src="{{asset($product->ads_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                @else
+                  <img width="250" height="150" class="product-img" src="{{asset($product->pro_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                @endif
                 </a>
             </div>
             <a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>
@@ -112,7 +122,7 @@
                     </li>
                 </ul>
                 <h5 class="product-caption-title">{{$product->name}}</h5>
-                <div class="product-caption-price"><span class="product-caption-price-new">${{$product->price}}</span>
+                <div class="product-caption-price"><span class="product-caption-price-new">${{$product->unit_price}}</span>
   <a class="wishlist98" href="{{url('/add-to-wishlist/'.$product->id)}}"><i class="fa fa-heart"></i></a>
                 </div>
             </div>
@@ -159,8 +169,13 @@
                       @endif
                   </ul>
                   <div class="product-img-wrap">
+                    @if($ads->ads_image)
+                    <img class="product-img-primary" width="253" height="253" src="{{asset($product->ads_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                    <img class="product-img-alt" width="253" height="253" src="{{asset($product->ads_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                    @else
                       <img class="product-img-primary" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
                       <img class="product-img-alt" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                    @endif
                   </div>
                   <a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>
                   <div class="product-caption">
@@ -186,7 +201,7 @@
                                 @endif
                           </span>
                           @if($product->discount_price!=NULL)
-                              <span class="product-caption-price-old">${{$product->price}}</span>
+                              <span class="product-caption-price-old">${{$product->unit_price}}</span>
                               <span class="product-caption-price-new">${{$product->discount_price}}</span>
                           @endif
                       </div>
@@ -220,17 +235,22 @@
           <div class="banner" style="background-color:{{$ads->banner_color}};">
               <a class="banner-link" href="{{$ads->shop_now_link}}"></a>
               <div class="banner-caption-left">
-                  <h5 class="banner-title">{{$ads->ads_title}}</h5>
-                  <p class="banner-desc">{{$ads->ads_description}}</p>
+                  <h5 class="banner-title">{{$ads->cat_name}}</h5>
+                  <p class="banner-desc">{{$ads->pro_name}}</p>
                   <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
                   </p>
-    <p class="price">$100</p>
+    <p class="price">{{$ads->unit_price}}</p>
               </div>
+              @if($ads->ads_image)
               <img class="banner-img" src="{{asset($ads->ads_image)}}" alt="" title="Image Title" style="bottom: -8px; right: 11px; width: 238px;">
+              @else
+                <img class="banner-img" src="{{asset($ads->pro_image)}}" alt="" title="Image Title" style="bottom: -8px; right: 11px; width: 238px;">
+              @endif
           </div>
       </div>
       @endforeach
         </div>
+      </div>
 
         <div class="gap"></div>
         <div class="container">

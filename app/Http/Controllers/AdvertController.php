@@ -37,7 +37,7 @@ class AdvertController extends Controller
          'ads_section' => 'required',
          'seller_id' => 'required',
          'product_id' => 'required',
-         'ads_image' => 'required'
+
      ]);
      $file = $request->file( 'ads_image' );
      if($file!=NULL) {
@@ -53,11 +53,9 @@ class AdvertController extends Controller
       $sv->ads_section = $request->ads_section;
       $sv->seller_id = $request->seller_id;
       $sv->product_id = $request->product_id;
-      $sv->ads_title = $request->ads_title;
-      $sv->ads_description = $request->ads_description;
-      $sv->shop_now_link = $request->shop_now_link;
+
       $sv->banner_color = $request->banner_color;
-      $sv->price = $request->price;
+
       $sv->ads_image = $advert_image;
       $sv->save();
       return back()->with('message_success', 'Home Advert Added Succesfully');
@@ -111,11 +109,9 @@ class AdvertController extends Controller
       $svs->ads_section = $request->ads_section;
       $svs->seller_id = $request->seller_id;
       $svs->product_id = $request->product_id;
-      $svs->ads_title = $request->ads_title;
-      $svs->ads_description = $request->ads_description;
-      $svs->shop_now_link = $request->shop_now_link;
+
       $svs->banner_color = $request->banner_color;
-      $svs->price = $request->price;
+    
       $svs->ads_image = $advert_image;
       $svs->save();
       return back()->with('message_success', 'Home Advert Updated Succesfully');
