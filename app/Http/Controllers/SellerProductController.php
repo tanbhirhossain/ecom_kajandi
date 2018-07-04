@@ -27,17 +27,17 @@ class SellerProductController extends Controller
     public function postSellerProduct(Request $request)
     {
       $request->validate([
-         'pro_name' => 'required|max:255|min:2',
-         //'pro_generic_name' => 'required',
-         'manufacture_id' => 'required',
-         'pro_description' => 'required|min:2|',
-         'pro_cat_id' => 'required',
-         'pro_subcat_id' => 'required',
-         'pro_image' => 'required',
-         'stock_qty' => 'required',
-         'unit_price' => 'required',
-         'payment_type' => 'required',
-         'condition' => 'required'
+//         'pro_name' => 'required|max:255|min:2',
+//         //'pro_generic_name' => 'required',
+//         'manufacture_id' => 'required',
+//         'pro_description' => 'required|min:2|',
+//         'pro_cat_id' => 'required',
+//         'pro_subcat_id' => 'required',
+//         'pro_image' => 'required',
+//         'stock_qty' => 'required',
+//         'unit_price' => 'required',
+//         'payment_type' => 'required',
+//         'condition' => 'required'
 
      ]);
 
@@ -111,7 +111,7 @@ class SellerProductController extends Controller
       $product->supply_type = $request->supply_type;
       $product->pro_cat_id = $request->pro_cat_id;
       $product->pro_subcat_id = $request->pro_subcat_id;
-      $product->condition = $request->condition;
+      $product->conditions = $request->condition;
       $product->pro_warranty = $request->pro_warranty;
       $product->pro_gurrantee = $request->pro_gurrantee;
 

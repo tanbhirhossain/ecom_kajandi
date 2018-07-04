@@ -17,7 +17,7 @@
     </div>
     <div class="card-body">
         <div class="card-body card-block">
-          <form action="{{url('/update-advert', $editAds->hid)}}" method="post" enctype="multipart/form-data">
+          <form action="{{url('/update-advert', $editAds->ads_id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="admin_id" value="{{Auth::id()}}">
           <div class="form-group">
@@ -64,36 +64,21 @@
             <label for="product_id" class=" form-control-label">Select Product</label>
 
             <select class="form-control" name="product_id">
-              <option option="selected" value="{{$editAds->product_id}}">{{$editAds->name}}</option>
+              <option option="selected" value="{{$editAds->product_id}}">{{$editAds->pro_name}}</option>
             </select>
             @if ($errors->has('product_id'))
                 <div class="error">{{ $errors->first('product_id') }}</div>
             @endif
           </div>
 
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="product_id" class=" form-control-label">Ads Title(Only For Banner)</label>
-              <input type="text" class="form-control" name="ads_title" value="{{$editAds->ads_title}}" placeholder="Enter banner ads title">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="product_id" class=" form-control-label">Ads Description(Only For Banner)</label>
-              <input type="text" class="form-control" name="ads_description" value="{{$editAds->ads_description}}" placeholder="Enter banner ads description">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="product_id" class=" form-control-label">Ads Shop Now link(Only For Banner)</label>
-            <input type="text" class="form-control" name="shop_now_link" value="{{$editAds->shop_now_link}}" placeholder="Enter Shop Now Link">
-          </div>
+
+
           <div class="row">
             <div class="form-group col-md-6">
               <label for="product_id" class=" form-control-label">Banner Color(Only For Banner)</label>
               <input type="color" style="height:39px;" class="form-control" name="banner_color" value="{{$editAds->banner_color}}" placeholder="Select Banner Color">
             </div>
-            <div class="form-group col-md-6">
-              <label for="product_id" class=" form-control-label">Display Price(Only For Banner)</label>
-              <input type="number" class="form-control" name="price" value="{{$editAds->price}}" placeholder="Enter Display Price">
-            </div>
+
          </div>
 
           <div class="form-group">

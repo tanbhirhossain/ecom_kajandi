@@ -7048,3 +7048,27 @@ form .stars span {
   }
 }
 .invalid-feedback strong{color:red!important;}
+.change_grid.grid-view #data .col-md-4 {
+  display:  none;
+}
+
+.change_grid.grid-view #data .col-md-4:first-child {
+  display:  block;
+  width:  100%;
+  text-align:  center;
+}
+
+.change_grid.grid-view .col-sm-4, .change_grid.grid-view .col-sm-8 {
+  width: 100%;
+}
+
+.change_grid {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+/*Pagination shop page*/
+.pagination > .active > span{
+  background-color:#CE3F51;
+  border-color: #CE3F51;
+}

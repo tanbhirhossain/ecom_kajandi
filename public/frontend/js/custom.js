@@ -128,3 +128,16 @@ $(".product-page-qty-minus").on('click', function() {
         $(this).next(".product-page-qty-input").val(currentVal - 1);
     }
 });
+//Developer Js
+// Changing Grid
+$("#grid_view").on( 'click', function() {
+    $('.change_grid').removeClass('col-md-12 list-view');
+    $('.change_grid').addClass('col-md-6 grid-view');
+    return false;
+} );
+
+$("#list_view").on( 'click', function() {
+    $('.change_grid').removeClass('col-md-6 grid-view');
+    $('.change_grid').addClass('col-md-12 list-view');
+    return false;
+} );

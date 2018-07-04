@@ -17,8 +17,9 @@
                     <thead>
                       <tr>
                         <th>Id</th>
-                        <th width="20%">Vendor Name</th>
-                        <th width="20%">Product Name</th>
+                        <th width="17%">Vendor Name</th>
+                        <th width="15%">Product Name</th>
+                        <th>Advert Type</th>
                         <th>Ads Image</th>
                         <th>Pro Image</th>
                         <th>Price</th>
@@ -34,14 +35,29 @@
                           <tr>
                             <td>{{$i}}</td>
                             <td>{{$av->vendorname}}</td>
-                            <td>{{$av->name}}</td>
-                            <td><img src="{{asset($av->ads_image)}}" height="50" width="50" class="img-rounded center-block"></td>
-                            <td><img src="{{asset($av->image)}}" height="50" width="50" class="img-rounded center-block"></td>
-                            <td>${{$av->price}}</td>
+                            <td>{{$av->pro_name}}</td>
                             <td>
-                              <a class="btn btn-primary" href="{{route('editAdvert', $av->hid)}}"><i class="fa fa-edit"></i></a>
-                              <a class="btn btn-danger" href="{{route('deleteAdvert', $av->hid)}}"><i class="fa fa-trash-o"></i></a>
-                              <a class="btn btn-info" href="#"><i class="fa fa-info"></i></a>
+                              <?php
+                                  if ($av->ads_section == 1) {
+                                      echo "Advert Section 1";
+                                  }elseif ($av->ads_section == 2) {
+                                      echo "Today Featured";
+                                  }elseif ($av->ads_section == 3) {
+                                      echo "Best of Tech";
+                                  }elseif ($av->ads_section == 4) {
+                                      echo "Advert Section 2";
+                                  }else {
+                                      echo "None";
+                                  }
+                                 ?>
+                            </td>
+                            <td><img src="{{asset($av->ads_image)}}" height="50" width="50" class="img-rounded center-block"></td>
+                            <td><img src="{{asset($av->pro_image)}}" height="50" width="50" class="img-rounded center-block"></td>
+                            <td>${{$av->unit_price}}</td>
+                            <td>
+                              <a class="btn btn-primary" href="{{route('editAdvert', $av->ads_id)}}"><i class="fa fa-edit"></i></a>
+                              <a class="btn btn-danger" href="{{route('deleteAdvert', $av->ads_id)}}"><i class="fa fa-trash-o"></i></a>
+
                             </td>
                           </tr>
                         @endforeach

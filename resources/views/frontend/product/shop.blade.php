@@ -4,11 +4,11 @@
 
     <div class="container">
         <header class="page-header">
-            <h1 class="page-title">Vendors</h1>
+            <h1 class="page-title">Welding &amp; Fabrication</h1>
             <ol class="breadcrumb page-breadcrumb">
-                <li><a href="index.html">Home</a>
+                <li><a href="../index.html">Home</a>
                 </li>
-                <li><a href="#">Vendors</a>
+                <li><a href="#">Welding &amp; Fabrication</a>
                 </li>
             </ol>
             <ul class="category-selections clearfix">
@@ -19,27 +19,32 @@
                     <a class="fa fa-th-list category-selections-icon" href="#"></a>
                 </li>
                 <li><span class="category-selections-sign">Sort by :</span>
-                    <select class="category-selections-select">
-                        <option selected="">Newest First</option>
-                        <option>Best Sellers</option>
-                        <option>Trending Now</option>
-                        <option>Best Raited</option>
-                        <option>Price : Lowest First</option>
-                        <option>Price : Highest First</option>
-                        <option>Title : A - Z</option>
-                        <option>Title : Z - A</option>
+                    {!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}
+                    <select onchange="this.form.submit()" class="category-selections-select" name="product_sort">
+                        <option selected disabled>--Default--</option>
+                        <option value="new_est">Newest First</option>
+                        <option value="best_rated">Best Raited</option>
+                        <option value="low_price">Price : Lowest First</option>
+                        <option value="high_price">Price : Highest First</option>
+                        <option value="a_to_z">Title : A - Z</option>
+                        <option value="z_to_a">Title : Z - A</option>
                     </select>
+                    {!! Form::close() !!}
                 </li>
                 <li><span class="category-selections-sign">Items :</span>
-                    <select class="category-selections-select">
-                        <option>9 / page</option>
-                        <option selected="">12 / page</option>
-                        <option>18 / page</option>
-                        <option>All</option>
+                    {!! Form::open(['url'=>'product-sorting-item','method'=>'GET']) !!}
+                    <select onchange="this.form.submit()" class="category-selections-select" name="product_item">
+                        <option selected disabled>--Select Item--</option>
+                        <option value="nine_item">9 / page</option>
+                        <option  value="twelve_item">12 / page</option>
+                        <option value="eighteen_item">18 / page</option>
+                        <option value="all_item">All</option>
                     </select>
+                    {!! Form::close() !!}
                 </li>
             </ul>
         </header>
+
 
         <div class="row">
             <div class="col-md-3">
@@ -48,25 +53,18 @@
                         <h3 class="widget-title-sm">Category</h3>
                         <input type="hidden" id="category" value="2">
                         <input type="hidden" id="category_level" value="category">
-
-                        <select class="category-selections-select">
-                            <option class="main-category" selected="">Main Category 1</option>
-                            <option class="sub-category">Sub category 1</option>
-                            <option class="sub-category">Sub category 2</option>
-                            <option class="sub-category">Sub category 3</option>
-                            <option class="sub-category">Sub category 4</option>
-
-
-                            <option class="main-category">Main Category 2</option>
-
-                            <option class="sub-category">Sub category 1</option>
-                            <option class="sub-category">Sub category 2</option>
-                            <option class="sub-category">Sub category 3</option>
-                            <option class="sub-category">Sub category 4</option>
-
-
-
+                        {!! Form::open(['url'=>'product-by-category','method'=>'GET']) !!}
+                        <select onchange="this.form.submit()" class="category-selections-select" name="pro_by_cat">
+                            @foreach($all_category as $category)
+                                <option value="{{$category->id}}" class="main-category">{{$category->cat_name}}</option>
+                                @foreach($all_sub_category as $sub_category)
+                                    @if($sub_category->cat_id==$category->id)
+                                        <option value="{{$sub_category->id}}" class="sub-category" >&nbsp;&nbsp;{{$sub_category->sub_cat_name}}</option>
+                                    @endif
+                                @endforeach
+                            @endforeach
                         </select>
+                        {!! Form::close() !!}
 
                     </div>
 
@@ -108,13 +106,15 @@
                         <h3 class="widget-title-sm">Vendor type</h3>
                         <input type="hidden" id="category" value="2">
                         <input type="hidden" id="category_level" value="category">
-
-                        <select class="category-selections-select">
-                            <option>Vwndor type 1</option>
-                            <option>Vwndor type 2</option>
-                            <option>Vwndor type 3</option>
+                        {!! Form::open(['url'=>'product-by-v-type','method'=>'GET']) !!}
+                        <select class="category-selections-select" name="v_type" onchange="this.form.submit()">
+                            <option selected disabled>--Default--</option>
+                            <option value="1">OEM</option>
+                            <option value="2">Distributor</option>
+                            <option value="3">Wholesaler</option>
+                            <option value="4">Retailer</option>
                         </select>
-
+                        {!! Form::close() !!}
                     </div>
                     {!! Form::open(['url'=>'filter-by-price','method'=>'GET']) !!}
                     <div class="category-filters-section">
@@ -278,274 +278,132 @@
             </div>
             <div class="col-md-9">
 
+                <!-- Updated -->
                 <div class="row" id="data" data-gutter="15">
                     <div class="vendor-product">
                         <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" id="data" data-gutter="10" >
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
+                            @if(count($all_products)=='0')
+                   <p class="alert alert-warning"> {{$search_message}}</p>
+                    @endif
+                        @foreach($all_products as $product)
+                            <!-- Single Product -->
+                                <div class="col-md-12 change_grid">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="row" id="data" data-gutter="10" >
+                                                <div class="col-md-4 col-sm-4">
+                                                    <div class="pro-image">
+                                                        <a href="{{route('product-single',$product->id)}}"><img  width="100" height="150" src="{{asset($product->pro_image)}}"></a>
+                                                        <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-4 col-sm-4">
+                                                    <div class="pro-image">
+                                                        <a href="{{route('product-single',$product->id)}}"><img src="{{asset($product->a_img_1)}}"></a>
+                                                        <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-4 col-sm-4">
+                                                    <div class="pro-image">
+                                                        <a href="{{route('product-single',$product->id)}}"><img src="{{asset($product->a_img_2)}}"></a>
+                                                        <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </div>
 
-                                    </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="row" id="data" data-gutter="10">
+                                                <div class="pro-info">
+                                                    <p class="name"><span class="tag">My Product</span>
+                                                        <?php $seller = DB::table('sellers')->where('user_id',$product->seller_id)->first();?>
+                                                        @if($seller!=NUll)
+                                                            {{$seller->vendorname}}
+                                                            @endif
+                                                    </p>
+                                                    <p class="location"><span class="tag">Location</span>
+                                                        @if($seller!=NULL)
+                                                            {{$seller->location}}
+                                                            @endif
+                                                    </p>
+                                                    <p class="type"><span class="tag">Vendor type</span>
+                                                        @if($product->supply_type=='1')
+                                                            OEM
+                                                        @elseif($product->supply_type=='2')
+                                                            DISTRIBUTOR
+                                                        @elseif($product->supply_type=='3')
+                                                            WHOLESELLER
+                                                        @elseif($product->supply_type=='4')
+                                                            RETAILER
+                                                        @endif
 
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
+                                                    </p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row" data-gutter="10">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <ul class="product-caption-rating">
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li><i class="fa fa-star"></i>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-8 col-sm-8">
+                                                    <button class="btn btn-primary" href="#">Contact supplier</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="row" data-gutter="10">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <div class="details-option">
+                                                        <a href="#"><i class="fa fa-star"></i> Favourite</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 col-sm-8">
+                                                    <div class="details-option">
+                                                        <a href="#"><i class="fa fa-plus"></i> Compare</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" id="data" data-gutter="10">
-                                    <div class="pro-info">
-                                        <p class="name"><span class="tag">My Product</span>Vendor Name</p>
-                                        <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
-                                        <p class="type"><span class="tag">Vendor type</span>Vendor Type is here</p>
-                                    </div>
-
-                                </div>
-
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <ul class="product-caption-rating">
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <button class="btn btn-primary" href="#">Contact supplier</button>
-                                    </div>
-
-                                </div>
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-star"></i> Favourite</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-plus"></i> Compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <!-- /Single Product -->
+                            @endforeach
                         </div>
 
                     </div>
 
                 </div>
-                <div class="row" data-gutter="15">
-                    <div class="vendor-product">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10" >
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product title is here</a>
-                                        </div>
+                <!-- /Updated -->
 
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10">
-                                    <div class="pro-info">
-                                        <p class="name"><span class="tag">My Product</span>Vendor Name</p>
-                                        <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
-                                        <p class="type"><span class="tag">Vendor type</span>Vendor Type is here</p>
-                                    </div>
-
-                                </div>
-
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <ul class="product-caption-rating">
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <button class="btn btn-primary" href="#">Contact supplier</button>
-                                    </div>
-
-                                </div>
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-star"></i> Favourite</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-plus"></i> Compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="row" data-gutter="15">
-                    <div class="vendor-product">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10" >
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product title is here</a>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10">
-                                    <div class="pro-info">
-                                        <p class="name"><span class="tag">My Product</span>Vendor Name</p>
-                                        <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
-                                        <p class="type"><span class="tag">Vendor type</span>Vendor Type is here</p>
-                                    </div>
-
-                                </div>
-
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <ul class="product-caption-rating">
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <button class="btn btn-primary" href="#">Contact supplier</button>
-                                    </div>
-
-                                </div>
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-star"></i> Favourite</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-plus"></i> Compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
                 <div class="row" id="row" data-gutter="10">
                     <div class="vendor-pagination">
 
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        {{--{{ $all_products->count()}}--}}
+                        {{--@if(function_exists('links'))--}}
+                        <span class="text-center"> {{ $all_products->links() }}</span>
+                        {{--@endif--}}
                     </div>
                 </div>
-
 
             </div>
 
         </div>
     </div>
-    @endsection
+
+@endsection

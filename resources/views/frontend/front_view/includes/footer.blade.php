@@ -29,7 +29,7 @@
                 <p>Our Social Platform, Join our social network team........</p>
                 <ul class="main-footer-social-list">
                     <?php
-                        $social_link = DB::table('socials')->where('id',1)->first();
+                    $social_link = DB::table('socials')->where('id',1)->first();
                     ?>
                     <li>
                         <a class="fa fa-facebook" href="@if($download_link !=Null){{$social_link->facebook}} @endif"></a>
@@ -48,33 +48,33 @@
                     </li>
                 </ul>
             </div>
-         <!--   <div class="col-md-4 col-sm-4">
-                <h4 class="widget-title-sm">Popular Tags</h4>
-                <ul class="main-footer-tag-list">
-                    <li><a href="#">New Season</a>
-                    </li>
-                    <li><a href="#">Watches</a>
-                    </li>
-                    <li><a href="#">woman</a>
-                    </li>
-                    <li><a href="#">classic</a>
-                    </li>
-                    <li><a href="#">modern</a>
-                    </li>
-                    <li><a href="#">blue</a>
-                    </li>
-                    <li><a href="#">shoes</a>
-                    </li>
-                    <li><a href="#">running</a>
-                    </li>
-                    <li><a href="#">jeans</a>
-                    </li>
-                    <li><a href="#">sports</a>
-                    </li>
-                    <li><a href="#">laptops</a>
-                    </li>
-                </ul>
-            </div> -->
+            <!--   <div class="col-md-4 col-sm-4">
+                   <h4 class="widget-title-sm">Popular Tags</h4>
+                   <ul class="main-footer-tag-list">
+                       <li><a href="#">New Season</a>
+                       </li>
+                       <li><a href="#">Watches</a>
+                       </li>
+                       <li><a href="#">woman</a>
+                       </li>
+                       <li><a href="#">classic</a>
+                       </li>
+                       <li><a href="#">modern</a>
+                       </li>
+                       <li><a href="#">blue</a>
+                       </li>
+                       <li><a href="#">shoes</a>
+                       </li>
+                       <li><a href="#">running</a>
+                       </li>
+                       <li><a href="#">jeans</a>
+                       </li>
+                       <li><a href="#">sports</a>
+                       </li>
+                       <li><a href="#">laptops</a>
+                       </li>
+                   </ul>
+               </div> -->
             <div class="col-md-4"></div>
             <div class="col-md-4 col-sm-4">
                 <h4 class="widget-title-sm">Contact us</h4>
@@ -92,12 +92,12 @@
             <li><a href="#">Blog</a>
             </li>
             <?php
-                $pages = DB::table('page_models')->get();
+            $pages = DB::table('page_models')->get();
             ?>
             @foreach($pages as $page)
 
-            <li><a href="{{route('page-view',$page->id)}}">{{$page->name}}</a>
-            </li>
+                <li><a href="{{route('page-view',$page->id)}}">{{$page->name}}</a>
+                </li>
             @endforeach
         </ul>
     </div>

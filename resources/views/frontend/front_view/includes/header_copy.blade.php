@@ -203,17 +203,14 @@
                 </a>
             </div>
             <div class="rel">
-                <form  action="{{url('/search-by-category')}}" class="navbar-form navbar-left navbar-main-search navbar-main-search-category" role="search">
-                    <select class="navbar-main-search-category-select" name="category">
+                <form  action="{{url('/search-by-all-department')}}" class="navbar-form navbar-left navbar-main-search navbar-main-search-category" role="search">
+                    <select class="navbar-main-search-category-select" name="all_department">
                         <option>All Departmens</option>
-                        @foreach($all_category as $category)
-                        <option value="{{$category->id}}">{{$category->cat_name}}</option>
-                            @foreach($all_sub_category as $sub_category)
-                                @if($sub_category->cat_id==$category->id)
-                                    <option value="{{$sub_category->id}}"> &nbsp;&nbsp;&nbsp;{{$sub_category->sub_cat_name}}</option>
-                                @endif
-                            @endforeach
-                        @endforeach
+                        <option value="5">Products</option>
+                        <option value="1">OEM</option>
+                        <option value="2">Distributor</option>
+                        <option value="3">Wholesaler</option>
+                        <option value="4">Retailer</option>
                     </select>
                     <div class="form-group">
                         {{--id="searchbox"--}}

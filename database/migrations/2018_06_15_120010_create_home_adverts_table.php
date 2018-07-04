@@ -14,15 +14,13 @@ class CreateHomeAdvertsTable extends Migration
     public function up()
     {
         Schema::create('home_adverts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ads_id');
             $table->integer('ads_section');
             $table->integer('seller_id')->unsigned();
             $table->integer('product_id')->unsigned();
-            $table->string('ads_title')->nullable();
-            $table->string('ads_description')->nullable();
-            $table->string('shop_now_link')->nullable();
+
             $table->string('banner_color')->nullable();
-            $table->string('price')->nullable();
+          
             $table->string('ads_image')->nullable();
             $table->integer('admin_id')->unsigned()->nullable();
             $table->timestamps();

@@ -35,12 +35,17 @@ Route::get('/product-sub-category/{id}','FSortByController@product_by_sub_catego
 Route::get('/product-manufacturer/{id}','FSortByController@product_by_manufacturer')->name('product-manufacturer');
 Route::get('/product-model/{id}','FSortByController@product_by_model')->name('product-model');
 Route::get('/search','FSortByController@search')->name('search');
-Route::get('/search-by-category','FSortByController@advance_search')->name('advance-search');
+Route::get('/search-by-all-department','FSortByController@advance_search')->name('advance-search');
 Route::get('/product-sorting','FSortByController@product_sorting')->name('product-sorting');
 Route::get('/product-sorting-item','FSortByController@product_sorting_item')->name('product-sorting-item');
 Route::get('/product-by-category','FSortByController@product_by_cat')->name('product-by-category');
 Route::get('/product-details/{id}','FSortByController@product_details')->name('product-single');
 Route::get('/filter-by-price','FSortByController@filter_by_price')->name('filter-by-price');
+Route::get('/product-by-v-type','FSortByController@filter_by_v_type')->name('product-by-v-type');
+
+
+
+
 //Product sortBy Route End
 
 //Cart Route Start
