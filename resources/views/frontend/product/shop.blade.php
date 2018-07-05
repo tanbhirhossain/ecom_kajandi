@@ -1,7 +1,33 @@
 @extends('frontend.front_view.front_master')
 @section('page-title','Product Page')
 @section('main_content')
-
+<style media="screen">
+  #chk_d{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    top: 0;
+    left: -7px;
+    margin-left: -13px;
+    float: left;
+    text-align: center;
+    line-height: 20px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+  }
+</style>
     <div class="container">
         <header class="page-header">
             <h1 class="page-title">Welding &amp; Fabrication</h1>
@@ -128,30 +154,38 @@
                     </div>
                     {!! Form::close() !!}
 
-                    {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+
+
+                    <form class="" action="{{route('product-by-po-delivery')}}" method="get">
+
+
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Payment type</h3>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='manufacturer[]' type='checkbox' value=1 />Pay on delivery
-
+                                <input type='checkbox'  name="payment_type"  onclick='if(this.checked){this.form.submit()}' value='1' />Pay on delivery
+                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                             </label>
                         </div>
 
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='manufacturer[]' type='checkbox' value=1 />Pay after inspection
+                                <input   type='checkbox' name="payment_type" onclick='if(this.checked){this.form.submit()}' value='2'  />Pay after inspection
+                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                             </label>
                         </div>
 
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='manufacturer[]' type='checkbox' value=1 />Pay in Advance
+                                <input   type='checkbox' name="payment_type" onclick='if(this.checked){this.form.submit()}' value='3' />Pay in Advance
+                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
 
                             </label>
                         </div>
                     </div>
-                    {{--{!! Form::close() !!}--}}
+                  </form>
+
+
                     {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Pricing</h3>
@@ -172,26 +206,20 @@
                         </div>
                     </div>
                     {{--{!! Form::close() !!}--}}
-                    {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET','id'=>'brand_form']) !!}--}}
+                    {!! Form::open(['url'=>'product-by-manufacture','method'=>'GET','id'=>'brand_form']) !!}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Manufacturer</h3>
+                        
+                         @foreach($menufacturer as $menfac)
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Huawei (02)
+                                <input  name='menufact_id'  type='checkbox' onclick='if(this.checked){this.form.submit()}' value='{{$menfac->id}}' />{{$menfac->name}} ({{App\SellerProduct::where('manufacture_id',$menfac->id)->count()}})
                             </label>
                         </div>
-                        <div class='checkbox'>
-                            <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Jick (03)
-                            </label>
-                        </div>
-                        <div class='checkbox'>
-                            <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Apple (03)
-                            </label>
-                        </div>
+                        @endforeach
+
                     </div>
-                    {{--{!! Form::close() !!}--}}
+                    {!! Form::close() !!}
                     {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Model</h3>
@@ -212,46 +240,51 @@
                         </div>
                     </div>
                     {{--{!! Form::close() !!}--}}
-                    {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+                    {!! Form::open(['url'=>'product-by-condition','method'=>'GET']) !!}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Condition</h3>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Faily Used (02)
+                                <input  name='condition' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=3 />Faily Used ({{App\SellerProduct::where('condition',3)->count()}})
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />New (03)
+                                <input  name='condition' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=1 />New ({{App\SellerProduct::where('condition',1)->count()}})
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Refurbished (03)
+                                <input  name='condition' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=2 />Refurbished ({{App\SellerProduct::where('condition',2)->count()}})
                             </label>
                         </div>
                     </div>
-                    {{--{!! Form::close() !!}--}}
-                    {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+                    {!! Form::close() !!}
+                    {!! Form::open(['url'=>'product-by-supply-type','method'=>'GET']) !!}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Source</h3>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Retailer (02)
+                                <input  name='supply_type' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=4 />Retailer ({{App\SellerProduct::where('supply_type',4)->count()}})
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Distributor (03)
+                                <input  name='supply_type' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=2 />Distributor ({{App\SellerProduct::where('supply_type',2)->count()}})
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />OEM (03)
+                                <input  name='supply_type' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=3 />Wholesaler ({{App\SellerProduct::where('supply_type',3)->count()}})
+                            </label>
+                        </div>
+                        <div class='checkbox'>
+                            <label>
+                                <input  name='supply_type' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=1 />OEM ({{App\SellerProduct::where('supply_type',1)->count()}})
                             </label>
                         </div>
                     </div>
-                    {{--{!! Form::close() !!}--}}
+                    {!! Form::close() !!}
                     {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Add On</h3>
@@ -283,7 +316,9 @@
                     <div class="vendor-product">
                         <div class="row">
                             @if(count($all_products)=='0')
+                            @if(isset($search_message) && $search_message!=NULL)
                    <p class="alert alert-warning"> {{$search_message}}</p>
+                   @endif
                     @endif
                         @foreach($all_products as $product)
                             <!-- Single Product -->

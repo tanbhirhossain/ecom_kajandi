@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use DB;
 use App\SellerProduct;
+use App\Manufacter;
+
 class FSortByController extends Controller{
     public function product_details($id){
         $product_by_id = SellerProduct::find($id);
@@ -156,11 +158,71 @@ class FSortByController extends Controller{
         }
     }
 
+    public function product_by_po_delivery(Request $request)
+    {
+      if ($request->payment_type=='1') {
+        $all_products = SellerProduct::where('payment_type',1)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }elseif ($request->payment_type=='2') {
+        $all_products = SellerProduct::where('payment_type',2)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }elseif ($request->payment_type=='3') {
+        $all_products = SellerProduct::where('payment_type',3)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }
+    }
 
+    public function product_by_condition(Request $request)
+    {
+      if ($request->condition=='1') {
+        $all_products = SellerProduct::where('condition',1)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }elseif ($request->condition=='2') {
+        $all_products = SellerProduct::where('condition',2)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }elseif ($request->condition=='3') {
+        $all_products = SellerProduct::where('condition',3)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }
+    }
 
+    public function product_by_supply_type(Request $request)
+    {
+      if ($request->supply_type=='1') {
+        $all_products = SellerProduct::where('supply_type',1)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }elseif ($request->supply_type=='2') {
+        $all_products = SellerProduct::where('supply_type',2)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }elseif ($request->supply_type=='3') {
+        $all_products = SellerProduct::where('supply_type',3)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }elseif ($request->supply_type=='4') {
+        $all_products = SellerProduct::where('supply_type',4)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products'));
+      }
+    }
 
+    public function product_by_manufacture(Request $request)
+    {
+      $menufacturer = Manufacter::All();
+      if ($request->menufact_id) {
+        $all_products = SellerProduct::where('manufacture_id', $request->menufact_id)->where('pro_status',1)->paginate(12);
+        return view('frontend.product.shop')
+            ->with(compact('all_products','menufacturer'));
 
-
+    }
+  }
 
 
     public function error_page(){

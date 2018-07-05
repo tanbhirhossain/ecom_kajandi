@@ -554,7 +554,7 @@
                                    </label>
                                </div>
                                <div class="col-md-4 ph10">
-                                 <label for="payment_type" class="field select">
+                                 <label for="unit" class="field select">
                                      <select id="unit" name="unit">
                                          <option value="" selected="selected">Select Unit ...</option>
                                          @foreach($unit as $uni)
@@ -777,8 +777,9 @@
                                  <label for="payment_type" class="field select">
                                      <select id="payment_type" name="payment_type">
                                          <option value="" selected="selected">Select Payment Type...</option>
-                                         <option value="1">Cash in advance</option>
-                                         <option value="2">Cash in delivery</option>
+                                         <option value="1">Cash on delivery</option>
+                                         <option value="2">Cash after inspection</option>
+                                         <option value="3">Cash in Advance</option>
 
                                      </select>
                                      <i class="arrow double"></i>

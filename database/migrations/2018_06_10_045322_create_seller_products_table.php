@@ -65,7 +65,7 @@ class CreateSellerProductsTable extends Migration
             $table->integer('export_carton_length')->nullable();
             $table->integer('export_carton_weight')->nullable();
 
-            $table->integer('payment_type')->comment('1=>Cash in advance, 2=>Cash on delivery');
+            $table->integer('payment_type')->comment('1=>Cash on delivery, 2=>Cash after inspection, 3=>Cash in Advance',);
 
             $table->integer('delivery_w_state')->nullable()->comment('2=>No, 1=>Yes');
             $table->float('delivery_rate_w_range')->nullable();
