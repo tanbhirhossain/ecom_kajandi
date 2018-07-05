@@ -796,19 +796,15 @@
                              </div>
                              <div class="section row">
                                <div class="col-md-12 ph10">
-                                   <label for="payment_type" class="field select">
-                                       <select id="payment_type" name="payment_type">
-                                           <option value="{{$editpro->payment_type}}" selected="selected">
+                                   <label for="payment_method" class="field select">
+                                       <select id="payment_method" name="payment_method">
+                                           <option value="{{$editpro->payment_method}}" selected="selected">
                                              <?php
-                                                if ($editpro->payment_type == 1) {
-                                                    echo "Cash on delivery";
-                                                }elseif ($editpro->payment_type == 2) {
-                                                    echo "Cash after inspection";
-                                                }elseif ($editpro->payment_type == 3) {
-                                                  echo "Cash in Advance";
+                                                if ($editpro->payment_method == 1) {
+                                                    echo "Cash in advance";
+                                                }else {
+                                                  echo "Cash in delivery";
                                                 }
-
-
                                               ?>
                                            </option>
                                            <option value="1">Cash in advance</option>

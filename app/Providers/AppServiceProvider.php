@@ -6,6 +6,7 @@ use App\Manufacter;
 use App\Product;
 use App\ProductModel;
 use App\Subcategory;
+use App\Unit;
 use View;
 
 use Illuminate\Support\ServiceProvider;
@@ -52,6 +53,12 @@ class AppServiceProvider extends ServiceProvider
             $View->with('all_product_model', $data);
         });
         //Product Model  End
+        //Product Unit Start
+        View::composer('*', function($View){
+            $data = Unit::all();
+            $View->with('all_units', $data);
+        });
+        //Product Unit  End
     }
 
     /**

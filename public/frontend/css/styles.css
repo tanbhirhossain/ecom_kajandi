@@ -929,7 +929,7 @@ margin-bottom: 40px;
 box-shadow: none;
 border-color: #243c4f; }
 .home-newsletter .single .btn {
-min-height: 50px;
+min-height: 50px; 
 color: #fff;
 }
 p.subs-info {
@@ -2003,7 +2003,7 @@ header.main {
 }
 
 .dashpanel{
-  background: #365271;
+  background: #365271; 
   color: #fff !important;
 }
 .dashpanel ul li a{
@@ -6109,9 +6109,9 @@ undefinedundefined.owl-height {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-  width:81%;
+  width:81%;  
   z-index: 40;
-  position: absolute;
+  position: absolute;      
 }
 a.hovereffect div{
   color: #000;
@@ -6134,7 +6134,7 @@ a.hovereffect div:hover{
 filter: alpha(opacity=50);  /* IE 5-7 */
 -moz-opacity: 0.5;          /* Netscape */
 -khtml-opacity: 0.5;        /* Safari 1.x */
-opacity: 0.5;
+opacity: 0.5; 
     z-index: 200;
     cursor: pointer;
 }
@@ -6188,7 +6188,7 @@ p.price {
 	font-weight:600;
 	border-bottom:1px solid #ddd;
 	font-style:italic;
-
+	
 }
 .sub-category {
 	padding-left:5px;
@@ -6219,7 +6219,7 @@ p.price {
 }
 tr.single-item {
 	border-top:1px solid #ddd;
-}
+} 
 span.pro-name, span.price, span.cart-price {
 	font-weight:600;
 }
@@ -6241,7 +6241,7 @@ input.qty {
 .shopping654 {
 	overflow:hidden;
 	padding:20px 0px;
-
+	
 }
 .shopping654 a {
 	display:inline-block;
@@ -6277,7 +6277,7 @@ input.qty {
 }
 tr.single-item {
 	border-top:1px solid #ddd;
-}
+} 
 span.pro-name, span.price, span.cart-price {
 	font-weight:600;
 }
@@ -6299,7 +6299,7 @@ input.qty {
 .shopping654 {
 	overflow:hidden;
 	padding:20px 0px;
-
+	
 }
 .shopping654 a {
     display: inline-block;
@@ -6370,7 +6370,7 @@ h3.page-title {
 	padding:10px 0px;
 	text-align:center;
 	color:#fff;
-
+	
 }
 .pro-chart td {
 	padding:5px 5px;
@@ -6429,7 +6429,7 @@ h3.page-title {
 	border:1px solid #ddd;
 }
 .pro-info {
-
+	
 }
 .pro-info p {
 	font-size:13px;
@@ -6503,7 +6503,7 @@ h3.page-title {
 .call-out p {
 	font-size:12px;
 	padding:5px 12px;
-
+	
 }
 .float-right {
 	float:right;
@@ -6966,10 +6966,10 @@ form .stars span {
   .contact-item-btn {
       padding: 5px 6px;
       font-size: 80%;
-  }
+  } 
   .product-introduction .product-img {
     width: 50px;
-  }
+  } 
   .product-introduction {
     padding-left: 60px;
   }
@@ -7072,3 +7072,4 @@ form .stars span {
   background-color:#CE3F51;
   border-color: #CE3F51;
 }
+

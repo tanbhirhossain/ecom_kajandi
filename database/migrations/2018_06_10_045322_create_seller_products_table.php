@@ -26,7 +26,8 @@ class CreateSellerProductsTable extends Migration
             $table->integer('pro_cat_id')->unsigned();
             $table->integer('pro_subcat_id')->unsigned();
             $table->string('pro_image')->nullble();
-            $table->integer('manufacture_id')->unisgned();//
+            $table->integer('manufacture_id')->unisgned();
+            $table->integer('model_id')->unisgned();
 
             $table->integer('condition')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used');
             $table->integer('pro_warranty')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');

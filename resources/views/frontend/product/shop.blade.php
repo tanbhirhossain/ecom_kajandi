@@ -209,7 +209,7 @@
                     {!! Form::open(['url'=>'product-by-manufacture','method'=>'GET','id'=>'brand_form']) !!}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Manufacturer</h3>
-                        
+                        <?php $menufacturer = App\Manufacter::All(); ?>
                          @foreach($menufacturer as $menfac)
                         <div class='checkbox'>
                             <label>

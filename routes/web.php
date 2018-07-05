@@ -49,7 +49,6 @@ Route::get('/product-by-manufacture','FSortByController@product_by_manufacture')
 
 
 
-
 //Product sortBy Route End
 
 //Cart Route Start

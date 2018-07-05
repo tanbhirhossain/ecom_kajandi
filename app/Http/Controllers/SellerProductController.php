@@ -27,7 +27,7 @@ class SellerProductController extends Controller
     public function postSellerProduct(Request $request)
     {
       $request->validate([
-        'pro_name' => 'required|max:255|min:2',
+         'pro_name' => 'required|max:255|min:2',
         //'pro_generic_name' => 'required',
         'manufacture_id' => 'required',
         'pro_description' => 'required|min:2|',
