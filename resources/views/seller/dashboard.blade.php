@@ -65,24 +65,8 @@
             </ol>
         </div>
         <div class="topbar-right">
-            <div class="ib topbar-dropdown">
-                <label for="topbar-multiple" class="control-label">Reporting Period</label>
-                <select id="topbar-multiple" class="hidden">
-                    <optgroup label="Filter By:">
-                        <option value="1-1">Last 30 Days</option>
-                        <option value="1-2" selected="selected">Last 60 Days</option>
-                        <option value="1-3">Last Year</option>
-                    </optgroup>
-                </select>
-            </div>
-            <div class="ml15 ib va-m" id="sidebar_right_toggle">
-                <div class="navbar-btn btn-group btn-group-number mv0">
-                    <button class="btn btn-sm btn-default btn-bordered prn pln">
-                        <i class="fa fa-bar-chart fs22 text-default"></i>
-                    </button>
 
-                </div>
-            </div>
+            
         </div>
     </header>
     <!-- -------------- /Topbar -------------- -->

@@ -325,6 +325,9 @@ Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->
 Route::post('/seller/update-product/{id}', 'SellerProductController@updateSellerPro')->name('updateSellerPro');
 Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteSellerPro');
 
+Route::get('/seller/edit-profile', 'SellerProfileController@editProfile')->name('editSellerProfile');
+Route::post('/seller/update-profile', 'SellerProfileController@updateProfile')->name('updateVendorProfile');
+
 //test
 Route::get('/seller/destroy/', 'SellerProductController@deleteMultiPro')->name('deleteMultiPro');
 Route::get('/seller/json', 'SellerProductController@json')->middleware('ajax');
