@@ -156,7 +156,7 @@
                                            </span>
                                        @endif
                                    </div>
-                                   <!--<div class="section mb10">
+                                   <div class="section mb10">
                                        <label for="pro_generic_name" class="field prepend-icon">
                                            <input type="text" name="pro_generic_name" id="pro_generic_name"
                                                   class="event-name gui-input br-light light"
@@ -170,7 +170,7 @@
                                                <strong>{{ $errors->first('pro_generic_name') }}</strong>
                                            </span>
                                        @endif
-                                   </div>-->
+                                   </div>
                                    <div class="section mb10">
                                        <label class="field prepend-icon">
                                            <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="comment"

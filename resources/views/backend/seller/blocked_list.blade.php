@@ -48,8 +48,10 @@
                                   echo "Experts";
                                 }elseif($av->ratings == 2) {
                                   echo "Professional";
-                                }else {
+                                }elseif($av->ratings == 3 {
                                   echo "Technicians";
+                                }else{
+                                  echo "None";
                                 }
                                ?>
                             </td>

@@ -65,7 +65,7 @@ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)->where('pro_status', 1)
                     </div>
                 </div>
         @endforeach
-
+      
         </div>
 
         <div class="gap"></div>
@@ -193,7 +193,22 @@ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)->where('pro_status', 1)
                 </div>
             @endforeach
         </div>
-      
+        {{--@endforeach--}}
+        <div class="gap"></div>
+        <div class="row" data-gutter="15">
+        <!--<div class="col-md-6">
+                <div class="banner" style="background-color:#9C7B60;">
+                    <a class="banner-link" href="#"></a>
+                    <div class="banner-caption-left">
+                        <h5 class="banner-title">HVAC</h5>
+                        <p class="banner-desc">Heating and Cooling Systems Air Filter</p>
+                        <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
+                        </p>
+                        <p class="price">$100</p>
+                    </div>
+                    <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/airqual2.png" alt="Image Alternative text" title="{{$ads->pro_name}}" style="bottom: -8px; right: 11px; width: 238px;">
+                </div>
+            </div>-->
             @foreach($ads_s_2 as $ads)
                 <div class="col-md-6">
                     <div class="banner" style="background-color:{{$ads->banner_color}};">

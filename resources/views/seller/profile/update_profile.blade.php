@@ -33,7 +33,7 @@
           <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
           <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
       </small>
-        <!-- -------------- New Product -------------- -->
+
 
         <div style="border:3px dotted red;" class="panel mb25 mt5">
             <div class="panel-heading">
@@ -83,7 +83,7 @@
                         </div>
                       </div>
 
-                      <button type="button" class="btn btn-primary" name="button">Edit This Section</button>
+                      <a type="button" class="btn btn-primary" href="{{route('editVendorPrimaryDetails')}}" name="button">Edit This Section</a>
                     </div>
                 </div>
 
