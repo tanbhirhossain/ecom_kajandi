@@ -133,11 +133,15 @@ $(".product-page-qty-minus").on('click', function() {
 $("#grid_view").on( 'click', function() {
     $('.change_grid').removeClass('col-md-12 list-view');
     $('.change_grid').addClass('col-md-6 grid-view');
+    $('.fa-th-large').addClass('active');
+    $('#list_view').removeClass('active');
     return false;
 } );
 
 $("#list_view").on( 'click', function() {
     $('.change_grid').removeClass('col-md-6 grid-view');
     $('.change_grid').addClass('col-md-12 list-view');
+    $('.fa-th-list').addClass('active');
+    $('#grid_view').removeClass('active');
     return false;
 } );

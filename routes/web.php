@@ -46,6 +46,10 @@ Route::get('/product-by-d-type','FSortByController@product_by_po_delivery')->nam
 Route::get('/product-by-condition','FSortByController@product_by_condition')->name('product-by-condition');
 Route::get('/product-by-supply-type','FSortByController@product_by_supply_type')->name('product-by-supply-type');
 Route::get('/product-by-manufacture','FSortByController@product_by_manufacture')->name('product-by-manufacture');
+Route::get('/product-by-condition','FSortByController@product_by_condition')->name('product-by-condition');
+Route::get('/product-by-supply-type','FSortByController@product_by_supply_type')->name('product-by-supply-type');
+Route::get('/product-by-po-delivery','FSortByController@product_by_po_delivery')->name('product-by-po-delivery');
+Route::get('/product-by-pricing','FSortByController@product_by_pricing')->name('product-by-pricing');
 
 
 

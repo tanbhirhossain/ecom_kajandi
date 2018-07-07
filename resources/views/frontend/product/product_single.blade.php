@@ -920,6 +920,43 @@
                            <td></td>
                        </tr>
                    @endif
+                   @if($product_by_id->unit_price!=NULL)
+                       <tr>
+                           <td class="product-page-features-table-specs">Price</td>
+                           <td class="product-page-features-table-details">$ {{$product_by_id->unit_price}}</td>
+                           <td></td>
+                       </tr>
+                   @endif
+                   @if($product_by_id->minumum_order_qty!=NULL)
+                       <tr>
+                           <td class="product-page-features-table-specs">Minimum Order Qty</td>
+                           <td class="product-page-features-table-details">{{$product_by_id->minumum_order_qty}}</td>
+                           <td></td>
+                       </tr>
+                   @endif
+                   @if($product_by_id->price_15_days!=NULL)
+                       <tr>
+                           <td class="product-page-features-table-specs">15 days price</td>
+                           <td class="product-page-features-table-details">$ {{$product_by_id->price_15_days}}</td>
+                           <td></td>
+                       </tr>
+                   @endif
+                   @if($product_by_id->price_30_days!=NULL)
+                       <tr>
+                           <td class="product-page-features-table-specs">30 days price</td>
+                           <td class="product-page-features-table-details">$ {{$product_by_id->price_30_days}}</td>
+                           <td></td>
+                       </tr>
+                   @endif
+                   @if($product_by_id->sample_fee!=NULL)
+                       <tr>
+                           <td class="product-page-features-table-specs">Sample Fee</td>
+                           <td class="product-page-features-table-details">$ {{$product_by_id->sample_fee}}</td>
+                           <td></td>
+                       </tr>
+                   @endif
+
+
                    @if($product_by_id->pro_gurrantee!=NUll && $product_by_id->pro_gurrantee!='1')
                        <tr>
                            <td class="product-page-features-table-specs">Guarantee Terms - Parts:</td>

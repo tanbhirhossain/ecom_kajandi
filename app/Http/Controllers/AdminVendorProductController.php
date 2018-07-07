@@ -14,8 +14,6 @@ class AdminVendorProductController extends Controller
                     ->join('sellers', 'sellers.user_id', '=', 'seller_id')
                     ->select('seller_products.*', 'sellers.vendorname', 'sellers.id as sid')
                     ->get();
-
-
       return view('backend.seller.products.pending_list',compact('pending_pro'));
     }
 

@@ -17,7 +17,6 @@ class CreateSellerProductsTable extends Migration
             $table->integer('pro_status')->comment('0=>Inactive, 1=>Inactive, 2=>Low Stock, 3=>Out of Stock ');
             $table->string('pro_name');
             $table->string('pro_generic_name');
-
             $table->string('pro_description');
             $table->string('pro_keyword')->nullable();
             $table->string('part_number')->nullable();
@@ -27,10 +26,9 @@ class CreateSellerProductsTable extends Migration
             $table->integer('pro_cat_id')->unsigned();
             $table->integer('pro_subcat_id')->unsigned();
             $table->string('pro_image')->nullble();
-            $table->integer('manufacture_id')->unisgned();
-            $table->integer('model_id')->unisgned();
+            $table->integer('manufacture_id')->unisgned();//
 
-            $table->integer('condition')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used');
+            $table->integer('conditions')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used');
             $table->integer('pro_warranty')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             $table->integer('pro_gurrantee')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             //$table->integer('source')->comment('1=>OEM, 2=>Retailer,3=>Distributor');
@@ -67,7 +65,7 @@ class CreateSellerProductsTable extends Migration
             $table->integer('export_carton_length')->nullable();
             $table->integer('export_carton_weight')->nullable();
 
-            $table->integer('payment_type')->comment('1=>Cash on delivery, 2=>Cash after inspection, 3=>Cash in Advance',);
+            $table->integer('payment_type')->comment('1=>Cash in advance, 2=>Cash on delivery');
 
             $table->integer('delivery_w_state')->nullable()->comment('2=>No, 1=>Yes');
             $table->float('delivery_rate_w_range')->nullable();

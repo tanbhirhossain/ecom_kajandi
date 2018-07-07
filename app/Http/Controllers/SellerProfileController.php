@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Seller;
 use App\User;
 use Auth;
-
 class SellerProfileController extends Controller
 {
    public function editProfile()
@@ -14,7 +11,6 @@ class SellerProfileController extends Controller
      $editVendor = Seller::where('user_id', Auth::id())->first();
      return view('seller.profile.update_profile',compact('editVendor'));
    }
-
    public function updateProfile(Request $request)
    {
     //  $request->validate([
@@ -37,12 +33,9 @@ class SellerProfileController extends Controller
     //     'chairmanemail' => 'required',
     //
     // ]);
-
     $sv = Seller::where('user_id', Auth::id())->first();
-
     //$sv->vendorname = $request->vendorname;
     //$sv->contactphone = $request->contactphone;
-
     $sv->vendor_type = $request->vendor_type;
     $sv->producttype = $request->producttype;
     $sv->location = $request->location;
@@ -54,24 +47,18 @@ class SellerProfileController extends Controller
     $sv->yearsofexp = $request->yearsofexp;
     $sv->ratings = $request->ratings;
     $sv->contactname = $request->contactname;
-
     $sv->contactemail = $request->contactemail;
     $sv->chairmanname = $request->chairmanname;
     $sv->chairmanphone = $request->chairmanphone;
     $sv->chairmanemail = $request->chairmanemail;
-
     $sv->save();
     return back()->with('message_success', 'Vendor updated Succesfully');
-
-
    }
-
    public function editVendorPrimaryDetails()
    {
       $editVendor = Seller::where('user_id', Auth::id())->first();
      return view('seller.profile.primary_details', compact('editVendor'));
    }
-
    public function updatePrimaryDetails(Request $request)
    {
        $request->validate([
@@ -79,23 +66,17 @@ class SellerProfileController extends Controller
           //'email' => 'required|string|email|max:100|unique:users',
           'contactphone' => 'required',
       ]);
-
       $users = User::where('id', Auth::id())->first();
       $users->name = $request->vendorname;
       //$users->email = $request->email;
       $users->phone = $request->contactphone;
       $users->save();
-
-
       $sellers = Seller::where('user_id', Auth::id())->first();
       $sellers->vendorname = $request->vendorname;
     //  $sellers->email = $request->email;
       $sellers->contactphone = $request->contactphone;
       $sellers->save();
-
       //dd($users);
-
       return back()->with('message_success', 'Vendor Primary Details Updated Succesfully');
-
    }
 }
