@@ -66,7 +66,7 @@ Route::POST('/update-cart','CartController@update_cart')->name('update-cart');
 
 //Compare Route Start
 Route::get('/compare','CompareController@compare')->name('compare');
-Route::POST('add-to-compare','CompareController@add_to_compare')->name('add-to-compare');
+Route::get('add-to-compare/{id}','CompareController@add_to_compare')->name('add-to-compare');
 Route::get('/remove-compare-item/{id}','CompareController@remove_compare_item')->name('remove-compare-item');
 Route::get('/login-register','CartController@login_register')->name('login-register');
 
@@ -173,7 +173,9 @@ Route::get('/faq-answered-list', 'AdminFAQController@faqAnsweredList')->name('fa
 Route::get('/faq-answer-edit/{id}', 'AdminFAQController@faqAnsEdit')->name('faqAnsEdit');
 Route::post('/faq-answer-update/{id}','AdminFAQController@faqAnsUpdate')->name('faqAnsUpdate');
 //END FAQ route
-
+//Seller Product start
+Route::get('seller-product/{id}','FSellerProductController@seller_profile')->name('seller-product');
+//Seller Product end
 
 
 

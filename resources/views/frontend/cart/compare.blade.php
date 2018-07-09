@@ -49,20 +49,20 @@
                         </th>
                         @foreach(Cart::instance('compare')->content() as $item)
                             <?php
-                            $cp = DB::table('products')->where('id',$item->id)->first();
+                            $cp = DB::table('seller_products')->where('id',$item->id)->first();
                             ?>
                         <th class="product-item product-item-content">
                             <div class="product-cell">
                                 <div class="remove-area">
-                                    <a class="button remove-item" href="" title="Remove item"><span><span><i class="fa fa-times-circle"></i></span></span></a>
+                                    <a class="button remove-item" href="ddd" title="Remove item"><span><span><i class="fa fa-times-circle"></i></span></span></a>
                                 </div>
                                 <div class="product-introduction">
                                     <a href="#" class="product-img">
-                                        <img title="Product Name" src="{{asset($cp->image)}}">
+                                        <img title="Product Name" src="{{asset($cp->pro_image)}}">
                                     </a>
                                     <div class="title-wrapper">
                                         <a class="product-name" href="{{url('/remove-compare-item/'.$item->rowId)}}">
-                                           {{$item->name}}
+                                           {{$cp->pro_name}}
                                         </a>
                                         <a class="contact-item-btn" href="#"><i class="fa fa-envelope-o"></i>Contact Supplier</a>
                                     </div>
@@ -100,31 +100,111 @@
 
 
 
+
                     <tr data-type="compareProductView" data-key="fobPrice">
-                        <td class="params-title"><div class="product-cell"> Price</div></td>
-                        @foreach(Cart::instance('compare')->content() as $item)
+                        <td class="params-title"><div class="product-cell"> Height</div></td>
+                        @foreach(Cart::instance('compare')->content() as $items)
                             <?php
-                            $cp = DB::table('products')->where('id',$item->id)->first();
+                            $cpu = DB::table('seller_products')->where('id',$items->id)->first();
                             ?>
-                        <td class="product-item product-item-content ">
-                            <div class="product-cell">
-                                US $ {{$cp->price}}
-                            </div>
-                        </td>
+                            <td class="product-item product-item-content ">
+                                <div class="product-cell">
+                                    {{$cpu->height}}
+                                    @if(\App\Unit::find($cpu->id)!=NULL)
+                                        {{\App\Unit::find($cpu->id)->name}}
+                                    @endif
+                                </div>
+                            </td>
                         @endforeach
                         <td class="operate-area"></td>
                     </tr>
+                    <tr data-type="compareProductView" data-key="fobPrice">
+                        <td class="params-title"><div class="product-cell"> Width</div></td>
+                        @foreach(Cart::instance('compare')->content() as $item2)
+                            <?php
+                            $cp2 = DB::table('seller_products')->where('id',$item2->id)->first();
+                            ?>
+                            <td class="product-item product-item-content ">
+                                <div class="product-cell">
+                                    {{$cp2->width}}
+                                    @if(\App\Unit::find($cp2->id)!=NULL)
+                                        {{\App\Unit::find($cp2->id)->name}}
+                                    @endif
+                                </div>
+                            </td>
+                        @endforeach
+                        <td class="operate-area"></td>
+                    </tr>
+                    <tr data-type="compareProductView" data-key="fobPrice">
+                        <td class="params-title"><div class="product-cell"> Length</div></td>
+                        @foreach(Cart::instance('compare')->content() as $item3)
+                            <?php
+                            $cp3 = DB::table('seller_products')->where('id',$item3->id)->first();
+                            ?>
+                            <td class="product-item product-item-content ">
+                                <div class="product-cell">
+                                    {{$cp3->length}}
+                                    @if(\App\Unit::find($cp3->id)!=NULL)
+                                        {{\App\Unit::find($cp3->id)->name}}
+                                    @endif
+                                </div>
+                            </td>
+                        @endforeach
+                        <td class="operate-area"></td>
+                    </tr>
+                    <tr data-type="compareProductView" data-key="fobPrice">
+                        <td class="params-title"><div class="product-cell"> 15 days price</div></td>
+                        @foreach(Cart::instance('compare')->content() as $item4)
+                            <?php
+                            $cp4 = DB::table('seller_products')->where('id',$item4->id)->first();
+                            ?>
+                            <td class="product-item product-item-content ">
+                                <div class="product-cell">
+                                    ${{$cp4->price_15_days}}
+                                </div>
+                            </td>
+                        @endforeach
+                        <td class="operate-area"></td>
+                    </tr>
+                    <tr data-type="compareProductView" data-key="fobPrice">
+                        <td class="params-title"><div class="product-cell"> 30 days price</div></td>
+                        @foreach(Cart::instance('compare')->content() as $item5)
+                            <?php
+                            $cp5 = DB::table('seller_products')->where('id',$item5->id)->first();
+                            ?>
+                            <td class="product-item product-item-content ">
+                                <div class="product-cell">
+                                    ${{$cp5->price_30_days}}
+                                </div>
+                            </td>
+                        @endforeach
+                        <td class="operate-area"></td>
+                    </tr>
+                    <tr data-type="compareProductView" data-key="fobPrice">
+                        <td class="params-title"><div class="product-cell"> Regular Price</div></td>
+                        @foreach(Cart::instance('compare')->content() as $item6)
+                            <?php
+                            $cp6 = DB::table('seller_products')->where('id',$item6->id)->first();
+                            ?>
+                            <td class="product-item product-item-content ">
+                                <div class="product-cell">
+                                     $ {{$cp6->unit_price}}
+                                </div>
+                            </td>
+                        @endforeach
+                        <td class="operate-area"></td>
+                    </tr>
+
                     <tr>
                         <td class="params-title"><div class="product-cell">Brand Name</div></td>
-                        @foreach(Cart::instance('compare')->content() as $item)
+                        @foreach(Cart::instance('compare')->content() as $itemb)
                             <?php
-                            $cp = DB::table('products')->where('id',$item->id)->first();
+                            $cpb = DB::table('seller_products')->where('id',$itemb->id)->first();
                             ?>
-
                         <td class="product-item product-item-content ">
                             <div class="product-cell">
                                 <?php
-                            $cm = DB::table('manufacters')->where('id',$cp->manufacturer_id)->get();
+                            $cm = DB::table('manufacters')->where('id',$cpb->manufacture_id)->get();
                                     ?>
                                  @foreach($cm as $cpm)
                                     {{$cpm->name}}
@@ -137,9 +217,6 @@
                     <tr>
                         <td class="params-title"><div class="product-cell">Model</div></td>
                         @foreach(Cart::instance('compare')->content() as $item)
-                            <?php
-                            $cp = DB::table('products')->where('id',$item->id)->first();
-                            ?>
                         <td class="product-item product-item-content ">
                             <div class="product-cell">
                                 <?php
@@ -157,14 +234,13 @@
                         <td class="params-title"><div class="product-cell">Quick Details<br>
                             </div>
                         </td>
-                        @foreach(Cart::instance('compare')->content() as $item)
+                        @foreach(Cart::instance('compare')->content() as $item10)
                             <?php
-                            $cp = DB::table('products')->where('id',$item->id)->first();
+                            $cp10 = DB::table('seller_products')->where('id',$item10->id)->first();
                             ?>
                         <td class="product-item product-item-content ">
                             <article>
-                             {!! $cp->description !!}
-
+                             {!! $cp10->pro_description !!}
                             </article></td>
                        @endforeach
                         <td class="product-item product-item-content  hide"></td>

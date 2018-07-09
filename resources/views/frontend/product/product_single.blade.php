@@ -533,13 +533,13 @@
             <li><a href="{{url('/')}}">Home</a>
             </li>
             @if($product_by_id->pro_cat_id!=NULL)
-            <li>
-                @foreach($all_category as $category)
-                    @if($category->id == $product_by_id->pro_cat_id)
-                <a href="{{url('/product-category/'.$category->id)}}">{{$category->cat_name}}</a>
-                    @endif
-                @endforeach
-            </li>
+                <li>
+                    @foreach($all_category as $category)
+                        @if($category->id == $product_by_id->pro_cat_id)
+                            <a href="{{url('/product-category/'.$category->id)}}">{{$category->cat_name}}</a>
+                        @endif
+                    @endforeach
+                </li>
             @endif
 
             @if($product_by_id->sub_cat_id!=NULL)
@@ -548,8 +548,8 @@
                         @if($sub_category->id == $product_by_id->pro_subcat_id)
                             @foreach($all_category as $category)
                                 @if($category->id==$sub_category->cat_id && $sub_category->id == $product_by_id->pro_subcat_id)
-                            <a href="{{url('/product-sub-category/'.$sub_category->id)}}">{{$sub_category->sub_cat_name}}</a>
-                            @endif
+                                    <a href="{{url('/product-sub-category/'.$sub_category->id)}}">{{$sub_category->sub_cat_name}}</a>
+                                @endif
                             @endforeach
                         @endif
                     @endforeach
@@ -562,7 +562,7 @@
             <div class="product-page-product-wrap jqzoom-stage">
                 <div class="clearfix">
                     {{--<a href="{{asset('public/frontend/img/')}}/products/1499633334.jpg" id="jqzoom" data-rel="gal-1">--}}
-                        {{--<img src="{{asset('public/frontend/img/')}}/products/1499633334.jpg" alt="Image Alternative text" title="Image Title" />--}}
+                    {{--<img src="{{asset('public/frontend/img/')}}/products/1499633334.jpg" alt="Image Alternative text" title="Image Title" />--}}
                     {{--</a>--}}
                     <a href="{{asset($product_by_id->pro_image)}}" id="jqzoom" data-rel="gal-1">
                         <img src="{{asset($product_by_id->pro_image)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
@@ -571,34 +571,34 @@
             </div>
             <ul class="jqzoom-list">
                 @if($product_by_id->a_img_1!=NUll)
-                <li>
-                    <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_1)}}', largeimage: '{{asset($product_by_id->a_img_1)}}'}">
-                        <img width="70" height="70" src="{{asset($product_by_id->a_img_1)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
-                    </a>
-                </li>
+                    <li>
+                        <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_1)}}', largeimage: '{{asset($product_by_id->a_img_1)}}'}">
+                            <img width="70" height="70" src="{{asset($product_by_id->a_img_1)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
+                        </a>
+                    </li>
                 @endif
-                    @if($product_by_id->a_img_2!=NUll)
-                <li>
-                    <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_2)}}', largeimage: '{{asset($product_by_id->a_img_2)}}'}">
-                        <img width="70" height="70" src="{{asset($product_by_id->a_img_2)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
-                    </a>
-                </li>
+                @if($product_by_id->a_img_2!=NUll)
+                    <li>
+                        <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_2)}}', largeimage: '{{asset($product_by_id->a_img_2)}}'}">
+                            <img width="70" height="70" src="{{asset($product_by_id->a_img_2)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
+                        </a>
+                    </li>
                 @endif
-                    @if($product_by_id->a_img_3!=NUll)
-                <li>
-                    <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_3)}}', largeimage: '{{asset($product_by_id->a_img_3)}}'}">
-                        <img width="70" height="70" src="{{asset($product_by_id->a_img_3)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
-                    </a>
-                </li>
+                @if($product_by_id->a_img_3!=NUll)
+                    <li>
+                        <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_3)}}', largeimage: '{{asset($product_by_id->a_img_3)}}'}">
+                            <img width="70" height="70" src="{{asset($product_by_id->a_img_3)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
+                        </a>
+                    </li>
                 @endif
-                    @if($product_by_id->a_img_4!=NUll)
-                <li>
-                    <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_4)}}', largeimage: '{{asset($product_by_id->a_img_4)}}'}">
-                        <img width="70" height="70" src="{{asset($product_by_id->a_img_4)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
-                    </a>
-                </li>
+                @if($product_by_id->a_img_4!=NUll)
+                    <li>
+                        <a href="javascript:void(0)" data-rel="{gallery:'gal-1', smallimage: '{{asset($product_by_id->a_img_4)}}', largeimage: '{{asset($product_by_id->a_img_4)}}'}">
+                            <img width="70" height="70" src="{{asset($product_by_id->a_img_4)}}" alt="{{$product_by_id->pro_name}}" title="{{$product_by_id->pro_name}}" />
+                        </a>
+                    </li>
                 @endif
-               {{--@endforeach--}}
+                {{--@endforeach--}}
             </ul>
         </div>
         <div class="col-md-7">
@@ -625,41 +625,45 @@
                                 <p class="product-page-product-rating-sign">{{$average_rating->count()}} customer reviews </p>
                             </div>
                             <div class="col-md-6 pull-right">
-                                <h6 class="pull-right">Sold by <a href="../vendors/13.html">Leister</a></h6>
+                                <?php $seller = DB::table('sellers')->where('user_id',$product_by_id->seller_id)->first();?>
+                                <h6 class="pull-right text-uppercase">Sold by <a href="{{route('seller-product',$product_by_id->seller_id)}}">
+                                        @if($seller!=NUll)
+                                            {{$seller->vendorname}}
+                                        @endif</a></h6>
                             </div>
                         </div>
 
 
                         <p class="product-page-desc">
-                           {{$product_by_id->pro_description}}
+                            {{$product_by_id->pro_description}}
                         </p>
                         <table
                                 class="table table-striped product-page-features-table">
                             <tbody>
                             @if($product_by_id->pro_gurrantee!=NUll && $product_by_id->pro_gurrantee!='1')
-                            <tr>
-                                <td>Guarantee Terms - Parts:</td>
-                                <td>
-                                    @if($product_by_id->pro_gurrantee=='2')
-                                        1 Year
-                                    @elseif($product_by_id->pro_gurrantee=='3')
-                                        Above One Year
-                                    @endif
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>Guarantee Terms - Parts:</td>
+                                    <td>
+                                        @if($product_by_id->pro_gurrantee=='2')
+                                            1 Year
+                                        @elseif($product_by_id->pro_gurrantee=='3')
+                                            Above One Year
+                                        @endif
+                                    </td>
+                                </tr>
                             @else
-                            <tr>
-                                <td>Warranty Terms - Parts:</td>
-                                <td>
-                                    @if($product_by_id->pro_warranty=='1')
-                                        No Warranty
+                                <tr>
+                                    <td>Warranty Terms - Parts:</td>
+                                    <td>
+                                        @if($product_by_id->pro_warranty=='1')
+                                            No Warranty
                                         @elseif($product_by_id->pro_warranty=='2')
-                                        1 Year
+                                            1 Year
                                         @elseif($product_by_id->pro_warranty=='3')
-                                        Above One Year
-                                    @endif
-                                </td>
-                            </tr>
+                                            Above One Year
+                                        @endif
+                                    </td>
+                                </tr>
                             @endif
                             <tr>
                                 <td>Condition:</td>
@@ -689,15 +693,15 @@
                             </tr>
                             <tr>
                                 <td>Manufacturer:</td>
-                              <td>
-                                  @foreach($all_manufacturer as $manufacturer)
-                                      @if($manufacturer->id==$product_by_id->manufacture_id)
-                                      <?php global $brand;
-                                      $brand = $manufacturer->name;?>
-                                          {{$brand}}
-                                      @endif
-                                  @endforeach
-                              </td>
+                                <td>
+                                    @foreach($all_manufacturer as $manufacturer)
+                                        @if($manufacturer->id==$product_by_id->manufacture_id)
+                                            <?php global $brand;
+                                            $brand = $manufacturer->name;?>
+                                            {{$brand}}
+                                        @endif
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <td>Model:</td>
@@ -705,7 +709,7 @@
                                     @foreach($all_product_model as $model)
                                         @if($model->id==$product_by_id->model_id)
                                             <?php global $pro_model;
-                                                $pro_model = $model->name;
+                                            $pro_model = $model->name;
                                             ?>
                                             {{$pro_model}}
                                         @endif
@@ -716,10 +720,10 @@
                                 <td>Availability:</td>
                                 <td>
                                     @if($product_by_id->pro_status=='1')
-                                       In Stock
-                                        @elseif($product_by_id->pro_status=='2')
+                                        In Stock
+                                    @elseif($product_by_id->pro_status=='2')
                                         Low Stock
-                                        @elseif($product_by_id->pro_status=='3')
+                                    @elseif($product_by_id->pro_status=='3')
                                         Stock Out
                                     @endif
                                 </td>
@@ -831,27 +835,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                   <?php
-                   $unit = DB::table('units')->where('id',$product_by_id->unit)->first();
-                   ?>
-                   <tr>
-                       <td class="product-page-features-table-specs">Name</td>
-                       <td class="product-page-features-table-details">{{$product_by_id->pro_name}}</td>
-                       <td></td>
-                   </tr>
-                   @if($product_by_id->model_id!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Model</td>
-                           <td class="product-page-features-table-details">{{$pro_model}}</td>
-                           <td></td>
-                       </tr>
-                   @endif
-                    @if($product_by_id->height!=NULL)
+                    <?php
+                    $unit = DB::table('units')->where('id',$product_by_id->unit)->first();
+                    ?>
                     <tr>
-                        <td class="product-page-features-table-specs">Height:</td>
-                        <td class="product-page-features-table-details">{{$product_by_id->height}} {{$unit->name}}</td>
+                        <td class="product-page-features-table-specs">Name</td>
+                        <td class="product-page-features-table-details">{{$product_by_id->pro_name}}</td>
                         <td></td>
                     </tr>
+                    @if($product_by_id->model_id!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Model</td>
+                            <td class="product-page-features-table-details">{{$pro_model}}</td>
+                            <td></td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->height!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Height:</td>
+                            <td class="product-page-features-table-details">{{$product_by_id->height}} {{$unit->name}}</td>
+                            <td></td>
+                        </tr>
                     @endif
                     @if($product_by_id->width!=NULL)
                         <tr>
@@ -874,116 +878,116 @@
                             <td></td>
                         </tr>
                     @endif
-                   @if($product_by_id->pro_color!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Color:</td>
-                           <?php $cl =  explode('#',$product_by_id->pro_color); ?>
-                           <td class="product-page-features-table-details">
+                    @if($product_by_id->pro_color!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Color:</td>
+                            <?php $cl =  explode('#',$product_by_id->pro_color); ?>
+                            <td class="product-page-features-table-details">
                                 {{$mincolor}}
-                           </td>
-                           <td></td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->pro_description!=NULL)
-                    <tr>
-                        <td class="product-page-features-table-specs">Description</td>
-                        <td class="product-page-features-table-details"></td>
-                        <td>{{$product_by_id->pro_description}}</td>
-                    </tr>
+                            </td>
+                            <td></td>
+                        </tr>
                     @endif
-                   @if($product_by_id->optional_description!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Optional Description</td>
-                           <td class="product-page-features-table-details"></td>
-                           <td>{{$product_by_id->optional_description}}</td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->conditions!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Condition</td>
-                           <td class="product-page-features-table-details">
-                               @if($product_by_id->conditions=='1')
-                                   New
-                               @elseif($product_by_id->conditions=='2')
-                                   Refurbished
-                               @elseif($product_by_id->conditions=='3')
-                                   Fairly Used
-                               @endif
-                           </td>
-                           <td>{{$product_by_id->speacial_feature}}</td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->manufacture_id!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Brand</td>
-                           <td class="product-page-features-table-details">{{$brand}}</td>
-                           <td></td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->unit_price!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Price</td>
-                           <td class="product-page-features-table-details">$ {{$product_by_id->unit_price}}</td>
-                           <td></td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->minumum_order_qty!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Minimum Order Qty</td>
-                           <td class="product-page-features-table-details">{{$product_by_id->minumum_order_qty}}</td>
-                           <td></td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->price_15_days!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">15 days price</td>
-                           <td class="product-page-features-table-details">$ {{$product_by_id->price_15_days}}</td>
-                           <td></td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->price_30_days!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">30 days price</td>
-                           <td class="product-page-features-table-details">$ {{$product_by_id->price_30_days}}</td>
-                           <td></td>
-                       </tr>
-                   @endif
-                   @if($product_by_id->sample_fee!=NULL)
-                       <tr>
-                           <td class="product-page-features-table-specs">Sample Fee</td>
-                           <td class="product-page-features-table-details">$ {{$product_by_id->sample_fee}}</td>
-                           <td></td>
-                       </tr>
-                   @endif
+                    @if($product_by_id->pro_description!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Description</td>
+                            <td class="product-page-features-table-details"></td>
+                            <td>{{$product_by_id->pro_description}}</td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->optional_description!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Optional Description</td>
+                            <td class="product-page-features-table-details"></td>
+                            <td>{{$product_by_id->optional_description}}</td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->conditions!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Condition</td>
+                            <td class="product-page-features-table-details">
+                                @if($product_by_id->conditions=='1')
+                                    New
+                                @elseif($product_by_id->conditions=='2')
+                                    Refurbished
+                                @elseif($product_by_id->conditions=='3')
+                                    Fairly Used
+                                @endif
+                            </td>
+                            <td>{{$product_by_id->speacial_feature}}</td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->manufacture_id!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Brand</td>
+                            <td class="product-page-features-table-details">{{$brand}}</td>
+                            <td></td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->unit_price!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Price</td>
+                            <td class="product-page-features-table-details">$ {{$product_by_id->unit_price}}</td>
+                            <td></td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->minumum_order_qty!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Minimum Order Qty</td>
+                            <td class="product-page-features-table-details">{{$product_by_id->minumum_order_qty}}</td>
+                            <td></td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->price_15_days!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">15 days price</td>
+                            <td class="product-page-features-table-details">$ {{$product_by_id->price_15_days}}</td>
+                            <td></td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->price_30_days!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">30 days price</td>
+                            <td class="product-page-features-table-details">$ {{$product_by_id->price_30_days}}</td>
+                            <td></td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->sample_fee!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Sample Fee</td>
+                            <td class="product-page-features-table-details">$ {{$product_by_id->sample_fee}}</td>
+                            <td></td>
+                        </tr>
+                    @endif
 
 
-                   @if($product_by_id->pro_gurrantee!=NUll && $product_by_id->pro_gurrantee!='1')
-                       <tr>
-                           <td class="product-page-features-table-specs">Guarantee Terms - Parts:</td>
-                           <td class="product-page-features-table-details">
-                               @if($product_by_id->pro_gurrantee=='2')
-                                   1 Year
-                               @elseif($product_by_id->pro_gurrantee=='3')
-                                   Above One Year
-                               @endif
-                           </td>
-                           <td></td>
-                       </tr>
-                   @else
-                       <tr>
-                           <td class="product-page-features-table-specs">Warranty Terms - Parts:</td>
-                           <td class="product-page-features-table-details">
-                               @if($product_by_id->pro_warranty=='1')
-                                   No Warranty
-                               @elseif($product_by_id->pro_warranty=='2')
-                                   1 Year
-                               @elseif($product_by_id->pro_warranty=='3')
-                                   Above One Year
-                               @endif
-                           </td>
-                           <td></td>
-                       </tr>
-                   @endif
+                    @if($product_by_id->pro_gurrantee!=NUll && $product_by_id->pro_gurrantee!='1')
+                        <tr>
+                            <td class="product-page-features-table-specs">Guarantee Terms - Parts:</td>
+                            <td class="product-page-features-table-details">
+                                @if($product_by_id->pro_gurrantee=='2')
+                                    1 Year
+                                @elseif($product_by_id->pro_gurrantee=='3')
+                                    Above One Year
+                                @endif
+                            </td>
+                            <td></td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td class="product-page-features-table-specs">Warranty Terms - Parts:</td>
+                            <td class="product-page-features-table-details">
+                                @if($product_by_id->pro_warranty=='1')
+                                    No Warranty
+                                @elseif($product_by_id->pro_warranty=='2')
+                                    1 Year
+                                @elseif($product_by_id->pro_warranty=='3')
+                                    Above One Year
+                                @endif
+                            </td>
+                            <td></td>
+                        </tr>
+                    @endif
 
                     </tbody>
                 </table>
@@ -999,57 +1003,57 @@
 
                     <div class="row">
                         <div class="col-md-7">
-                        <?php
+                            <?php
                             $all_review =  DB::table('customer_reviews')
 
                                 ->where('product_id',$product_by_id->id)
 //                                ->where('user_id',Auth::user()->id)
 //                                ->get();
                                 ->paginate(2)
-                        ?>
+                            ?>
                             <?php $all_users = DB::table('users')->get();?>
                             @foreach($all_review as $review)
 
-                            <div class='product-review-content'>
-                                <input class='input-3' name='input-3' value={{$review->rating}} class='rating-loading' data-size='xs'>
-                                <p class='product-review-meta'>
-                                    by @foreach($all_users as $user)
-                                           @if($user->id==$review->user_id)
-                                               {{$user->name}}
-                                           @endif
+                                <div class='product-review-content'>
+                                    <input class='input-3' name='input-3' value={{$review->rating}} class='rating-loading' data-size='xs'>
+                                    <p class='product-review-meta'>
+                                        by @foreach($all_users as $user)
+                                            @if($user->id==$review->user_id)
+                                                {{$user->name}}
+                                            @endif
                                         @endforeach
-                                    on
-                                   <?php
-                                       $dt = new DateTime($review->created_at);
-                                      echo $dt->format('d/m/y');
-                                    ?>
+                                        on
+                                        <?php
+                                        $dt = new DateTime($review->created_at);
+                                        echo $dt->format('d/m/y');
+                                        ?>
 
-                                </p>
-                                <p class='product-review-body'>{{$review->review}}</p>
-                            </div>
+                                    </p>
+                                    <p class='product-review-body'>{{$review->review}}</p>
+                                </div>
                             @endforeach
 
                         </div>
                         <div class="col-md-5">
                             {{Form::open(['url'=>'write-customer-review','method'=>'POST'])}}
-                                <h4>Have you used this product before?</h4>
-                                <div class="stars">
-                                    <input type="radio" name="star" class="star-1" id="star-1" value="1">
-                                    <label class="star-1" for="star-1">1</label>
-                                    <input type="radio" name="star" class="star-2" id="star-2" value="2">
-                                    <label class="star-2" for="star-2">2</label>
-                                    <input type="radio" name="star" class="star-3" id="star-3" value="3">
-                                    <label class="star-3" for="star-3">3</label>
-                                    <input type="radio" name="star" class="star-4" id="star-4" value="4">
-                                    <label class="star-4" for="star-4">4</label>
-                                    <input type="radio" name="star" class="star-5" id="star-5" value="5">
-                                    <label class="star-5" for="star-5">5</label>
-                                    <span></span>
-                                </div><br>
-                                <input type="text" name="review" id="review" class="form-control" placeholder="Write your review">
+                            <h4>Have you used this product before?</h4>
+                            <div class="stars">
+                                <input type="radio" name="star" class="star-1" id="star-1" value="1">
+                                <label class="star-1" for="star-1">1</label>
+                                <input type="radio" name="star" class="star-2" id="star-2" value="2">
+                                <label class="star-2" for="star-2">2</label>
+                                <input type="radio" name="star" class="star-3" id="star-3" value="3">
+                                <label class="star-3" for="star-3">3</label>
+                                <input type="radio" name="star" class="star-4" id="star-4" value="4">
+                                <label class="star-4" for="star-4">4</label>
+                                <input type="radio" name="star" class="star-5" id="star-5" value="5">
+                                <label class="star-5" for="star-5">5</label>
+                                <span></span>
+                            </div><br>
+                            <input type="text" name="review" id="review" class="form-control" placeholder="Write your review">
                             <input type="hidden" name="product_id" value="{{$product_by_id->id}}">
                             <br><button href="#" class="btn btn-primary">submit review</button>
-                           {!! Form::close() !!}
+                            {!! Form::close() !!}
 
                         </div>
                     </div>
@@ -1057,7 +1061,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <?php
-                             $all_review->toArray();
+                        $all_review->toArray();
                         ?>
                         <p class="category-pagination-sign"> {{$all_review->total()}} customer reviews found. Showing
                             {{ $all_review->currentPage()}} - {{$all_review->lastPage()}}
@@ -1083,50 +1087,50 @@
                         <h3>Additional Accessories</h3>
                         <ul class="product-accessory-list">
                             <?php $all_accessories = explode('|',$product_by_id->accessories_id);?>
-                           @foreach($all_accessories as $accs)
-                               @foreach($all_product as $product)
-                                   @if($product->id==$accs)
-                                            <li class="product-accessory">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <a href="#">
-                                                            <img class="product-accessory-img" src="{{asset($product->image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-7">
-
-                                                        <?php $average_rating = DB::table('customer_reviews')
-                                                            ->where('product_id',$product->id)->get();?>
-                                                        <?php
-                                                       $avg = 0;
-                                                        foreach ($average_rating as $avgr){
-                                                            $result = $avgr->rating;
-                                                            $avg = $avg+$result;
-                                                        }?>
-
-
-
-                                                        <input class='input-3' name='input-3'
-                                                               value= "<?php
-                                                               if($avg>0){
-                                                                 echo  $rate_by_product = $avg/$average_rating->count();
-                                                               }
-                                                               ?>"
-                                                               class='rating-loading' data-size='xs'>
-
-                                                        <h5 class="product-accessory-title"><a href="#">{{$product->name}}</a></h5>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <p class="product-accessory-price">${{$product->price}}</p>
-                                                        <a class="btn btn-primary" href="{{route('accessories-add-to-cart',$product->id)}}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-
-                                                    </div>
+                            @foreach($all_accessories as $accs)
+                                @foreach($all_product as $product)
+                                    @if($product->id==$accs)
+                                        <li class="product-accessory">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <a href="#">
+                                                        <img class="product-accessory-img" src="{{asset($product->image)}}" alt="{{$product->name}}" title="{{$product->name}}" />
+                                                    </a>
                                                 </div>
-                                            </li>
-                                       @endif
-                                   @endforeach
+                                                <div class="col-md-7">
 
-                           @endforeach
+                                                    <?php $average_rating = DB::table('customer_reviews')
+                                                        ->where('product_id',$product->id)->get();?>
+                                                    <?php
+                                                    $avg = 0;
+                                                    foreach ($average_rating as $avgr){
+                                                        $result = $avgr->rating;
+                                                        $avg = $avg+$result;
+                                                    }?>
+
+
+
+                                                    <input class='input-3' name='input-3'
+                                                           value= "<?php
+                                                           if($avg>0){
+                                                               echo  $rate_by_product = $avg/$average_rating->count();
+                                                           }
+                                                           ?>"
+                                                           class='rating-loading' data-size='xs'>
+
+                                                    <h5 class="product-accessory-title"><a href="#">{{$product->name}}</a></h5>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <p class="product-accessory-price">${{$product->price}}</p>
+                                                    <a class="btn btn-primary" href="{{route('accessories-add-to-cart',$product->id)}}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-md-4">
@@ -1146,22 +1150,22 @@
             <div class="tab-pane fade" id="tab-5">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                            {!! Form::open(['method'=>'GET','url'=>'ask-a-question','class'=>'product-page-qa-form']) !!}
-                            <div class="row" data-gutter="10">
-                                <div class="col-md-10">
-                                    <div class="form-group">
-                                        <input type="hidden" name="product_id" value="{{$product_by_id->id}}">
-                                        <input class="form-control" type="text" name="question" placeholder="Have a question? Feel free to ask." />
-                                        @if ($errors->has('question'))
-                                            <div class="error">{{ $errors->first('question') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <input class="btn btn-primary btn-block" type="submit" value="Ask" />
+                        {!! Form::open(['method'=>'GET','url'=>'ask-a-question','class'=>'product-page-qa-form']) !!}
+                        <div class="row" data-gutter="10">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <input type="hidden" name="product_id" value="{{$product_by_id->id}}">
+                                    <input class="form-control" type="text" name="question" placeholder="Have a question? Feel free to ask." />
+                                    @if ($errors->has('question'))
+                                        <div class="error">{{ $errors->first('question') }}</div>
+                                    @endif
                                 </div>
                             </div>
-                            {!! Form::close() !!}
+                            <div class="col-md-2">
+                                <input class="btn btn-primary btn-block" type="submit" value="Ask" />
+                            </div>
+                        </div>
+                        {!! Form::close() !!}
 
                         <?php $all_q_a = DB::table('customer_questions')->where('product_id',$product_by_id->id)->orderBy('question','desc')->paginate('5');?>
                         @foreach($all_q_a as $qa)
@@ -1169,58 +1173,58 @@
                             $dt = new DateTime($qa->created_at);
                             $date = $dt->format('d/m/y');
                             ?>
-                        <article class="product-page-qa">
-                            <div class="product-page-qa-question">
-                                <p class="product-page-qa-text">{{$qa->question}}</p>
-                                <p class="product-page-qa-meta">asked by
-                                    <?php
+                            <article class="product-page-qa">
+                                <div class="product-page-qa-question">
+                                    <p class="product-page-qa-text">{{$qa->question}}</p>
+                                    <p class="product-page-qa-meta">asked by
+                                        <?php
                                         $user = DB::table('users')->where('id',$qa->user_id)->first();
-                                    ?>
-                                    {{$user->name}}
-                                    on {{$date}}</p>
-                            </div>
-                            <?php $all_ans = DB::table('customer_answers')
-                                ->where('product_id',$product_by_id->id)
-                                ->where('question_id',$qa->id)
-                                ->orderBy('answer','desc')
-                                ->get();?>
-                            @if($all_ans!=NULL)
-                                @foreach($all_ans as $ans)
-                            <div class="product-page-qa-answer">
+                                        ?>
+                                        {{$user->name}}
+                                        on {{$date}}</p>
+                                </div>
+                                <?php $all_ans = DB::table('customer_answers')
+                                    ->where('product_id',$product_by_id->id)
+                                    ->where('question_id',$qa->id)
+                                    ->orderBy('answer','desc')
+                                    ->get();?>
+                                @if($all_ans!=NULL)
+                                    @foreach($all_ans as $ans)
+                                        <div class="product-page-qa-answer">
 
-                                <p class="product-page-qa-text">
-                                       {{$ans->answer}}
-                                </p>
-                                <?php
-                                $dt = new DateTime($ans->created_at);
-                                $date = $dt->format('d/m/y');
-                                ?>
-                                <?php
-                                $user = DB::table('users')->where('id',$ans->user_id)->first();
-                                ?>
-                                <p class="product-page-qa-meta">answered by {{$user->name}} {{$date}}</p>
-                            </div>
-                                @endforeach
-                            @endif
+                                            <p class="product-page-qa-text">
+                                                {{$ans->answer}}
+                                            </p>
+                                            <?php
+                                            $dt = new DateTime($ans->created_at);
+                                            $date = $dt->format('d/m/y');
+                                            ?>
+                                            <?php
+                                            $user = DB::table('users')->where('id',$ans->user_id)->first();
+                                            ?>
+                                            <p class="product-page-qa-meta">answered by {{$user->name}} {{$date}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
 
-                              <div class="row">
-                                  {!! Form::open(['url'=>'answer-a-question','method'=>'GET']) !!}
-                                  <div class="col-md-10">
-                                      <div class="form-group">
-                                          <input type="hidden" name="product_id" value="{{$product_by_id->id}}">
-                                          <input type="hidden" name="question_id" value="{{$qa->id}}">
-                                          <input class="form-control" type="text" name="answer" placeholder="Provie Your Answer Here" />
-                                          @if ($errors->has('answer'))
-                                              <div class="error">{{ $errors->first('answer') }}</div>
-                                          @endif
-                                      </div>
-                                  </div>
-                                  <div class="col-md-2">
-                                      <input class="btn btn-primary btn-block" type="submit" value="Answer" />
-                                  </div>
-                                  {!! Form::close() !!}
-                              </div>
-                        </article>
+                                <div class="row">
+                                    {!! Form::open(['url'=>'answer-a-question','method'=>'GET']) !!}
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <input type="hidden" name="product_id" value="{{$product_by_id->id}}">
+                                            <input type="hidden" name="question_id" value="{{$qa->id}}">
+                                            <input class="form-control" type="text" name="answer" placeholder="Provie Your Answer Here" />
+                                            @if ($errors->has('answer'))
+                                                <div class="error">{{ $errors->first('answer') }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input class="btn btn-primary btn-block" type="submit" value="Answer" />
+                                    </div>
+                                    {!! Form::close() !!}
+                                </div>
+                            </article>
                         @endforeach
                         <span class="text-center"> {{ $all_q_a->links() }}</span>
                     </div>
@@ -1232,66 +1236,66 @@
     <h3 class="widget-title">You Might Also Like</h3>
     <div class="row" data-gutter="15">
         <?php
-          $related_product = DB::table('seller_products')
-              ->where('pro_cat_id',$product_by_id->pro_cat_id)
-              ->where('pro_subcat_id',$product_by_id->pro_subcat_id)
-              ->where('manufacture_id',$product_by_id->manufacture_id)
-              ->where('model_id',$product_by_id->model_id)
-              ->take('4')
-              ->orderBY('id','desc')
-              ->get();
+        $related_product = DB::table('seller_products')
+            ->where('pro_cat_id',$product_by_id->pro_cat_id)
+            ->where('pro_subcat_id',$product_by_id->pro_subcat_id)
+            ->where('manufacture_id',$product_by_id->manufacture_id)
+            ->where('model_id',$product_by_id->model_id)
+            ->take('4')
+            ->orderBY('id','desc')
+            ->get();
         ?>
         @foreach($related_product as $product)
-        <div class='col-md-3'>
-            <div class="product ">
-                <div class="product-img-wrap">
-                    <img class="product-img-primary" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->pro_name}}" title="{{$product->pro_name}}" />
-                    <img class="product-img-alt" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->pro_name}}" title="{{$product->pro_name}}" />
-                </div>
-                <a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>
-                <div class="product-caption">
-                    <ul class="product-caption-rating">
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                    </ul>
-                    <button class="btn btn-primary" href="#">Contact supplier</button>
-                   <div class="row">
-                       <div class="col-md-6 col-sm-6">
-                           <div class="details-option">
-                               <a href="#"><i class="fa fa-plus"></i> Compare</a>
-                           </div>
-                       </div>
-                       <div class="col-md-6 col-sm-6">
-                           <div class="details-option">
-                               <a href="#"><i class="fa fa-star"></i> Favourite</a>
-                           </div>
-                       </div>
-                   </div>
-                    {{--<h5 class="product-caption-title">{{$product->pro_name}}</h5>--}}
-                    <div class="product-caption-price">
+            <div class='col-md-3'>
+                <div class="product ">
+                    <div class="product-img-wrap">
+                        <img class="product-img-primary" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->pro_name}}" title="{{$product->pro_name}}" />
+                        <img class="product-img-alt" width="253" height="253" src="{{asset($product->pro_image)}}" alt="{{$product->pro_name}}" title="{{$product->pro_name}}" />
+                    </div>
+                    <a class="product-link" href="{{url('/product-details/'.$product->id)}}"></a>
+                    <div class="product-caption">
+                        <ul class="product-caption-rating">
+                            <li class="rated"><i class="fa fa-star"></i>
+                            </li>
+                            <li class="rated"><i class="fa fa-star"></i>
+                            </li>
+                            <li class="rated"><i class="fa fa-star"></i>
+                            </li>
+                            <li class="rated"><i class="fa fa-star"></i>
+                            </li>
+                            <li class="rated"><i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <button class="btn btn-primary" href="#">Contact supplier</button>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="details-option">
+                                    <a href="#"><i class="fa fa-plus"></i> Compare</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="details-option">
+                                    <a href="#"><i class="fa fa-star"></i> Favourite</a>
+                                </div>
+                            </div>
+                        </div>
+                        {{--<h5 class="product-caption-title">{{$product->pro_name}}</h5>--}}
+                        <div class="product-caption-price">
 
 
                        <span class="product-caption-price-new">
                                $ {{$product->unit_price}}
                         </span>
 
-                    </div>
-                    <ul class="product-caption-feature-list">
-                        <li>{{$product->stock_qty}} left</li>
+                        </div>
+                        <ul class="product-caption-feature-list">
+                            <li>{{$product->stock_qty}} left</li>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-            @endforeach
+        @endforeach
 
     </div>
     </div>

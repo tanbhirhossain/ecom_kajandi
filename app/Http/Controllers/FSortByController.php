@@ -18,8 +18,9 @@ class FSortByController extends Controller{
             ->with(compact('all_products'));
     }
     public function product_by_category($id){
+        $cat = $id;
         $all_products = SellerProduct::where('pro_cat_id',$id)->where('pro_status',1)->paginate(12);
-        return view('frontend.product.shop')->with(compact('all_products'));
+        return view('frontend.product.shop')->with(compact('all_products','cat'));
     }
     public function product_by_sub_category($id){
         $all_products = SellerProduct::where('pro_cat_id',$id)->where('pro_status',1)->paginate(12);

@@ -90,6 +90,10 @@
              <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
              <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
          </small>
+         <?php
+                $check = App\Seller::where('user_id', Auth::id())->first();
+          ?>
+         @if($check->country && $check->location != Null)
            <!-- -------------- New Product -------------- -->
            <form class="" action="{{route('postSellerProduct')}}" method="post" enctype="multipart/form-data" >
              @csrf
@@ -291,7 +295,7 @@
                            <div class="section row">
                              <div class="col-md-4 ph10">
                                  <label for="supply_type" class="field select">
-                                     <select id="condition" name="condition">
+                                     <select id="condition" name="conditions">
                                          <option value="" selected="selected">Condition...</option>
                                          <option value="1">New</option>
                                          <option value="2">Refurbished</option>
@@ -686,8 +690,9 @@
                                  <label for="payment_type" class="field select">
                                      <select id="payment_type" name="payment_type">
                                          <option value="" selected="selected">Select Payment Type...</option>
-                                         <option value="1">Cash in advance</option>
-                                         <option value="2">Cash in delivery</option>
+                                         <option value="1">Cash on Delivery</option>
+                                         <option value="2">Cash After Inspection</option>
+                                         <option value="3">Cash in Advance</option>
 
                                      </select>
                                      <i class="arrow double"></i>
@@ -761,8 +766,8 @@
                            </div>
                            <div class="section row">
                                <div class="col-md-4 ph10">
-                                   <label for="supply_type" class="field select">
-                                       <select id="supply_type" name="supply_type">
+                                   <label for="delivery_w_state" class="field select">
+                                       <select id="delivery_w_state" name="delivery_w_state">
                                            <option value="" selected="selected">Delivery within state...</option>
                                            <option value="1">Yes</option>
                                            <option value="2">No</option>
@@ -821,7 +826,21 @@
                </div>
            </div>
             </form>
+            @else
+            <div class="panel">
+              <div class="panel-header">
+                <h5>Note</h5>
+              </div><hr>
+              <div class="panel-body">
+                <h1 style="font-family:Arial; color:orange; text-align:center">Please Complete Vendor Profile First</h1><hr>
 
+              </div>
+              <div class="panel-footer">
+                 <a class="btn btn-info btn-block" href="{{route('editSellerProfile')}}" name="button">Update Profile</a>
+              </div>
+            </div>
+
+          @endif
 
 
        </div>

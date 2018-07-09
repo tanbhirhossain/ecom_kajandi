@@ -25,10 +25,10 @@ class CreateSellerProductsTable extends Migration
             $table->integer('supply_type')->nullable()->comment('1=>OEM / Manufacturer, 2=>Distributor, 3=>Wholesaler, 4=>Retailer');
             $table->integer('pro_cat_id')->unsigned();
             $table->integer('pro_subcat_id')->unsigned();
-            $table->string('pro_image')->nullble();
+            $table->string('pro_image')->nullable();
             $table->integer('manufacture_id')->unisgned();//
 
-            $table->integer('conditions')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used');
+            $table->integer('conditions')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used')->nullable();
             $table->integer('pro_warranty')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             $table->integer('pro_gurrantee')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             //$table->integer('source')->comment('1=>OEM, 2=>Retailer,3=>Distributor');
