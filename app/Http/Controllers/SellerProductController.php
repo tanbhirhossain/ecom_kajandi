@@ -409,27 +409,12 @@ class SellerProductController extends Controller
       return back()->with('message_success', 'Seller Product Deleted Succesfully');
     }
 
-    //testing-
-    public function json(Request $request)
+    public function multiDeletePro(Request $request )
     {
-      if($request->status) {
-        $sellers = SellerProduct::where('pro_status',$request->pro_status)->get();
-        return response()->json(['data' => $sellers]);
-      } else {
-        $sellers = SellerProduct::get();
-        return response()->json(['data' => $sellers]);
-      }
+        $ids = $request->ids;
+        DB::table("seller_products")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Products Deleted successfully."]);
     }
 
-     public function deleteMultiPro()
-     {
-       $checked = Request::input('checked',[]);
-       foreach ($checked as $id) {
-            SellerProduct::where("id",$id)->delete(); //Assuming you have a Todo model.
-       }
-       //Or as @Alex suggested
-       SellerProduct::whereIn($checked)->delete();
 
-       return redirect()->back();
-     }
 }

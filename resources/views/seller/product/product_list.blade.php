@@ -9,7 +9,7 @@
  ?>
 <section id="content_wrapper">
 
-    <!-- -------------- Topbar Menu Wrapper -------------- -->
+
     <div id="topbar-dropmenu-wrapper">
         <div class="topbar-menu row">
             <div class="col-xs-4 col-sm-2">
@@ -50,9 +50,7 @@
             </div>
         </div>
     </div>
-    <!-- -------------- /Topbar Menu Wrapper -------------- -->
 
-    <!-- -------------- Topbar -------------- -->
     <header id="topbar" class="alt">
         <div class="topbar-left">
             <ol class="breadcrumb">
@@ -71,15 +69,13 @@
             </ol>
         </div>
     </header>
-    <!-- -------------- /Topbar -------------- -->
 
-    <!-- -------------- Content -------------- -->
     <section id="content" class="table-layout animated fadeIn">
 
-        <!-- -------------- Column Center -------------- -->
+
         <div class="chute chute-center">
 
-            <!-- -------------- Products Status Table -------------- -->
+
             <div class="row">
                 <div class="col-xs-12">
                     <div class="panel">
@@ -97,13 +93,31 @@
                                 <div class="row">
                                     <div class="col-md-2 pb5">
                                         <label class="field select">
-                                            <select id="bulk-action" name="bulk-action" class="empty">
+
+
+
+                                          <!--  <select  id="bulk-action" name="bulk-action" class="empty">
                                                 <option value="">Actions</option>
                                                 <option value="1">Edit</option>
-                                                <option value="2">Delete</option>
+                                                <form class="delete_all" action="{{route('multiDeletePro')}}" method="post">
+
+                                                <option class="delete_all"  onclick='if(this.checked){this.form.submit()}' >Delete</option>
+                                                </form>
                                                 <option value="3">Active</option>
                                                 <option value="4">Inactive</option>
-                                            </select>
+                                            </select>-->
+
+                                              <div  id="bulk-action"class="dropdown">
+                                                    <button style="background-color: Transparent; border:1px solid #ECECEC    ;padding-left: 30px;padding-right:40px" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions
+                                                  </button>
+                                                    <ul style="border: 1px solid #2E73C7" class="dropdown-menu">
+                                                      <li> <a  class="delete_all" data-url="{{ route('multiDeletePro') }}" >Delete</a></li>
+                                                      <li><a  class="" data-url="" >Active</a></li>
+                                                      <li><a  class="" data-url="" >Inactive</a></li>
+                                                    </ul>
+                                                  </div>
+
+
                                             <i class="arrow double"></i>
                                         </label>
                                     </div>
@@ -134,12 +148,13 @@
                                     </div>
                                 </div>
                             </div> <br>
+                          
                             <div class="table-responsive">
 
                                 <table id="dtListUsers" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                        <th class="text-center"></th>
+                                        <th class="text-center"><input type="checkbox" id="master"></th>
                                         <th class="">Id</th>
                                         <th class="">Image</th>
                                         <th class="">Product Title</th>
@@ -152,12 +167,12 @@
                                     </thead>
                                     <tbody>
                                     @foreach($sellerProduct as $sp)
-                                    <form  action="{{route('deleteMultiPro')}}" method="get">@csrf
+
                                     <tr>
 
                                         <td class="text-center">
                                             <label class="option block mn">
-                                                <input value="{{$sp->id}}" type="checkbox" name="checked[]" >
+                                                <input  data-id="{{$sp->id}}" class="sub_chk" type="checkbox"  >
                                                 <span class="checkbox mn"></span>
                                             </label>
                                         </td>
@@ -170,7 +185,7 @@
                                         <td class="">{{$sp->pro_name}}</td>
                                         <td class="">{{$sp->model_number}}</td>
                                         <td class="">{{$sp->unit_price}}</td>
-                                        <td class="">{{$sp->unit}}</td>
+                                        <td class="">{{$sp->stock_qty}}</td>
                                         <td class="text-right">
                                             <div class="btn-group text-right">
                                                 <button type="button"
@@ -216,8 +231,8 @@
 
 
                                     @endforeach
-                                    <button type="submit" class="btn btn-danger">Del</button>
-                                    </form>
+
+
 
                                     {{ $sellerProduct->links() }}
 
@@ -233,11 +248,13 @@
             </div>
 
         </div>
-        <!-- -------------- /Column Center -------------- -->
+
 
     </section>
-    <!-- -------------- /Content -------------- -->
+
 
 </section>
+
+
 
 @endsection

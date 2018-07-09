@@ -331,6 +331,7 @@ Route::get('/seller/product-list', 'SellerProductController@productList')->name(
 Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
 Route::post('/seller/update-product/{id}', 'SellerProductController@updateSellerPro')->name('updateSellerPro');
 Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteSellerPro');
+Route::delete('/seller/delete-selected-product', 'SellerProductController@multiDeletePro')->name('multiDeletePro');
 
 Route::get('/seller/edit-profile', 'SellerProfileController@editProfile')->name('editSellerProfile');
 Route::post('/seller/update-profile', 'SellerProfileController@updateProfile')->name('updateVendorProfile');
