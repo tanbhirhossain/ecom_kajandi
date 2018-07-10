@@ -332,6 +332,12 @@ Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->
 Route::post('/seller/update-product/{id}', 'SellerProductController@updateSellerPro')->name('updateSellerPro');
 Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteSellerPro');
 Route::delete('/seller/delete-selected-product', 'SellerProductController@multiDeletePro')->name('multiDeletePro');
+//Route::get('/seller/low-stock-product/{id}', 'SellerProductController@lowStockPro')->name('lowStockPro');
+
+//Filtering Vendor Products
+Route::get('/seller/list-by-status', 'SellerProductController@listByStatus')->name('listByStatus');
+Route::get('/seller/list-by-cat', 'SellerProductController@listVendorProductByCat')->name('listVendorProductByCat');
+
 
 Route::get('/seller/edit-profile', 'SellerProfileController@editProfile')->name('editSellerProfile');
 Route::post('/seller/update-profile', 'SellerProfileController@updateProfile')->name('updateVendorProfile');

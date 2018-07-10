@@ -107,13 +107,13 @@
                                                 <option value="4">Inactive</option>
                                             </select>-->
 
-                                              <div  id="bulk-action"class="dropdown">
+                                              <div  class="dropdown">
                                                     <button style="background-color: Transparent; border:1px solid #ECECEC    ;padding-left: 30px;padding-right:40px" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions
                                                   </button>
                                                     <ul style="border: 1px solid #2E73C7" class="dropdown-menu">
                                                       <li> <a  class="delete_all" data-url="{{ route('multiDeletePro') }}" >Delete</a></li>
-                                                      <li><a  class="" data-url="" >Active</a></li>
-                                                      <li><a  class="" data-url="" >Inactive</a></li>
+                                                      <!-- <li><a  class="" data-url="" >Active</a></li>
+                                                      <li><a  class="" data-url="" >Inactive</a></li> -->
                                                     </ul>
                                                   </div>
 
@@ -121,34 +121,43 @@
                                             <i class="arrow double"></i>
                                         </label>
                                     </div>
+                                    <form class="" action="{{route('listVendorProductByCat')}}" method="get">
+
+
                                     <div class="col-md-5 pb5">
                                         <label class="field select">
-                                            <select id="filter-category" name="filter-category" class="empty">
+                                            <select onchange="this.form.submit()" id="filter-category" name="filterCategory" class="empty">
                                                 <option value="">Filter by Category</option>
                                                 @foreach($category as $cat)
                                                   <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
                                                 @endforeach
+                                                <option value="all">All Category</option>
                                             </select>
                                             <i class="arrow"></i>
                                         </label>
                                     </div>
+                                    </form>
+                                      <form  action="{{route('listByStatus')}}" method="get">
                                     <div class="col-md-5 pb5">
                                         <label class="field select">
-                                            <select id="filter-status" name="filter-status" class="empty">
 
+
+                                            <select id="filter-status" name="filterStatus" onchange="this.form.submit()" class="empty">
                                                 <option value="">Filter by Status</option>
-
                                                 <option value="1">Active</option>
                                                 <option value="0">Inactive</option>
                                                 <option value="2">Low Stock</option>
                                                 <option value="3">Out of Stock</option>
+                                                <option value="all">All</option>
                                             </select>
+
                                             <i class="arrow"></i>
                                         </label>
                                     </div>
+                                      </form>
                                 </div>
                             </div> <br>
-                          
+
                             <div class="table-responsive">
 
                                 <table id="dtListUsers" class="table allcp-form theme-warning tc-checkbox-1 fs13">
@@ -196,9 +205,9 @@
                                                               echo "<b style='color:red'>Inactive</b>";
                                                           }elseif ($sp->pro_status == 1) {
                                                               echo "Active";
-                                                          }elseif ($sp->pro_status == 2) {
+                                                          }elseif ($sp->stock_qty == 2) {
                                                               echo "Low Stock";
-                                                          }else {
+                                                          }elseif($sp->pro_status == 3) {
                                                             echo "Out of Stock";
                                                           }
 
@@ -218,7 +227,7 @@
 
 
                                                     <li>
-                                                        <a href="2">Low Stock</a>
+                                                        <a href="#">Low Stock</a>
                                                     </li>
                                                     <li>
                                                         <a href="3">Out of Stock</a>
@@ -226,7 +235,7 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td><a href="#" class="btn btn-primary pull-right">View</a></td>
+                                        <td><a href="{{url('/product-details/'.$sp->id)}}" target="_blank" class="btn btn-primary pull-right">View</a></td>
                                     </tr>
 
 

@@ -123,30 +123,7 @@ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)->where('pro_status', 1)
             @foreach($best_f as $ads)
                 <div class="col-md-3">
                     <div class="product ">
-                        <!--<ul class="product-labels">--}}
-                            {{--@if($product->hot!=NULL && $product->stuff_pick!=NULL)--}}
-                                {{--<li>stuff pick</li>--}}
-                                {{--<li>hot</li>--}}
-                            {{--@elseif($product->hot!=NULL && $product->discount_price!=NULL)--}}
-                                {{--<li>hot</li>--}}
-                                {{--<li>--}}
-                                    {{--<?php--}}
-                                    {{--if($product->discount_price!=NULL && $product->discount_price<$product->price){--}}
-                                        {{--$discount = $product->price - $product->discount_price;--}}
-                                        {{--$main_price = $product->price;--}}
-                                        {{--$percentage = 100*($discount/$main_price);--}}
-                                        {{--echo $percentage."%";--}}
-                                    {{--}--}}
-
-                                {{--</li>--}}
-                            {{--@elseif($product->hot!=NULL)--}}
-                                {{--<li>hot</li>--}}
-                            {{--@elseif($product->stuff_pick!=NULL)--}}
-                                {{--<li>stuff pick</li>--}}
-                            {{--@elseif($product->discount_price!=NULL)--}}
-                                {{--<li>-30</li>--}}
-                            {{--@endif--}}
-                        </ul> -->
+                    
                         <div class="product-img-wrap">
                             @if($ads->ads_image)
                                 <img class="product-img-primary" width="253" height="253" src="{{asset($ads->ads_image)}}" alt="{{$ads->pro_name}}" title="{{$ads->pro_name}}" />
@@ -193,7 +170,7 @@ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)->where('pro_status', 1)
                 </div>
             @endforeach
         </div>
-      
+
             @foreach($ads_s_2 as $ads)
                 <div class="col-md-6">
                     <div class="banner" style="background-color:{{$ads->banner_color}};">

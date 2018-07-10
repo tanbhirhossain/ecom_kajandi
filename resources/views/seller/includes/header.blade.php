@@ -904,10 +904,7 @@
                             <a href="{{route('editSellerProfile')}}">
                                 <span class="glyphicon glyphicon-tags"></span> Update Profile </a>
                         </li>
-                        <li>
-                            <a href="{{route('productList')}}">
-                                <span class="glyphicon glyphicon-tags"></span> Product List </a>
-                        </li>
+                      
 
                     </ul>
                 </li>

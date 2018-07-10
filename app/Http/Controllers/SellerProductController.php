@@ -416,5 +416,54 @@ class SellerProductController extends Controller
         return response()->json(['success'=>"Products Deleted successfully."]);
     }
 
+    public function listByStatus(Request $request)
+    {
+
+      if ($request->filterStatus=='1') {
+          $sellerProduct = SellerProduct::where('pro_status',1)->paginate(10);
+          return view('seller.product.product_list')
+              ->with(compact('sellerProduct'));
+      }elseif ($request->filterStatus=='0') {
+          $sellerProduct = SellerProduct::where('pro_status',0)->paginate(10);
+          return view('seller.product.product_list')
+              ->with(compact('sellerProduct'));
+      }elseif ($request->filterStatus=='2') {
+          $sellerProduct = SellerProduct::where('pro_status',2)->paginate(10);
+          return view('seller.product.product_list')
+              ->with(compact('sellerProduct'));
+      }elseif ($request->filterStatus=='3') {
+          $sellerProduct = SellerProduct::where('pro_status',3)->paginate(10);
+          return view('seller.product.product_list')
+              ->with(compact('sellerProduct'));
+      }elseif ($request->filterStatus=='all') {
+          $sellerProduct = SellerProduct::paginate(10);
+          return view('seller.product.product_list')
+              ->with(compact('sellerProduct'));
+      }
+
+    }
+
+    public function listVendorProductByCat(Request $request)
+    {
+      //$menufact_id = $request->menufact_id;
+
+          if ($request->filterCategory == 'all') {
+            $sellerProduct = SellerProduct::paginate(10);
+            return view('seller.product.product_list')->with(compact('sellerProduct'));
+          }else {
+            $sellerProduct = SellerProduct::where('pro_status', $request->filterCategory)->paginate(10);
+            return view('seller.product.product_list')->with(compact('sellerProduct'));
+          }
+    }
+  //
+  //   public function lowStockPro($id)
+  //   {
+  // //    $sellerProduct = SellerProduct::find($id);
+  //     $cs =  DB::table('seller_products')
+  //           ->where('id', $id)
+  //           ->update(['pro_status' => 2]);
+  //         //  dd($cs);
+  //      return back()->with('message_success', 'Seller Product status changed Succesfully');
+  //   }
 
 }
