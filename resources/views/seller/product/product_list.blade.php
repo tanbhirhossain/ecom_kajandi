@@ -197,24 +197,31 @@
                                         <td class="">{{$sp->stock_qty}}</td>
                                         <td class="text-right">
                                             <div class="btn-group text-right">
-                                                <button type="button"
-                                                        class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
-                                                        data-toggle="dropdown" aria-expanded="false">
-                                                        <?php
-                                                          if ($sp->pro_status == 0) {
-                                                              echo "<b style='color:red'>Inactive</b>";
-                                                          }elseif ($sp->pro_status == 1) {
-                                                              echo "Active";
-                                                          }elseif ($sp->stock_qty == 2) {
-                                                              echo "Low Stock";
-                                                          }elseif($sp->pro_status == 3) {
-                                                            echo "Out of Stock";
-                                                          }
 
-                                                         ?>
-                                                      </a>
-                                                    <span class="caret ml5"></span>
-                                                </button>
+                                                @if($sp->pro_status == 0)
+                                                <button type="button" class="btn btn-danger br2 btn-xs fs12 dropdown-toggle"
+                                                data-toggle="dropdown" aria-expanded="false">
+                                                Inactive
+                                                <span class="caret ml5"></span></button>
+                                                @elseif($sp->pro_status == 1)
+                                                  @if($sp->stock_qty <= 5 && $sp->stock_qty > 0)
+                                                  <button type="button" class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
+                                                  data-toggle="dropdown" aria-expanded="false">
+                                                  Low Stock
+                                                  <span class="caret ml5"></span></button>
+                                                  @elseif($sp->stock_qty < 1)
+                                                  <button type="button" class="btn btn-warning br2 btn-xs fs12 dropdown-toggle"
+                                                  data-toggle="dropdown" aria-expanded="false">
+                                                  Out of Stock
+                                                  <span class="caret ml5"></span></button>
+                                                  @else
+                                                  <button type="button" class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
+                                                  data-toggle="dropdown" aria-expanded="false">
+                                                  Active
+                                                  <span class="caret ml5"></span></button>
+                                                  @endif
+                                             @endif
+
                                                 <ul class="dropdown-menu"  role="menu">
                                                     <li>
                                                         <a href="{{route('editProduct', $sp->id)}}">Edit</a>
@@ -226,12 +233,7 @@
                                                     <li class="divider"></li>
 
 
-                                                    <li>
-                                                        <a href="#">Low Stock</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="3">Out of Stock</a>
-                                                    </li>
+
                                                 </ul>
                                             </div>
                                         </td>

@@ -268,7 +268,7 @@ class SellerProductController extends Controller
          }
 
      }else {
-       $a_img_4 = $svimg->a_img_4;
+       $a_img_4 = $product->a_img_4;
      }
 
      // $file = $request->file( 'a_img_1' );
