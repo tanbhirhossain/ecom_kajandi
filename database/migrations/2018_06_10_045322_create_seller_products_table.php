@@ -13,7 +13,7 @@ class CreateSellerProductsTable extends Migration
     {
         Schema::create('seller_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('seller_id')->unsigned();
+            $table->integer('seller_id')->unsigned()->nullable();
             $table->integer('pro_status')->comment('0=>Inactive, 1=>Inactive, 2=>Low Stock, 3=>Out of Stock ');
             $table->string('pro_name');
             $table->string('pro_generic_name');

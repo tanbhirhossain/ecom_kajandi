@@ -273,6 +273,8 @@ Route::get('/pending-vendor-pro', 'AdminVendorProductController@pendingVendorPro
 Route::get('/approve-vendor-pro/{id}', 'AdminVendorProductController@approveVendorPro')->name('approveVendorPro');
 Route::get('/block-vendor-pro/{id}', 'AdminVendorProductController@blockVendorPro')->name('blockVendorPro');
 Route::get('/edit-vendor-pro/{id}', 'AdminVendorProductController@editVendorPro')->name('editVendorPro');
+Route::post('/update-vendor-pro/{id}', 'AdminVendorProductController@updateVendorPro')->name('updateVendorPro');
+Route::get('/add-vendor-pro', 'AdminVendorProductController@addVendorPro')->name('addVendorPro');
 //Vendor Product Approval End
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
