@@ -947,7 +947,7 @@
                              <div class="section mb10">
                                  <label class="field prepend-icon">
                                      <textarea style="height: 160px;" class="gui-textarea br-light bg-light" id="seller_remark"
-                         name="seller_remark" placeholder="Seller Remark" value="{{$editpro->seller_remark}}">{{$editpro->seller_remark}}</textarea>
+                                 name="seller_remark" placeholder="Seller Remark" value="{{$editpro->seller_remark}}">{{$editpro->seller_remark}}</textarea>
                                      <label for="seller_remark" class="field-icon">
                                          <i class="fa fa-file"></i>
                                      </label>

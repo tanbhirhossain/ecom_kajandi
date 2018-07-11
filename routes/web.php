@@ -272,6 +272,7 @@ Route::get('/approved-seller-pro', 'AdminVendorProductController@approvedSellerP
 Route::get('/pending-vendor-pro', 'AdminVendorProductController@pendingVendorPro')->name('pendingVendorPro');
 Route::get('/approve-vendor-pro/{id}', 'AdminVendorProductController@approveVendorPro')->name('approveVendorPro');
 Route::get('/block-vendor-pro/{id}', 'AdminVendorProductController@blockVendorPro')->name('blockVendorPro');
+Route::get('/edit-vendor-pro/{id}', 'AdminVendorProductController@editVendorPro')->name('editVendorPro');
 //Vendor Product Approval End
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
@@ -343,9 +344,3 @@ Route::get('/seller/edit-profile', 'SellerProfileController@editProfile')->name(
 Route::post('/seller/update-profile', 'SellerProfileController@updateProfile')->name('updateVendorProfile');
 Route::get('/seller/edit-profile-primary-details', 'SellerProfileController@editVendorPrimaryDetails')->name('editVendorPrimaryDetails');
 Route::post('/seller/update-profile-primary', 'SellerProfileController@updatePrimaryDetails')->name('updateVendorPrimaryDetails');
-
-//test
-Route::get('/seller/destroy/', 'SellerProductController@deleteMultiPro')->name('deleteMultiPro');
-Route::get('/seller/json', 'SellerProductController@json')->middleware('ajax');
-// Route for list of users with specific status in json format
-Route::get('/seller/json/{pro_status}', 'SellerProductController@json')->middleware('ajax');

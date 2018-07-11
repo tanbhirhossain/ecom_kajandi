@@ -46,5 +46,15 @@ class AdminVendorProductController extends Controller
       return back()->with('message_success', 'Vendor Product Blocked Succesfully');
     }
 
+    public function editVendorPro($id)
+    {
+      $editpro = SellerProduct::find($id);
+      $menuFact = DB::table('manufacters')->where('id', $editpro->manufacture_id)->first();
+      $procat = DB::table('categories')->where('id', $editpro->pro_cat_id)->first();
+      $prosubcat = DB::table('subcategories')->where('id', $editpro->pro_subcat_id)->first();
+      $proUnit = DB::table('units')->where('id', $editpro->unit)->first();
+      return view('backend.seller.products.edit_product', compact('editpro','menuFact','proModel','procat','prosubcat','proUnit'));
+    }
+
 
 }

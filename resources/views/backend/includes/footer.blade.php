@@ -3,7 +3,28 @@
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
+<script type="text/javascript">
+function readURL(input) {
 
+if (input.files && input.files[0]) {
+  var reader = new FileReader();
+
+  reader.onload = function(e) {
+    $('#blah').attr('src', e.target.result);
+
+    $('#blah').hide();
+    $('#blah').fadeIn(650);
+
+  }
+
+  reader.readAsDataURL(input.files[0]);
+}
+}
+
+$("#imgInp").change(function() {
+readURL(this);
+});
+</script>
 <script src="{{asset('/public/backend/assets/')}}/js/vendor/jquery-2.1.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 <script src="{{asset('/public/backend/assets/')}}/js/plugins.js"></script>

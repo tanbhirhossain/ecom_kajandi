@@ -428,11 +428,11 @@ class SellerProductController extends Controller
           return view('seller.product.product_list')
               ->with(compact('sellerProduct'));
       }elseif ($request->filterStatus=='2') {
-          $sellerProduct = SellerProduct::where('pro_status',2)->paginate(10);
+          $sellerProduct = SellerProduct::where('pro_status',1)->where('stock_qty', '<=', 5 )->where('stock_qty', '>', 0)->paginate(10);
           return view('seller.product.product_list')
               ->with(compact('sellerProduct'));
       }elseif ($request->filterStatus=='3') {
-          $sellerProduct = SellerProduct::where('pro_status',3)->paginate(10);
+          $sellerProduct = SellerProduct::where('pro_status',1)->where('stock_qty', '<', 1)->paginate(10);
           return view('seller.product.product_list')
               ->with(compact('sellerProduct'));
       }elseif ($request->filterStatus=='all') {
