@@ -35,8 +35,8 @@
                             <td><img src="{{asset($av->pro_image)}}" height="60" width="60"></td>
                             <td>
                               <a class="btn btn-primary" href="{{route('editVendorPro', $av->id)}}"><i class="fa fa-edit"></i></a>
-                              <a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i></a>
-                              <a class="btn btn-info" href="#"><i class="fa fa-info"></i></a>
+                              <a class="btn btn-danger" href="{{route('deleteVendorProduct', $av->id)}}"><i class="fa fa-trash-o"></i></a>
+                              <a class="btn btn-info" target="_blank" href="{{url('/product-details/'.$av->id)}}"><i class="fa fa-info"></i></a>
 
                             </td>
 

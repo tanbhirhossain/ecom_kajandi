@@ -112,6 +112,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{route('pendingVendorPro')}}">Pending List </a></li>
                         <li><i class="fa fa-id-badge"></i><a href="{{route('approvedSellerPro')}}">Approved List</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('addVendorPro')}}">Add Vendor Product</a></li>
 
                     </ul>
                 </li>

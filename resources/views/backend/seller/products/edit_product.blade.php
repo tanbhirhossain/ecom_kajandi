@@ -24,7 +24,7 @@
                     <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
                 </small>
             </div>
-            <form action="{{route('updateVendorPro', $editpro->id)}}" method="post">
+            <form action="{{route('updateVendorPro', $editpro->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <input type="hidden" name="seller_id" value="{{$editpro->seller_id}}">
@@ -66,9 +66,9 @@
                           <div class="row">
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label for="pro_name" class=" form-control-label">Product Image</label>
+                                    <label for="pro_image" class=" form-control-label">Product Image</label>
                                     <div id='img_contain'><img  id="blah" align='middle' src="@if($editpro->pro_image != Null) {{asset($editpro->pro_image)}} @elseif($editpro == Null) http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png @endif" alt="your image" title=''/></div>
-                                    <input type='file' id="imgInp" class="col-md-12 form-control" style="margin-left:-1.2px" />
+                                    <input type='file' id="imgInp" name="pro_image" class="col-md-12 form-control" style="margin-left:-1.2px" />
                                   </div>
 
                                 </div>

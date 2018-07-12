@@ -275,6 +275,8 @@ Route::get('/block-vendor-pro/{id}', 'AdminVendorProductController@blockVendorPr
 Route::get('/edit-vendor-pro/{id}', 'AdminVendorProductController@editVendorPro')->name('editVendorPro');
 Route::post('/update-vendor-pro/{id}', 'AdminVendorProductController@updateVendorPro')->name('updateVendorPro');
 Route::get('/add-vendor-pro', 'AdminVendorProductController@addVendorPro')->name('addVendorPro');
+Route::post('/post-vendors-pro', 'AdminVendorProductController@postVendorPro')->name('postVendorssPro');
+Route::get('/delete-vendor-pro/{id}', 'AdminVendorProductController@deleteVendorProduct')->name('deleteVendorProduct');
 //Vendor Product Approval End
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');

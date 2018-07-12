@@ -1,5 +1,5 @@
 @extends('backend.admin_master')
-@section('page_title','Update Vendor Product')
+@section('page_title','Add Vendor Product')
 <style media="screen">
 
 </style>
@@ -11,7 +11,7 @@
   $category = App\Category::All();
   $subcategory = App\Subcategory::All();
   $unit = App\Unit::All();
-  $sellers = App\Seller::where('acStatus',1)->get();
+  $sellers = App\Seller::All()->where('acStatus',Null);
 
 
  ?>
@@ -26,12 +26,13 @@
                     <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
                 </small>
             </div>
-            <form action="" method="post">
+            <form action="{{route('postVendorssPro')}}"  enctype="multipart/form-data" method="post">
                 @csrf
 
                 <div class="card">
                   <div class="card-body">
                     <div class="form-group col-md-12">
+                      <label class="form-control-label" for="seller_id">Vendor/Seller</label>
                       <select class="form-control" name="seller_id" required>
                         <option value="">Select Vendor</option>
                         @foreach($sellers as $sl)
@@ -79,9 +80,9 @@
                           <div class="row">
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label for="pro_name" class=" form-control-label">Product Image</label>
+                                    <label for="pro_image" class=" form-control-label">Product Image</label>
                                     <div id='img_contain'><img  id="blah" align='middle' src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png" alt="your image" title=''/></div>
-                                    <input type='file' id="imgInp" class="col-md-12 form-control" style="margin-left:-1.2px" />
+                                    <input type='file' name="pro_image" id="imgInp" class="col-md-12 form-control" style="margin-left:-1.2px" />
                                   </div>
 
                                 </div>
@@ -605,7 +606,7 @@
 
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-dark btn-lg btn-block"><i class="fa fa-edit"></i>   Update</button>
+                            <button type="submit" class="btn btn-dark btn-lg btn-block"><i class="fa fa-edit"></i>   Add</button>
                         </div>
                     </div>
             </form>
