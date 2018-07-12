@@ -79,6 +79,7 @@ Route::GET('remove-wishlist-item/{id}','WishlistController@remove_wishlist_item'
 //Wishlist Route End
 
 //Checkout Controller Start
+Route::get('/pre-checkout', 'CheckoutController@preCheckout')->name('preCheckout');
 Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 Route::get('/shipping','CheckoutController@shipping')->name('shipping');
 Route::get('/billing','CheckoutController@billing')->name('billing');
@@ -343,8 +344,11 @@ Route::delete('/seller/delete-selected-product', 'SellerProductController@multiD
 Route::get('/seller/list-by-status', 'SellerProductController@listByStatus')->name('listByStatus');
 Route::get('/seller/list-by-cat', 'SellerProductController@listVendorProductByCat')->name('listVendorProductByCat');
 
-
+//Vendor Profile
 Route::get('/seller/edit-profile', 'SellerProfileController@editProfile')->name('editSellerProfile');
 Route::post('/seller/update-profile', 'SellerProfileController@updateProfile')->name('updateVendorProfile');
 Route::get('/seller/edit-profile-primary-details', 'SellerProfileController@editVendorPrimaryDetails')->name('editVendorPrimaryDetails');
 Route::post('/seller/update-profile-primary', 'SellerProfileController@updatePrimaryDetails')->name('updateVendorPrimaryDetails');
+
+//Vendor Order List
+Route::get('seller/order-list', 'SellerOrderController@VendorOrderList')->name('VendorOrderList');

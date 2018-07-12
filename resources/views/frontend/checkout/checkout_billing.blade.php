@@ -18,7 +18,11 @@
                             @if ($errors->has('bil_country'))
                                 <div class="error">{{ $errors->first('bil_country') }}</div>
                             @endif
-                            <select class="form-control gds-cr gds-countryflag" name="bil_country" country-data-region-id="gds-cr-three" ></select>
+
+                            <select class="form-control gds-cr gds-countryflag" name="bil_country" country-data-region-id="gds-cr-three" >
+                              <option></option>
+
+                            </select>
                         </div>
 
 

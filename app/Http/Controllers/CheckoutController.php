@@ -17,11 +17,19 @@ class CheckoutController extends Controller{
         $this->middleware('auth');
     }
 
+    public function preCheckout(){
+      return view('frontend.checkout.pre_checkout');
+    }
+
     public function shipping(){
         return view('frontend.checkout.checkout_shipping');
     }
     public function billing(){
-        return view('frontend.checkout.checkout_billing');
+
+        $billing = DB::table('customers')
+                  ->where('cus_id', Auth::id())
+                  ->first();
+        return view('frontend.checkout.checkout_billing',compact('billing'));
     }
     public function save_billing(Request $request){
         $request->validate([

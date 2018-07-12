@@ -9,6 +9,7 @@ use App\User;
 use DB;
 use Session;
 use App\Seller;
+use App\Customer;
 
 class CustomUserController extends Controller{
 
@@ -33,18 +34,20 @@ class CustomUserController extends Controller{
         $su->password = bcrypt($request->password);
         $su->save();
 
+        $seller_id = $su->id;
+          Session::put('id',$seller_id);
 
-
-          $admin_id = $su->id;
-          Session::put('id',$admin_id);
+          // $cust = new Customer();
+          // $cust->cus_id = $seller_id;
+          // $cust->save();
 
           $pa = new Seller();
-          $pa->user_id = $admin_id;
+          $pa->user_id = $seller_id;
           $pa->vendorname = $request->name;
           $pa->email = $request->email;
           $pa->contactphone = $request->phone;
           $pa->password = bcrypt($request->password);
-          
+
           $pa->save();
         }else {
           $su = new User();
@@ -54,6 +57,13 @@ class CustomUserController extends Controller{
           $su->user_type = $request->user_type;
           $su->password = bcrypt($request->password);
           $su->save();
+
+          $seller_id = $su->id;
+            Session::put('id',$seller_id);
+          $cust = new Customer();
+          $cust->cus_id = $seller_id;
+          $cust->bil_email = $request->email;
+          $cust->save();
         }
 
 

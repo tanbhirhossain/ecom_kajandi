@@ -4,10 +4,10 @@
 <head>
     <!--  Meta and Title  -->
     <meta charset="utf-8">
-    <title>Alliance - A Responsive Bootstrap 3 Admin Dashboard Template</title>
-    <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme"/>
-    <meta name="description" content="Alliance - A Responsive HTML5 Admin UI Framework">
-    <meta name="author" content="ThemeREX">
+    <title>@yield('page_title')</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="">
+    <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--  Fonts  -->
@@ -904,7 +904,24 @@
                             <a href="{{route('editSellerProfile')}}">
                                 <span class="glyphicon glyphicon-tags"></span> Update Profile </a>
                         </li>
-                      
+
+
+                    </ul>
+                </li>
+
+                <li class="sidebar-label pt25">Manage Orders</li>
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-share-square-o"></span>
+                        <span class="sidebar-title">Orders</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{route('VendorOrderList')}}">
+                                <span class="glyphicon glyphicon-tags"></span> Order List </a>
+                        </li>
+
 
                     </ul>
                 </li>

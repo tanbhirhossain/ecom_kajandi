@@ -8,6 +8,11 @@ use DB;
 
 class AdminVendorProductController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth:admin');
+      $this->middleware('admin');
+  }
     public function pendingVendorPro()
     {
       $pending_pro = SellerProduct::where('pro_status', 0)
