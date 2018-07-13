@@ -10,46 +10,7 @@
 <section id="content_wrapper">
 
 
-  <!--  <div id="topbar-dropmenu-wrapper">
-        <div class="topbar-menu row">
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="service-box bg-danger">
-                    <span class="fa fa-music"></span>
-                    <span class="service-title">Audio</span>
-                </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="service-box bg-success">
-                    <span class="fa fa-picture-o"></span>
-                    <span class="service-title">Images</span>
-                </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="service-box bg-primary">
-                    <span class="fa fa-video-camera"></span>
-                    <span class="service-title">Videos</span>
-                </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="service-box bg-alert">
-                    <span class="fa fa-envelope"></span>
-                    <span class="service-title">Messages</span>
-                </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="service-box bg-system">
-                    <span class="fa fa-cog"></span>
-                    <span class="service-title">Settings</span>
-                </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="service-box bg-dark">
-                    <span class="fa fa-user"></span>
-                    <span class="service-title">Users</span>
-                </a>
-            </div>
-        </div>
-    </div>-->
+
 
     <header id="topbar" class="alt">
         <div class="topbar-left">
@@ -60,10 +21,10 @@
                     </a>
                 </li>
                 <li class="breadcrumb-active">
-                    <a href="dashboard1.html">Dashboard</a>
+                    <a href="#">Dashboard</a>
                 </li>
                 <li class="breadcrumb-link">
-                    <a href="index.html">Home</a>
+                    <a href="#">Home</a>
                 </li>
                 <li class="breadcrumb-current-item">Order List</li>
             </ol>
@@ -159,7 +120,7 @@
                                         <th class="">Product</th>
                                         <th class="">Image</th>
                                         <th class="">Order Total</th>
-                                        <th class="">Stock</th>
+                                        <th class="">QTY</th>
                                         <th class="text-right">Status</th>
                                         <th class="text-right">View</th>
                                     </tr>
@@ -176,7 +137,7 @@
                                                  src="{{asset($order->pro_image)}}">
                                         </td>
                                         <td class="">{{$order->order_total}}</td>
-                                        <td class=""></td>
+                                        <td class="">{{$order->total_qty}}</td>
                                         <td class="text-right">
                                             <div class="btn-group text-right">
 
@@ -204,7 +165,7 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td><a href="" target="_blank" class="btn btn-primary pull-right">View</a></td>
+                                        <td><a href="{{route('viewVendorOrder', $order->id)}}" target="_blank" class="btn btn-primary pull-right">View</a></td>
                                     </tr>
 
                                     @endforeach

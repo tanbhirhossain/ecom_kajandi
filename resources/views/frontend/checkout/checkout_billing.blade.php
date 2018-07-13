@@ -20,7 +20,7 @@
                             @endif
 
                             <select class="form-control gds-cr gds-countryflag" name="bil_country" country-data-region-id="gds-cr-three" >
-                              <option></option>
+                              <option value="@if($billing != Null) {{$billing->bil_country}} @endif">@if($billing != Null) {{$billing->bil_country}} @endif</option>
 
                             </select>
                         </div>
@@ -28,14 +28,14 @@
 
                         <div class="form-group">
                             <label for="first_name"> First Name</label>
-                                <input type="text" id="first_name" class="form-control" placeholder="First name" name="bil_first_name">
+                                <input type="text" id="first_name" value="@if($billing != Null) {{$billing->bil_first_name}} @endif" class="form-control" placeholder="First name" name="bil_first_name">
                             @if ($errors->has('bil_first_name'))
                                 <div class="error">{{ $errors->first('bil_first_name') }}</div>
                                 @endif
                         </div>
                             <div class="form-group">
                                 <label for="last_name"> Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Last name" name="bil_last_name">
+                                <input type="text" class="form-control" id="last_name"  value="@if($billing != Null) {{$billing->bil_last_name}} @endif" placeholder="Last name" name="bil_last_name">
                             @if ($errors->has('bil_last_name'))
                                 <div class="error">{{ $errors->first('bil_last_name') }}</div>
                                 @endif
@@ -44,7 +44,7 @@
 
                             <div class="form-group">
                                 <label for="email"> Email Address</label>
-                                <input type="text" class="form-control" value="" name="bil_email" id="email">
+                                <input type="text" class="form-control"  value="@if($billing != Null) {{$billing->bil_email}} @endif" name="bil_email" id="email">
                             @if ($errors->has('bil_email'))
                                 <div class="error">{{ $errors->first('bil_email') }}</div>
                                 @endif
@@ -52,22 +52,22 @@
 
                                 <div class="form-group">
                                     <label for="phone"> Phone No.</label>
-                                    <input type="text" class="form-control" id="phone" placeholder="Phone no." name="bil_phone">
+                                    <input type="text" class="form-control"  value="@if($billing != Null) {{$billing->bil_phone}} @endif" id="phone" placeholder="Phone no." name="bil_phone">
                                 @if ($errors->has('bil_phone'))
                                     <div class="error">{{ $errors->first('bil_phone') }}</div>
                                     @endif
                                 </div>
                         <div class="from-group">
                             <label for="address">Address</label>
-                                <input id="address" class="form-control" type="text" placeholder="Address line 1" name="bil_address_1">
+                                <input id="address" class="form-control"  value="@if($billing != Null) {{$billing->bil_address_1}} @endif" type="text" placeholder="Address line 1" name="bil_address_1">
                             @if ($errors->has('bil_address_1'))
                                 <div class="error">{{ $errors->first('bil_address_1') }}</div>
                             @endif
                         </div>
-                        <input type="text" class="form-control" placeholder="Address line 2" name="bil_address_2">
+                        <input type="text" class="form-control" placeholder="Address line 2"  value="@if($billing != Null) {{$billing->bil_address_2}} @endif" name="bil_address_2">
                         <div class="from-group">
                             <label for="city">Town/City</label>
-                                <input type="text" id="city" class="form-control" placeholder="Town/City" name="bil_city">
+                                <input type="text" id="city" class="form-control"  value="@if($billing != Null) {{$billing->bil_city}} @endif" placeholder="Town/City" name="bil_city">
                             @if ($errors->has('bil_city'))
                                 <div class="error">{{ $errors->first('bil_city') }}</div>
                                 @endif
@@ -76,11 +76,11 @@
 
                             <div class="form-group">
                                 <label for="state">State</label>
-                                <input type="text" id="state" class="form-control" placeholder="State" name="bil_state">
+                                <input type="text" id="state" class="form-control" placeholder="State"  value="@if($billing != Null) {{$billing->bil_state}} @endif" name="bil_state">
                             </div>
                             <div class="form-group">
                                 <label for="zip">Zip Code</label>
-                                <input type="text" id="zip" class="form-control" placeholder="Zip Code" name="bil_zipcode">
+                                <input type="text" id="zip" class="form-control" placeholder="Zip Code"  value="@if($billing != Null) {{$billing->bil_zipcode}} @endif" name="bil_zipcode">
                             @if ($errors->has('bil_zipcode'))
                                 <div class="error">{{ $errors->first('bil_zipcode') }}</div>
                                 @endif

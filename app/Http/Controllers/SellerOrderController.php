@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\OrderDetail;
+use App\Shipping;
+use App\Customer;
 use Auth;
 
 class SellerOrderController extends Controller
@@ -30,5 +33,16 @@ class SellerOrderController extends Controller
             ->where('sellers.id', Auth::id())
             ->get();
       return view('seller.order.order_list',compact('ordered'));
+    }
+
+    public function viewOrder($id){
+        $order = Order::where('id',$id)->first();
+        $shipping_id = $order->ship_id;
+        $billing_id = $order->cus_id;
+        $order_details = OrderDetail::where('order_id',$id)->get();
+        $shipping = Shipping::where('id',$shipping_id)->first();
+        $billing = Customer::where('cus_id',$billing_id)->first();
+        return view('seller.order.view_order',compact('order',
+            'order_details','shipping','billing'));
     }
 }

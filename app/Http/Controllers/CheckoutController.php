@@ -180,6 +180,7 @@ class CheckoutController extends Controller{
                 $order_detail['product_price'] = $cart_product->price;
                 $order_detail['product_qty'] = $cart_product->qty;
                 DB::table('order_details')->insert($order_detail);
+                DB::table('seller_products')->decrement('stock_qty', $cart_product->qty);
             }
 //            Cart::destroy();
 //            $request->session()->forget('grand_total');

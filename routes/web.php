@@ -69,13 +69,12 @@ Route::get('/compare','CompareController@compare')->name('compare');
 Route::get('add-to-compare/{id}','CompareController@add_to_compare')->name('add-to-compare');
 Route::get('/remove-compare-item/{id}','CompareController@remove_compare_item')->name('remove-compare-item');
 Route::get('/login-register','CartController@login_register')->name('login-register');
-
 //Compare Route End
+
 //Wishlist Route Start
 Route::get('/wishlist','WishlistController@my_wishlish')->name('wishlist');
 Route::GET('add-to-wishlist/{id}','WishlistController@add_to_wishlist')->name('add-to-wishlist');
 Route::GET('remove-wishlist-item/{id}','WishlistController@remove_wishlist_item')->name('remove-wishlist-item');
-
 //Wishlist Route End
 
 //Checkout Controller Start
@@ -87,12 +86,10 @@ Route::post('/save-billing','CheckoutController@save_billing')->name('save-billi
 Route::post('/save-shipping','CheckoutController@save_shipping')->name('save-shipping');
 Route::POST('/place-order','CheckoutController@place_order')->name('place-order');
 Route::get('/order-complete','CheckoutController@order_complete')->name('order-complete');
-
 //Checkout Controller End
 
 //Customer Review Start
 Route::POST('/write-customer-review','CustomerReviewController@write_customer_review')->name('write-customer-review');
-
 //Customer Review End
 
 
@@ -352,3 +349,4 @@ Route::post('/seller/update-profile-primary', 'SellerProfileController@updatePri
 
 //Vendor Order List
 Route::get('seller/order-list', 'SellerOrderController@VendorOrderList')->name('VendorOrderList');
+Route::get('seller/view-order/{id}', 'SellerOrderController@viewOrder')->name('viewVendorOrder');

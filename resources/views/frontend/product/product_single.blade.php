@@ -635,7 +635,7 @@
 
 
                         <p class="product-page-desc">
-                            {{$product_by_id->pro_description}}
+                            {!! $product_by_id->pro_description !!}
                         </p>
                         <table
                                 class="table table-striped product-page-features-table">
@@ -892,14 +892,14 @@
                         <tr>
                             <td class="product-page-features-table-specs">Description</td>
                             <td class="product-page-features-table-details"></td>
-                            <td>{{$product_by_id->pro_description}}</td>
+                            <td>{!! $product_by_id->pro_description !!}</td>
                         </tr>
                     @endif
                     @if($product_by_id->optional_description!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Optional Description</td>
                             <td class="product-page-features-table-details"></td>
-                            <td>{{$product_by_id->optional_description}}</td>
+                            <td>{!! $product_by_id->optional_description !!}</td>
                         </tr>
                     @endif
                     @if($product_by_id->conditions!=NULL)
@@ -914,7 +914,7 @@
                                     Fairly Used
                                 @endif
                             </td>
-                            <td>{{$product_by_id->speacial_feature}}</td>
+                            <td>{!! $product_by_id->speacial_feature !!}</td>
                         </tr>
                     @endif
                     @if($product_by_id->manufacture_id!=NULL)
