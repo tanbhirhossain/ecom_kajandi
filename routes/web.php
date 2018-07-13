@@ -91,8 +91,10 @@ Route::get('/order-complete','CheckoutController@order_complete')->name('order-c
 //Customer Review Start
 Route::POST('/write-customer-review','CustomerReviewController@write_customer_review')->name('write-customer-review');
 //Customer Review End
-
-
+//Contact Suppler start
+Route::get('contact-supplier/{pro_id}','ContactSupplierController@contact_supplier')->name('contact-supplier');
+Route::POST('save-customer-request','ContactSupplierController@save_customer_request')->name('save-customer-request');
+//Contact Suppler end
 //==========================Front End ==========================//
 //CustomUserController route start
 //Custom Authenticatation
