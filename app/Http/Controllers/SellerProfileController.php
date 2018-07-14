@@ -36,6 +36,65 @@ class SellerProfileController extends Controller
     $sv = Seller::where('user_id', Auth::id())->first();
     //$sv->vendorname = $request->vendorname;
     //$sv->contactphone = $request->contactphone;
+
+    $file = $request->file( 'company_banner' );
+    if($file!=NULL) {
+        $name        = time() . '_' . $file->getClientOriginalName();
+        $upload_path = 'public/seller/company_img/';
+        $file->move( $upload_path, $name );
+        $company_banner = $upload_path . $name;
+        if ($sv->company_banner != Null) {
+            unlink( $sv->company_banner );
+        }
+
+    }else {
+      $company_banner = $sv->company_banner;
+    }
+
+    $file = $request->file( 'company_img_1' );
+    if($file!=NULL) {
+        $name        = time() . '_' . $file->getClientOriginalName();
+        $upload_path = 'public/seller/company_img/';
+        $file->move( $upload_path, $name );
+        $company_img_1 = $upload_path . $name;
+        if ($sv->company_img_1 != Null) {
+            unlink( $sv->company_img_1 );
+        }
+
+    }else {
+      $company_img_1 = $sv->company_img_1;
+    }
+
+    $file = $request->file( 'company_img_2' );
+    if($file!=NULL) {
+        $name        = time() . '_' . $file->getClientOriginalName();
+        $upload_path = 'public/seller/company_img/';
+        $file->move( $upload_path, $name );
+        $company_img_2 = $upload_path . $name;
+        if ($sv->company_img_2 != Null) {
+            unlink( $sv->company_img_2 );
+        }
+
+    }else {
+      $company_img_2 = $sv->company_img_3;
+    }
+
+    $file = $request->file( 'company_img_3' );
+    if($file!=NULL) {
+        $name        = time() . '_' . $file->getClientOriginalName();
+        $upload_path = 'public/seller/company_img/';
+        $file->move( $upload_path, $name );
+        $company_img_3 = $upload_path . $name;
+        if ($sv->company_img_3 != Null) {
+            unlink( $sv->company_img_3 );
+        }
+
+    }else {
+      $company_img_3 = $sv->company_img_3;
+    }
+
+
+
     $sv->vendor_type = $request->vendor_type;
     $sv->producttype = $request->producttype;
     $sv->location = $request->location;
@@ -51,6 +110,19 @@ class SellerProfileController extends Controller
     $sv->chairmanname = $request->chairmanname;
     $sv->chairmanphone = $request->chairmanphone;
     $sv->chairmanemail = $request->chairmanemail;
+
+    $sv->company_banner = $company_banner;
+    $sv->company_img_1 = $company_img_1;
+    $sv->company_img_2 = $company_img_2;
+    $sv->company_img_3 = $company_img_3;
+
+    $sv->established_year = $request->established_year;
+    $sv->annual_revenue = $request->annual_revenue;
+    $sv->main_products = $request->main_products;
+    $sv->main_market = $request->main_market;
+
+
+
     $sv->save();
     return back()->with('message_success', 'Vendor updated Succesfully');
    }

@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{asset('public/frontend/css/mystyles.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/jquery-ui.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/styles.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/css/new-css.css')}}">
+
+    <script src="{{asset('public/frontend/js/new-script.js')}}" charset="utf-8"></script>
 
 </head>
 

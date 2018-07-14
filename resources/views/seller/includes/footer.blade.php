@@ -53,6 +53,7 @@
 <script src="{{asset('public/seller')}}/assets/js/pages/dashboard1.js"></script>
 <!--  /Scripts  -->
 
+    <script src="{{asset('public/frontend/js/new-script.css')}}" charset="utf-8"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script>

@@ -1,0 +1,263 @@
+.banner-wrap img {
+    width: 100%;
+}
+
+.bg {background-size: cover;background-repeat: no-repeat;background-position: center center;background-color: #ddd;}
+
+.product-preview .single-preview {
+    width: 290px;
+    height: 220px;
+    display: none;
+}
+
+.product-preview .single-preview.current {
+    display: block;
+}
+
+.product-preview {
+    float: left;
+}
+
+.product-thumb-wrap {
+    float: left;
+    padding-left: 16px;
+}
+
+.product-thumb-wrap .product-thumb {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.product-thumb-wrap .product-thumb.current {
+    border: 1px solid #ce3f51;
+}
+
+.product-thumb-wrap {
+    display: block;
+    text-align: center;
+}
+
+.intro-content-wrap > h5 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.intro-content-wrap > p {
+    position: relative;
+    padding-left: 155px;
+}
+
+.intro-content-wrap > p span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 150px;
+}
+
+.product-author li {
+    display: block;
+    background-color: #fff;
+    border-bottom: 1px solid #ededed;
+}
+
+.product-author li a {
+    display: block;
+    padding: 10px 15px;
+    text-transform: capitalize;
+}
+
+.product-author li a i {
+    padding-right: 5px;
+}
+
+.intro-content-wrap > a {
+    font-size: 13px;
+}
+
+.single-showcase {
+    width: 17.9%;
+    float: left;
+    display: block;
+    margin: 0 10px;
+}
+.showcase-wrap-inner {
+    min-height: auto;
+}
+.showcase-img {
+    height: auto;
+    width: 100%;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+.single-showcase  {
+    color: #333;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    background-color: #fff;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.showcase-info {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    padding: 10px;
+    padding-top: 0;
+}
+.ssc_price{
+    font-size: 13px;
+    margin-left: 10px;
+}
+.intro-text {
+    padding: 0 10px;
+}
+
+
+.supplier-email {
+    overflow: hidden;
+    border: 1px solid #333;
+    padding: 20px;
+}
+
+.supplier-email > h4 {
+    margin-bottom: 30px;
+}
+
+.supplier-mail-form textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.banner-wrap .container, .company-intro-wrap .container, .showcase-wrap .container {
+    width: auto;
+    max-width: 1170px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================================
+= Responsive CSS
+====================================*/
+@media screen and (max-width: 1199px) and (min-width: 992px){
+    .product-preview .single-preview {
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .banner-wrap .container, .company-intro-wrap .container, .showcase-wrap .container {
+        width: 100%;
+    }
+
+    .product-thumb-wrap, .product-preview {
+        float: none;
+    }
+
+    .product-thumb-wrap .product-thumb {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .product-thumb-wrap {
+        margin-bottom: 30px;
+    }
+
+    .intro-content-wrap > p {
+        padding: 0;
+    }
+
+    .intro-content-wrap > p span {
+        position: inherit;
+        font-weight: 700;
+    }
+
+    .intro-content-wrap {
+        margin-bottom: 30px;
+    }
+
+    .single-showcase {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    .supplier-email {
+        padding: 10px;
+    }
+
+    .product-preview .single-preview.current {
+        width: 100%;
+    }
+
+    .supplier-mail-form .text-right {
+        text-align: left!important;
+    }
+
+    .product-preview {
+        float: none;
+        position: relative;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 414px){
+    .single-showcase {
+        width: 44.8%;
+        margin: 0 10px 30px;
+    }
+
+    .showcase-img {
+        height: 160px;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px){    
+    .product-preview {
+        float: none;
+        position: relative;
+        width: 100%;
+    }
+
+    .single-preview.prev-1 {
+        width: 100%;
+        height: 300px;
+    }
+    .product-thumb-wrap .product-thumb {
+        width: 70px;
+        height: 70px;
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .product-thumb-wrap {float: none;margin: 25px 0 35px;}
+
+    .single-showcase {
+        width: 22.5%;
+        margin-bottom: 30px;
+    }
+}

@@ -626,7 +626,7 @@
                             </div>
                             <div class="col-md-6 pull-right">
                                 <?php $seller = DB::table('sellers')->where('user_id',$product_by_id->seller_id)->first();?>
-                                <h6 class="pull-right text-uppercase">Sold by <a href="{{route('seller-product',$product_by_id->seller_id)}}">
+                                <h6 class="pull-right text-uppercase">Sold by <a href="{{route('showVendorProfile',$product_by_id->seller_id)}}">
                                         @if($seller!=NUll)
                                             {{$seller->vendorname}}
                                         @endif</a></h6>

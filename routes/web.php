@@ -352,3 +352,6 @@ Route::post('/seller/update-profile-primary', 'SellerProfileController@updatePri
 //Vendor Order List
 Route::get('seller/order-list', 'SellerOrderController@VendorOrderList')->name('VendorOrderList');
 Route::get('seller/view-order/{id}', 'SellerOrderController@viewOrder')->name('viewVendorOrder');
+
+//Vendor Cmpanyprofile
+Route::get('/company-profile/{user_id}', 'VendorProfileController@showVendorProfile')->name('showVendorProfile');

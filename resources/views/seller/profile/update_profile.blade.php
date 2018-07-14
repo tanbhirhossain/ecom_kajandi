@@ -88,7 +88,7 @@
                 </div>
 
             </div>
-            <form class="" action="{{route('updateVendorProfile')}}" method="post" >
+            <form class="" action="{{route('updateVendorProfile')}}" method="post" enctype="multipart/form-data" >
               @csrf
               <input type="hidden" name="seller_id" value="{{Auth::id()}}">
             <div class="panel">
@@ -606,10 +606,6 @@
                               </div>
                             </div>
 
-                            <div class="section row">
-                              <button type="submit" class="btn btn-primary btn-block" name="button"><i class="fa fa-edit"></i>  Update</button>
-                            </div>
-
 
 
 
@@ -619,9 +615,161 @@
 
                   </div>
 
+                  <div style="margin-top:-5px" class="panel">
+                    <div class="panel-heading">
+                        <span class="panel-title hidden-xs"> For Profile</span>
+                    </div>
+                    <div class="panel-body pn">
+                        <div class="tab-content pn br-n allcp-form theme-primary">
+
+
+                              <div class="section row">
+                                      <div class="col-md-12 ph10">
+                                       <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
+                                        <div class="fileupload-preview thumbnail mb20">
+                                            <img src="{{asset($editVendor->company_banner)}}">
+                                       </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 ph10">
+                                                <span class="button btn-primary btn-file btn-block">
+                                                  <span class="fileupload-new">Select Banner Image</span>
+                                                  <span class="fileupload-exists">Change Banner Image</span>
+                                                  <input value="{{$editVendor->company_banner}}" type="file" name="company_banner">
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                              </div>
+                              <div class="section row">
+
+
+                                    <div class="col-md-4 ph10">
+                                        <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb20">
+                                                <img src="{{asset($editVendor->company_img_1)}}">
+                                           </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 ph10">
+                                                    <span class="button btn-primary btn-file btn-block">
+                                                      <span class="fileupload-new">Select Photo 1</span>
+                                                      <span class="fileupload-exists">Change</span>
+                                                      <input value="{{$editVendor->company_img_1}}" type="file" name="company_img_1">
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ph10">
+                                        <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb20">
+                                                <img src="{{asset($editVendor->company_img_2)}}">
+                                           </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 ph10">
+                                                    <span class="button btn-primary btn-file btn-block">
+                                                      <span class="fileupload-new">Select Photo 2</span>
+                                                      <span class="fileupload-exists">Change</span>
+                                                      <input value="{{$editVendor->company_img_2}}" type="file" name="company_img_2">
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ph10">
+                                        <div class="fileupload fileupload-new allcp-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb20">
+                                                <img src="{{asset($editVendor->company_img_3)}}">
+                                           </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 ph10">
+                                                    <span class="button btn-primary btn-file btn-block">
+                                                      <span class="fileupload-new">Select Photo 3</span>
+                                                      <span class="fileupload-exists">Change</span>
+                                                      <input value="{{$editVendor->company_img_3}}" type="file" name="company_img_3">
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                              <div class="section row">
+                                <div class="col-md-6 ph10">
+                                    <label for="established_year" class="form-control-label" style="margin-bottom:05px;font-size:15px;">Established Year</label>
+                                    <label for="established_year" class="field prepend-icon">
+                                        <input type="text" name="established_year" id="established_year"
+                                               class="event-name gui-input br-light light"
+                                                value="@if($editVendor != Null) {{$editVendor->established_year}} @endif" placeholder="Established Year">
+                                        <label for="established_year" class="field-icon">
+                                            <i class="fa fa-tag"></i>
+                                        </label>
+                                    </label>
+                                </div>
+                                <div class="col-md-6 ph10">
+                                    <label for="annual_revenue" class="form-control-label" style="margin-bottom:05px;font-size:15px;">Annual Revenue</label>
+                                    <label for="annual_revenue" class="field prepend-icon">
+                                        <input type="text" name="annual_revenue" id="annual_revenue"
+                                               class="event-name gui-input br-light light"
+                                                value="@if($editVendor != Null) {{$editVendor->annual_revenue}} @endif" placeholder="Annual Revenue">
+                                        <label for="annual_revenue" class="field-icon">
+                                            <i class="fa fa-tag"></i>
+                                        </label>
+                                    </label>
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <div class="col-md-6 ph10">
+                                    <label for="main_products" class="form-control-label" style="margin-bottom:05px;font-size:15px;">Main Products</label>
+                                    <label for="main_products" class="field prepend-icon">
+                                        <input type="text" name="main_products" id="main_products"
+                                               class="event-name gui-input br-light light"
+                                                value="@if($editVendor != Null) {{$editVendor->main_products}} @endif" placeholder="Main Products">
+                                        <label for="main_products" class="field-icon">
+                                            <i class="fa fa-tag"></i>
+                                        </label>
+                                    </label>
+                                </div>
+
+                                <div class="col-md-6 ph10">
+                                    <label for="main_market" class="form-control-label" style="margin-bottom:05px;font-size:15px;">Main Markets</label>
+                                    <label for="main_market" class="field prepend-icon">
+                                        <input type="text" name="main_market" id="main_market"
+                                               class="event-name gui-input br-light light"
+                                                value="@if($editVendor != Null) {{$editVendor->main_market}} @endif" placeholder="Main Market">
+                                        <label for="main_market" class="field-icon">
+                                            <i class="fa fa-tag"></i>
+                                        </label>
+                                    </label>
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <button type="submit" class="btn btn-info btn-block" name="button"><i class="fa fa-edit"></i>  Update</button>
+                              </div>
+
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+                  </div>
+
 
                   </div>
                 </div>
+
+
 
 
                 </div>

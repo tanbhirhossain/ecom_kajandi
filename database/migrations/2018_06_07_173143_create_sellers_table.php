@@ -37,6 +37,21 @@ class CreateSellersTable extends Migration
           $table->string('vendor_type')->nullable();
           $table->string('password')->nullable();
           $table->boolean('acStatus')->nullable();
+          //FOR COMPANY PROFILE================================
+
+          $table->string('company_banner')->nullable();
+          $table->string('company_img_1')->nullable();
+          $table->string('company_img_2')->nullable();
+          $table->string('company_img_3')->nullable();
+
+          $table->string('established_year')->nullable();
+          $table->stirng('annual_revenue')->nullable();
+          $table->string('main_products')->nullable();
+          $table->string('main_market')->nullable();
+
+
+
+
           $table->rememberToken();
           $table->timestamps();
         });

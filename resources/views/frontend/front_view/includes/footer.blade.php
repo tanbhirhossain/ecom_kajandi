@@ -178,6 +178,9 @@
 {{--Ck Editor Script--}}
 <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
+<link rel="stylesheet" href="{{asset('public/frontend/css/new-css.css')}}">
+
+<script src="{{asset('public/frontend/js/new-script.js')}}" charset="utf-8"></script>
 <script>
     // $('textarea').ckeditor();
     $('.textarea').ckeditor(); // if class is prefered.
