@@ -352,7 +352,11 @@ Route::post('/seller/update-profile-primary', 'SellerProfileController@updatePri
 //Vendor Order List
 Route::get('seller/order-list', 'SellerOrderController@VendorOrderList')->name('VendorOrderList');
 Route::get('seller/view-order/{id}', 'SellerOrderController@viewOrder')->name('viewVendorOrder');
-
+Route::get('seller/message-list', 'SellerOrderController@VendorMessageList')->name('VendorMessageList');
+Route::get('seller/message-delete/{id}', 'SellerOrderController@VendorMessageDelete')->name('VendorMessageDelete');
+Route::get('seller/message-view/{id}', 'SellerOrderController@VendorMessageView')->name('VendorMessageView');
+Route::POST('seller/message-replay/', 'SellerOrderController@VendorMessageReplay')->name('VendorMessageReplay');
 //Vendor Cmpanyprofile
 Route::get('/company-profile/{user_id}', 'VendorProfileController@showVendorProfile')->name('showVendorProfile');
 Route::post('/company-profile-single-mail', 'VendorProfileController@sendingContactMail')->name('sendCompanyMsg');
+Route::get('/company-contact-supplier', 'VendorProfileController@showContactSup')->name('showContactSup');

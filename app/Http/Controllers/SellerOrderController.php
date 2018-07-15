@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ContactSupplier;
 use App\Order;
 use App\OrderDetail;
 use App\Shipping;
 use App\Customer;
+
+use Mail;
 use Auth;
 
 class SellerOrderController extends Controller
@@ -45,4 +48,33 @@ class SellerOrderController extends Controller
         return view('seller.order.view_order',compact('order',
             'order_details','shipping','billing'));
     }
+
+       public function VendorMessageList(){
+       $all_message = ContactSupplier::where('seller_id',Auth::user()->id)->orderBy('created_at','desc')->get();
+       return view('seller.message.message_list',compact('all_message'));
+    }
+    public function VendorMessageView($id){
+        $msg  = ContactSupplier::find($id);
+        return view('seller.message.view_message',compact('msg'));
+    }
+    public function VendorMessageReplay(Request $request){
+        $data =[
+            'email'=>$request->email,
+            'content'=>$request->message,
+            'subject'=>$request->subject
+        ];
+
+        Mail::send('seller.message.message_template',$data,function ($variable) use ($data){
+            $variable->to($data['email']);
+            $variable->subject($data['subject']);
+            $variable->from('r25n.office@gmail.com');
+        });
+        return back()->with('message_success', 'Email Sent Succesfully........');
+    }
+    public function VendorMessageDelete($id){
+        $msg = ContactSupplier::find($id);
+        $msg->delete();
+        return back()->with('message_success','Message Deleted Successfully');
+    }
+ 
 }

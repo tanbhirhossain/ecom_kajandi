@@ -93,7 +93,7 @@
          <?php
                 $check = App\Seller::where('user_id', Auth::id())->first();
           ?>
-         @if($check->country && $check->location != Null)
+          @if($check->location!=NUll && $check->country!=NULL)
            <!-- -------------- New Product -------------- -->
            <form class="" action="{{route('postSellerProduct')}}" method="post" enctype="multipart/form-data" >
              @csrf

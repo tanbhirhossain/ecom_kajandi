@@ -33,7 +33,7 @@
                     <select onchange="this.form.submit()" class="category-selections-select" name="product_sort">
                         <option selected disabled>--Default--</option>
                         <option id="new_est" value="new_est">Newest First</option>
-                        <option id="best_rated" value="best_rated">Best Raited</option>
+                      {{--<option id="best_rated" value="best_rated">Best Raited</option>--}}
                         <option id="low_price" value="low_price">Price : Lowest First</option>
                         <option id="3" value="high_price">Price : Highest First</option>
                         <option id="high_price" value="a_to_z">Title : A - Z</option>
@@ -388,7 +388,7 @@
                                                     <p class="name"><span class="tag">My Product</span>
                                                         <?php $seller = DB::table('sellers')->where('user_id',$product->seller_id)->first();?>
                                                         @if($seller!=NUll)
-                                                            {{$seller->vendorname}}
+                                                          <a href="{{route('showVendorProfile',$seller->user_id)}}">  {{$seller->vendorname}}</a>
                                                         @endif
                                                     </p>
                                                     <p class="location"><span class="tag">Location</span>
@@ -488,7 +488,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-8 col-sm-8">
-                                                    <button class="btn btn-primary" href="#">Contact supplier</button>
+                                                     <a class="btn btn-primary" href="{{route('contact-supplier',$product->id)}}">Contact supplier</a>
                                                 </div>
 
                                             </div>

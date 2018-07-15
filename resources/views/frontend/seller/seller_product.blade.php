@@ -1,7 +1,7 @@
 @extends('frontend.front_view.front_master')
 @section('page-title','seller-product')
 @section('main_content')
-    <?php $all_product = DB::table('seller_products')->where('seller_id',$seller_by_id->id)->where('pro_status',1)->paginate(12);?>
+    <?php $all_product = DB::table('seller_products')->where('seller_id',$seller_by_id->user_id)->where('pro_status',1)->paginate(12);?>
 <div class="container">
     <div class="row">
         <div class="col-md-12 bg-wrapper">

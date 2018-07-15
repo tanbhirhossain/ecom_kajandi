@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="text_area_file">
-                            <textarea  name="user_message" class="rqf_message "></textarea>
+                           <textarea  name="user_message" class="rqf_message textarea"></textarea>
                             @if ($errors->has('user_message'))
                                 <div class="error">{{ $errors->first('user_message') }}</div>
                             @endif

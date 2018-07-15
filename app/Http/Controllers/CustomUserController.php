@@ -42,7 +42,7 @@ class CustomUserController extends Controller{
           // $cust->save();
 
           $pa = new Seller();
-          $pa->user_id = $seller_id;
+          $pa->user_id = Session::get('id');
           $pa->vendorname = $request->name;
           $pa->email = $request->email;
           $pa->contactphone = $request->phone;
@@ -59,7 +59,7 @@ class CustomUserController extends Controller{
           $su->save();
 
           $seller_id = $su->id;
-            Session::put('id',$seller_id);
+            Session::put('cus_id',$seller_id);
           $cust = new Customer();
           $cust->cus_id = $seller_id;
           $cust->bil_email = $request->email;

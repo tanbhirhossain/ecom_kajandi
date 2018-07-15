@@ -25,9 +25,19 @@ function notLogged() {
   <div class="banner-wrap">
       <div class="container">
           <div class="row text-center">
+
+            @if($vendorProfile->company_banner != Null)
               <div style="" class="col-md-12">
-                  <img  src="@if($vendorProfile != Null) {{asset($vendorProfile->company_banner)}} @endif" alt="">
+                  <img  src="{{asset($vendorProfile->company_banner)}}" alt="">
               </div>
+            @else
+            <div style="" class="col-md-12 bg-wrapper">
+
+            </div>
+            @endif
+
+            <h3>@if($vendorProfile != Null) {{$vendorProfile->vendor}} @endif</h3>
+
           </div>
       </div>
   </div>
@@ -160,7 +170,7 @@ function notLogged() {
                             <input type="text" name="mail_to" class="form-control" value="@if($vendorProfile != Null) {{$vendorProfile->contactemail}} @endif" readonly>
                           </div>
                           <div class="col-sm-10">
-                              <textarea rows="6" required name="messages" class="form-control" placeholder="Enter your inquiry details such as product name, color, size, MOQ, FOB, etc."></textarea>
+                              <textarea rows="6" required name="messages" class="form-control textarea" placeholder="Enter your inquiry details such as product name, color, size, MOQ, FOB, etc."></textarea>
                               @if ($errors->has('messages'))
                                   <span class="invalid-feedback">
                                       <strong>{{ $errors->first('messages') }}</strong>

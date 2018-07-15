@@ -30,7 +30,8 @@
                 </div>
                 <div class="form-group">
                     <label for="textarea-input readonly" class=" form-control-label">Message</label>
-                    <textarea   name="message" id="textarea-input readonly" rows="9" value="Content..." class="form-control editor">{{$message_by_id->message}}</textarea>
+                    <label for="textarea-input " class=" form-control-label">Message</label>
+                     <textarea   name="message" id="textarea-input " rows="9" value="Content..." class="form-control editor">{{$message_by_id->message}}</textarea>
                     @if ($errors->has('message'))
                         <div class="error">{{ $errors->first('message') }}</div>
                     @endif

@@ -46,4 +46,9 @@ class VendorProfileController extends Controller
 
 
     }
+
+    public function showContactSup(){
+
+      return view('frontend.seller.profile.contact_sup');
+    }
 }

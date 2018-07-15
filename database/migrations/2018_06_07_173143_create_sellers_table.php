@@ -34,7 +34,7 @@ class CreateSellersTable extends Migration
           $table->string('chairmanemail')->nullable();
           $table->string('producttype')->nullable();
           $table->string('location')->nullable();
-          $table->string('vendor_type')->nullable();
+          $table->string('vendor_type')->nullable()->comment('1=>OEM, 2=>Distributor, 3=>Wholesaler,4=>Retailer');
           $table->string('password')->nullable();
           $table->boolean('acStatus')->nullable();
           //FOR COMPANY PROFILE================================

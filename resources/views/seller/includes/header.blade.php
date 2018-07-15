@@ -224,9 +224,10 @@
     <!-- -------------- Header  -------------- -->
     <header class="navbar navbar-fixed-top bg-dark">
         <div class="navbar-logo-wrapper">
-            <a class="navbar-logo-text" href="dashboard1.html">
-                <b>Alliance</b>
-            </a>
+          <a class="navbar-logo-text" href="{{url('/')}}">
+                <b>Kajandi Shop</b>
+           </a>
+
             <span id="sidebar_left_toggle" class="ad ad-lines"></span>
         </div>
         <ul class="nav navbar-nav navbar-left">
@@ -252,205 +253,98 @@
                         <div class="panel mbn">
                             <div class="panel-menu">
                                 <div class="btn-group btn-group-justified btn-group-nav" role="tablist">
-                                    <a href="#nav-tab1" data-toggle="tab"
-                                       class="btn btn-primary btn-bordered btn-sm active">Activity</a>
+                                  {{--<a href="#nav-tab1" data-toggle="tab"--}}
+                                       {{--class="btn btn-primary btn-bordered btn-sm active">Activity</a>--}}
                                     <a href="#nav-tab2" data-toggle="tab"
                                        class="btn btn-primary btn-bordered btn-sm br-l-n br-r-n">Messages</a>
                                     <a href="#nav-tab3" data-toggle="tab" class="btn btn-primary btn-bordered btn-sm">Notifications</a>
                                 </div>
                             </div>
                             <div class="panel-body panel-scroller scroller-overlay scroller-navbar pn">
-                                <div class="tab-content br-n pn">
-                                    <div id="nav-tab1" class="tab-pane active" role="tabpanel">
-                                        <ul class="media-list" role="menu">
-                                            <li class="media">
-                                                <a class="media-left" href="#"> <img src="{{asset('public/seller')}}/assets/img/avatars/5.jpg"
-                                                                                     class="mw40 br2" alt="avatar">
-                                                </a>
 
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New post
-                                                        <small class="text-muted">- 09/01/15</small>
-                                                    </h5>
-                                                    Last Updated 5 days ago by
-                                                    <a class="" href="#"> John Doe </a>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <a class="media-left" href="#"> <img src="{{asset('public/seller')}}/assets/img/avatars/2.jpg"
-                                                                                     class="mw40 br2" alt="avatar">
-                                                </a>
 
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New post
-                                                        <small> - 09/01/15</small>
-                                                    </h5>
-                                                    Last Updated 5 days ago by
-                                                    <a class="" href="#"> John Doe </a>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <a class="media-left" href="#"> <img src="{{asset('public/seller')}}/assets/img/avatars/3.jpg"
-                                                                                     class="mw40 br2" alt="avatar">
-                                                </a>
 
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New post
-                                                        <small class="text-muted">- 09/01/15</small>
-                                                    </h5>
-                                                    Last Updated 5 days ago by
-                                                    <a class="" href="#"> John Doe </a>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <a class="media-left" href="#"> <img src="{{asset('public/seller')}}/assets/img/avatars/4.jpg"
-                                                                                     class="mw40 br2" alt="avatar">
-                                                </a>
-
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New post
-                                                        <small class="text-muted">- 09/01/15</small>
-                                                    </h5>
-                                                    Last Updated 5 days ago by
-                                                    <a class="" href="#"> John Doe </a>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <a class="media-left" href="#"> <img src="{{asset('public/seller')}}/assets/img/avatars/5.jpg"
-                                                                                     class="mw40 br2" alt="avatar">
-                                                </a>
-
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New post
-                                                        <small class="text-muted">- 09/01/15</small>
-                                                    </h5>
-                                                    Last Updated 5 days ago by
-                                                    <a class="" href="#"> John Doe </a>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <a class="media-left" href="#"> <img src="{{asset('public/seller')}}/assets/img/avatars/2.jpg"
-                                                                                     class="mw40 br2" alt="avatar">
-                                                </a>
-
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New post
-                                                        <small> - 09/01/15</small>
-                                                    </h5>
-                                                    Last Updated 5 days ago by
-                                                    <a class="" href="#"> John Doe </a>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <a class="media-left" href="#"> <img src="{{asset('public/seller')}}/assets/img/avatars/3.jpg"
-                                                                                     class="mw40 br2" alt="avatar">
-                                                </a>
-
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New post
-                                                        <small class="text-muted">- 09/01/15</small>
-                                                    </h5>
-                                                    Last Updated 5 days ago by
-                                                    <a class="" href="#"> John Doe </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                     <div id="nav-tab2" class="tab-pane chat-widget" role="tabpanel">
-                                        <div class="media">
+                                      <div class="media">
+                                       <?php
+                                            $all_message = \App\ContactSupplier::where('seller_id',Auth::user()->id)->orderBy('created_at','desc')->where('status',0)->limit(5)->get();
+                                        ?>
+                                       @foreach($all_message as $msg)
+
+                                            <div class="media">
                                             <div class="media-left">
                                                 <a href="#">
                                                     <img class="media-object" alt="64x64"
                                                          src="{{asset('public/seller')}}/assets/img/avatars/3.jpg">
                                                 </a>
                                             </div>
-                                            <div class="media-body">
-                                                <span class="media-status online"></span>
-                                                <h5 class="media-heading">Frank Hill
-                                                    <small> - 14:10am</small>
-                                                </h5>
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <span class="media-status offline"></span>
-                                                <h5 class="media-heading">George Kelly
-                                                    <small> - 15:25am</small>
-                                                </h5>
-                                                Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                aliquam erat volutpat.
-                                            </div>
-                                            <div class="media-right">
-                                                <a href="#">
-                                                    <img class="media-object" alt="64x64"
-                                                         src="{{asset('public/seller')}}/assets/img/avatars/1.jpg">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" alt="64x64"
-                                                         src="{{asset('public/seller')}}/assets/img/avatars/2.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <span class="media-status online"></span>
-                                                <h5 class="media-heading">Frank Hill
-                                                    <small> - 15:33am</small>
-                                                </h5>
-                                                Lorem ipsum dolor sit amet, nonummy nibh euismod tinc consectetuer
-                                                adipiscing elit.
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <span class="media-status offline"></span>
-                                                <h5 class="media-heading">George Kelly
-                                                    <small> - 15:43am</small>
-                                                </h5>
-                                                Euismod sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                                magna aliquam erat volutpat.
-                                            </div>
-                                            <div class="media-right">
-                                                <a href="#">
-                                                    <img class="media-object" alt="64x64"
-                                                         src="{{asset('public/seller')}}/assets/img/avatars/1.jpg">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" alt="64x64"
-                                                         src="{{asset('public/seller')}}/assets/img/avatars/2.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <span class="media-status online"></span>
-                                                <h5 class="media-heading">Frank Hill
-                                                    <small> - 16:30am</small>
-                                                </h5>
-                                                Corem ipsum dolor sit amet, nonummy nibh euismod tinc co.
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <span class="media-status offline"></span>
-                                                <h5 class="media-heading">George Kelly
-                                                    <small> - 12:30am</small>
-                                                </h5>
-                                                Ubh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                            </div>
-                                            <div class="media-right">
-                                                <a href="#">
-                                                    <img class="media-object" alt="64x64"
-                                                         src="{{asset('public/seller')}}/assets/img/avatars/1.jpg">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            <?php
+                                                                                            $customer = \App\User::find($msg->customer_id);
+                                                                                            ?>
+                                                                                            <?php
+                                                                                            $time_message = "";
+                                                                                            $date_time = $msg->created_at;
+                                                                                            $date_time_now = date('Y-m-d H:i:s');
+                                                                                            $start_date = new DateTime($date_time); //Time of Post
+                                                                                            $end_date = new DateTime($date_time_now); //current Time
+                                                                                            $interval = $start_date->diff($end_date);
+                                                                                            if($interval->y >=1){
+                                                                                                if($interval->y ==1){
+                                                                                                    $time_message = $interval->y." year ago";
+                                                                                                }else{
+                                                                                                    $time_message = $interval->y." years ago";
+                                                                                                }
+                                                                                            }elseif($interval->m >=1){
+                                                                                                if($interval->d ==0){
+                                                                                                    $days = " ago";
+                                                                                                }elseif($interval->d ==1){
+                                                                                                    $days = $interval->d." day ago";
+                                                                                                }else{
+                                                                                                    $days = $interval->d." days ago";
+                                                                                                }
+                                                                                                if($interval->m ==1){
+                                                                                                    $time_message = $interval->m." month".$days;
+                                                                                                }else{
+                                                                                                    $time_message = $interval->m." months".$days;
+                                                                                                }
+                                                                                            }elseif($interval->d >=1){
+                                                                                                if($interval->d ==1){
+                                                                                                    $time_message = " Yesterday";
+                                                                                                }else{
+                                                                                                    $time_message = $interval->d." days ago";
+                                                                                                }
+                                                                                            }elseif($interval->h >=1){
+                                                                                                if($interval->h ==1){
+                                                                                                    $time_message = $interval->h." hour ago";
+                                                                                                }else{
+                                                                                                    $time_message = $interval->h." hours ago";
+                                                                                                }
+                                                                                            }elseif($interval->i >=1){
+                                                                                                if($interval->i ==1){
+                                                                                                    $time_message = $interval->i." minute ago";
+                                                                                                }else{
+                                                                                                    $time_message = $interval->i." minutes ago";
+                                                                                                }
+                                                                                            }else{
+                                                                                                if($interval->s <30){
+                                                                                                    $time_message = " Just now";
+                                                                                                }else{
+                                                                                                    $time_message = $interval->s." seconds ago";
+                                                                                                }
+                                                                                            }
+                                                                                            ?>
+
+                                                                                                <div class="media-body">
+                                                                                                    <span class="media-status online"></span>
+                                                                                                    <h5 class="media-heading">{{$customer->name}}
+                                                                                                        <small> - {{$time_message}}</small>
+                                                                                                    </h5>
+                                                                                                    {!! \Illuminate\Support\Str::words($msg->user_message, 5,'....')  !!}
+                                                                                                </div>
+
+                                                                                    </div>
+
+                                                                                   @endforeach
                                     <div id="nav-tab3" class="tab-pane alerts-widget" role="tabpanel">
                                         <div class="media">
                                             <a class="media-left" href="#"> <span
@@ -621,7 +515,7 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-center">
-                                <a href="#" class="btn btn-primary btn-sm btn-bordered"> View All </a>
+                                <a href="{{route('VendorMessageList')}}" class="btn btn-primary btn-sm btn-bordered"> View All </a>
                             </div>
                         </div>
                     </div>
@@ -734,47 +628,12 @@
                     <img src="{{asset('public/seller')}}/assets/img/avatars/profile_avatar.jpg" alt="avatar" class="mw55">
                 </a>
                 <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
-                    <li class="dropdown-header clearfix">
-                        <div class="pull-left ml10">
-                            <select id="user-status">
-                                <optgroup label="Current Status:">
-                                    <option value="1-1">Away</option>
-                                    <option value="1-2">Busy</option>
-                                    <option value="1-3" selected="selected">Online</option>
-                                    <option value="1-4">Offline</option>
-                                </optgroup>
-                            </select>
-                        </div>
 
-                        <div class="pull-right mr10">
-                            <select id="user-role">
-                                <optgroup label="Logged in As:">
-                                    <option value="1-1" selected="selected">Admin</option>
-                                    <option value="1-2">Editor</option>
-                                    <option value="1-3">User</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </li>
+
+
                     <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-envelope-o"></span> Messages
-                            <span class="label label-warning">54</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-users"></span> Friends
-                            <span class="label label-warning">6</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-bell"></span> Notifications </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-cogs"></span> Settings </a>
+                      <a href="{{route('customer-change-password',Auth::user()->id)}}" class="animated animated-short fadeInUp">
+                          <span class="fa fa-cogs"></span> Change Password </a>
                     </li>
                     <li class="dropdown-footer text-center">
                         <a class="btn btn-primary btn-sm btn-bordered" href="{{ route('logout') }}"
@@ -925,7 +784,22 @@
 
                     </ul>
                 </li>
+                <li class="sidebar-label pt25">Manage Messages</li>
+                                <li>
+                                    <a class="accordion-toggle" href="#">
+                                        <span class="fa fa-share-square-o"></span>
+                                        <span class="sidebar-title">Messages</span>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="nav sub-nav">
+                                        <li>
+                                            <a href="{{route('VendorMessageList')}}">
+                                                <span class="glyphicon glyphicon-tags"></span> Message List </a>
+                                        </li>
 
+
+                                    </ul>
+                                </li>
 
 
 
