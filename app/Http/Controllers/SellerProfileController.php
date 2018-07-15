@@ -76,7 +76,7 @@ class SellerProfileController extends Controller
         }
 
     }else {
-      $company_img_2 = $sv->company_img_3;
+      $company_img_2 = $sv->company_img_2;
     }
 
     $file = $request->file( 'company_img_3' );

@@ -28,6 +28,7 @@
 
     <script src="{{asset('public/frontend/js/new-script.js')}}" charset="utf-8"></script>
 
+    @yield('style')
 
 </head>
 

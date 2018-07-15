@@ -121,6 +121,11 @@
                 <li>
                     <a href="{{route('manage-q-a')}}"> <i class="menu-icon ti-email"></i>Manage Q & A </a>
                 </li>
+                <?php
+
+                    $admin = App\Admin::where('id', Auth::id())->first();
+                 ?>
+
                 <h3 class="menu-title">User Section</h3><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
@@ -131,6 +136,7 @@
 
                   </ul>
               </li>
+              @if($admin->user_role == Null)
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Manage User</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -139,6 +145,10 @@
 
                     </ul>
                 </li>
+                @endif
+
+
+
                 <h3 class="menu-title">Order Section</h3><!-- /.menu-title -->
                 <li>
                     <a href="{{route('manage-order')}}"> <i class="menu-icon ti-email"></i>Manage Order </a>

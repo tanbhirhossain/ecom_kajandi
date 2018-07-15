@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Faquestion;
 use App\faqanswers;
+use App\User;
+use Mail;
+use Auth;
+use input;
 
 class FAQController extends Controller
 {
@@ -13,6 +17,7 @@ class FAQController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     public function postQuestion(Request $request)
@@ -29,5 +34,9 @@ class FAQController extends Controller
         return back()->with('message_success', 'Thanks for your Asking, we will reply you very soon');
 
     }
+
+  
+
+
 
 }

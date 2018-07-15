@@ -355,3 +355,4 @@ Route::get('seller/view-order/{id}', 'SellerOrderController@viewOrder')->name('v
 
 //Vendor Cmpanyprofile
 Route::get('/company-profile/{user_id}', 'VendorProfileController@showVendorProfile')->name('showVendorProfile');
+Route::post('/company-profile-single-mail', 'VendorProfileController@sendingContactMail')->name('sendCompanyMsg');

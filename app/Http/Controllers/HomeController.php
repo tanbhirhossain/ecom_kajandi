@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ContactSupplier;
 use Auth;
+use App\User;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -27,4 +29,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+  
 }
