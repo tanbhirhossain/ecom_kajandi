@@ -10,7 +10,7 @@
 <!--  /Body Wrap   -->
 
 <!--  Scripts  -->
-
+<script src="{{asset('public/seller')}}/assets/invoice.js"></script>
 <!--  jQuery  -->
 <script src="{{asset('public/seller')}}/assets/js/jquery/jquery-1.11.3.min.js"></script>
 <script src="{{asset('public/seller')}}/assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>

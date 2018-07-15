@@ -25,7 +25,7 @@ function notLogged() {
   <div class="banner-wrap">
       <div class="container">
           <div class="row text-center">
-
+            <h3>@if($vendorProfile != Null) {{$vendorProfile->vendorname}} @endif</h3>
             @if($vendorProfile->company_banner != Null)
               <div style="" class="col-md-12">
                   <img  src="{{asset($vendorProfile->company_banner)}}" alt="">
@@ -36,7 +36,7 @@ function notLogged() {
             </div>
             @endif
 
-            <h3>@if($vendorProfile != Null) {{$vendorProfile->vendor}} @endif</h3>
+
 
           </div>
       </div>
@@ -48,8 +48,10 @@ function notLogged() {
   <!-- Company Intro -->
   <div  class="company-intro-wrap">
       <div class="container">
+
           <div class="row">
               <div class="col-md-12">
+
                   <h4>Company Introduction</h4>
                   <hr>
               </div>
@@ -87,7 +89,7 @@ function notLogged() {
                   <ul class="product-author">
                       <li><a href="#"><i class="fa fa-user"></i>@if($vendorProfile != Null) {{$vendorProfile->contactname}} @endif</a></li>
                       <!--<li><a href="#"><i class="fa fa-comment"></i> Chat Now</a></li>-->
-                      <li><a href="#" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Contact Supplier</a></li>
+                      <li><a href="{{route('showContactSup', $vendorProfile->id)}}" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Contact Supplier</a></li>
                   </ul>
               </div>
           </div>
@@ -146,6 +148,7 @@ function notLogged() {
                         </div>
 
                       @endforeach
+                      {{ $vendorProduct->links() }}
 
 
 
@@ -161,13 +164,18 @@ function notLogged() {
               <div class="col-md-12">
                   <div style="border:2px dotted grey" class="supplier-email">
                       <h4>Email to this supplier</h4>
+                      <small>
+                          <p class="text-center  alert-success">{{Session::get('message_success')}}</p>
+                          <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
+                      </small>
                       <form action="{{route('sendCompanyMsg')}}" method="post"> @csrf
                           <div class="col-sm-2 text-right">
                               <p>To:</p>
                               <p>Message:</p>
                           </div>
                           <div class="col-sm-10 form-group">
-                            <input type="text" name="mail_to" class="form-control" value="@if($vendorProfile != Null) {{$vendorProfile->contactemail}} @endif" readonly>
+                            <p>@if($vendorProfile != Null) {{$vendorProfile->contactname}} @endif</p>
+                            <input type="hidden" name="mail_to" class="form-control" value="@if($vendorProfile != Null) {{$vendorProfile->contactemail}} @endif" readonly>
                           </div>
                           <div class="col-sm-10">
                               <textarea rows="6" required name="messages" class="form-control textarea" placeholder="Enter your inquiry details such as product name, color, size, MOQ, FOB, etc."></textarea>

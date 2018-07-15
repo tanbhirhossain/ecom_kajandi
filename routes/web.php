@@ -359,4 +359,5 @@ Route::POST('seller/message-replay/', 'SellerOrderController@VendorMessageReplay
 //Vendor Cmpanyprofile
 Route::get('/company-profile/{user_id}', 'VendorProfileController@showVendorProfile')->name('showVendorProfile');
 Route::post('/company-profile-single-mail', 'VendorProfileController@sendingContactMail')->name('sendCompanyMsg');
-Route::get('/company-contact-supplier', 'VendorProfileController@showContactSup')->name('showContactSup');
+Route::get('/company-contact-supplier/{id}', 'VendorProfileController@showContactSup')->name('showContactSup');
+Route::post('/send-company-contact-supplier', 'VendorProfileController@sendCompanySupMail')->name('sendCompanySupMail');

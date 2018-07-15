@@ -30,6 +30,7 @@
 
     <!--  CSS - allcp forms  -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/seller')}}/assets/allcp/forms/css/forms.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/seller')}}/assets/invoice.css">
 
     <!--  Favicon  -->
     <link rel="shortcut icon" href="{{asset('public/seller')}}/assets/img/favicon.ico">

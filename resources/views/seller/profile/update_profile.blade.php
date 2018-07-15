@@ -68,6 +68,7 @@
                                     <i class="fa fa-tag"></i>
                                 </label>
                             </label>
+
                         </div>
 
                         <div class="section col-md-6 form-group">
@@ -80,6 +81,11 @@
                                     <i class="fa fa-tag"></i>
                                 </label>
                             </label>
+                            @if ($errors->has('contactphone'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('contactphone') }}</strong>
+                                </span>
+                            @endif
                         </div>
                       </div>
 
@@ -125,8 +131,14 @@
                                       <option value="3">Wholesaler</option>
                                       <option value="4">Retailer</option>
                                   </select>
+
                                   <i class="arrow double"></i>
                               </label>
+                              @if ($errors->has('vendor_type'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('vendor_type') }}</strong>
+                                  </span>
+                              @endif
                           </div>
                           <div class="col-md-4 ph10">
                               <label for="producttype" class="form-control-label" style="margin-bottom:05px;font-size:15px;">Product Type</label>
@@ -203,6 +215,11 @@
                                   </select>
                                   <i class="arrow double"></i>
                               </label>
+                              @if ($errors->has('location'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('location') }}</strong>
+                                  </span>
+                              @endif
                           </div>
                         </div>
 
@@ -217,6 +234,11 @@
                                       <i class="fa fa-tag"></i>
                                   </label>
                               </label>
+                              @if ($errors->has('address'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('address') }}</strong>
+                                  </span>
+                              @endif
                           </div>
                         </div>
 
@@ -335,7 +357,7 @@
   	<option>Macedonia</option>
   	<option>Madagascar</option>
   	<option>Malawi</option>
-  	<option>>Malaysia</option>
+  	<option>Malaysia</option>
   	<option>Maldives</option>
   	<option>Mali</option>
   	<option>Malta</option>
@@ -430,6 +452,11 @@
              </select>
                       <i class="arrow double"></i>
                               </label>
+                              @if ($errors->has('country'))
+                                  <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('country') }}</strong>
+                                  </span>
+                              @endif
                           </div>
                           <div class="col-md-6 ph10">
                               <label for="url" class="form-control-label" style="margin-bottom:05px;font-size:15px;">Url</label>
@@ -532,6 +559,11 @@
                                         <i class="fa fa-tag"></i>
                                     </label>
                                 </label>
+                                @if ($errors->has('contactname'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('contactname') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                           </div>
 
@@ -546,6 +578,11 @@
                                         <i class="fa fa-tag"></i>
                                     </label>
                                 </label>
+                                @if ($errors->has('contactemail'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('contactemail') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                           </div>
 

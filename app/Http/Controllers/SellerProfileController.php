@@ -13,26 +13,27 @@ class SellerProfileController extends Controller
    }
    public function updateProfile(Request $request)
    {
-    //  $request->validate([
-    //     'vendorname' => 'required|max:255|min:5',
-    //     'vendor_type' => 'required|max:255|min:1',
-    //     'producttype' => 'required|max:255|min:1',
-    //     'location' => 'required|max:255|min:1',
-    //
-    //     'address' => 'required|max:500|min:7',
-    //     'url' => 'required|max:255|min:2',
-    //     'cac' => 'required|max:255|min:2',
-    //     'workforce' => 'required|max:255|min:2',
-    //     'yearsofexp' => 'required|max:255|min:2',
-    //     'ratings' => 'required|max:255|min:1',
-    //     'contactname' => 'required|max:255|min:5',
-    //     'contactphone' => 'required|max:15|min:5',
-    //     'contactemail' => 'required',
-    //     'chairmanname' => 'required',
-    //     'chairmanphone' => 'required',
-    //     'chairmanemail' => 'required',
-    //
-    // ]);
+     $request->validate([
+        //'vendorname' => 'required|max:255|min:5',
+        'vendor_type' => 'required|max:255|min:1',
+        //'producttype' => 'required|max:255|min:1',
+        'location' => 'required|max:255|min:1',
+        'country' => 'required',
+
+        'address' => 'required|max:500|min:7',
+        //'url' => 'required|max:255|min:2',
+      //  'cac' => 'required|max:255|min:2',
+      //  'workforce' => 'required|max:255|min:2',
+      //  'yearsofexp' => 'required|max:255|min:2',
+      //  'ratings' => 'required|max:255|min:1',
+        'contactname' => 'required|max:255|min:5',
+        //'contactphone' => 'required|max:15|min:5',
+        'contactemail' => 'required',
+      //  'chairmanname' => 'required',
+      //  'chairmanphone' => 'required',
+      //  'chairmanemail' => 'required',
+
+    ]);
     $sv = Seller::where('user_id', Auth::id())->first();
     //$sv->vendorname = $request->vendorname;
     //$sv->contactphone = $request->contactphone;
