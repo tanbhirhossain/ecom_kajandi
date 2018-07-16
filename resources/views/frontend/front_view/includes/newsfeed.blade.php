@@ -26,7 +26,7 @@
               </form>
             </div>
         </div>
-        <div class="row" data-gutter="10">
+<!--<div class="row" data-gutter="10">
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <h4 class="widget-title-sm">Customer Services</h4>
                 <ul class="footer-sub-menu">
@@ -75,7 +75,7 @@
                     <li><a href="#">Submit a Dispute</a></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
     </div>
 </section>
