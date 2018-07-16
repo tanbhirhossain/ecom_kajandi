@@ -1266,7 +1266,7 @@
                             <li class="rated"><i class="fa fa-star"></i>
                             </li>
                         </ul>
-                        <button class="btn btn-primary" href="#">Contact supplier</button>
+                        <button class="btn btn-primary" data-url="{{route('contact-supplier',$product->id)}}">Contact supplier</button>
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="details-option">

@@ -36,6 +36,14 @@ Route::post('/update-home-slider/{id}', 'HomeSliderController@updateSlider')->na
 Route::get('/delete-home-slider/{id}', 'HomeSliderController@deleteSlider')->name('deleteSlider');
 //End Slider
 
+//Footer Page section
+Route::get('/add-footer-page-section', 'FooterPageController@addFPS')->name('addFPS');
+Route::post('/post-footer-page-section', 'FooterPageController@postFPS')->name('postFPS');
+Route::get('/delete-footer-page-section/{id}', 'FooterPageController@deleteFPS')->name('deleteFPS');
+Route::get('edit-footer-page-section/{id}', 'FooterPageController@editFPS')->name('editFPS');
+Route::post('update-footer-page_section/{id}', 'FooterPageController@updateFPS')->name('updateFPS');
+//End Footer page section
+
 //Product sortBy Route start
 Route::get('/shop','FSortByController@shop_content')->name('shop');
 Route::get('/error-page','FSortByController@error_page')->name('error-page');
