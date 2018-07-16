@@ -45,7 +45,7 @@ class CreateSellersTable extends Migration
           $table->string('company_img_3')->nullable();
 
           $table->string('established_year')->nullable();
-          $table->stirng('annual_revenue')->nullable();
+          $table->string('annual_revenue')->nullable();
           $table->string('main_products')->nullable();
           $table->string('main_market')->nullable();
 
