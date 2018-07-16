@@ -27,6 +27,15 @@ Route::get('/show-single-mail/{id}', 'AdminSubscriberController@showSingleMail')
 Route::post('/send-single-mail', 'AdminSubscriberController@sendSingleMail')->name('sendSingleMail');
 //End Subscriber route
 
+//Slider Controller
+Route::get('/add-home-slider', 'HomeSliderController@addsomeSlider')->name('addsomeSlider');
+Route::post('/post-home-slider', 'HomeSliderController@posthomeSlider')->name('posthomeSlider');
+Route::get('/home-slider-list', 'HomeSliderController@sliderList')->name('sliderList');
+Route::get('/edit-home-slider/{id}', 'HomeSliderController@editSlider')->name('editSlider');
+Route::post('/update-home-slider/{id}', 'HomeSliderController@updateSlider')->name('updateSlider');
+Route::get('/delete-home-slider/{id}', 'HomeSliderController@deleteSlider')->name('deleteSlider');
+//End Slider
+
 //Product sortBy Route start
 Route::get('/shop','FSortByController@shop_content')->name('shop');
 Route::get('/error-page','FSortByController@error_page')->name('error-page');

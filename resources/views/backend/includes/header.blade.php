@@ -51,6 +51,23 @@
                 <li class="active">
                     <a href="{{route('admin-home')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
+                <?php
+
+                    $admin = App\Admin::where('id', Auth::id())->first();
+                 ?>
+
+                <h3 class="menu-title">User Section</h3><!-- /.menu-title -->
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Manage User</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('add-user')}}">Add user </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('user-list')}}">User List</a></li>
+
+                    </ul>
+                </li>
+
+
                 <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Manufacturer</a>
@@ -121,12 +138,9 @@
                 <li>
                     <a href="{{route('manage-q-a')}}"> <i class="menu-icon ti-email"></i>Manage Q & A </a>
                 </li>
-                <?php
 
-                    $admin = App\Admin::where('id', Auth::id())->first();
-                 ?>
 
-                <h3 class="menu-title">User Section</h3><!-- /.menu-title -->
+                <h3 class="menu-title">Home Advertise</h3><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home Advertise</a>
@@ -136,16 +150,15 @@
 
                   </ul>
               </li>
-              @if($admin->user_role == Null)
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Manage User</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('add-user')}}">Add user </a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="{{route('user-list')}}">User List</a></li>
+              <li class="menu-item-has-children dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home Slider</a>
+                <ul class="sub-menu children dropdown-menu">
+                    <li><i class="fa fa-puzzle-piece"></i><a href="{{route('addsomeSlider')}}">Add Slider </a></li>
+                    <li><i class="fa fa-id-badge"></i><a href="{{route('sliderList')}}">Slider List</a></li>
 
-                    </ul>
-                </li>
-                @endif
+                </ul>
+            </li>
+
 
 
 

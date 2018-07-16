@@ -1,5 +1,5 @@
 @extends('backend.admin_master')
-@section('page_title','Add Today Featured Item')
+@section('page_title','Update Home Slider')
 @section('admin_content')
     <?php
     ?>
@@ -12,35 +12,24 @@
                 </small>
             </div>
             <div class="card-header">
-                <strong>Home Featured Product</strong>
+                <strong>Update Home Slider</strong>
             </div>
             <div class="card-body">
                 <div class="card-body card-block">
-                    <form action="{{route('storeAdvert')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('updateSlider', $editslider->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="admin_id" value="{{Auth::id()}}">
-                        <div class="form-group">
-                            <label for="ads_section" class=" form-control-label">Select Ads Section</label>
-                            <select class="form-control" name="ads_section">
-                                <option value="">Select Ads Section</option>
-                                <option value="1">Advert Section 1</option>
-                                <option value="2">Today Featured</option>
-                                <option value="3">Best of Tech</option>
-                                <option value="4">Advert Section 2</option>
-                                
 
-                            </select>
-                            @if ($errors->has('ads_section'))
-                                <div class="error">{{ $errors->first('ads_section') }}</div>
-                            @endif
-                        </div>
                         <div class="form-group">
                             <label for="seller_id" class=" form-control-label">Select Vendor</label>
                             <select class="form-control" name="seller_id">
+                              @if($editslider->seller_id !=null)
+                                <option value="{{$editslider->seller_id}}">{{$editslider->vendorname}}</option>
+                              @else
                                 <option value="">Select Vendor</option>
-                                @foreach($all_vendor as $av)
-                                    <option value="{{$av->id}}">{{$av->vendorname}}</option>
-                                @endforeach
+
+                              @endif
+
                             </select>
                             @if ($errors->has('seller_id'))
                                 <div class="error">{{ $errors->first('seller_id') }}</div>
@@ -51,7 +40,12 @@
                             <label for="product_id" class=" form-control-label">Select Product</label>
 
                             <select class="form-control" name="product_id">
+                              @if($editslider->product_id !=null)
+                                <option value="{{$editslider->product_id}}">{{$editslider->pro_name}}</option>
+                              @else
                                 <option>Select Vendor For Loading Product</option>
+                              @endif
+
                             </select>
                             @if ($errors->has('product_id'))
                                 <div class="error">{{ $errors->first('product_id') }}</div>
@@ -62,19 +56,38 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label for="product_id" class=" form-control-label">Banner Color(Only For Banner)</label>
-                                <input type="color" style="height:39px;" class="form-control" name="banner_color" placeholder="Select Banner Color" required>
+                                <label for="slider_title" class=" form-control-label">Slider Title</label>
+                                <input type="text" style="height:39px;" value="{{$editslider->slider_title}}" class="form-control" name="slider_title" placeholder="Slider Title............" >
+                                @if ($errors->has('slider_title'))
+                                    <div class="error">{{ $errors->first('slider_title') }}</div>
+                                @endif
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="slider_description" class=" form-control-label">Slider description</label>
+                                <input type="text" style="height:39px;" value="{{$editslider->slider_description}}" class="form-control" name="slider_description" placeholder="Slider description.........." >
+                                @if ($errors->has('slider_description'))
+                                    <div class="error">{{ $errors->first('slider_description') }}</div>
+                                @endif
                             </div>
 
                         </div>
 
-                        <div class="form-group">
-                            <div class="photo">
-                                {!!Html::image('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvP_6f292mLf2VVWb3H8evjUPUawbJehCn_JetCsajjZc-ah_T',null,['class'=>'student-photo col-md-4','id'=>'showPhoto'])!!}<br>
-                                <input type="file" class="form-control" name="ads_image" id="photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                              <div class="photo">
+                                <img src="{{asset($editslider->slider_image)}}" class="col-md-4 student-photo" id="showPhoto"  alt=""><br>
 
-                            </div>
+                                <input type="file" value="{{asset($editslider->slider_image)}}" class="form-control" name="slider_image" id="photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+                                @if ($errors->has('slider_image'))
+                                    <div class="error">{{ $errors->first('slider_image') }}</div>
+                                @endif
+                              </div>
+                          </div>
                         </div>
+
                         <div class="form-group">
                             <button class="btn btn-success" type="submit">Submit</button>
                         </div>
