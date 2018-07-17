@@ -39,10 +39,17 @@ Route::get('/delete-home-slider/{id}', 'HomeSliderController@deleteSlider')->nam
 //Footer Page section
 Route::get('/add-footer-page-section', 'FooterPageController@addFPS')->name('addFPS');
 Route::post('/post-footer-page-section', 'FooterPageController@postFPS')->name('postFPS');
-Route::get('/delete-footer-page-section/{id}', 'FooterPageController@deleteFPS')->name('deleteFPS');
+//Route::get('/delete-footer-page-section/{id}', 'FooterPageController@deleteFPS')->name('deleteFPS');
 Route::get('edit-footer-page-section/{id}', 'FooterPageController@editFPS')->name('editFPS');
 Route::post('update-footer-page_section/{id}', 'FooterPageController@updateFPS')->name('updateFPS');
 //End Footer page section
+//Footer Page link
+Route::get('/add-footer-page-link', 'FooterPageController@addFPL')->name('addFPL');
+Route::post('/post-footer-page-link', 'FooterPageController@postFPL')->name('postFPL');
+Route::get('/edit-footer-page-link/{id}', 'FooterPageController@editFPL')->name('editFPL');
+Route::post('/update-footer-page-link/{id}', 'FooterPageController@updateFPL')->name('updateFPL');
+Route::get('/delete-footer-page-link/{id}', 'FooterPageController@deleteFPL')->name('deleteFPL');
+//End Footer Page Link
 
 //Product sortBy Route start
 Route::get('/shop','FSortByController@shop_content')->name('shop');

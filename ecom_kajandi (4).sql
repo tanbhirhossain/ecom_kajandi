@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2018 at 07:36 PM
+-- Generation Time: Jul 17, 2018 at 05:30 AM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -135,12 +135,17 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `cat_id`, `cat_title`, `cat_name`, `cat_image`, `cat_major`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Electronics', 'Electronics', 'public/CategoryImage/1531675737_1.jpg', NULL, '2018-07-15 11:28:57', '2018-07-15 11:28:57'),
-(2, NULL, 'Man Fashion', 'Man Fashion', 'public/CategoryImage/1531675782_4.jpg', NULL, '2018-07-15 11:29:42', '2018-07-15 11:29:42'),
-(3, NULL, 'Mobile', 'Mobile', 'public/CategoryImage/1531675824_2.jpg', NULL, '2018-07-15 11:30:24', '2018-07-15 11:30:24'),
+(1, NULL, 'Electronics', 'Electronics', 'public/CategoryImage/1531675737_1.jpg', 1, '2018-07-15 11:28:57', '2018-07-16 09:48:23'),
+(2, NULL, 'Man Fashion', 'Man Fashion', 'public/CategoryImage/1531675782_4.jpg', 1, '2018-07-15 11:29:42', '2018-07-16 09:48:31'),
+(3, NULL, 'Mobile', 'Mobile', 'public/CategoryImage/1531675824_2.jpg', 1, '2018-07-15 11:30:24', '2018-07-16 09:48:37'),
 (4, NULL, 'Smart Phone', 'Smart Phone', 'public/CategoryImage/1531675853_aa.jpg', NULL, '2018-07-15 11:30:53', '2018-07-15 11:30:53'),
 (5, NULL, 'Home & Living', 'Home & Living', 'public/CategoryImage/1531675907_aa.jpg', NULL, '2018-07-15 11:31:47', '2018-07-15 11:31:47'),
-(6, NULL, 'Air Conditioner & Air Cooler', 'Air Conditioner & Air Cooler', 'public/CategoryImage/1531676000_3.jpeg', NULL, '2018-07-15 11:33:20', '2018-07-15 11:33:20');
+(6, NULL, 'Air Conditioner & Air Cooler', 'Air Conditioner & Air Cooler', 'public/CategoryImage/1531676000_3.jpeg', NULL, '2018-07-15 11:33:20', '2018-07-15 11:33:20'),
+(7, NULL, 'Construction', 'Construction', 'public/CategoryImage/1531709933_1.jpg', NULL, '2018-07-15 20:58:53', '2018-07-15 20:58:53'),
+(8, NULL, 'Engineering', 'Engineering', 'public/CategoryImage/1531709952_IM1.png', NULL, '2018-07-15 20:59:12', '2018-07-15 20:59:12'),
+(9, NULL, 'Wood Product', 'Wood Product', 'public/CategoryImage/1531709994_download.jpg', NULL, '2018-07-15 20:59:54', '2018-07-15 20:59:54'),
+(10, NULL, 'Kid\'s toy', 'Kid\'s toy', 'public/CategoryImage/1531710031_4.jpg', NULL, '2018-07-15 21:00:31', '2018-07-15 21:00:31'),
+(11, NULL, 'Cloths', 'Cloths', 'public/CategoryImage/1531710067_download.jpg', NULL, '2018-07-15 21:01:07', '2018-07-15 21:01:07');
 
 -- --------------------------------------------------------
 
@@ -324,6 +329,31 @@ CREATE TABLE `faquestions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `footer_pages`
+--
+
+CREATE TABLE `footer_pages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `section_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `added_by` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `footer_pages`
+--
+
+INSERT INTO `footer_pages` (`id`, `section_name`, `added_by`, `created_at`, `updated_at`) VALUES
+(1, 'Testing Service', 1, '2018-07-16 11:43:14', '2018-07-16 21:09:22'),
+(2, 'Buy on Testbaba.com', 1, '2018-07-16 11:43:23', '2018-07-16 21:11:13'),
+(3, 'About Us', 1, '2018-07-16 11:43:28', '2018-07-16 21:12:27'),
+(4, 'Sell on Testbaba.com', 1, '2018-07-16 11:43:33', '2018-07-16 21:15:33'),
+(5, 'Trade Services', 1, '2018-07-16 20:36:33', '2018-07-16 21:16:34');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `home_adverts`
 --
 
@@ -344,14 +374,55 @@ CREATE TABLE `home_adverts` (
 --
 
 INSERT INTO `home_adverts` (`ads_id`, `ads_section`, `seller_id`, `product_id`, `banner_color`, `ads_image`, `admin_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '#f60e5b', 'public/backend/AdvertImg/1531039730_aa.jpg', 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
+(1, 1, 1, 1, '#00caca', NULL, 1, '2018-07-08 02:47:32', '2018-07-15 21:08:10'),
 (2, 2, 1, 1, '#000000', '', 1, '2018-07-13 19:49:54', '2018-07-13 19:49:54'),
-(3, 3, 1, 1, '#000000', '', 1, '2018-07-13 19:51:12', '2018-07-13 19:51:12'),
-(4, 1, 1, 1, '#f60e5b', 'public/backend/AdvertImg/1531039730_aa.jpg', 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
-(5, 1, 1, 1, '#f60e5b', 'public/backend/AdvertImg/1531039730_aa.jpg', 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
+(3, 3, 1, 1, '#000000', NULL, 1, '2018-07-13 19:51:12', '2018-07-13 19:51:12'),
+(4, 1, 1, 1, '#f60e5b', NULL, 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
+(5, 1, 1, 1, '#f60e5b', NULL, 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
 (6, 2, 1, 1, '#000000', '', 1, '2018-07-13 19:49:54', '2018-07-13 19:49:54'),
-(7, 1, 1, 1, '#f60e5b', 'public/backend/AdvertImg/1531039730_aa.jpg', 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
-(8, 2, 1, 1, '#000000', '', 1, '2018-07-13 19:49:54', '2018-07-13 19:49:54');
+(7, 1, 1, 1, '#f60e5b', NULL, 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
+(8, 2, 1, 1, '#000000', '', 1, '2018-07-13 19:49:54', '2018-07-13 19:49:54'),
+(9, 2, 1, 4, '#000000', '', 1, '2018-07-15 18:04:56', '2018-07-15 18:04:56'),
+(10, 2, 1, 4, '#000000', '', 1, '2018-07-15 18:05:14', '2018-07-15 18:05:14'),
+(11, 2, 1, 4, '#000000', '', 1, '2018-07-15 18:05:24', '2018-07-15 18:05:24'),
+(12, 2, 1, 4, '#000000', 'public/backend/AdvertImg/1531699560_3.jpeg', 1, '2018-07-15 18:06:00', '2018-07-15 18:06:00'),
+(13, 3, 1, 1, '#000000', '', 1, '2018-07-15 18:06:35', '2018-07-15 18:06:35'),
+(14, 3, 1, 3, '#000000', 'public/backend/AdvertImg/1531699611_aa.jpg', 1, '2018-07-15 18:06:51', '2018-07-15 18:06:51'),
+(15, 3, 1, 4, '#000000', '', 1, '2018-07-15 18:07:05', '2018-07-15 18:07:05'),
+(16, 2, 1, 5, '#000000', '', 1, '2018-07-15 18:07:17', '2018-07-15 18:07:17'),
+(17, 2, 1, 6, '#000000', '', 1, '2018-07-15 18:07:38', '2018-07-15 18:07:38'),
+(18, 3, 1, 4, '#000000', '', 1, '2018-07-15 18:08:05', '2018-07-15 18:08:05'),
+(19, 3, 1, 5, '#000000', '', 1, '2018-07-15 18:08:36', '2018-07-15 18:08:36'),
+(20, 3, 1, 4, '#000000', 'public/backend/AdvertImg/1531699736_4.jpg', 1, '2018-07-15 18:08:56', '2018-07-15 18:08:56'),
+(21, 3, 1, 5, '#000000', '', 1, '2018-07-15 18:09:10', '2018-07-15 18:09:10'),
+(22, 4, 1, 3, '#ff0080', '', 1, '2018-07-15 18:09:42', '2018-07-15 18:09:42'),
+(23, 4, 1, 5, '#d96c00', 'public/backend/AdvertImg/1531710432_4.jpg', 1, '2018-07-15 18:10:10', '2018-07-15 21:07:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_sliders`
+--
+
+CREATE TABLE `home_sliders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `seller_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `slider_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slider_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slider_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_sliders`
+--
+
+INSERT INTO `home_sliders` (`id`, `seller_id`, `product_id`, `slider_title`, `slider_description`, `slider_image`, `admin_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, 'AMAZING RATE DON\'T MISS THE OFFER', 'Electronics product by testing', '', NULL, '2018-07-15 20:39:58', '2018-07-15 20:39:58'),
+(3, 1, 5, 'Testing Welder This Sitessss', 'Smart Weldingsss', 'public/frontend/img/slider/1531711146_bg.jpg', NULL, '2018-07-15 21:19:07', '2018-07-15 22:24:52');
 
 -- --------------------------------------------------------
 
@@ -429,7 +500,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (43, '2018_06_30_170617_create_units_table', 11),
 (45, '2018_06_15_120010_create_home_adverts_table', 12),
 (46, '2018_06_20_054405_create_customer_questions_table', 13),
-(47, '2018_07_13_164009_create_contact_suppliers_table', 14);
+(47, '2018_07_13_164009_create_contact_suppliers_table', 14),
+(48, '2018_07_16_011019_create_home_sliders_table', 15),
+(51, '2018_07_16_162018_create_footer_pages_table', 16),
+(52, '2018_07_16_163026_create_page_links_table', 16);
 
 -- --------------------------------------------------------
 
@@ -478,6 +552,46 @@ CREATE TABLE `order_details` (
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `product_name`, `product_price`, `product_qty`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER', 100.00, 3, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `page_links`
+--
+
+CREATE TABLE `page_links` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `section_id` int(10) UNSIGNED NOT NULL,
+  `link_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link_url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `added_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `page_links`
+--
+
+INSERT INTO `page_links` (`id`, `section_id`, `link_title`, `link_url`, `added_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Page Link 1', 'http://r25n.com', NULL, '2018-07-16 18:40:50', '2018-07-16 21:21:13'),
+(3, 2, 'Page Link 2', 'http://r25n.com', NULL, '2018-07-16 20:22:57', '2018-07-16 21:22:27'),
+(4, 1, 'Page Link 1', 'http://r25n.com', NULL, '2018-07-16 18:40:50', '2018-07-16 21:21:13'),
+(5, 2, 'Page Link 2', 'http://r25n.com', NULL, '2018-07-16 20:22:57', '2018-07-16 21:22:27'),
+(6, 1, 'Page Link 3', 'http://r25n.com', NULL, '2018-07-16 18:40:50', '2018-07-16 21:21:13'),
+(7, 2, 'Page Link 3', 'http://r25n.com', NULL, '2018-07-16 20:22:57', '2018-07-16 21:22:27'),
+(8, 1, 'Page Link 4', 'http://r25n.com', NULL, '2018-07-16 18:40:50', '2018-07-16 21:21:13'),
+(9, 2, 'Page Link 4', 'http://r25n.com', NULL, '2018-07-16 20:22:57', '2018-07-16 21:22:27'),
+(11, 3, 'Page Link 1', 'http://r25n.com', NULL, '2018-07-16 21:27:54', '2018-07-16 21:27:54'),
+(12, 3, 'Page Link 2', 'http://r25n.com', NULL, '2018-07-16 21:28:11', '2018-07-16 21:28:11'),
+(13, 4, 'Page Link 1', 'http://r25n.com', NULL, '2018-07-16 21:28:25', '2018-07-16 21:28:25'),
+(14, 5, 'Page Link 1', 'http://r25n.com', NULL, '2018-07-16 21:28:33', '2018-07-16 21:28:33'),
+(15, 3, 'Page Link 2', 'http://r25n.com', NULL, '2018-07-16 21:28:56', '2018-07-16 21:28:56'),
+(16, 3, 'Page Link 3', 'http://r25n.com', NULL, '2018-07-16 21:29:06', '2018-07-16 21:29:06'),
+(17, 4, 'Page Link 2', 'http://r25n.com', NULL, '2018-07-16 21:29:15', '2018-07-16 21:29:15'),
+(18, 4, 'Page Link 3', 'http://r25n.com', NULL, '2018-07-16 21:29:25', '2018-07-16 21:29:25'),
+(19, 5, 'Page Link 2', 'http://r25n.com', NULL, '2018-07-16 21:29:32', '2018-07-16 21:29:32'),
+(20, 5, 'Page Link 3', 'http://r25n.com', NULL, '2018-07-16 21:29:43', '2018-07-16 21:29:43');
 
 -- --------------------------------------------------------
 
@@ -1027,10 +1141,26 @@ ALTER TABLE `faquestions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `footer_pages`
+--
+ALTER TABLE `footer_pages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `footer_pages_added_by_foreign` (`added_by`);
+
+--
 -- Indexes for table `home_adverts`
 --
 ALTER TABLE `home_adverts`
   ADD PRIMARY KEY (`ads_id`);
+
+--
+-- Indexes for table `home_sliders`
+--
+ALTER TABLE `home_sliders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `home_sliders_seller_id_foreign` (`seller_id`),
+  ADD KEY `home_sliders_product_id_foreign` (`product_id`),
+  ADD KEY `home_sliders_admin_id_foreign` (`admin_id`);
 
 --
 -- Indexes for table `manufacters`
@@ -1054,6 +1184,12 @@ ALTER TABLE `orders`
 -- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `page_links`
+--
+ALTER TABLE `page_links`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1198,7 +1334,7 @@ ALTER TABLE `blog_categories`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `contact_forms`
@@ -1255,10 +1391,22 @@ ALTER TABLE `faquestions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `footer_pages`
+--
+ALTER TABLE `footer_pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `home_adverts`
 --
 ALTER TABLE `home_adverts`
-  MODIFY `ads_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ads_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `home_sliders`
+--
+ALTER TABLE `home_sliders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `manufacters`
@@ -1270,7 +1418,7 @@ ALTER TABLE `manufacters`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1283,6 +1431,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `page_links`
+--
+ALTER TABLE `page_links`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `page_models`
@@ -1379,6 +1533,24 @@ ALTER TABLE `users`
 --
 ALTER TABLE `wishlists`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `footer_pages`
+--
+ALTER TABLE `footer_pages`
+  ADD CONSTRAINT `footer_pages_added_by_foreign` FOREIGN KEY (`added_by`) REFERENCES `admins` (`id`);
+
+--
+-- Constraints for table `home_sliders`
+--
+ALTER TABLE `home_sliders`
+  ADD CONSTRAINT `home_sliders_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`),
+  ADD CONSTRAINT `home_sliders_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `seller_products` (`id`),
+  ADD CONSTRAINT `home_sliders_seller_id_foreign` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -59,7 +59,7 @@
                             <td>{!! $qa->updated_at !!}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{route('editFPS', $qa->id)}}"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger" href="{{route('deleteFPS', $qa->id)}}"><i class="fa fa-trash"></i></a>
+                              
                             </td>
                         </tr>
                     @endforeach

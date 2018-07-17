@@ -60,7 +60,7 @@ class FooterPageController extends Controller
         $section->added_by = $request->added_by;
         $section->save();
 
-        return back()->with('message_success', 'Page Section Updated Succesfully');
+        return redirect()->route('addFPS')->with('message_success', 'Page Section Updated Succesfully');
     }
 
     public function deleteFPS($id)
@@ -69,4 +69,95 @@ class FooterPageController extends Controller
       $data->delete();
       return back()->with('message_success', 'Page Section Deleted Succesfully');
     }
+//Footer PageLink
+
+    public function addFPL()
+    {
+      return view('backend.footer.page_link.add_page_link');
+    }
+
+    public function postFPL(Request $request)
+    {
+      $request->validate([
+        'section_id' => 'required',
+        'link_title' => 'required',
+        'link_url' => 'required',
+      ]);
+
+      $data = new PageLink();
+      $data->section_id = $request->section_id;
+      $data->link_title = $request->link_title;
+      $data->link_url = $request->link_url;
+      $data->save();
+
+      return back()->with('message_success', 'Page Link Added Succesfully');
+
+    }
+
+    public function editFPL($id)
+    {
+      $data = PageLink::
+              join('footer_pages', 'footer_pages.id', '=', 'section_id')
+            ->select('page_links.*','footer_pages.section_name')
+            ->find($id);
+      return view('backend.footer.page_link.edit_page_link',compact('data'));
+    }
+
+    public function updateFPL(Request $request, $id)
+    {
+      $request->validate([
+        'section_id' => 'required',
+        'link_title' => 'required',
+        'link_url' => 'required',
+      ]);
+
+      $data = PageLink::find($id);
+      $data->section_id = $request->section_id;
+      $data->link_title = $request->link_title;
+      $data->link_url = $request->link_url;
+      $data->save();
+
+      return redirect()->route('addFPL')->with('message_success', 'Page Link Updated Succesfully');
+    }
+
+    public function deleteFPL($id)
+    {
+      $data = PageLink::find($id);
+      $data->delete();
+
+      return back()->with('message_success', 'Page Link Deleted Succesfully');
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

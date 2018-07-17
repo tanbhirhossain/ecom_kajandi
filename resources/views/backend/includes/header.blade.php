@@ -206,6 +206,8 @@
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{route('social-option')}}">Social Option </a></li>
                         <li><i class="fa fa-id-badge"></i><a href="{{route('contact-option')}}">Contatc Option</a></li>
                         <li><i class="fa fa-id-badge"></i><a href="{{route('apps-download-option')}}">Apps Download LInk</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('addFPS')}}">Add Page Link Section</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('addFPL')}}">Add Page LInk</a></li>
                     </ul>
                 </li>
 				<li class="menu-item-has-children dropdown">
