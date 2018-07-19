@@ -15,7 +15,7 @@ class CustomUserController extends Controller{
 
     public function storeUser(Request $request){
         $this->validate($request, [
-            'name' => 'required|min:3|max:30',
+            'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
             'user_type' => 'required',
             'password' => 'required|confirmed|min:6',

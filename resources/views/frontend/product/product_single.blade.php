@@ -640,6 +640,40 @@
                         <table
                                 class="table table-striped product-page-features-table">
                             <tbody>
+                              <tr>
+                                  <td>Generic name:</td>
+                                  <td>
+                                      {{$product_by_id->pro_generic_name}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Product Category:</td>
+                                  <td>
+                                    <?php
+                                      $pro_cat = App\Category::where('id', $product_by_id->pro_cat_id)->first();
+                                     ?>
+
+                                      <a href="{{route('product-category',$product_by_id->pro_cat_id)}}">{{$pro_cat->cat_name}}</a>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Product Sub category:</td>
+                                  <td>
+                                    <?php
+                                      $pro_subcat = App\Subcategory::where('id', $product_by_id->pro_subcat_id)->first();
+                                     ?>
+                                      <a href="{{route('product-sub-category', $product_by_id->pro_subcat_id)}}">{{$pro_subcat->sub_cat_name}}</a>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Suppler Name:</td>
+                                  <td>
+                                    <?php
+                                      $supplier = App\Seller::where('user_id', $product_by_id->seller_id)->first();
+                                     ?>
+                                      <a href="{{route('showVendorProfile', $product_by_id->seller_id)}}">@if($supplier != Null) {{$supplier->vendorname}} @endif</a>
+                                  </td>
+                              </tr>
                             @if($product_by_id->pro_gurrantee!=NUll && $product_by_id->pro_gurrantee!='1')
                                 <tr>
                                     <td>Guarantee Terms - Parts:</td>
@@ -651,6 +685,7 @@
                                         @endif
                                     </td>
                                 </tr>
+
                             @else
                                 <tr>
                                     <td>Warranty Terms - Parts:</td>
@@ -1266,7 +1301,7 @@
                             <li class="rated"><i class="fa fa-star"></i>
                             </li>
                         </ul>
-                        <button class="btn btn-primary" data-url="{{route('contact-supplier',$product->id)}}">Contact supplier</button>
+                        <a class="btn btn-primary" href="{{route('contact-supplier',$product->id)}}">Contact supplier</a>
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="details-option">

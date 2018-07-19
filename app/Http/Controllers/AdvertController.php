@@ -5,6 +5,9 @@ use App\Seller;
 use App\SellerProduct;
 use App\HomeAdvert;
 use DB;
+
+
+use App\Http\Requests;
 class AdvertController extends Controller
 {
     public function __construct()
@@ -15,13 +18,13 @@ class AdvertController extends Controller
     public function addHomeAdvert(Request $request)
     {
         //$all_vendor = DB::table('sellers')->pluck("vendorname","id")->where('acStatus', 0)->all();
-        $all_vendor = Seller::where('acStatus', null)->get();
+        $all_vendor = Seller::where('acStatus', Null)->get();
         return view('backend.seller.advert_featured.today_featured',compact('all_vendor'));
     }
     public function selectPro(Request $request)
     {
         if($request->ajax()){
-            $selected_pro = DB::table('seller_products')->where('seller_id',$request->seller_id)->pluck("pro_name","id")->all();
+            $selected_pro = DB::table('seller_products')->where('seller_id',$request->seller_id)->pluck("pro_name","id")->All();
             $data = view('backend.seller.advert_featured.select_pro',compact('selected_pro'))->render();
             return response()->json(['options'=>$data]);
         }
@@ -113,4 +116,9 @@ class AdvertController extends Controller
         $delete->delete();
         return back()->with('message_success', 'Advert Deleted Succesfully');
     }
+
+
+
+
+
 }

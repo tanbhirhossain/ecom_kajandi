@@ -25,7 +25,7 @@
                             <select class="form-control" name="seller_id">
                                 <option value="">Select Vendor</option>
                                 @foreach($all_vendor as $av)
-                                    <option value="{{$av->id}}">{{$av->vendorname}}</option>
+                                    <option value="{{$av->user_id}}">{{$av->vendorname}}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('seller_id'))

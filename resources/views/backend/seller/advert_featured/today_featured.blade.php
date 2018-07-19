@@ -27,7 +27,7 @@
                                 <option value="2">Today Featured</option>
                                 <option value="3">Best of Tech</option>
                                 <option value="4">Advert Section 2</option>
-                                
+
 
                             </select>
                             @if ($errors->has('ads_section'))
@@ -39,7 +39,7 @@
                             <select class="form-control" name="seller_id">
                                 <option value="">Select Vendor</option>
                                 @foreach($all_vendor as $av)
-                                    <option value="{{$av->id}}">{{$av->vendorname}}</option>
+                                    <option value="{{$av->user_id}}">{{$av->vendorname}}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('seller_id'))
@@ -51,7 +51,7 @@
                             <label for="product_id" class=" form-control-label">Select Product</label>
 
                             <select class="form-control" name="product_id">
-                                <option>Select Vendor For Loading Product</option>
+
                             </select>
                             @if ($errors->has('product_id'))
                                 <div class="error">{{ $errors->first('product_id') }}</div>
@@ -90,21 +90,7 @@
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <script type="text/javascript">
-        $("select[name='seller_id']").change(function(){
-            var seller_id = $(this).val();
-            var token = $("input[name='_token']").val();
-            $.ajax({
-                url: "<?php echo route('select-pro') ?>",
-                method: 'POST',
-                data: {seller_id:seller_id, _token:token},
-                success: function(data) {
-                    $("select[name='product_id'").html('');
-                    $("select[name='product_id'").html(data.options);
-                }
-            });
-        });
-    </script>
+
     <script type="text/javascript">
         $('#photo').on('change',function(e){
             showFile(this,'#showPhoto');

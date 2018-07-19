@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('cat_id')->nullable();
             $table->string('cat_title')->nullable();
             $table->string('cat_name')->nullable();
+            $table->string('cat_image')->nullable();
             $table->boolean('cat_major')->nullable();
             $table->timestamps();
         });

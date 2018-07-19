@@ -15,6 +15,8 @@ class CreateContactSuppliersTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->nullable();
             $table->integer('user_id')->nullable();
+            $table->integer('seller_id')->nullable();
+            $table->integer('status')->nullable();
             $table->string('product_title')->nullable();
             $table->string('product_unit')->nullable();
             $table->string('product_qty')->nullable();

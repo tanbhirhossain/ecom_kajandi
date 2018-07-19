@@ -83,5 +83,23 @@ readURL(this);
     // $('.textarea').ckeditor(); // if class is prefered.
 </script>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("select[name='seller_id']").change(function(){
+        var seller_id = $(this).val();
+        var token = $("input[name='_token']").val();
+        $.ajax({
+            url: "<?php echo route('select-pro') ?>",
+            method: 'POST',
+            data: {seller_id:seller_id, _token:token},
+            success: function(data) {
+                $("select[name='product_id'").html('');
+                $("select[name='product_id'").html(data.options);
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
