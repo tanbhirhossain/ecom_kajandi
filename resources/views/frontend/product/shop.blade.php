@@ -206,10 +206,18 @@
                    {!! Form::open(['url'=>'product-by-manufacture','method'=>'GET','id'=>'brand_form']) !!}
                     <div class="category-filters-section">
                         <h3 class="widget-title-sm">Manufacturer</h3>
-                        <?php $menufacturer = App\Manufacter::All(); ?>
+                        <?php $menufacturer = App\Manufacter::All();
+
+                            ?>
                         @foreach($menufacturer as $menfac)
                             <div class='checkbox'>
+                              <?php
+                                $check = App\SellerProduct::where('manufacture_id',$menfac->id)->count()
+                               ?>
+                               @if($check > 0)
                                 <label>
+
+
                                     <input
                                             <?php
 //                                            if(isset($menufact_id) && $menufact_id!=NULL){
@@ -218,8 +226,11 @@
 //                                              }
 //                                            }
                                             ?>
+
                                         id="m_{{$menfac->id}}" name='menufact_id'  type='checkbox' onclick='if(this.checked){this.form.submit()}' value='{{$menfac->id}}' />{{$menfac->name}} ({{App\SellerProduct::where('manufacture_id',$menfac->id)->count()}})
+
                                 </label>
+                                @endif
                             </div>
                         @endforeach
 
@@ -365,7 +376,7 @@
                                                         <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 col-sm-4">
+                                              <!--  <div class="col-md-4 col-sm-4">
                                                     <div class="pro-image">
                                                         <a href="{{route('product-single',$product->id)}}"><img src="{{asset($product->a_img_1)}}"></a>
                                                         <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
@@ -378,7 +389,7 @@
                                                         <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
                                                     </div>
 
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
 

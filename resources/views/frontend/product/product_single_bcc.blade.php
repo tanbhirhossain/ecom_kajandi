@@ -640,6 +640,88 @@
                         <table
                                 class="table table-striped product-page-features-table">
                             <tbody>
+                              <tr>
+                                  <td>Generic name:</td>
+                                  <td>
+                                      {{$product_by_id->pro_generic_name}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Product Category:</td>
+                                  <td>
+                                    <?php
+                                      $pro_cat = App\Category::where('id', $product_by_id->pro_cat_id)->first();
+                                     ?>
+
+                                      <a href="{{route('product-category',$product_by_id->pro_cat_id)}}">{{$pro_cat->cat_name}}</a>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Product Sub category:</td>
+                                  <td>
+                                    <?php
+                                      $pro_subcat = App\Subcategory::where('id', $product_by_id->pro_subcat_id)->first();
+                                     ?>
+                                      <a href="{{route('product-sub-category', $product_by_id->pro_subcat_id)}}">{{$pro_subcat->sub_cat_name}}</a>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Supplier Name:</td>
+                                  <td>
+                                    <?php
+                                      $supplier = App\Seller::where('user_id', $product_by_id->seller_id)->first();
+                                     ?>
+                                      <a href="{{route('showVendorProfile', $product_by_id->seller_id)}}">@if($supplier != Null) {{$supplier->vendorname}} @endif</a>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Supplier Type:</td>
+                                  <td>
+                                    <?php
+                                        if ($product_by_id->supply_type == 1) {
+                                            echo "OEM/Manufacturer";
+                                        }elseif ($product_by_id->supply_type == 2) {
+                                            echo "Distributor";
+                                        }elseif ($product_by_id->supply_type == 3) {
+                                            echo "Wholesaler";
+                                        }elseif ($product_by_id->supply_type == 4) {
+                                            echo "Retailer";
+                                        }else {
+                                          echo "N/A";
+                                        }
+                                     ?>
+
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Condition:</td>
+                                  <td>
+                                    <?php
+                                        if ($product_by_id->conditions == 1) {
+                                            echo "New";
+                                        }elseif ($product_by_id->conditions == 2) {
+                                            echo "Refurbished";
+                                        }elseif ($product_by_id->conditions == 3) {
+                                            echo "Fairly Used";
+                                        }else {
+                                          echo "N/A";
+                                        }
+                                     ?>
+
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Manufacturer:</td>
+                                  <td>
+                                      @foreach($all_manufacturer as $manufacturer)
+                                          @if($manufacturer->id==$product_by_id->manufacture_id)
+                                              <?php global $brand;
+                                              $brand = $manufacturer->name;?>
+                                              {{$brand}}
+                                          @endif
+                                      @endforeach
+                                  </td>
+                              </tr>
                             @if($product_by_id->pro_gurrantee!=NUll && $product_by_id->pro_gurrantee!='1')
                                 <tr>
                                     <td>Guarantee Terms - Parts:</td>
@@ -651,6 +733,7 @@
                                         @endif
                                     </td>
                                 </tr>
+
                             @else
                                 <tr>
                                     <td>Warranty Terms - Parts:</td>
@@ -665,42 +748,28 @@
                                     </td>
                                 </tr>
                             @endif
+
                             <tr>
-                                <td>Condition:</td>
+                                <td>Color:</td>
                                 <td>
-                                    @if($product_by_id->conditions=='1')
-                                        New
-                                    @elseif($product_by_id->conditions=='2')
-                                        Refurbished
-                                    @elseif($product_by_id->conditions=='3')
-                                        Fairly Used
-                                    @endif
+                                    {{$product_by_id->color}}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Unit:</td>
+                                <td>
+                                    <?php
+                                          $unit = App\Unit::where('id', $product_by_id->unit)->first();
+                                     ?>
+                                    {{$unit->name}}
                                 </td>
                             </tr>
                             <tr>
-                                <td>Source:</td>
+                                <td>Minimum Order Quantity:</td>
                                 <td>
-                                    @if($product_by_id->conditions=='1')
-                                        OEM
-                                    @elseif($product_by_id->conditions=='2')
-                                        Distributor
-                                    @elseif($product_by_id->conditions=='3')
-                                        Wholesaler
-                                    @elseif($product_by_id->conditions=='4')
-                                        Retailer
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Manufacturer:</td>
-                                <td>
-                                    @foreach($all_manufacturer as $manufacturer)
-                                        @if($manufacturer->id==$product_by_id->manufacture_id)
-                                            <?php global $brand;
-                                            $brand = $manufacturer->name;?>
-                                            {{$brand}}
-                                        @endif
-                                    @endforeach
+
+                                    {{$product_by_id->minumum_order_qty}}
                                 </td>
                             </tr>
                             <tr>
@@ -716,15 +785,6 @@
                                     @endforeach
                                 </td>
                             </tr>
-                            @if($product_by_id->part_number != null)
-                            <tr>
-                                <td>Part Number:</td>
-                                <td>
-
-                                    {{$product_by_id->part_number}}
-                                </td>
-                            </tr>
-                            @endif
                             <tr>
                                 <td>Availability:</td>
                                 <td>
@@ -747,6 +807,20 @@
                                     @endif
                                 </td>
                             </tr>
+                            <tr>
+                                <td>Cash in Advance:</td>
+                                <td>
+                                    <?php
+                                        if ($product_by_id->payment_type == 1) {
+                                          echo "Yes";
+                                        }else {
+                                          echo "No";
+                                        }
+                                     ?>
+
+                                </td>
+                            </tr>
+                          
                             </tbody>
                         </table>
                     </div>
@@ -840,7 +914,7 @@
                     <tr>
                         <th>Specs:</th>
                         <th>Details:</th>
-
+                        <th>Description:</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -850,78 +924,41 @@
                     <tr>
                         <td class="product-page-features-table-specs">Name</td>
                         <td class="product-page-features-table-details">{{$product_by_id->pro_name}}</td>
-
+                        <td></td>
                     </tr>
-                    <tr>
-                        <td class="product-page-features-table-specs">Generic Name</td>
-                        <td class="product-page-features-table-details">{{$product_by_id->pro_generic_name}}</td>
-
-                    </tr>
-                    <tr>
-                      <?php
-                        $pro_cat = App\Category::where('id', $product_by_id->pro_cat_id)->first();
-                       ?>
-                        <td class="product-page-features-table-specs">Category</td>
-                        <td class="product-page-features-table-details">{{$pro_cat->cat_name}}</td>
-
-                    </tr>
-                    <tr>
-                      <?php
-                        $pro_subcat = App\Subcategory::where('id', $product_by_id->pro_subcat_id)->first();
-                       ?>
-                        <td class="product-page-features-table-specs">Sub category</td>
-                        <td class="product-page-features-table-details">{{$pro_subcat->sub_cat_name}}</td>
-
-                    </tr>
-
-                    @if($product_by_id->part_number != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs">Unit</td>
-                        <td class="product-page-features-table-details">{{$unit->name}}</td>
-
-                    </tr>
-                    @endif
-
-                    <tr>
-                        <td class="product-page-features-table-specs">Stock Quantity</td>
-                        <td class="product-page-features-table-details">{{$product_by_id->stock_qty}}</td>
-
-                    </tr>
-
-
                     @if($product_by_id->model_id!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Model</td>
                             <td class="product-page-features-table-details">{{$pro_model}}</td>
-
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->height!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Height:</td>
-                            <td class="product-page-features-table-details">{{$product_by_id->height}}</td>
-
+                            <td class="product-page-features-table-details">{{$product_by_id->height}} {{$unit->name}}</td>
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->width!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Width:</td>
-                            <td class="product-page-features-table-details">{{$product_by_id->width}}</td>
-
+                            <td class="product-page-features-table-details">{{$product_by_id->width}} {{$unit->name}}</td>
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->length!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Length:</td>
-                            <td class="product-page-features-table-details">{{$product_by_id->length}}</td>
-
+                            <td class="product-page-features-table-details">{{$product_by_id->length}} {{$unit->name}}</td>
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->weight_per_pack!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Weight:</td>
-                            <td class="product-page-features-table-details">{{$product_by_id->weight_per_pack}}</td>
-
+                            <td class="product-page-features-table-details">{{$product_by_id->weight_per_pack}} {{$unit->name}}</td>
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->pro_color!=NULL)
@@ -931,10 +968,23 @@
                             <td class="product-page-features-table-details">
                                 {{$mincolor}}
                             </td>
-
+                            <td></td>
                         </tr>
                     @endif
-
+                    @if($product_by_id->pro_description!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Description</td>
+                            <td class="product-page-features-table-details"></td>
+                            <td>{!! $product_by_id->pro_description !!}</td>
+                        </tr>
+                    @endif
+                    @if($product_by_id->optional_description!=NULL)
+                        <tr>
+                            <td class="product-page-features-table-specs">Optional Description</td>
+                            <td class="product-page-features-table-details"></td>
+                            <td>{!! $product_by_id->optional_description !!}</td>
+                        </tr>
+                    @endif
                     @if($product_by_id->conditions!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Condition</td>
@@ -947,49 +997,49 @@
                                     Fairly Used
                                 @endif
                             </td>
-
+                            <td>{!! $product_by_id->speacial_feature !!}</td>
                         </tr>
                     @endif
                     @if($product_by_id->manufacture_id!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Brand</td>
                             <td class="product-page-features-table-details">{{$brand}}</td>
-
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->unit_price!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Price</td>
                             <td class="product-page-features-table-details">$ {{$product_by_id->unit_price}}</td>
-
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->minumum_order_qty!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Minimum Order Qty</td>
                             <td class="product-page-features-table-details">{{$product_by_id->minumum_order_qty}}</td>
-
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->price_15_days!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">15 days price</td>
                             <td class="product-page-features-table-details">$ {{$product_by_id->price_15_days}}</td>
-
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->price_30_days!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">30 days price</td>
                             <td class="product-page-features-table-details">$ {{$product_by_id->price_30_days}}</td>
-
+                            <td></td>
                         </tr>
                     @endif
                     @if($product_by_id->sample_fee!=NULL)
                         <tr>
                             <td class="product-page-features-table-specs">Sample Fee</td>
                             <td class="product-page-features-table-details">$ {{$product_by_id->sample_fee}}</td>
-
+                            <td></td>
                         </tr>
                     @endif
 
@@ -1004,7 +1054,7 @@
                                     Above One Year
                                 @endif
                             </td>
-
+                            <td></td>
                         </tr>
                     @else
                         <tr>
@@ -1018,116 +1068,9 @@
                                     Above One Year
                                 @endif
                             </td>
-
+                            <td></td>
                         </tr>
                     @endif
-
-                    @if($product_by_id->weight_per_pack != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs">Packaging weight:</td>
-                        <td class="product-page-features-table-details">
-                          {{$product_by_id->weight_per_pack}}
-                        </td>
-
-                    </tr>
-                    @endif
-
-                    @if($product_by_id->export_carton_length != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs">Export Carton Length:</td>
-                        <td class="product-page-features-table-details">
-                          {{$product_by_id->export_carton_length}}
-                        </td>
-
-                    </tr>
-                    @endif
-
-                    @if($product_by_id->export_carton_width != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs">Export Carton Width:</td>
-                        <td class="product-page-features-table-details">
-                          {{$product_by_id->export_carton_width}}
-                        </td>
-
-                    </tr>
-                    @endif
-
-                    @if($product_by_id->export_carton_width != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs">Export Carton Width:</td>
-                        <td class="product-page-features-table-details">
-                          {{$product_by_id->export_carton_width}}
-                        </td>
-
-                    </tr>
-                    @endif
-
-
-                    <tr>
-                        <td class="product-page-features-table-specs">Cash in Advance:</td>
-                        <td class="product-page-features-table-details">
-                          @if($product_by_id->payment_type == 1)
-                          Yes
-                          @else
-                          No
-                          @endif
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td class="product-page-features-table-specs">Cash on Delivery:</td>
-                        <td class="product-page-features-table-details">
-                          @if($product_by_id->payment_type == 2)
-                          Yes
-                          @else
-                          No
-                          @endif
-                        </td>
-
-                    </tr>
-
-                    @if($product_by_id->seller_remark != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs">Seller Remark:</td>
-                        <td class="product-page-features-table-details">
-                          {!! $product_by_id->seller_remark !!}
-                        </td>
-
-                    </tr>
-                    @endif
-
-                    @if($product_by_id->speacial_feature != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs"> Special feature:</td>
-                        <td class="product-page-features-table-details">
-                          {!! $product_by_id->speacial_feature !!}
-                        </td>
-
-                    </tr>
-                    @endif
-
-                    @if($product_by_id->optional_description != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs"> Optional Description:</td>
-                        <td class="product-page-features-table-details">
-                          {!! $product_by_id->optional_description !!}
-                        </td>
-
-                    </tr>
-                    @endif
-
-                    @if($product_by_id->credit_payment_details != Null)
-                    <tr>
-                        <td class="product-page-features-table-specs"> Credit Payment Details:</td>
-                        <td class="product-page-features-table-details">
-                          {!! $product_by_id->credit_payment_details !!}
-                        </td>
-
-                    </tr>
-                    @endif
-
-
 
                     </tbody>
                 </table>

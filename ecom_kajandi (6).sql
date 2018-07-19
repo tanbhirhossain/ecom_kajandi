@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2018 at 05:30 AM
+-- Generation Time: Jul 19, 2018 at 05:42 AM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -834,7 +834,8 @@ CREATE TABLE `sellers` (
 
 INSERT INTO `sellers` (`id`, `user_id`, `admin_id`, `email`, `vendorname`, `address`, `country`, `url`, `cac`, `workforce`, `yearsofexp`, `ratings`, `contactname`, `contactphone`, `contactemail`, `chairmanname`, `chairmanphone`, `chairmanemail`, `producttype`, `location`, `vendor_type`, `password`, `acStatus`, `company_banner`, `company_img_1`, `company_img_2`, `company_img_3`, `established_year`, `annual_revenue`, `main_products`, `main_market`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 1, NULL, 's1@s.com', 'SELLER 1', 'Sahapur Rupganj Narayanganj', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, 'Md Takrim Mohammad', '01911881811', 'tapta@gmail.com', NULL, NULL, NULL, '1', 'BAYELSA', '1', '$2y$10$vHyiOwQP79yikLJvwV58ze0XmDNCmhtxapZxn/BuVuZHCsTeDP0ES', NULL, 'public/seller/company_img/1531632124_company-overview-banner.jpg', 'public/seller/company_img/1531584202_4.jpg', 'public/seller/company_img/1531584202_IM1.png', 'public/seller/company_img/1531584202_download.jpg', '2009', '1500$ billion - 2000$ Million', 'Electronics', 'America, Los Angelse', NULL, '2018-07-08 02:37:31', '2018-07-14 23:22:04'),
-(2, 6, NULL, 'afojalenterprise@gmail.com', 'AFOJAL ENTERPRISE', 'NO 1 JALANA BATU ANAM', 'Malaysia', NULL, NULL, NULL, NULL, NULL, 'MOHAMMAD ABDUL GAFFER AL MASUD', '01112922', 'masud@gmail.com', NULL, NULL, NULL, '1', 'Outside Nigeria', '2', '$2y$10$Ld02xsiJS6Dh76iIG8G0Pu2q0QNDAL91BaNQx1LCWjmp36W/w6Wc.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-15 09:58:06', '2018-07-15 10:20:52');
+(2, 6, NULL, 'afojalenterprise@gmail.com', 'AFOJAL ENTERPRISE', 'NO 1 JALANA BATU ANAM', 'Malaysia', NULL, NULL, NULL, NULL, NULL, 'MOHAMMAD ABDUL GAFFER AL MASUD', '01112922', 'masud@gmail.com', NULL, NULL, NULL, '1', 'Outside Nigeria', '2', '$2y$10$Ld02xsiJS6Dh76iIG8G0Pu2q0QNDAL91BaNQx1LCWjmp36W/w6Wc.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-15 09:58:06', '2018-07-15 10:20:52'),
+(3, 7, NULL, 'afojalcons@gmail.com', 'AFOJAL CONSTRUCTION & ENGINEERING SDN BHD', 'NO 23 JLN BSS 1/2D, BANDAR SEREMBAN SELATAN 73400 SEREMBAN NEGERI SEMBILAN', 'Malaysia', 'htttp://afojal.com', NULL, NULL, NULL, '1', 'MD RAJIB MIAH', '018292929', 'rajib@afojal.com', NULL, NULL, NULL, '1', 'Outside Nigeria', '2', '$2y$10$Isy09lLgew6NRQvijnIKnOV0W2Dt4m41j3eqCDdAuo8fFlBGdGtu2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-16 23:27:21', '2018-07-16 23:30:03');
 
 -- --------------------------------------------------------
 
@@ -904,12 +905,13 @@ CREATE TABLE `seller_products` (
 --
 
 INSERT INTO `seller_products` (`id`, `seller_id`, `pro_status`, `pro_name`, `pro_generic_name`, `pro_description`, `pro_keyword`, `part_number`, `model_number`, `supply_type`, `pro_cat_id`, `pro_subcat_id`, `pro_image`, `manufacture_id`, `conditions`, `pro_warranty`, `pro_gurrantee`, `a_img_1`, `a_img_2`, `a_img_3`, `a_img_4`, `pro_color`, `speacial_feature`, `small_order_accpeted`, `minumum_order_qty`, `unit`, `unit_price`, `price_for_optional_units`, `price_15_days`, `price_30_days`, `stock_qty`, `sample_fee`, `currency_in_naira`, `credit_payment_details`, `optional_description`, `model_id`, `length`, `width`, `height`, `weight_per_pack`, `export_carton_width`, `export_carton_length`, `export_carton_weight`, `payment_type`, `delivery_w_state`, `delivery_rate_w_range`, `delivery_rate_o_range`, `duration_delivery_state`, `duration_within_state`, `duration_out_state`, `strength_of_meterial`, `seller_remark`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER', 'STARGOLD Emergency Lights', '<ul>\r\n	<li>Very Nice Design</li>\r\n	<li>Comfortable ti use</li>\r\n	<li>Carriable</li>\r\n	<li>Externel Bettery can use</li>\r\n</ul>', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 1, 1, 'public/seller/product_img/1531444493_2.jpg', 4, 2, 2, NULL, 'public/seller/product_img/1531444493_3.jpeg', 'public/seller/product_img/1531444493_4.jpg', 'public/seller/product_img/1531444493_aa.jpg', 'public/seller/product_img/1531444554_download.jpg', '#000000', '<p>PD///////////////////////////</p>', 1, 1, 1, 100.00, NULL, 25.00, NULL, 997, NULL, NULL, '<p>PD///////////////////////////</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-12 19:14:53', '2018-07-12 19:20:22'),
+(1, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER', 'STARGOLD Emergency Lights', '<ul>\r\n	<li>Very Nice Design</li>\r\n	<li>Comfortable ti use</li>\r\n	<li>Carriable</li>\r\n	<li>Externel Bettery can use</li>\r\n</ul>', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 5, 1, 'public/seller/product_img/1531444493_2.jpg', 4, 2, 2, NULL, 'public/seller/product_img/1531444493_3.jpeg', 'public/seller/product_img/1531444493_4.jpg', 'public/seller/product_img/1531444493_aa.jpg', 'public/seller/product_img/1531444554_download.jpg', '#000000', '<p>PD///////////////////////////</p>', 1, 1, 1, 100.00, NULL, 25.00, NULL, 997, NULL, NULL, '<p>PD///////////////////////////</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-12 19:14:53', '2018-07-12 19:20:22'),
 (2, 6, 1, 'Eveready HL52 39-LEDs Rechargeable Home Light (Red)', 'Eveready HL52 39-LEDs', 'PD............', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 2, 1, 'public/seller/product_img/1531671788_3.jpeg', 4, 1, 2, NULL, 'public/seller/product_img/1531671788_2.jpg', '', '', '', '#000000', NULL, 1, 1, 1, 80.00, NULL, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-15 10:23:08', '2018-07-15 10:23:08'),
 (3, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER 2', 'STARGOLD Emergency Lights', '<ul>\r\n	<li>Very Nice Design</li>\r\n	<li>Comfortable ti use</li>\r\n	<li>Carriable</li>\r\n	<li>Externel Bettery can use</li>\r\n</ul>', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 1, 1, 'public/seller/product_img/1531444493_2.jpg', 4, 2, 2, NULL, 'public/seller/product_img/1531444493_3.jpeg', 'public/seller/product_img/1531444493_4.jpg', 'public/seller/product_img/1531444493_aa.jpg', 'public/seller/product_img/1531444554_download.jpg', '#000000', '<p>PD///////////////////////////</p>', 1, 1, 1, 100.00, NULL, 25.00, NULL, 997, NULL, NULL, '<p>PD///////////////////////////</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-12 19:14:53', '2018-07-12 19:20:22'),
 (4, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER 3', 'STARGOLD Emergency Lights', '<ul>\r\n	<li>Very Nice Design</li>\r\n	<li>Comfortable ti use</li>\r\n	<li>Carriable</li>\r\n	<li>Externel Bettery can use</li>\r\n</ul>', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 1, 1, 'public/seller/product_img/1531444493_2.jpg', 4, 2, 2, NULL, 'public/seller/product_img/1531444493_3.jpeg', 'public/seller/product_img/1531444493_4.jpg', 'public/seller/product_img/1531444493_aa.jpg', 'public/seller/product_img/1531444554_download.jpg', '#000000', '<p>PD///////////////////////////</p>', 1, 1, 1, 100.00, NULL, 25.00, NULL, 997, NULL, NULL, '<p>PD///////////////////////////</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-12 19:14:53', '2018-07-12 19:20:22'),
 (5, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER 4', 'STARGOLD Emergency Lights', '<ul>\r\n	<li>Very Nice Design</li>\r\n	<li>Comfortable ti use</li>\r\n	<li>Carriable</li>\r\n	<li>Externel Bettery can use</li>\r\n</ul>', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 1, 1, 'public/seller/product_img/1531444493_2.jpg', 4, 2, 2, NULL, 'public/seller/product_img/1531444493_3.jpeg', 'public/seller/product_img/1531444493_4.jpg', 'public/seller/product_img/1531444493_aa.jpg', 'public/seller/product_img/1531444554_download.jpg', '#000000', '<p>PD///////////////////////////</p>', 1, 1, 1, 100.00, NULL, 25.00, NULL, 997, NULL, NULL, '<p>PD///////////////////////////</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-12 19:14:53', '2018-07-12 19:20:22'),
-(6, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER 3', 'STARGOLD Emergency Lights 3', '<ul>\r\n	<li>Very Nice Design</li>\r\n	<li>Comfortable ti use</li>\r\n	<li>Carriable</li>\r\n	<li>Externel Bettery can use</li>\r\n</ul>', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 1, 1, 'public/seller/product_img/1531444493_2.jpg', 4, 2, 2, NULL, 'public/seller/product_img/1531444493_3.jpeg', 'public/seller/product_img/1531444493_4.jpg', 'public/seller/product_img/1531444493_aa.jpg', 'public/seller/product_img/1531444554_download.jpg', '#000000', '<p>PD///////////////////////////</p>', 1, 1, 1, 100.00, NULL, 25.00, NULL, 997, NULL, NULL, '<p>PD///////////////////////////</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-12 19:14:53', '2018-07-12 19:20:22');
+(6, 1, 1, 'STARGOLD EMERGENCY LIGHT WITH CHARGER 3', 'STARGOLD Emergency Lights 3', '<ul>\r\n	<li>Very Nice Design</li>\r\n	<li>Comfortable ti use</li>\r\n	<li>Carriable</li>\r\n	<li>Externel Bettery can use</li>\r\n</ul>', 'TESTING KEYWORD', '00011', 'TEST-0013', 2, 1, 1, 'public/seller/product_img/1531444493_2.jpg', 4, 2, 2, NULL, 'public/seller/product_img/1531444493_3.jpeg', 'public/seller/product_img/1531444493_4.jpg', 'public/seller/product_img/1531444493_aa.jpg', 'public/seller/product_img/1531444554_download.jpg', '#000000', '<p>PD///////////////////////////</p>', 1, 1, 1, 100.00, NULL, 25.00, NULL, 997, NULL, NULL, '<p>PD///////////////////////////</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-12 19:14:53', '2018-07-12 19:20:22'),
+(7, 7, 1, 'UN LESITE SGS MACHINE', 'SGS MACHINE', 'MACHINARY', 'MACHINE', '00011', 'LST800', 1, 7, 1, 'public/seller/product_img/1531805719_1509026351.jpg', 3, 1, 1, 2, 'public/seller/product_img/1531805719_airqual2.png', 'public/seller/product_img/1531805719_p-KSN770-list-300x215.png', 'public/seller/product_img/1531805719_tig_welding.png', 'public/seller/product_img/1531805719_Tipo-Paquete-Condensado-por-Aire-Marca-Trane-de-5-TR-en-adelante.png', '#ff0080', 'SP...............', 1, 1, 1, 1233.00, 105.00, 25.00, 30.00, 85, '20', '800', 'CPD>>>>>>>>>>>>', 'OD>>>>>>>>>>>>>>>>', NULL, 16, 13, 16, 10, '10', 10, 15, 1, 1, 11.00, 22.00, 2, 2, 3, 19, 'SR..........................................', '2018-07-16 23:35:19', '2018-07-18 21:21:57');
 
 -- --------------------------------------------------------
 
@@ -1025,9 +1027,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `user_type`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'SELLER 1', 's1@s.com', '01911881811', '2', '$2y$10$jNGViiVOm/jO49dn9dHKs.MfNXrcICXBO2EXPrpuZBlCC3ZFilT4S', '1YL1JEEXFSwv0nOXvg5gFhGmKpb1bI9NvFHlm4NwiCFCMIGrn0LvWhwdEZIN', '2018-07-08 02:37:31', '2018-07-08 02:37:31'),
-(2, 'TANBHIR HOSSAIN', 'tanveer@gmail.com', '01758578360', '1', '$2y$10$/yN.lzvQNt/TwGeJbwctgO9Kr4wsftiHenBkz3OwqSynLpeEwbDPa', '01V6VJ0PnTqqIgY7sLJNr1IEHNoqSwAC0yvqW5SfsWBphpn6CcXTcWRuYfVF', '2018-07-11 18:47:43', '2018-07-11 18:47:43'),
+(2, 'TANBHIR HOSSAIN', 'tanveer@gmail.com', '01758578360', '1', '$2y$10$/yN.lzvQNt/TwGeJbwctgO9Kr4wsftiHenBkz3OwqSynLpeEwbDPa', 'SASj5KcCXEjaY9mPPH3r6cqcqQCajXQBB5oe4hXgMFuecTyRABJja5Rw6YIN', '2018-07-11 18:47:43', '2018-07-11 18:47:43'),
 (5, 'TAKRIM MOHAMMAD', 'takrim@gmail.com', '029020202020', '1', '$2y$10$yOIGuNZNvbh3FkpiCFL/b.1o9bLCjh58m5KHT9OjrgeQmut/PHMDa', 'oAXo6lh7kgxz1SugroLoFn1PPT32Upag6yATUomuK3Gc6L1CdOP9epWWLe8T', '2018-07-11 19:20:59', '2018-07-11 19:20:59'),
-(6, 'AFOJAL ENTERPRISE', 'afojalenterprise@gmail.com', '01112922', '2', '$2y$10$gVeFtzzal5LujlybGSCVrOdwy8J9b3eyhXKuO0oaQQ/QnOgk72gr.', 'rQBKOWOFEFHTNe9uZXRKDt8DuSSOb3hXKRKTwqVLq1AdFZUt1JWKtIZDFHbt', '2018-07-15 09:58:05', '2018-07-15 09:58:05');
+(6, 'AFOJAL ENTERPRISE', 'afojalenterprise@gmail.com', '01112922', '2', '$2y$10$gVeFtzzal5LujlybGSCVrOdwy8J9b3eyhXKuO0oaQQ/QnOgk72gr.', 'Y9OIq0yAG9OTGDKtF9cDnz12fPHmr02zImyehlYB71Ei2y3LGP2DNfZ6RcpP', '2018-07-15 09:58:05', '2018-07-15 09:58:05'),
+(7, 'AFOJAL CONSTRUCTION & ENGINEERING SDN BHD', 'afojalcons@gmail.com', '018292929', '2', '$2y$10$vzGiHNbFMp4zoBpQbdlp6eTo7dDSdHinxtmwRXSPzu/.pvp3bM2mS', 'GJxPhL0nWc8IJotEwmAySYyt5W6S9fbVWL3q2mkrfdfZMJMYYz7u4lmNvkpB', '2018-07-16 23:27:21', '2018-07-16 23:27:21');
 
 -- --------------------------------------------------------
 
@@ -1394,7 +1397,7 @@ ALTER TABLE `faquestions`
 -- AUTO_INCREMENT for table `footer_pages`
 --
 ALTER TABLE `footer_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `home_adverts`
@@ -1490,13 +1493,13 @@ ALTER TABLE `role_sellers`
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `seller_products`
 --
 ALTER TABLE `seller_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `shippings`
@@ -1526,7 +1529,7 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
