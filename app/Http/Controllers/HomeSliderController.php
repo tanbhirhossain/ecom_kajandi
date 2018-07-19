@@ -47,7 +47,7 @@ class HomeSliderController extends Controller
     public function sliderList()
     {
         $all_slider = HomeSlider::
-              join('sellers','sellers.id','=','seller_id')
+              join('sellers','sellers.user_id','=','seller_id')
             ->join('seller_products','seller_products.id','product_id')
             ->select('home_sliders.*','seller_products.pro_name', 'sellers.vendorname')
             ->get();
@@ -57,7 +57,7 @@ class HomeSliderController extends Controller
     public function editSlider($id)
     {
         $editslider = HomeSlider::
-            join('sellers','sellers.id','=','seller_id')
+            join('sellers','sellers.user_id','=','seller_id')
             ->join('seller_products','seller_products.id','product_id')
             ->select('home_sliders.*','seller_products.pro_name', 'sellers.vendorname')
             ->find($id);
@@ -91,7 +91,7 @@ class HomeSliderController extends Controller
 
         $sv->admin_id = $request->admin_id;
 
-        $sv->seller_id = $request->seller_id;
+      //  $sv->seller_id = $request->seller_id;
         $sv->product_id = $request->product_id;
         $sv->slider_title = $request->slider_title;
         $sv->slider_description = $request->slider_description;

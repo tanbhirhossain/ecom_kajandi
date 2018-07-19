@@ -15,7 +15,7 @@ class CreateHomeSlidersTable extends Migration
     {
         Schema::create('home_sliders', function (Blueprint $table) {
             $table->increments('id');
-            
+
             $table->integer('seller_id')->unsigned();
             $table->integer('product_id')->unsigned();
 
@@ -26,9 +26,9 @@ class CreateHomeSlidersTable extends Migration
             $table->integer('admin_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('seller_id')->references('id')->on('sellers');
-            $table->foreign('product_id')->references('id')->on('seller_products');
-            $table->foreign('admin_id')->references('id')->on('admins');
+            // $table->foreign('seller_id')->references('id')->on('sellers');
+            // $table->foreign('product_id')->references('id')->on('seller_products');
+            // $table->foreign('admin_id')->references('id')->on('admins');
 
         });
     }

@@ -5,9 +5,10 @@
 .bg {background-size: cover;background-repeat: no-repeat;background-position: center center;background-color: #ddd;}
 
 .product-preview .single-preview {
-    width: 290px;
+    width: 285px;
     height: 220px;
     display: none;
+    overflow: hidden;
 }
 
 .product-preview .single-preview.current {
@@ -20,7 +21,7 @@
 
 .product-thumb-wrap {
     float: left;
-    padding-left: 16px;
+    padding-left: 15px;
 }
 
 .product-thumb-wrap .product-thumb {
@@ -49,6 +50,7 @@
 .intro-content-wrap > p {
     position: relative;
     padding-left: 155px;
+    overflow: hidden;
 }
 
 .intro-content-wrap > p span {

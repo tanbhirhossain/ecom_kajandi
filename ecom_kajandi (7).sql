@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2018 at 05:42 AM
+-- Generation Time: Jul 19, 2018 at 07:35 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -374,7 +374,7 @@ CREATE TABLE `home_adverts` (
 --
 
 INSERT INTO `home_adverts` (`ads_id`, `ads_section`, `seller_id`, `product_id`, `banner_color`, `ads_image`, `admin_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '#00caca', NULL, 1, '2018-07-08 02:47:32', '2018-07-15 21:08:10'),
+(1, 1, 1, 1, '#00caca', 'public/backend/AdvertImg/1532020156_aa.jpg', 1, '2018-07-08 02:47:32', '2018-07-19 11:09:16'),
 (2, 2, 1, 1, '#000000', '', 1, '2018-07-13 19:49:54', '2018-07-13 19:49:54'),
 (3, 3, 1, 1, '#000000', NULL, 1, '2018-07-13 19:51:12', '2018-07-13 19:51:12'),
 (4, 1, 1, 1, '#f60e5b', NULL, 1, '2018-07-08 02:47:32', '2018-07-08 02:48:50'),
@@ -396,7 +396,8 @@ INSERT INTO `home_adverts` (`ads_id`, `ads_section`, `seller_id`, `product_id`, 
 (20, 3, 1, 4, '#000000', 'public/backend/AdvertImg/1531699736_4.jpg', 1, '2018-07-15 18:08:56', '2018-07-15 18:08:56'),
 (21, 3, 1, 5, '#000000', '', 1, '2018-07-15 18:09:10', '2018-07-15 18:09:10'),
 (22, 4, 1, 3, '#ff0080', '', 1, '2018-07-15 18:09:42', '2018-07-15 18:09:42'),
-(23, 4, 1, 5, '#d96c00', 'public/backend/AdvertImg/1531710432_4.jpg', 1, '2018-07-15 18:10:10', '2018-07-15 21:07:13');
+(23, 4, 1, 5, '#d96c00', 'public/backend/AdvertImg/1531710432_4.jpg', 1, '2018-07-15 18:10:10', '2018-07-15 21:07:13'),
+(24, 1, 7, 7, '#000000', '', 1, '2018-07-19 10:41:59', '2018-07-19 10:41:59');
 
 -- --------------------------------------------------------
 
@@ -421,8 +422,9 @@ CREATE TABLE `home_sliders` (
 --
 
 INSERT INTO `home_sliders` (`id`, `seller_id`, `product_id`, `slider_title`, `slider_description`, `slider_image`, `admin_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 3, 'AMAZING RATE DON\'T MISS THE OFFER', 'Electronics product by testing', '', NULL, '2018-07-15 20:39:58', '2018-07-15 20:39:58'),
-(3, 1, 5, 'Testing Welder This Sitessss', 'Smart Weldingsss', 'public/frontend/img/slider/1531711146_bg.jpg', NULL, '2018-07-15 21:19:07', '2018-07-15 22:24:52');
+(1, 1, 1, 'AMAZING RATE DON\'T MISS THE OFFER', 'Smart Weldings', 'public/frontend/img/slider/1532020733_bg.jpg', NULL, '2018-07-19 11:18:53', '2018-07-19 11:18:53'),
+(4, 6, 2, 'Testing Welder This Sites', 'Electronics product by testing', '', NULL, '2018-07-19 11:23:00', '2018-07-19 11:23:00'),
+(5, 1, 4, 'Testing Welder This Sites', 'Smart Welding', 'public/frontend/img/slider/1532021006_bg.jpg', NULL, '2018-07-19 11:23:26', '2018-07-19 11:23:26');
 
 -- --------------------------------------------------------
 
@@ -501,9 +503,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (45, '2018_06_15_120010_create_home_adverts_table', 12),
 (46, '2018_06_20_054405_create_customer_questions_table', 13),
 (47, '2018_07_13_164009_create_contact_suppliers_table', 14),
-(48, '2018_07_16_011019_create_home_sliders_table', 15),
 (51, '2018_07_16_162018_create_footer_pages_table', 16),
-(52, '2018_07_16_163026_create_page_links_table', 16);
+(52, '2018_07_16_163026_create_page_links_table', 16),
+(53, '2018_07_16_011019_create_home_sliders_table', 17);
 
 -- --------------------------------------------------------
 
@@ -1160,10 +1162,7 @@ ALTER TABLE `home_adverts`
 -- Indexes for table `home_sliders`
 --
 ALTER TABLE `home_sliders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `home_sliders_seller_id_foreign` (`seller_id`),
-  ADD KEY `home_sliders_product_id_foreign` (`product_id`),
-  ADD KEY `home_sliders_admin_id_foreign` (`admin_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `manufacters`
@@ -1403,13 +1402,13 @@ ALTER TABLE `footer_pages`
 -- AUTO_INCREMENT for table `home_adverts`
 --
 ALTER TABLE `home_adverts`
-  MODIFY `ads_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ads_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `home_sliders`
 --
 ALTER TABLE `home_sliders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `manufacters`
@@ -1421,7 +1420,7 @@ ALTER TABLE `manufacters`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1546,14 +1545,6 @@ ALTER TABLE `wishlists`
 --
 ALTER TABLE `footer_pages`
   ADD CONSTRAINT `footer_pages_added_by_foreign` FOREIGN KEY (`added_by`) REFERENCES `admins` (`id`);
-
---
--- Constraints for table `home_sliders`
---
-ALTER TABLE `home_sliders`
-  ADD CONSTRAINT `home_sliders_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`),
-  ADD CONSTRAINT `home_sliders_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `seller_products` (`id`),
-  ADD CONSTRAINT `home_sliders_seller_id_foreign` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

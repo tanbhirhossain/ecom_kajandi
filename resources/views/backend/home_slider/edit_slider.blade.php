@@ -24,7 +24,7 @@
                             <label for="seller_id" class=" form-control-label">Select Vendor</label>
                             <select class="form-control" name="seller_id">
                               @if($editslider->seller_id !=null)
-                                <option value="{{$editslider->seller_id}}">{{$editslider->vendorname}}</option>
+                                <option value="{{$editslider->user_id}}">{{$editslider->vendorname}}</option>
                               @else
                                 <option value="">Select Vendor</option>
 
