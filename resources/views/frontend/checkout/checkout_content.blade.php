@@ -61,7 +61,7 @@
                 $check = App\Customer::where('cus_id', Auth::id())->first();
              ?>
 
-        {{--@if($check->bil_last_name && $check->bil_zipcode != null)--}}
+
             {!! Form::open(['url'=>'place-order','method'=>'POST']) !!}
             <div class="your-order">
                 <div class="order-table">
@@ -93,18 +93,14 @@
             </div>
             @if(Cart::total()>0)
                 <button type="submit" class="btn btn-success">Place Order</button>
-            {{--@else--}}
+            @else
                 <h3 class="alert alert-danger">Please add one or more product in your cart, for enable order option</h3>
                 <h4><a href="{{route('shop')}}">Continue Shopping</a></h4>
-           {{--@endif--}}
+           @endif
             {!! Form::close() !!}
-        @else
-
-          <h3 class="alert alert-danger">Please Complete Customer Profile For Complete Order</h3>
-          <button type="button" class="btn btn-info" name="button">Complete Profile</button>
-        @endif
+    
         </div>
-          <a  href="{{route('billing')}}" class="btn btn-success">Next</a>
+        <!--  <a  href="{{route('billing')}}" class="btn btn-success">Next</a>-->
 
     </div>
     <div class="gap"></div>

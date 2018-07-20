@@ -60,10 +60,10 @@ class CustomUserController extends Controller{
 
           $seller_id = $su->id;
             Session::put('cus_id',$seller_id);
-          $cust = new Customer();
-          $cust->cus_id = $seller_id;
-          $cust->bil_email = $request->email;
-          $cust->save();
+          // $cust = new Customer();
+          // $cust->cus_id = $seller_id;
+          // $cust->bil_email = $request->email;
+          // $cust->save();
         }
 
 

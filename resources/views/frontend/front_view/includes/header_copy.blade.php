@@ -320,7 +320,7 @@
                                         </tr>
                                         <tr>
                                             <td><a href="{{route('shop')}}" class="btn btn-primary">Continue Shopping</a></td>
-                                            <td colspan="3"><a href="{{route('checkout')}}" class="pull-right btn btn-success">Checkout</a></td>
+                                            <td colspan="3"><a href="{{route('preCheckout')}}" class="pull-right btn btn-success">Checkout</a></td>
                                         </tr>
                                         </tbody>
                                     </table>

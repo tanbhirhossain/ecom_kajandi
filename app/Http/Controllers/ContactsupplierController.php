@@ -17,7 +17,7 @@ class ContactsupplierController extends Controller{
         'product_qty' => 'required|min:1|max:1000',
         'product_unit' => 'required',
         'user_message' => 'required|max:7924|min:2',
-       'attach_file' => 'required|max:10000|mimes:doc,docx,pdf,txt,xlsx,jpg,png'
+       //'attach_file' => 'required|max:10000|mimes:doc,docx,pdf,txt,xlsx,jpg,png'
     ]);
     if (Auth::check()) {
         if ( $request->agree=='on') {
@@ -40,6 +40,8 @@ class ContactsupplierController extends Controller{
             $cts->user_message = $request->user_message;
             $cts->attach_file = $upload_file;
             $cts->save();
+
+            //dd($cts);
             return back()->with('message_success', 'Contact Us message Send Succesfully');
         }else{
             return back()->with('message_error', 'Please Check Agree Button');

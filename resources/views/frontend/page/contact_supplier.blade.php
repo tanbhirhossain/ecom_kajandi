@@ -9,14 +9,17 @@
         <div class="col-md-10 rqf_col" style="border:2px solid #F27F77;padding: 10px">
             <div class="rqf_content">
                 <div class="formInput">
-                  {!! Form::open(['url'=>'save-customer-request','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+
+                  <form class="" action="{{url('/save-customer-request')}}" method="post" enctype="multipart/form-data">@csrf
+
+
                         <div class="form-group">
                             <h4><i class="fa fa-user" style="margin: 10px"></i><a href="{{route('seller-product',$seller_id->user_id)}}">{{$seller_id->vendorname}}</a> </h4>
                             <h4>Product Name: <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a></h4>
                         </div>
-                    <input type="hidden" name="product_title" value="{{$product->pro_name}}">
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                    <input type="hidden" name="seller_id" value="{{$seller_id->user_id}}">
+                        <input type="hidden" name="product_title" value="{{$product->pro_name}}">
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" name="seller_id" value="{{$seller_id->user_id}}">
 
                         <div class="rqf_quantity">
                             <div class="rqf_quantity_input">
@@ -61,7 +64,7 @@
                         </div>
                         <button type="submit" class="btn btn-default submit_btn_rqf">Submit</button>
 
-                   {!! Form::close() !!}
+                </form>
                 </div>
             </div>
         </div>

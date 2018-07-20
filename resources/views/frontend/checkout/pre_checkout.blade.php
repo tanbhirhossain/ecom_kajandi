@@ -54,7 +54,7 @@
 
         <div class="col-md-6 pay-order986">
             <div class="section-title mt-50 mb-25">
-                <h4 class="text-uppercase">Click Next......</h4>
+                <h4 class="text-uppercase">Click Next For Complete Order......</h4>
                 <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
             </div>
 
